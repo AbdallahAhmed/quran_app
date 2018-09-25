@@ -1,0 +1,188 @@
+.page {
+    background: #ffffff !important;
+}
+
+.quran-navbar {
+    /*background: url("../img/islam-pattern.png");*/
+    height: 50px;
+}
+
+.navbar-logo {
+    background: #ffffff;
+    width: 100px;
+    display: block;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.navbar-logo img {
+    height: 40px;
+    margin: 5px 0;
+}
+
+.quran-head {
+
+    text-align: right;
+}
+
+.quran-head .page-title {
+    color: #ffffff;
+    line-height: 70px;
+    font-weight: bold;
+    margin-right: 20px;
+}
+
+.toolbar {
+    height: 60px !important;
+    background: #ffffff !important;
+    box-shadow: none !important;
+    border-top: 1px solid #DBDBDB;
+}
+
+.toolbar-options{
+    height: 80px !important;
+    background: none !important;
+    border: none;
+}
+
+.toolbar img {
+    width: 30px;
+}
+
+.toolbar .main-image {
+    width: 50px;
+}
+
+.sura-header {
+    margin: 0 auto;
+    text-align: center;
+    background: url(../img/box.png) no-repeat center;
+    width: 315px;
+    background-size: 100%;
+    height: 69px;
+}
+
+.part-right {
+    width: 75px;
+    float: left;
+    height: 45px;
+    color: #fff;
+    margin-top: 25px;
+    font-size: 10px;
+}
+
+.sura-name {
+    float: left;
+    height: 69px;
+    line-height: 69px;
+    width: 100%;
+    color: #207249 !important;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.sura-name-arrow {
+    margin-right: 30px;
+    width: 14px;
+}
+
+.part-left {
+    width: 75px;
+    float: left;
+    height: 45px;
+    margin-top: 25px;
+    color: #fff;
+    font-size: 10px;
+}
+
+.quran-basmla {
+    overflow: hidden;
+    width: 100%;
+}
+
+.quran-basmla a {
+    line-height: 70px;
+    float: left;
+    text-align: center;
+    width: 100%;
+    font-weight: bold;
+    font-size: 22px;
+    color: #207249;
+}
+
+.quran-sura {
+    text-align: justify;
+    direction: rtl;
+    margin: 0 !important;
+}
+
+.quran-sura .quran-aya {
+    font-size: 18px;
+    padding: 10px 0 10px 10px;
+}
+
+.quran-sura .quran-aya.active {
+    background: #ccc;
+}
+
+.quran-sura .quran-aya-separator {
+    font-size: 26px;
+    position: relative;
+    top: 4px;
+}
+
+.quran-sura .aya-num {
+    font-size: 13px;
+    margin-right: -27px;
+}
+
+.quran-sura .quran-aya-separator:after {
+    content: "۝";
+}
+
+.sura-stats {
+    height: 40px;
+    background: #207249;
+    color: #ffffff;
+    padding-top: 10px;
+}
+
+.sura-stats .sura-part-num {
+    text-align: center;
+    line-height: 30px;
+    font-weight: bold;
+    background: url("../img/vertical-separator.png") no-repeat;
+    color: #ffffff;
+}
+
+.sura-stats .sura-ayat-count {
+    text-align: center;
+    line-height: 30px;
+    font-weight: bold;
+    color: #ffffff;
+}
+
+.aya-options {
+    color: #000;
+    width: 100%;
+    text-align: center;
+    background: #207249;
+    height: 40px;
+}
+
+.aya-options img {
+    width: 20px;
+    margin-top: -9px;
+}
+
+.aya-options-remove{
+    color: #ffffff;
+    width: 100%;
+    text-align: center;
+    background: #F6C625;
+    height: 40px;
+    line-height: 40px;
+    font-weight: bold;
+    display: block;
+
+}

@@ -1,0 +1,86 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget id="com.dotdev.thirty" version="1.1.0" xmlns="http://www.w3.org/ns/widgets" xmlns:android="http://schemas.android.com/apk/res/android" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <name>Thirty</name>
+    <description>
+        Breaking and trending videos you'll want to share.
+    </description>
+    <author email="basemkhirat@gmail.com" href="http://dotdev.ae">
+        Dotdev Team
+    </author>
+    <allow-navigation href="*" />
+    <allow-intent href="*" />
+    <access origin="*" />
+    <platform name="android">
+        <content src="android.html" />
+        <resource-file src="resources/android/custom/notification_icon.png" target="res/drawable/notification_icon.png" />
+        <hook src="includes/android_custom_resources.js" type="after_prepare" />
+        <hook src="includes/android_custom_values.js" type="after_prepare" />
+        <config-file parent="./application" target="AndroidManifest.xml">
+            <meta-data android:name="com.google.firebase.messaging.default_notification_icon" android:resource="@drawable/notification_icon" />
+            <meta-data android:name="com.google.firebase.messaging.default_notification_color" android:resource="@color/red" />
+        </config-file>
+        <splash density="land-hdpi" src="res/screen/android/splash-land-hdpi.png" />
+        <splash density="land-ldpi" src="res/screen/android/splash-land-ldpi.png" />
+        <splash density="land-mdpi" src="res/screen/android/splash-land-mdpi.png" />
+        <splash density="land-xhdpi" src="res/screen/android/splash-land-xhdpi.png" />
+        <splash density="port-hdpi" src="res/screen/android/splash-port-hdpi.png" />
+        <splash density="port-ldpi" src="res/screen/android/splash-port-ldpi.png" />
+        <splash density="port-mdpi" src="res/screen/android/splash-port-mdpi.png" />
+        <splash density="port-xhdpi" src="res/screen/android/splash-port-xhdpi.png" />
+        <plugin name="cordova-plugin-googleplus" spec="^5.1.1">
+            <variable name="REVERSED_CLIENT_ID" value="com.googleusercontent.apps.913582129033-0cear7s1oiiupm761j3dgkjobengrv83" />
+        </plugin>
+        <preference name="KeepRunning" value="false" />
+    </platform>
+    <platform name="ios">
+        <content src="ios.html" />
+        <splash height="480" src="res/screen/ios/Default~iphone.png" width="320" />
+        <splash height="960" src="res/screen/ios/Default@2x~iphone.png" width="640" />
+        <splash height="1024" src="res/screen/ios/Default-Portrait~ipad.png" width="768" />
+        <splash height="2048" src="res/screen/ios/Default-Portrait@2x~ipad.png" width="1536" />
+        <splash height="768" src="res/screen/ios/Default-Landscape~ipad.png" width="1024" />
+        <splash height="1536" src="res/screen/ios/Default-Landscape@2x~ipad.png" width="2048" />
+        <splash height="1136" src="res/screen/ios/Default-568h@2x~iphone.png" width="640" />
+        <splash height="1334" src="res/screen/ios/Default-667h.png" width="750" />
+        <splash height="2208" src="res/screen/ios/Default-736h.png" width="1242" />
+        <plugin name="cordova-plugin-googleplus" spec="^5.1.1">
+            <variable name="REVERSED_CLIENT_ID" value="com.googleusercontent.apps.913582129033-7hj3ljojf5r3294cko33rps791q0s3b8" />
+        </plugin>
+        <preference name="KeychainAccessibility" value="WhenUnlocked" />
+        <preference name="AllowInlineMediaPlayback" value="true" />
+        <preference name="UIWebViewDecelerationSpeed" value="fast" />
+        <preference name="SuppressesIncrementalRendering" value="true" />
+        <preference name="MediaPlaybackRequiresUserAction" value="false" />
+        <preference name="BackupWebStorage" value="none" />
+    </platform>
+    <preference name="TwitterConsumerKey" value="agkqe7rOnBZdzCq92hQ50QD7b" />
+    <preference name="TwitterConsumerSecret" value="LWNXzdQORHMYTHpqyzcYH0qdHnQh8CHGcZRswqP4UfxozrWY92" />
+    <preference name="SplashScreenDelay" value="6000" />
+    <preference name="FadeSplashScreenDuration" value="1000" />
+    <preference name="ShowSplashScreenSpinner" value="false" />
+    <preference name="StatusBarBackgroundColor" value="#2e2e2e" />
+    <preference name="AndroidLaunchMode" value="singleTop" />
+    <plugin name="cordova-plugin-device" spec="^1.1.7" />
+    <plugin name="cordova-plugin-nativeclicksound" spec="0.0.3" />
+    <plugin name="cordova-plugin-network-information" spec="^1.3.4" />
+    <plugin name="twitter-connect-plugin" spec="^0.6.0">
+        <variable name="FABRIC_KEY" value="93f10a9257ed188a964f6bfa48c7203ef632dfc2" />
+    </plugin>
+    <plugin name="cordova-plugin-facebook4" spec="^1.9.1">
+        <variable name="APP_ID" value="1997501283858477" />
+        <variable name="APP_NAME" value="Thirty" />
+    </plugin>
+    <plugin name="cordova-plugin-whitelist" spec="^1.3.3" />
+    <plugin name="cordova-plugin-x-socialsharing" spec="^5.2.1" />
+    <plugin name="cordova-plugin-splashscreen" spec="^3.2.2" />
+    <plugin name="cordova-plugin-googleplus" spec="^5.1.1">
+        <variable name="REVERSED_CLIENT_ID" value="com.googleusercontent.apps.913582129033-0cear7s1oiiupm761j3dgkjobengrv83" />
+    </plugin>
+    <plugin name="cordova-plugin-firebase" spec="^0.1.25" />
+    <plugin name="cordova-custom-config" spec="^5.0.0" />
+    <plugin name="cordova-plugin-console" spec="^1.1.0" />
+    <plugin name="cordova-plugin-statusbar" spec="^2.3.0" />
+    <plugin name="cordova-plugin-camera" spec="^3.0.0" />
+    <engine name="ios" spec="^4.5.4" />
+    <engine name="android" spec="^6.4.0" />
+</widget>
