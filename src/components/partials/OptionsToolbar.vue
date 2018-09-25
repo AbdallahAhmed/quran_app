@@ -1,17 +1,21 @@
 <template>
 
     <div class="toolbar no-shadow toolbar-bottom-md toolbar-options">
+
         <div class="toolber-inner">
 
             <div class="row aya-options">
 
-                <a class="col-30 link">
+                <div class="options-message" v-if="message"> {{ message}} </div>
+
+                <a class="col-30 link" @click="share" v-if="!message">
                     <img src="../../assets/img/share.png">
                 </a>
-                <a class="col-30 link">
+                <a class="col-30 link" @click="copy" v-if="!message">
+                    <input type="hidden" id="clipboard" :value="aya.text"/>
                     <img src="../../assets/img/copy.png">
                 </a>
-                <a class="col-30 link">
+                <a class="col-30 link" @click="save" v-if="!message">
                     <img src="../../assets/img/save.png">
                 </a>
 
@@ -19,10 +23,87 @@
 
         </div>
 
-        <a class="link aya-options-remove">
-            إغلاق
-        </a>
+        <a class="link aya-options-remove" @click="close">{{ $app.trans("close") }}</a>
 
     </div>
 
 </template>
+
+
+<script>
+
+    export default {
+
+        props: [
+            "aya"
+        ],
+
+
+        data(){
+            return {
+                message: ""
+            }
+        },
+
+
+        mounted() {
+        },
+
+        methods: {
+
+            share() {
+
+                this.message = "تم المشاركه !";
+
+                let timer = setInterval(() => {
+                    this.message = false;
+                    clearInterval(timer);
+                }, 4000);
+
+            },
+
+            save() {
+
+                this.message = "تم الحفظ !";
+
+                let timer = setInterval(() => {
+                    this.message = false;
+                    clearInterval(timer);
+                }, 4000);
+
+            },
+
+            copy() {
+
+                let clipboard = document.querySelector('#clipboard');
+
+                clipboard.setAttribute('type', 'text');
+                clipboard.select();
+
+                try {
+                    var successful = document.execCommand('copy');
+                    var msg = successful ? 'successful' : 'unsuccessful';
+                } catch (err) {
+                    // Do nothing
+                }
+
+                clipboard.setAttribute('type', 'hidden')
+                window.getSelection().removeAllRanges();
+
+                this.message = "تم النسخ !";
+
+                let timer = setInterval(() => {
+                    this.message = false;
+                    clearInterval(timer);
+                }, 4000);
+
+            },
+
+            close() {
+                this.$emit("close")
+            }
+        }
+
+    }
+
+</script>

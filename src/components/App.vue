@@ -6,11 +6,8 @@
 
         <div class="views">
 
-            <f7-view url="/" main>
+            <f7-view url="/" main></f7-view>
 
-
-
-            </f7-view>
         </div>
 
     </f7-app>

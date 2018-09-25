@@ -68,7 +68,7 @@ Vue.app = {
          * set API base url
          * @type {string}
          */
-        Vue.http.options.root = Vue.app.config.get("url") + "/" + store.getters.locale;
+        Vue.http.options.root = Vue.app.config.get("url");
 
         /**
          * append access token to every request

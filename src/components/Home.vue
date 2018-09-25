@@ -3,8 +3,10 @@
     <f7-page :class="'navbar-fixed'">
 
         <navbar></navbar>
+
         <main-toolbar v-if="!active"></main-toolbar>
-        <options-toolbar v-if="active"></options-toolbar>
+
+        <options-toolbar v-if="active || aya == {}" :aya="aya" @close="close"></options-toolbar>
 
         <div class="quran-head">
 
@@ -26,7 +28,7 @@
             <div class="sura-stats row">
 
                 <a class="col-50 sura-ayat-count link">
-                    أياتها ٥
+                    أياتها {{ sura.length }}
                 </a>
 
                 <a class="col-50 sura-part-num link">
@@ -50,10 +52,10 @@
 
             <div class="block quran-sura">
 
-                    <span class="quran-aya" v-for="i in 40" @click="activate(i)" :class="{active: isActivated(i)}">
-                        إِيَّاكَ نَعْبُدُ وَإِيَّاكَ نَسْتَعِينُ
+                    <span v-for="aya in sura" class="quran-aya"  @click="activate(aya)" :class="{active: isActivated(aya)}">
+                        {{ aya.text }}
                        <span class="quran-aya-separator"></span>
-                        <span class="aya-num">12</span>
+                        <span class="aya-num">{{ aya.numberinsurat }}</span>
                     </span>
             </div>
 
@@ -77,23 +79,44 @@
 
         data() {
             return {
+                sura: [],
+                aya: {},
                 active: 0
             }
         },
 
 
+        mounted() {
+
+            this.$store.dispatch("get_sura", 1).then((response) => {
+                this.sura = response.data.data.slice(0);
+
+                console.log(this.sura);
+            });
+        },
+
+
         methods: {
-            activate(i) {
-                if (this.active == i) {
+
+            activate(aya) {
+
+                if (this.active != aya.number) {
+                    this.aya = aya;
+                    this.active = aya.number;
+                }else{
                     this.active = 0;
-                } else {
-                    this.active = i;
                 }
 
             },
 
-            isActivated(i) {
-                return i == this.active;
+            isActivated(aya) {
+                return aya.number == this.active;
+            },
+
+
+            close(){
+                this.active = 0;
+                this.aya = {};
             }
         },
 

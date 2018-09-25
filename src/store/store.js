@@ -3,6 +3,7 @@ import Vuex from 'vuex';
 import User from './modules/user';
 import Post from './modules/post';
 import Category from './modules/category';
+import quran from './modules/quran';
 
 Vue.use(Vuex);
 
@@ -129,6 +130,7 @@ export const store = new Vuex.Store({
     modules: [
         User,
         Post,
-        Category
+        Category,
+        quran
     ]
 });
