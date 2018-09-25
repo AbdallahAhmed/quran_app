@@ -1,0 +1,64 @@
+{
+  "prepare_queue": {
+    "installed": [],
+    "uninstalled": []
+  },
+  "config_munge": {
+    "files": {}
+  },
+  "installed_plugins": {
+    "cordova-custom-config": {
+      "PACKAGE_NAME": "com.dotdev.thirty"
+    },
+    "cordova-plugin-console": {
+      "PACKAGE_NAME": "com.dotdev.thirty"
+    },
+    "cordova-plugin-device": {
+      "PACKAGE_NAME": "com.dotdev.thirty"
+    },
+    "cordova-plugin-facebook4": {
+      "APP_ID": "1997501283858477",
+      "APP_NAME": "Thirty",
+      "PACKAGE_NAME": "com.dotdev.thirty"
+    },
+    "cordova-plugin-firebase": {
+      "PACKAGE_NAME": "com.dotdev.thirty"
+    },
+    "cordova-plugin-googleplus": {
+      "PACKAGE_NAME": "com.dotdev.thirty"
+    },
+    "cordova-plugin-nativeclicksound": {
+      "PACKAGE_NAME": "com.dotdev.thirty"
+    },
+    "cordova-plugin-network-information": {
+      "PACKAGE_NAME": "com.dotdev.thirty"
+    },
+    "cordova-plugin-splashscreen": {
+      "PACKAGE_NAME": "com.dotdev.thirty"
+    },
+    "cordova-plugin-statusbar": {
+      "PACKAGE_NAME": "com.dotdev.thirty"
+    },
+    "cordova-plugin-whitelist": {
+      "PACKAGE_NAME": "com.dotdev.thirty"
+    },
+    "cordova-plugin-x-socialsharing": {
+      "PACKAGE_NAME": "com.dotdev.thirty"
+    },
+    "twitter-connect-plugin": {
+      "FABRIC_KEY": "93f10a9257ed188a964f6bfa48c7203ef632dfc2",
+      "PACKAGE_NAME": "com.dotdev.thirty"
+    },
+    "cordova-plugin-camera": {
+      "PACKAGE_NAME": "com.dotdev.thirty"
+    }
+  },
+  "dependent_plugins": {
+    "cordova-plugin-webserver": {
+      "PACKAGE_NAME": "com.dotdev.thirty"
+    },
+    "es6-promise-plugin": {
+      "PACKAGE_NAME": "com.dotdev.thirty"
+    }
+  }
+}
