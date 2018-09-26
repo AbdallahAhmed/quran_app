@@ -53,16 +53,30 @@
 
             share() {
 
-                this.message = "تم المشاركه !";
+                window.plugins.socialsharing.shareWithOptions({
 
-                let timer = setInterval(() => {
-                    this.message = false;
-                    clearInterval(timer);
-                }, 4000);
+                    message: this.aya.text,
+                    subject: this.aya.text,
+                    chooserTitle: this.$app.trans("choose_app")
+
+                }, function () {
+
+                    this.message = "تم المشاركه !";
+
+                    let timer = setInterval(() => {
+                        this.message = false;
+                        clearInterval(timer);
+                    }, 4000);
+                });
+
 
             },
 
             save() {
+
+                this.$store.dispatch("save_aya", this.aya.id).then((response) => {
+                    this.sura = response.data.data.slice(0);
+                });
 
                 this.message = "تم الحفظ !";
 

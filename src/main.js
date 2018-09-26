@@ -87,8 +87,11 @@ Vue.app = {
          * @type {Vue$3|Vue}
          */
         this.vue = new Vue({
+
             el: '#app',
+
             render: h => h(App),
+
             i18n,
             store,
 

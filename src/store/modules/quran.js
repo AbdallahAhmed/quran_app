@@ -14,5 +14,9 @@ export default {
             return Vue.http.get("surah", {params: {surah_id: id}});
         },
 
+        save_aya(store, id) {
+            return Vue.http.post("bookmarks/create", {params: {ayah_id: id}});
+        },
+
     }
 }

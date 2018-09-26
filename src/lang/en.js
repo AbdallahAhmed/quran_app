@@ -4,6 +4,8 @@ export default {
 
     close: "close",
 
+    choose_app : "Choose application",
+
     messages: {
         _default: function (e) {
             return "The " + e + " value is not valid."

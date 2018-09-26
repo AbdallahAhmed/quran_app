@@ -4,6 +4,8 @@ export default {
 
     close: "إغلاق",
 
+    choose_app : "إختر تطبيق",
+
     messages: {
         _default: function (n) {
             return "قيمة الحقل " + n + " غير صحيحة."

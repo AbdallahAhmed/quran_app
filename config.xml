@@ -1,10 +1,10 @@
 <?xml version='1.0' encoding='utf-8'?>
 <widget id="com.dotdev.quran" version="1.1.0" xmlns="http://www.w3.org/ns/widgets" xmlns:android="http://schemas.android.com/apk/res/android" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-    <name>Thirty</name>
+    <name>Quran</name>
     <description>
-        Breaking and trending videos you'll want to share.
+        Quran contests for everyone
     </description>
-    <author email="basemkhirat@gmail.com" href="http://dotdev.ae">
+    <author email="basemkhirat@gmail.com" href="http://dotdev.com.eg">
         Dotdev Team
     </author>
     <allow-navigation href="*" />
@@ -81,6 +81,5 @@
     <plugin name="cordova-plugin-console" spec="^1.1.0" />
     <plugin name="cordova-plugin-statusbar" spec="^2.3.0" />
     <plugin name="cordova-plugin-camera" spec="^3.0.0" />
-    <engine name="ios" spec="^4.5.4" />
-    <engine name="android" spec="^6.4.0" />
+    <engine name="ios" spec="^4.5.5" />
 </widget>
