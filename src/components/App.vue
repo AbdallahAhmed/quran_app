@@ -23,8 +23,8 @@
         data() {
             return {
                 f7params: {
-                    id: 'io.framework7.testapp',
-                    name: 'Framework7',
+                    id: 'com.dotdev.quran',
+                    name: 'Quran',
                     theme: 'auto',
                     routes: routes,
                 },
