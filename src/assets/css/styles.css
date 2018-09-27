@@ -278,6 +278,11 @@
         height: 20px;
     }
 }
+@media only screen and (min-height: 811px) {
+    .section-wrapper .number-list a {
+        height: 23px;
+    }
+}
 
 .page-sections .page-content{
     overflow: hidden;
