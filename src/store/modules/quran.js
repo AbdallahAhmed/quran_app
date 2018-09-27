@@ -21,7 +21,7 @@ export default {
     actions: {
 
         get_sura(store, id) {
-            return Vue.http.get("surah", {params: {surah_id: id}});
+            return Vue.http.get("surah", {params: {surah_id: id, lang: "ar"}});
         },
 
         save_aya(store, id) {

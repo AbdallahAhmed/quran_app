@@ -6,7 +6,7 @@
 
             <div class="row aya-options">
 
-                <div class="options-message" v-if="message"> {{ message}} </div>
+                <div class="options-message" v-if="message"> {{ message}}</div>
 
                 <a class="col-30 link" @click="share" v-if="!message">
                     <img src="../../assets/img/share.png">
@@ -39,7 +39,7 @@
         ],
 
 
-        data(){
+        data() {
             return {
                 message: ""
             }
@@ -75,7 +75,7 @@
             save() {
 
                 this.$store.dispatch("save_aya", this.aya.id).then((response) => {
-                    this.sura = response.data.data.slice(0);
+                    this.sura = response.data.data;
                 });
 
                 this.message = "تم الحفظ !";
