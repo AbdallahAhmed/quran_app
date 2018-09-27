@@ -39,7 +39,7 @@
     border-top: 1px solid #DBDBDB;
 }
 
-.toolbar-options{
+.toolbar-options {
     height: 80px !important;
     background: none !important;
     border: none;
@@ -175,7 +175,7 @@
     margin-top: -9px;
 }
 
-.aya-options-remove{
+.aya-options-remove {
     color: #ffffff;
     width: 100%;
     text-align: center;
@@ -187,9 +187,95 @@
 
 }
 
-.options-message{
+.options-message {
     width: 100%;
     line-height: 40px;
     color: #fff;
     font-weight: bold;
+}
+
+.nav-shadow {
+    box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.75);
+    height: 55px;
+}
+
+.section-wrapper {
+    background: #f5f5f5;
+    width: 100%;
+    overflow: hidden;
+    height: 85vh;
+    direction: rtl;
+    margin-top: 2px;
+}
+
+.section-wrapper .number-list {
+    background: white;
+    height: 84vh;
+    text-align: center;
+    position: fixed;
+}
+
+.section-wrapper .number-list a {
+    display: block;
+    height: 18px;
+    color: #207249;
+    font-weight: bold;
+}
+
+.juz-title {
+    background: #207249;
+    width: 100%;
+    color: #fff;
+    padding: 7px 22px;
+    margin: 0;
+}
+
+.juz-list {
+    margin-right: 15%;
+    overflow: hidden;
+}
+
+.juz-wrapper{
+    min-height: 24vh;
+    overflow: hidden;
+
+}
+
+.juz-wrapper .surah-card{
+    background: #fff;
+    padding: 20px 20px 20px 20px;
+    margin: 20px 5px 20px 10px;
+    display: block;
+    width: 75%;
+    color: #207249;
+}
+
+.juz-wrapper .swiper-slide .surah-card{
+    margin-right: 20px
+}
+.juz-wrapper .swiper-slide{
+    width: 55%;
+}
+
+.juz-wrapper .surah-card .surah-title{
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.juz-wrapper .surah-card .surah-info{
+    color: gray;
+}
+
+
+
+@media only screen and (max-width: 321px) {
+    .section-wrapper .number-list a {
+        height: 15px;
+    }
+}
+
+@media only screen and (max-width: 415px) {
+    .section-wrapper .number-list a {
+        height: 20px;
+    }
 }
