@@ -49,7 +49,6 @@
 
             <div class="block quran-sura">
 
-
                 <span v-for="page in sura.pages">
                      <span v-for="aya of page" class="quran-aya" @click="activate(aya)" :class="{active: isActivated(aya)}">
                         {{ aya.text }}
