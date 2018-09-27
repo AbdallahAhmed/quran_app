@@ -16,9 +16,9 @@
     "android-versions": "^1.2.1",
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-es2016": "^6.24.1",
-    "cordova-android": "^7.0.0",
+    "cordova-android": "^6.4.0",
     "cordova-browser": "^5.0.4",
-    "cordova-custom-config": "^5.0.2",
+    "cordova-custom-config": "^5.0.0",
     "cordova-ios": "^4.5.5",
     "cordova-plugin-camera": "^3.0.0",
     "cordova-plugin-console": "^1.1.0",
@@ -61,7 +61,7 @@
     "vue-loader": "^12.1.0",
     "vue-template-compiler": "^2.5.9",
     "webpack": "^2.6.1",
-      "webpack-dev-server": "^2.9.5"
+    "webpack-dev-server": "^2.9.5"
   },
   "cordova": {
     "plugins": {
@@ -79,7 +79,8 @@
     },
     "platforms": [
       "browser",
-      "ios"
+      "ios",
+      "android"
     ]
   }
 }
