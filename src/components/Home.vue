@@ -17,9 +17,7 @@
                 <a href="/sections" class="sura-name link">
 
                     <img src="../assets/img/arrow-down.png" class="sura-name-arrow">
-
-                    سورة الكهف
-
+                    {{ sura.juz_name }}
                 </a>
 
             </div>
@@ -28,12 +26,11 @@
             <div class="sura-stats row">
 
                 <a class="col-50 sura-ayat-count link">
-                    أياتها {{ sura.length }}
+                    أياتها {{ sura.numberOfAyats }}
                 </a>
 
                 <a class="col-50 sura-part-num link">
-                    الجزء الأول
-
+                    {{ sura.name }}
                 </a>
 
             </div>
@@ -52,11 +49,16 @@
 
             <div class="block quran-sura">
 
-                    <span v-for="aya in sura" class="quran-aya"  @click="activate(aya)" :class="{active: isActivated(aya)}">
+
+                <span v-for="page in sura.pages">
+                     <span v-for="aya of page" class="quran-aya" @click="activate(aya)" :class="{active: isActivated(aya)}">
                         {{ aya.text }}
                        <span class="quran-aya-separator"></span>
                         <span class="aya-num">{{ aya.numberinsurat }}</span>
                     </span>
+                </span>
+
+
             </div>
 
         </div>
@@ -88,10 +90,8 @@
 
         mounted() {
 
-            this.$store.dispatch("get_sura", 1).then((response) => {
-                this.sura = response.data.data.slice(0);
-
-                console.log(this.sura);
+            this.$store.dispatch("get_sura", 55).then((response) => {
+                this.sura = response.data.data;
             });
         },
 
@@ -103,7 +103,7 @@
                 if (this.active != aya.number) {
                     this.aya = aya;
                     this.active = aya.number;
-                }else{
+                } else {
                     this.active = 0;
                 }
 
@@ -114,7 +114,7 @@
             },
 
 
-            close(){
+            close() {
                 this.active = 0;
                 this.aya = {};
             }

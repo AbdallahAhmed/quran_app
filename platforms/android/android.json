@@ -10,11 +10,11 @@
           "./application": [
             {
               "xml": "<meta-data android:name=\"com.google.firebase.messaging.default_notification_icon\" android:resource=\"@drawable/notification_icon\" />",
-              "count": 15
+              "count": 17
             },
             {
               "xml": "<meta-data android:name=\"com.google.firebase.messaging.default_notification_color\" android:resource=\"@color/red\" />",
-              "count": 15
+              "count": 17
             }
           ],
           "/*": [
