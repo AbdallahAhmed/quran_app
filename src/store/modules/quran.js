@@ -2,11 +2,21 @@ import Vue from 'vue';
 
 export default {
 
-    state: {},
+    state: {
+        "juz_sections": {}
+    },
 
-    getters: {},
+    getters: {
+        juz_sections: (state) => {
+            return state.juz_sections
+        }
+    },
 
-    mutations: {},
+    mutations: {
+        JUZ_SECTION(state, data) {
+            state.juz_sections = data;
+        }
+    },
 
     actions: {
 
@@ -17,6 +27,13 @@ export default {
         save_aya(store, id) {
             return Vue.http.post("bookmarks/create", {params: {ayah_id: id}});
         },
+        get_juz_section({commit}) {
+            return Vue.http.get("juz_surat.json").then(resposne => {
+                commit('JUZ_SECTION', resposne.body);
+            },(response)=>{
+                console.log('is not loaded')
+            });
+        }
 
     }
 }
