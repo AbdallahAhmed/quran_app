@@ -2,7 +2,7 @@
 
     <f7-page :class="'navbar-fixed page-sections'">
 
-        <navbar class="nav-shadow"></navbar>
+        <navbar></navbar>
 
         <main-toolbar></main-toolbar>
 
