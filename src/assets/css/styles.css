@@ -267,12 +267,6 @@
 
 
 
-@media only screen and (max-width: 321px) {
-    .section-wrapper .number-list a {
-        height: 15px;
-    }
-}
-
 @media only screen and (max-width: 415px) {
     .section-wrapper .number-list a {
         height: 18px;
@@ -304,6 +298,12 @@
 
     .section-wrapper {
         height: 87vh;
+    }
+}
+
+@media only screen and (max-width: 321px) {
+    .section-wrapper .number-list a {
+        height: 15px;
     }
 }
 
