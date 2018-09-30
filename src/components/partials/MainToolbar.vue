@@ -6,10 +6,10 @@
             <f7-link>
                 <img src="../../assets/img/cup.png" alt="">
             </f7-link>
-            <f7-link>
+            <f7-link href="/quran/1">
                 <img class="main-image" src="../../assets/img/quran.png" alt="">
             </f7-link>
-            <f7-link>
+            <f7-link href="/search">
                 <img src="../../assets/img/search.png" alt="">
             </f7-link>
             <f7-link>

@@ -173,7 +173,6 @@
     font-size: 26px;
     position: relative;
     top: 4px;
-    padding-right: 10px;
 }
 
 .quran-sura .aya-num {
@@ -315,7 +314,35 @@
 
 @media only screen and (max-width: 415px) {
     .section-wrapper .number-list a {
+        height: 18px;
+    }
+}
+
+@media only screen and (min-height: 735px) {
+    .section-wrapper .number-list a {
         height: 20px;
+    }
+
+    .section-wrapper .number-list {
+        height: 100vh;
+    }
+
+    .section-wrapper {
+        height: 87vh;
+    }
+}
+
+@media only screen and (min-height: 810px) {
+    .section-wrapper .number-list a {
+        height: 23px;
+    }
+
+    .section-wrapper .number-list {
+        height: 100vh;
+    }
+
+    .section-wrapper {
+        height: 87vh;
     }
 }
 
@@ -329,8 +356,71 @@
     overflow: hidden;
 }
 
-
 .sura-ayat-count span{
     margin: 0 10px;
     float: left;
 }
+
+.search-wrapper {
+    background-color: #207249;
+}
+
+.section-wrapper .searchbar {
+    background: transparent;
+}
+
+.md .searchbar input[type="search"], .md .searchbar input[type="text"] {
+    color: white;
+}
+
+.md .searchbar input[type="search"]::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: white;
+    opacity: 1; /* Firefox */
+}
+
+.md .searchbar input[type="search"]:-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color: white;
+}
+
+.md .searchbar input[type="search"]::-ms-input-placeholder { /* Microsoft Edge */
+    color: white;
+}
+
+.md .searchbar-icon {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACMAAAAjCAYAAAAe2bNZAAAAAXNSR0IArs4c6QAAAs9JREFUWAntlk+ITWEYxs+Z8SdhFvJvpGwsCGWY/aDIBgsLZWHuXclOyY6xV0xWViSyVJqkUEqRDTUxGpQoMSxMZjCKGdfvzbn6vueeP98998pm3no653m/93nOe77znXO+OCqIWq22iJKdYB/YCFaCFWASfACvwS1wPY7jtxzbH9YEGABfQWgMUbi+rd1g2Ac+gjIxg+gs6Gi5KUyqYBq0GncwsEccHLFbibgKv+jmknNbH0PgcYJhjqtBbwJbU2mP5wH57aylnxzDg0b6QNqM3CDfnefEeCc4BqaAxpU8bcMY6vngnbh8gu9vKM5JUL8G3AMae3Jk/hDKE6qG26vcdKDrAnpjL8h1FppZERgHbjQ3tXIVjHa4Zsn5XilrpBTuEuF7eFdjZXMZPM6L7+VCBwQXRHS6UBRQgOcG8Z2Ez8uT2odpixSMCC9LnyOcccSLOV/n8IZTa2a5ZJ8JL0X5tlgjL0W8VLhHrRn78bnRrpkxz1HXmPNlwj1qzUx4mT9fVkmVpnqjU3lO1oxtA9zY7JIWz3tEPybco9bMUy8TRWogw2GUN8cW6wKn2taQPjZnOIqsmbteJor6MXJNZDiYHpbKhyzqb5LzKRdeCzQG/armGGY94JeYDgS5ILotQjPaGiSWInT2exkRvx/wVVKaTincJGKjT0CYQWJLfQewXZ7GmfQrZ2RRn1QH+GdwKEPipamzx/0IaIySWOgVhxBEV9Up4Tc5pn6wyMfgKPgONCaSRCXk+rrtnIvItg8HUsTT5F4B++fYZ95+I7bVtFc47S8/Tn4JqEeVt+lSnQQfuZtTeotN8uGM+kpwE24hZr3gfoZpVnqMgSNgDqhkFJVryJrDcBs4B95kmH8hfw30A+9jCW9/Q/UZw7wb7AbHwUFgG6jcvS3j/66hemPNHGcbKpqt2RkqMUP222nnpq6oBX/ceWT/t5F6W0lDf2fkN2Gz7lgW+ZSqAAAAAElFTkSuQmCC');
+}
+
+.md .searchbar .input-clear-button {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAGySURBVGhD7ZlJTsNAFETNAdiGPZwkh4DjsGSLOBNnyDa3YIdsXkVdKIghHnpE/aRSnLb9u16UeJOh0+l0/gfTNF2N4/hIbsJSMehyT499eLsMSTBg4vVQUoa9H8g7eSN3YXk+Kk8OJWXY8yQROjyF5eWoPCkiw15xJIzKk6wy7BFXwqg8ySLD7DQSRuVJUhlmppUwKk+SyDArj4RReRJVhhl5JYzKkygy3FtGwqg82STDPWUljMqTVTJcW4eEUXmySIZr6pIwKk9myXCuTgmj8uRPGdbqljAqT36U4bgNCaPy5IsMaUvChPKWOTYpYYLMUQKC45dwqi0o/vl1EhzPejRXxbkEr8+SaE6Got9+2CpP2pGh4K9PJ5Un9ctQ7OIjVuVJvTIUuihhVJ7UJ0OR2RJG5Uk9MhRYLGFUnpSXYePVEkblSTkZNtwsYVSe5Jdho2gSRuVJPhk2iC5hVJ6kl2FwMgmj8iSdDAOTSxiVJ/FlGJRNwqg8iSfDgOwSRuXJdhluLCZhVJ6cy+zCqflw057o764iEob9TzLklVyH5WXwQdyGw6IgsFst0el0OhUyDB/Y0H1k3IFXeQAAAABJRU5ErkJggg==');
+}
+
+.searchbar-hide-on-search {
+    width: 324px;
+    margin: auto;
+    font-size: 20px;
+    margin-top: 50%;
+    text-align: center;
+}
+
+.searchbar-found {
+    width: 100%;
+    padding: 0px 15px 0px 15px;
+}
+
+.searchbar-found ul {
+    margin: 0;
+    padding: 0;
+}
+
+.searchbar-found ul li {
+    padding: 15px;
+    border-bottom: 1px #aba4a43d solid;
+    list-style: none;
+    background: white;
+}
+
+.searchbar-found ul li a {
+    color: #000;
+    font-family: 'Amiri Quran';
+}
+
