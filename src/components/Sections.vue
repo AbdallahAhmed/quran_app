@@ -25,9 +25,10 @@
 
                                     <div class="swiper-slide" v-for="surah in juz.swar">
                                         <a class="surah-card">
-                                            <div class="surah-title">
-                                                {{surah.id}} {{surah.name.split('سورة')[1]}}
-                                            </div>
+                                            <a class="surah-title link" :href="'/quran/'+surah.id">
+                                                {{surah.id}} &nbsp;&nbsp; {{surah.name.split('سورة')[1]}}
+                                            </a>
+
                                             <div class="surah-info">
                                                 <span>عدد الايات  {{surah.numberOfAyats}}</span>
                                             </div>
@@ -72,7 +73,7 @@
         methods: {
             scrollTo(index) {
                 this.$$('.section-wrapper').scrollTop(
-                    this.$$('.juz-wrapper:nth-child(' + index + ')').offset().top-57+
+                    this.$$('.juz-wrapper:nth-child(' + index + ')').offset().top - 57 +
                     this.$$('.section-wrapper').scrollTop(),
                     1000
                 )

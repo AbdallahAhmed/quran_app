@@ -6,7 +6,7 @@
 
         <div class="views">
 
-            <f7-view url="/" main></f7-view>
+            <f7-view url="/quran/1" main></f7-view>
 
         </div>
 
@@ -26,7 +26,7 @@
                     id: 'com.dotdev.quran',
                     name: 'Quran',
                     theme: 'auto',
-                    routes: routes,
+                    routes: routes
                 },
             }
         }

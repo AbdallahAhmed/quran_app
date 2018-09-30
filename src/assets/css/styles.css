@@ -157,9 +157,12 @@
 }
 
 .quran-sura .quran-aya {
-    margin-right: 25px;
+    margin-right: 12px;
     font-size: 18px;
     line-height: 41px;
+    overflow: hidden;
+    padding-left: 14px;
+    padding-bottom: 5px;
 }
 
 .quran-sura .quran-aya.active {
@@ -301,6 +304,7 @@
 .juz-wrapper .surah-card .surah-title{
     font-size: 25px;
     font-weight: bold;
+    color: #207249;
 }
 
 .juz-wrapper .surah-card .surah-info{
@@ -323,4 +327,10 @@
 
 .page-sections .page-content{
     overflow: hidden;
+}
+
+
+.sura-ayat-count span{
+    margin: 0 10px;
+    float: left;
 }

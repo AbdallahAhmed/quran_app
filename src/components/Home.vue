@@ -26,10 +26,11 @@
             <div class="sura-stats row">
 
                 <a class="col-50 sura-ayat-count link">
-                    أياتها {{ sura.numberOfAyats }}
+                    <span> {{ sura.numberOfAyats }} </span>
+                    أياتها
                 </a>
 
-                <a class="col-50 sura-part-num link">
+                <a href="/sections" class="col-50 sura-part-num link">
                     {{ sura.name }}
                 </a>
 
@@ -89,7 +90,9 @@
 
         mounted() {
 
-            this.$store.dispatch("get_sura", 55).then((response) => {
+            let sura_id =   this.$f7route.params.sura_id || 1;
+
+            this.$store.dispatch("get_sura", this.$f7route.params.sura_id).then((response) => {
                 this.sura = response.data.data;
             });
         },

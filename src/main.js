@@ -97,28 +97,6 @@ Vue.app = {
 
             components: {
                 app: Application
-            },
-
-            framework7: {
-                root: '#app',
-                material: Vue.app.isMaterial(),
-                pushState: true,
-                animateNavBackIcon: false,
-                routes: Routes,
-                dynamicNavbar: true,
-                modalTitle: i18n.t("name"),
-                modalButtonOk: i18n.t("ok"),
-                modalButtonCancel: i18n.t("cancel"),
-                notificationTitle: i18n.t("name"),
-                notificationHold: 1000,
-                cached: true,
-                animatePages: false,
-                sortable: false,
-                swipeBackPageAnimateShadow: false,
-                swipeBackPageAnimateOpacity: false,
-                swipeout: false,
-                swipeoutNoFollow: true,
-                swipePanelNoFollow: true,
             }
         });
 

@@ -1,7 +1,7 @@
 export default [
     {
-        path: '/',
-        component: require("./components/Home.vue")
+        path: '/quran/:sura_id?',
+        component: require("./components/Home.vue"),
     },
     {
         path: '/sections',
