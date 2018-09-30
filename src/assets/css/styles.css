@@ -1,3 +1,42 @@
+
+@font-face {
+    font-family: 'kfc';
+    src: url("../fonts/kfc_naskh-webfont.eot") format("embedded-opentype"),
+    url("../fonts/kfc_naskh-webfont.svg") format("svg"),
+    url("../fonts/kfc_naskh-webfont.ttf") format("truetype"),
+    url("../fonts/kfc_naskh-webfont.woff") format("woff");
+}
+
+@font-face {
+    font-family: 'me_quran';
+    src: url("../fonts/me_quran-webfont.eot") format("embedded-opentype"),
+    url("../fonts/me_quran-webfont.svg") format("svg"),
+    url("../fonts/me_quran-webfont.ttf") format("truetype"),
+    url("../fonts/me_quran-webfont.woff") format("woff");
+}
+
+
+@font-face {
+    font-family: 'saleem';
+    src: url("../fonts/pdms_saleem-webfont.eot") format("embedded-opentype"),
+    url("../fonts/pdms_saleem-webfont.svg") format("svg"),
+    url("../fonts/pdms_saleem-webfont.ttf") format("truetype"),
+    url("../fonts/pdms_saleem-webfont.woff") format("woff");
+}
+
+@font-face {
+    font-family: 'scheherazade';
+    src: url("../fonts/scheherazade-webfont.eot") format("embedded-opentype"),
+    url("../fonts/scheherazade-webfont.svg") format("svg"),
+    url("../fonts/scheherazade-webfont.ttf") format("truetype"),
+    url("../fonts/scheherazade-webfont.woff") format("woff");
+}
+
+
+
+*{
+    font-family:me_quran ;
+}
 .page {
     background: #ffffff !important;
 }
@@ -14,6 +53,7 @@
     margin: 0 auto;
     text-align: center;
 }
+
 
 .navbar-logo img {
     height: 40px;
@@ -117,8 +157,9 @@
 }
 
 .quran-sura .quran-aya {
+    margin-right: 25px;
     font-size: 18px;
-    padding: 10px 0 10px 10px;
+    line-height: 41px;
 }
 
 .quran-sura .quran-aya.active {
@@ -234,13 +275,13 @@
     margin-right: 15%;
 }
 
-.juz-wrapper {
+.juz-wrapper{
     min-height: 24vh;
     overflow: hidden;
 
 }
 
-.juz-wrapper .surah-card {
+.juz-wrapper .surah-card{
     background: #fff;
     padding: 20px 20px 20px 20px;
     margin: 20px 5px 20px 10px;
@@ -249,22 +290,23 @@
     color: #207249;
 }
 
-.juz-wrapper .swiper-slide .surah-card {
+.juz-wrapper .swiper-slide .surah-card{
     margin-right: 20px
 }
-
-.juz-wrapper .swiper-slide {
+.juz-wrapper .swiper-slide{
     width: 55%;
 }
 
-.juz-wrapper .surah-card .surah-title {
+.juz-wrapper .surah-card .surah-title{
     font-size: 25px;
     font-weight: bold;
 }
 
-.juz-wrapper .surah-card .surah-info {
+.juz-wrapper .surah-card .surah-info{
     color: gray;
 }
+
+
 
 @media only screen and (max-width: 415px) {
     .section-wrapper .number-list a {
@@ -306,7 +348,7 @@
     }
 }
 
-.page-sections .page-content {
+.page-sections .page-content{
     overflow: hidden;
 }
 
