@@ -309,15 +309,15 @@
 
 
 
-@media only screen and (max-width: 321px) {
-    .section-wrapper .number-list a {
-        height: 15px;
-    }
-}
-
 @media only screen and (max-width: 415px) {
     .section-wrapper .number-list a {
         height: 20px;
+    }
+}
+
+@media only screen and (max-width: 321px) {
+    .section-wrapper .number-list a {
+        height: 15px;
     }
 }
 
