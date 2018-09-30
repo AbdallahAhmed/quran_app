@@ -1,3 +1,42 @@
+
+@font-face {
+    font-family: 'kfc';
+    src: url("../fonts/kfc_naskh-webfont.eot") format("embedded-opentype"),
+    url("../fonts/kfc_naskh-webfont.svg") format("svg"),
+    url("../fonts/kfc_naskh-webfont.ttf") format("truetype"),
+    url("../fonts/kfc_naskh-webfont.woff") format("woff");
+}
+
+@font-face {
+    font-family: 'me_quran';
+    src: url("../fonts/me_quran-webfont.eot") format("embedded-opentype"),
+    url("../fonts/me_quran-webfont.svg") format("svg"),
+    url("../fonts/me_quran-webfont.ttf") format("truetype"),
+    url("../fonts/me_quran-webfont.woff") format("woff");
+}
+
+
+@font-face {
+    font-family: 'saleem';
+    src: url("../fonts/pdms_saleem-webfont.eot") format("embedded-opentype"),
+    url("../fonts/pdms_saleem-webfont.svg") format("svg"),
+    url("../fonts/pdms_saleem-webfont.ttf") format("truetype"),
+    url("../fonts/pdms_saleem-webfont.woff") format("woff");
+}
+
+@font-face {
+    font-family: 'scheherazade';
+    src: url("../fonts/scheherazade-webfont.eot") format("embedded-opentype"),
+    url("../fonts/scheherazade-webfont.svg") format("svg"),
+    url("../fonts/scheherazade-webfont.ttf") format("truetype"),
+    url("../fonts/scheherazade-webfont.woff") format("woff");
+}
+
+
+
+*{
+    font-family:me_quran ;
+}
 .page {
     background: #ffffff !important;
 }
@@ -14,6 +53,7 @@
     margin: 0 auto;
     text-align: center;
 }
+
 
 .navbar-logo img {
     height: 40px;
@@ -117,8 +157,9 @@
 }
 
 .quran-sura .quran-aya {
+    margin-right: 25px;
     font-size: 18px;
-    padding: 10px 0 10px 10px;
+    line-height: 41px;
 }
 
 .quran-sura .quran-aya.active {
@@ -129,6 +170,7 @@
     font-size: 26px;
     position: relative;
     top: 4px;
+    padding-right: 10px;
 }
 
 .quran-sura .aya-num {
@@ -275,35 +317,7 @@
 
 @media only screen and (max-width: 415px) {
     .section-wrapper .number-list a {
-        height: 18px;
-    }
-}
-
-
-
-@media only screen and (min-height: 735px) {
-    .section-wrapper .number-list a {
         height: 20px;
-    }
-    .section-wrapper .number-list{
-        height: 100vh;
-    }
-
-    .section-wrapper {
-        height: 87vh;
-    }
-}
-
-@media only screen and (min-height: 810px) {
-    .section-wrapper .number-list a {
-        height: 23px;
-    }
-    .section-wrapper .number-list{
-        height: 100vh;
-    }
-
-    .section-wrapper {
-        height: 87vh;
     }
 }
 
