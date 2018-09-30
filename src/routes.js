@@ -6,6 +6,9 @@ export default [
     {
         path: '/sections',
         component: require("./components/Sections.vue")
+    }, {
+        path: '/search',
+        component: require("./components/Search.vue")
     },
     // {
     //     path: '/category/:id',

@@ -9,7 +9,7 @@
             <f7-link>
                 <img class="main-image" src="../../assets/img/quran.png" alt="">
             </f7-link>
-            <f7-link>
+            <f7-link href="/search">
                 <img src="../../assets/img/search.png" alt="">
             </f7-link>
             <f7-link>
