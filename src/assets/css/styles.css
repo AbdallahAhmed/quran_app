@@ -492,3 +492,11 @@
 .form-container input::-ms-input-placeholder { /* Microsoft Edge */
     color: #000000 !important;
 }
+
+.help{
+    font-family: initial;
+    border: 0;
+    color: red;
+    font-size: 14px;
+    float: right;
+}
