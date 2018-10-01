@@ -12,7 +12,7 @@
             <f7-link href="/search">
                 <img src="../../assets/img/search.png" alt="">
             </f7-link>
-            <f7-link>
+            <f7-link href="/login">
                 <img src="../../assets/img/user.png" alt="">
             </f7-link>
         </f7-toolbar>

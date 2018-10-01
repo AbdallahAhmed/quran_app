@@ -81,14 +81,6 @@ export default {
 
         },
 
-        contactus(store, data) {
-            return Vue.http.post("messages/contact_us", data);
-        },
-
-        feedback(store, data) {
-            return Vue.http.post("messages/feedback", data);
-        },
-
         register(store, user) {
 
             return Vue.http.post("user/register", user).then(function (response) {

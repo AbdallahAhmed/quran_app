@@ -43,10 +43,10 @@ export default [
     //     path: '/search',
     //     component: require("./components/pages/Search.vue")
     // },
-    // {
-    //     path: '/login',
-    //     component: require("./components/pages/Login.vue")
-    // },
+    {
+        path: '/login',
+        component: require("./components/Login.vue")
+    },
     // {
     //     path: '/register',
     //     component: require("./components/pages/Register.vue")
