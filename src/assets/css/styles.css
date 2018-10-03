@@ -458,13 +458,15 @@
     text-align: center;
     margin: auto;
     padding-top: 25px;
+    overflow: scroll;
+
 }
 
 .form-container input {
     width: 100%;
     text-align: center;
     border-bottom: 1px #c7c7c794 solid;
-    margin-bottom: 25px;
+    margin-bottom: 15px;
     padding: 10px;
     font-family: initial;
     color: black !important;
@@ -480,6 +482,7 @@
     font-family: initial;
     font-size: 16px;
     border: 0;
+    margin-top: 5px;
 }
 
 .form-container input::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
@@ -491,4 +494,41 @@
 
 .form-container input::-ms-input-placeholder { /* Microsoft Edge */
     color: #000000 !important;
+}
+
+.help{
+    font-family: initial;
+    border: 0;
+    color: red;
+    font-size: 14px;
+    float: right;
+}
+
+a.forget-password{
+    color: #207249;
+    font-family: initial;
+    font-size: 18px;
+    text-decoration: underline;
+    padding: 19px;
+    display: block;
+    font-weight: 400;
+}
+
+.user-avater{
+    border: 2px #207249 solid;
+    border-radius:100%;
+    width: 45px;
+    height: 45px;
+}
+.user-avater img{
+   width: 100%;
+   height: 100%;
+}
+
+
+.page-register .form-container input {
+    margin-bottom: 15px;
+}
+.page-register .form-container input.errors {
+    margin-bottom: 0px;
 }

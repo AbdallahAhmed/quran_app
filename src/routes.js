@@ -45,12 +45,12 @@ export default [
     // },
     {
         path: '/login',
-        component: require("./components/Login.vue")
+        component: require("./components/Login.vue"),
     },
-    // {
-    //     path: '/register',
-    //     component: require("./components/pages/Register.vue")
-    // },
+    {
+        path: '/register',
+        component: require("./components/Register.vue")
+    },
     // {
     //     path: '/local_login',
     //     component: require("./components/pages/LocalLogin.vue")
