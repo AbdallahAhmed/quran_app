@@ -2,7 +2,7 @@
  * F7 Themes
  * Avaiable themes ['ios', 'material']
  */
-const theme = 'ios';
+const theme = 'material';
 
 import Vue from 'vue';
 import App from './components/App.vue';

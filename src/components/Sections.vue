@@ -1,6 +1,6 @@
 <template>
 
-    <f7-page :class="'page-sections'">
+    <f7-page :class="'page-sections no-toolbar'">
 
         <navbar></navbar>
 

@@ -245,12 +245,12 @@
     direction: rtl;
     margin-top: 2px;
     overflow: scroll;
-    height: 85vh;
+    height: 96vh;
 }
 
 .section-wrapper .number-list {
     background: white;
-    height: 84vh;
+    height: 92vh;
     text-align: center;
     position: fixed;
 }
