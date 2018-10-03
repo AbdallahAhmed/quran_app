@@ -34,10 +34,11 @@
 
     export default {
 
-        props: [
-            "aya"
-        ],
-
+        computed: {
+            aya(){
+                return this.$store.getters.aya;
+            }
+        },
 
         data() {
             return {
@@ -114,7 +115,8 @@
             },
 
             close() {
-                this.$emit("close")
+                this.$emit("close");
+                this.$store.commit("AYA", false);
             }
         }
 

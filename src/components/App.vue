@@ -6,7 +6,7 @@
 
         <div class="views">
 
-            <f7-view url="/quran/1" main></f7-view>
+            <f7-view url="/home/quran/1" main></f7-view>
 
         </div>
 

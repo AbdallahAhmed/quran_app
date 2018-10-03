@@ -1,10 +1,6 @@
 <template>
-    <f7-page :class="'navbar-fixed page-section'">
 
-        <navbar></navbar>
-
-        <main-toolbar></main-toolbar>
-
+    <div :class="'page-section'">
 
         <div class="section-wrapper">
             <div class="row no-gap">
@@ -50,7 +46,8 @@
             </div>
         </div>
 
-    </f7-page>
+    </div>
+
 </template>
 <script>
     import debounce from './../helpers/debounce';
@@ -68,24 +65,9 @@
             };
         },
         methods: {
-            search: debounce(function () {
-                if($vm.searchQuery.trim().length==0){
-                    return;
-                }
-                $vm.$f7.preloader.show();
-                $vm.loading=true;
-                $vm.$http.get('search', {
-                    params: {
-                        q: $vm.searchQuery
-                    }
-                }).then((res) => {
-                    $vm.results = res.body.data;
-                    $vm.loading=false;
-                    $vm.$f7.preloader.hide();
-                }, (res) => {
-
-                });
-            },750)
+            search: function () {
+                
+            }
         },
         components: {
             "navbar": require("./partials/Navbar.vue"),

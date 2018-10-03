@@ -1,11 +1,8 @@
 <template>
 
-    <f7-page :class="'navbar-fixed page-sections'">
+    <f7-page :class="'page-sections'">
 
         <navbar></navbar>
-
-        <main-toolbar></main-toolbar>
-
 
         <div class="section-wrapper">
             <div class="row no-gap">
@@ -25,7 +22,7 @@
 
                                     <div class="swiper-slide" v-for="surah in juz.swar">
                                         <a class="surah-card">
-                                            <a class="surah-title link" :href="'/quran/'+surah.id">
+                                            <a class="surah-title link" :href="'/home/quran/'+surah.id">
                                                 {{surah.id}} &nbsp;&nbsp; {{surah.name.split('سورة')[1]}}
                                             </a>
 
