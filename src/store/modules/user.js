@@ -69,27 +69,13 @@ export default {
 
         register(store, user) {
 
-            return Vue.http.post("user/register", user).then(function (response) {
+            return Vue.http.post("register", user).then(function (response) {
 
                 if (response.body.status) {
 
-                    store.commit("token", response.body.access_token);
+                    store.commit("token", response.body.data.token);
+                    store.commit("user", response.body.data.user);
 
-                    Vue.http.get("user/details").then(function (response) {
-
-                        if (response.body) {
-
-                            let user = response.body.user;
-
-                            user.name = user.first_name;
-
-                            // if (user.image) {
-                            //     user.photo_url = user.image.medium_thumbnail;
-                            // }
-
-                            store.commit("user", user);
-                        }
-                    });
                 }
             });
 

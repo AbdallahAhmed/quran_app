@@ -93,6 +93,7 @@ export default {
         password: "Password",
         repassword: "Confirm Password",
         first_name: "First name",
-        last_name: "Last Name"
+        last_name: "Last Name" ,
+        confirm_password:"Confirm password"
     }
 }

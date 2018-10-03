@@ -88,7 +88,9 @@ export default {
         first_name: "الإسم الأول",
         last_name: "الإسم الأخير",
         form_subject:'الموضوع',
-        form_messages:'الرسالة'
+        form_messages:'الرسالة',
+
+        confirm_password:"كلمة المرور"
     }
 
 }
