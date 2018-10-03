@@ -24,7 +24,8 @@
                     <input type="text" name="email" placeholder=" البريد الكترونى " v-model="user.email"
                            v-validate="'required|email'" autocomplete="false">
 
-                    <span v-show="errors.has('email')&&submitted" class="help is-danger">{{ errors.first('email') }}</span>
+                    <span v-show="errors.has('email')&&submitted"
+                          class="help is-danger">{{ errors.first('email') }}</span>
                     <input type="password" name="password" placeholder="كلمة المرور" v-model="user.password"
                            v-validate="'required'" autocomplete="false">
 
@@ -34,6 +35,10 @@
                         تسجيل
                     </button>
                 </form>
+
+                <a class="forget-password">
+                    هل نسيت كلمة المرور؟
+                </a>
 
             </div>
         </div>
@@ -52,7 +57,11 @@
     import {mapState} from 'vuex';
 
     export default {
-
+        beforeCreate(){
+          if(this.$app.auth.check()){
+            this.$f7router.back();
+          }
+        },
         data: function () {
             return {
 
@@ -60,23 +69,23 @@
                     email: "",
                     password: ""
                 },
-                serverErrors:[],
+                serverErrors: [],
                 submitted: false
             }
         },
-        methods:{
+        methods: {
             login() {
-                this.submitted=true;
-                var self=this;
+                this.submitted = true;
+                var self = this;
                 this.$validator.validateAll().then((result) => {
                     if (result) {
                         self.$f7.preloader.show();
-                        self.$store.dispatch('login',self.user).then((response)=>{
+                        self.$store.dispatch('login', self.user).then((response) => {
                             self.$f7router.navigate('/quran/1');
 
                             self.$f7.preloader.hide();
-                        },(res)=>{
-                            self.serverErrors=['البريد الكترونى وكلمة المرور غير صحيحة'];
+                        }, (res) => {
+                            self.serverErrors = ['البريد الكترونى وكلمة المرور غير صحيحة'];
                             self.$f7.preloader.hide();
                         });
                         return;

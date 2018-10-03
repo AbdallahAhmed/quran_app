@@ -500,3 +500,26 @@
     font-size: 14px;
     float: right;
 }
+
+a.forget-password{
+    color: #207249;
+    font-family: initial;
+    font-size: 18px;
+    text-decoration: underline;
+    padding: 19px;
+    display: block;
+    font-weight: 400;
+}
+
+.user-avater{
+    border: 2px #207249 solid;
+    border-radius:100%;
+    width: 45px;
+    height: 45px;
+}
+.user-avater img{
+   width: 100%;
+   height: 100%;
+}
+
+

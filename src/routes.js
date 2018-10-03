@@ -45,7 +45,7 @@ export default [
     // },
     {
         path: '/login',
-        component: require("./components/Login.vue")
+        component: require("./components/Login.vue"),
     },
     // {
     //     path: '/register',
