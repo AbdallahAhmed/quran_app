@@ -61,13 +61,28 @@
             return {
                 searchQuery: '',
                 results: [],
-                loading:false
+                loading: false
             };
         },
         methods: {
-            search: function () {
-                
-            }
+            search: debounce(function () {
+                if ($vm.searchQuery.trim().length == 0) {
+                    return;
+                }
+                $vm.$f7.preloader.show();
+                $vm.loading = true;
+                $vm.$http.get('search', {
+                    params: {
+                        q: $vm.searchQuery
+                    }
+                }).then((res) => {
+                    $vm.results = res.body.data;
+                    $vm.loading = false;
+                    $vm.$f7.preloader.hide();
+                }, (res) => {
+
+                });
+            }, 750)
         },
         components: {
             "navbar": require("./partials/Navbar.vue"),
