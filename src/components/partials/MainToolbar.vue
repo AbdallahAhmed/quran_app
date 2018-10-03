@@ -14,20 +14,23 @@
         </f7-link>
         <f7-link tab-link="#search-tab">
             <img src="../../assets/img/search.png" alt="">
-
         </f7-link>
 
-        <f7-link v-if="!$app.auth.check()" href="/login" class="user-avater">
-            <img src="/user-avater.png" alt=""/>
+        <f7-link tab-link="#login-tab" class="user-avater">
+            <img src="../../assets/img/user.png" alt=""/>
         </f7-link>
 
-        <f7-link href="/register" class="user-avater">
-            <img src="/user-avater.png" alt=""/>
-        </f7-link>
+        <!--<f7-link v-if="!$app.auth.check()" href="/login" class="user-avater">-->
+            <!--<img src="/user-avater.png" alt=""/>-->
+        <!--</f7-link>-->
 
-        <f7-link v-if="$app.auth.check()" href="/profile/me" class="user-avater">
-            <img :src="$app.auth.user().photo?$app.auth.user().photo.thumbnail:'/user-avater.png'"
-                 alt=""/>
+        <!--<f7-link href="/register" class="user-avater">-->
+            <!--<img src="/user-avater.png" alt=""/>-->
+        <!--</f7-link>-->
+
+        <!--<f7-link v-if="$app.auth.check()" href="/profile/me" class="user-avater">-->
+            <!--<img :src="$app.auth.user().photo?$app.auth.user().photo.thumbnail:'/user-avater.png'"-->
+                 <!--alt=""/>-->
 
         </f7-link>
     </f7-toolbar>

@@ -16,9 +16,11 @@
                 <div id="search-tab" class="page-content tab">
                     <search></search>
                 </div>
+                <div id="login-tab" class="page-content tab">
+                    <login></login>
+                </div>
             </div>
         </div>
-
 
     </f7-page>
 
@@ -44,7 +46,8 @@
             "main-toolbar": require("./partials/MainToolbar.vue"),
             "options-toolbar": require("./partials/OptionsToolbar.vue"),
             "quran": require("./Quran.vue"),
-            "search": require("./Search.vue")
+            "search": require("./Search.vue"),
+            "login": require("./Login.vue")
         }
     }
 

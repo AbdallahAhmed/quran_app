@@ -46,10 +46,6 @@
             }
         },
 
-
-        mounted() {
-        },
-
         methods: {
 
             share() {
@@ -62,7 +58,7 @@
 
                 }, function () {
 
-                    this.message = "تم المشاركه !";
+                    this.message = "تم المشاركة";
 
                     let timer = setInterval(() => {
                         this.message = false;
@@ -79,7 +75,7 @@
                     this.sura = response.data.data;
                 });
 
-                this.message = "تم الحفظ !";
+                this.message = "تم الحفظ";
 
                 let timer = setInterval(() => {
                     this.message = false;
@@ -105,7 +101,7 @@
                 clipboard.setAttribute('type', 'hidden')
                 window.getSelection().removeAllRanges();
 
-                this.message = "تم النسخ !";
+                this.message = "تم النسخ";
 
                 let timer = setInterval(() => {
                     this.message = false;

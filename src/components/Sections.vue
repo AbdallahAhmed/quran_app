@@ -69,6 +69,9 @@
         },
         methods: {
             scrollTo(index) {
+                console.log(  this.$$('.juz-wrapper:nth-child(' + index + ')').offset().top - 57);
+
+                console.log( this.$$('.section-wrapper').scrollTop());
                 this.$$('.section-wrapper').scrollTop(
                     this.$$('.juz-wrapper:nth-child(' + index + ')').offset().top - 57 +
                     this.$$('.section-wrapper').scrollTop(),

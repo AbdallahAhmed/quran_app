@@ -1,11 +1,6 @@
 <template>
 
-    <f7-page :class="'navbar-fixed page-login'">
-
-        <navbar></navbar>
-
-        <main-toolbar></main-toolbar>
-
+    <div :class="'navbar-fixed page-login'">
 
         <div class="login-page">
             <div class="header-islamic row">
@@ -20,6 +15,7 @@
                 <span class="help" v-if="serverErrors.length!=0" v-for="error in serverErrors" :key="error">
                     {{error}}
                 </span>
+
                 <form @submit.prevent="login">
                     <input type="text" name="email" placeholder=" البريد الكترونى " v-model="user.email"
                            v-validate="'required|email'" autocomplete="false">
@@ -43,7 +39,7 @@
             </div>
         </div>
 
-    </f7-page>
+    </div>
 
 </template>
 

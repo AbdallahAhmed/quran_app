@@ -245,12 +245,12 @@
     direction: rtl;
     margin-top: 2px;
     overflow: scroll;
-    height: 96vh;
+    height: 85vh;
 }
 
 .section-wrapper .number-list {
     background: white;
-    height: 92vh;
+    height: 84vh;
     text-align: center;
     position: fixed;
 }
@@ -421,7 +421,7 @@
 
 .header-islamic {
 
-    background-image: url("./../img/top.png");
+    background-image: url("./../img/all-in-one.png");
     background-size: 100%;
     min-height: 219px;
     height: 231px;
