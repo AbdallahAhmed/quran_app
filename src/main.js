@@ -30,6 +30,7 @@ import Application from './components/App.vue';
 
 require('framework7-icons/css/framework7-icons.css');
 require('./assets/css/styles.css');
+require('./assets/css/animations.css');
 
 Vue.use(VueResource);
 
@@ -312,7 +313,7 @@ document.addEventListener('deviceready', () => {
     FastClick.attach(document.body);
 });
 
-document.addEventListener('deviceready', () => {
+/*document.addEventListener('deviceready', () => {
 
     if (store.getters.allow_notifications == 0) {
         return false;
@@ -338,13 +339,13 @@ document.addEventListener('deviceready', () => {
 
     });
 
-});
+});*/
 
 // Native click
 
 document.body.addEventListener('click', () => {
     if (nativeclick !== undefined) {
-    //    nativeclick.trigger();
+        nativeclick.trigger();
     }
 });
 

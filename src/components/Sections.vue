@@ -4,7 +4,11 @@
 
         <navbar></navbar>
 
-        <div class="section-wrapper">
+        <div class="loader-wrapper" v-if="!juz_sections">
+            <div class="preloader color-green"></div>
+        </div>
+
+        <div class="section-wrapper" v-if="juz_sections">
             <div class="row no-gap">
                 <div class="col-15 number-list">
                     <a href="javascript:void(0)" @click="scrollTo(number+1)" :id="number"
@@ -53,14 +57,21 @@
     import {mapState} from 'vuex';
 
     export default {
-        created() {
-            this.$store.dispatch('get_juz_section').then(() => {
-                console.log('tets')
-                var swiper = this.$f7.swiper.create('.swiper-container', {
-                    spaceBetween: 0,
-                    slidesPerView: 1.5
+
+
+        mounted() {
+
+
+           // setTimeout(()=> {
+                this.$store.dispatch('get_juz_section').then(() => {
+                    var swiper = this.$f7.swiper.create('.swiper-container', {
+                        spaceBetween: 0,
+                        slidesPerView: 1.5
+                    });
                 });
-            })
+           // }, 4000)
+
+
         },
         data() {
             return {

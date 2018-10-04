@@ -51,66 +51,10 @@
     <dict>
       <key>NSAllowsArbitraryLoads</key>
       <true/>
-      <key>NSExceptionDomains</key>
-      <dict>
-        <key>m.facebook.com</key>
-        <dict/>
-        <key>graph.facebook.com</key>
-        <dict/>
-        <key>api.facebook.com</key>
-        <dict/>
-        <key>fbcdn.net</key>
-        <dict>
-          <key>NSIncludesSubdomains</key>
-          <true/>
-        </dict>
-        <key>akamaihd.net</key>
-        <dict>
-          <key>NSIncludesSubdomains</key>
-          <true/>
-        </dict>
-        <key>accounts.google.com</key>
-        <dict/>
-      </dict>
     </dict>
-    <key>FacebookAppID</key>
-    <string>1997501283858477</string>
-    <key>FacebookDisplayName</key>
-    <string>Thirty</string>
-    <key>CFBundleURLTypes</key>
-    <array>
-      <dict>
-        <key>CFBundleURLSchemes</key>
-        <array>
-          <string>fb1997501283858477</string>
-        </array>
-      </dict>
-      <dict>
-        <key>CFBundleTypeRole</key>
-        <string>Editor</string>
-        <key>CFBundleURLName</key>
-        <string>REVERSED_CLIENT_ID</string>
-        <key>CFBundleURLSchemes</key>
-        <array>
-          <string>com.googleusercontent.apps.913582129033-0cear7s1oiiupm761j3dgkjobengrv83</string>
-        </array>
-      </dict>
-    </array>
-    <key>LSApplicationQueriesSchemes</key>
-    <array>
-      <string>fbapi</string>
-      <string>fb-messenger-api</string>
-      <string>fbauth2</string>
-      <string>fbshareextension</string>
-    </array>
     <key>NSPhotoLibraryAddUsageDescription</key>
     <string>This app requires photo library access to function properly.</string>
-    <key>Fabric</key>
-    <dict>
-      <key>APIKey</key>
-      <string>93f10a9257ed188a964f6bfa48c7203ef632dfc2</string>
-      <key>Kits</key>
-      <array/>
-    </dict>
+    <key>NSPhotoLibraryUsageDescription</key>
+    <string>This app requires photo library access to function properly.</string>
   </dict>
 </plist>

@@ -2,7 +2,7 @@
   "cordova-plugin-device": {
     "source": {
       "type": "registry",
-      "id": "cordova-plugin-device@^1.1.6"
+      "id": "cordova-plugin-device@^1.1.7"
     },
     "is_top_level": true,
     "variables": {}
@@ -18,31 +18,10 @@
   "cordova-plugin-network-information": {
     "source": {
       "type": "registry",
-      "id": "cordova-plugin-network-information@^1.3.3"
+      "id": "cordova-plugin-network-information@^1.3.4"
     },
     "is_top_level": true,
     "variables": {}
-  },
-  "twitter-connect-plugin": {
-    "source": {
-      "type": "registry",
-      "id": "twitter-connect-plugin@^0.6.0"
-    },
-    "is_top_level": true,
-    "variables": {
-      "FABRIC_KEY": "93f10a9257ed188a964f6bfa48c7203ef632dfc2"
-    }
-  },
-  "cordova-plugin-facebook4": {
-    "source": {
-      "type": "registry",
-      "id": "cordova-plugin-facebook4@^1.9.1"
-    },
-    "is_top_level": true,
-    "variables": {
-      "APP_ID": "1997501283858477",
-      "APP_NAME": "Thirty"
-    }
   },
   "cordova-plugin-whitelist": {
     "source": {
@@ -63,7 +42,7 @@
   "es6-promise-plugin": {
     "source": {
       "type": "registry",
-      "id": "es6-promise-plugin@4.1.0"
+      "id": "es6-promise-plugin@^4.1.0"
     },
     "is_top_level": false,
     "variables": {}
@@ -71,59 +50,15 @@
   "cordova-plugin-splashscreen": {
     "source": {
       "type": "registry",
-      "id": "cordova-plugin-splashscreen@~3.1.0"
+      "id": "cordova-plugin-splashscreen@^3.2.2"
     },
     "is_top_level": true,
-    "variables": {}
-  },
-  "cordova-plugin-googleplus": {
-    "source": {
-      "type": "registry",
-      "id": "cordova-plugin-googleplus@^5.1.1"
-    },
-    "is_top_level": true,
-    "variables": {
-      "REVERSED_CLIENT_ID": "com.googleusercontent.apps.913582129033-0cear7s1oiiupm761j3dgkjobengrv83"
-    }
-  },
-  "com.telerik.plugins.wkwebview": {
-    "source": {
-      "type": "registry",
-      "id": "cordova-plugin-wkwebview"
-    },
-    "is_top_level": true,
-    "variables": {
-      "WKWEBVIEW_SERVER_PORT": "12344"
-    }
-  },
-  "cordova-plugin-webserver": {
-    "source": {
-      "type": "registry",
-      "id": "cordova-plugin-webserver"
-    },
-    "is_top_level": false,
     "variables": {}
   },
   "cordova-plugin-firebase": {
     "source": {
       "type": "registry",
-      "id": "cordova-plugin-firebase@0.1.25"
-    },
-    "is_top_level": true,
-    "variables": {}
-  },
-  "cordova-custom-config": {
-    "source": {
-      "type": "registry",
-      "id": "cordova-custom-config@^5.0.2"
-    },
-    "is_top_level": true,
-    "variables": {}
-  },
-  "cordova-plugin-console": {
-    "source": {
-      "type": "registry",
-      "id": "cordova-plugin-console"
+      "id": "cordova-plugin-firebase@^0.1.25"
     },
     "is_top_level": true,
     "variables": {}
@@ -131,23 +66,7 @@
   "cordova-plugin-statusbar": {
     "source": {
       "type": "registry",
-      "id": "cordova-plugin-statusbar@2.3.0"
-    },
-    "is_top_level": true,
-    "variables": {}
-  },
-  "com.moust.cordova.videoplayer": {
-    "source": {
-      "type": "registry",
-      "id": "cordova-plugin-video-player"
-    },
-    "is_top_level": true,
-    "variables": {}
-  },
-  "cordova-plugin-camera": {
-    "source": {
-      "type": "registry",
-      "id": "cordova-plugin-camera@3.0.0"
+      "id": "cordova-plugin-statusbar@^2.3.0"
     },
     "is_top_level": true,
     "variables": {}

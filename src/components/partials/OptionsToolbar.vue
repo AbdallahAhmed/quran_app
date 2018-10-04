@@ -8,14 +8,14 @@
 
                 <div class="options-message" v-if="message"> {{ message}}</div>
 
-                <a class="col-30 link" @click="share" v-if="!message">
+                <a class="col-30 link spaceInDown" @click="share" v-if="!message">
                     <img src="../../assets/img/share.png">
                 </a>
-                <a class="col-30 link" @click="copy" v-if="!message">
+                <a class="col-30 link spaceInDown" @click="copy" v-if="!message" >
                     <input type="hidden" id="clipboard" :value="aya.text"/>
                     <img src="../../assets/img/copy.png">
                 </a>
-                <a class="col-30 link" @click="save" v-if="!message">
+                <a class="col-30 link spaceInDown" @click="save" v-if="!message">
                     <img src="../../assets/img/save.png">
                 </a>
 
@@ -23,7 +23,7 @@
 
         </div>
 
-        <a class="link aya-options-remove" @click="close">{{ $app.trans("close") }}</a>
+        <a class="link aya-options-remove bounceIn" @click="close">{{ $app.trans("close") }}</a>
 
     </div>
 
@@ -42,7 +42,8 @@
 
         data() {
             return {
-                message: ""
+                message: "",
+                share_loading:false
             }
         },
 
@@ -50,13 +51,17 @@
 
             share() {
 
+                this.share_loading = true;
+
                 window.plugins.socialsharing.shareWithOptions({
 
                     message: this.aya.text,
                     subject: this.aya.text,
                     chooserTitle: this.$app.trans("choose_app")
 
-                }, function () {
+                },  () => {
+
+                    this.share_loading = false;
 
                     this.message = "تم المشاركة";
 

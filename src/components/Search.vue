@@ -9,10 +9,10 @@
                     <form class="searchbar" onsubmit="return false">
                         <div class="searchbar-inner">
                             <div class="searchbar-input-wrap">
-                                <input type="search" id="input-search" placeholder=" بحث عن الايات"
+                                <input type="search" id="input-search" class="search-input rollIn" placeholder=" بحث عن الايات"
                                        v-model="searchQuery" @input="search">
                                 <i class="searchbar-icon" @click="search"></i>
-                                <span class="input-clear-button"></span>
+                                <!--<span class="input-clear-button"></span>-->
                             </div>
                             <span class="searchbar-disable-button">Cancel</span>
                         </div>

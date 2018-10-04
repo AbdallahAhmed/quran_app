@@ -25,7 +25,8 @@
                 f7params: {
                     id: 'com.dotdev.quran',
                     name: 'Quran',
-                    theme: 'auto',
+                    // theme: 'auto',
+                    material: true,
                     routes: routes
                 },
             }

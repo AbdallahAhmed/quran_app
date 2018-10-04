@@ -2,22 +2,23 @@
 
     <div>
 
-        <div class="quran-head">
+        <div class="quran-head" v-if="sura">
 
             <!--<div class="page-title"> lfsagsdg </div>-->
 
             <div class="sura-header">
 
-                <a href="/sections" class="sura-name link">
+                <a href="/sections" class="sura-name link bounceIn">
 
                     <img src="../assets/img/arrow-down.png" class="sura-name-arrow">
                     {{ sura.juz_name }}
+
                 </a>
 
             </div>
 
 
-            <div class="sura-stats row">
+            <div class="sura-stats row rollIn">
 
                 <a class="col-50 sura-ayat-count link">
                     <span> {{ sura.numberOfAyats }} </span>
@@ -30,21 +31,28 @@
 
             </div>
 
-
         </div>
 
-        <div class="page-content">
 
-            <div class="quran-basmla">
+
+        <div class="page-content" >
+
+
+            <div class="loader-wrapper" v-if="!sura">
+                <div class="preloader color-green"></div>
+            </div>
+
+
+            <div class="quran-basmla" v-if="sura">
                 <a>
                     بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ
                 </a>
             </div>
 
-            <div class="block quran-sura">
+            <div class="block quran-sura" v-if="sura">
 
                 <span v-for="page in sura.pages">
-                     <span v-for="aya of page" class="quran-aya" @click="activate(aya)"
+                     <span v-for="aya of page" class="quran-aya bounceIn" @click="activate(aya)"
                            :class="{active: isActivated(aya)}">
                         {{ aya.text }}
                        <span class="quran-aya-separator"></span>
@@ -64,6 +72,9 @@
 
 <style>
 
+    .loader-wrapper{
+        text-align: center;
+    }
 
 </style>
 
@@ -81,7 +92,7 @@
 
         data() {
             return {
-                sura: [],
+                sura: false,
                 active: 0
             }
         },

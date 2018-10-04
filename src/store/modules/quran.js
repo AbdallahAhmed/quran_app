@@ -4,7 +4,7 @@ export default {
 
     state: {
         "aya": false,
-        "juz_sections": {}
+        "juz_sections": false
     },
 
     getters: {

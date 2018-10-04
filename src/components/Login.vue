@@ -54,9 +54,9 @@
 
     export default {
         beforeCreate(){
-          if(this.$app.auth.check()){
-            this.$f7router.back();
-          }
+          // if(this.$app.auth.check()){
+            //   this.$f7router.back();
+            // }
         },
         data: function () {
             return {
