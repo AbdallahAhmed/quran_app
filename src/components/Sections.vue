@@ -8,10 +8,10 @@
             <div class="preloader color-green"></div>
         </div>
 
-        <div class="section-wrapper" v-if="juz_sections">
+        <div class="section-wrapper" id="main-scrollable" v-if="juz_sections">
             <div class="row no-gap">
                 <div class="col-15 number-list">
-                    <a href="javascript:void(0)" @click="scrollTo(number+1)" :id="number"
+                    <a href="javascript:void(0)" @click="scrollTo(number+1,$event)" :id="number"
                        v-for="number in Array.from({length: 30}, (_, id) => (id))"
                        v-text="(number+1)%5==0||number==0?number+1:'.'" :key="number"></a>
                 </div>
@@ -62,14 +62,14 @@
         mounted() {
 
 
-           // setTimeout(()=> {
-                this.$store.dispatch('get_juz_section').then(() => {
-                    var swiper = this.$f7.swiper.create('.swiper-container', {
-                        spaceBetween: 0,
-                        slidesPerView: 1.5
-                    });
+            // setTimeout(()=> {
+            this.$store.dispatch('get_juz_section').then(() => {
+                var swiper = this.$f7.swiper.create('.swiper-container', {
+                    spaceBetween: 0,
+                    slidesPerView: 1.5
                 });
-           // }, 4000)
+            });
+            // }, 4000)
 
 
         },
@@ -79,16 +79,16 @@
             };
         },
         methods: {
-            scrollTo(index) {
-                console.log(  this.$$('.juz-wrapper:nth-child(' + index + ')').offset().top - 57);
+            scrollTo(index, event) {
 
-                console.log( this.$$('.section-wrapper').scrollTop());
-                this.$$('.section-wrapper').scrollTop(
+
+                console.log(this.$$('.section-wrapper').scrollTop(), this.$$('.section-wrapper').scrollTop());
+                this.$$('.section-wrapper#main-scrollable').scrollTop(
                     this.$$('.juz-wrapper:nth-child(' + index + ')').offset().top - 57 +
-                    this.$$('.section-wrapper').scrollTop(),
+                    this.$$('.section-wrapper#main-scrollable').scrollTop(),
                     1000
                 )
-            }
+            },
         },
         computed: {
             juz_sections() {
