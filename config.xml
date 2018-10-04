@@ -14,6 +14,18 @@
         <content src="android.html" />
         <resource-file src="resources/android/custom/notification_icon.png" target="res/drawable/notification_icon.png" />
         <preference name="KeepRunning" value="false" />
+        <splash density="land-hdpi" src="res/android/splash/drawable-land-hdpi.png" />
+        <splash density="land-ldpi" src="res/android/splash/drawable-land-ldpi.png" />
+        <splash density="land-mdpi" src="res/android/splash/drawable-land-mdpi.png" />
+        <splash density="land-xhdpi" src="res/android/splash/drawable-land-xhdpi.png" />
+        <splash density="port-hdpi" src="res/android/splash/drawable-port-hdpi.png" />
+        <splash density="port-ldpi" src="res/android/splash/drawable-port-ldpi.png" />
+        <splash density="port-mdpi" src="res/android/splash/drawable-port-mdpi.png" />
+        <splash density="port-xhdpi" src="res/android/splash/drawable-port-xhdpi.png" />
+        <icon density="ldpi" src="res/icon/android/icon-36-ldpi.png" />
+        <icon density="mdpi" src="res/icon/android/icon-48-mdpi.png" />
+        <icon density="hdpi" src="res/icon/android/icon-72-hdpi.png" />
+        <icon density="xhdpi" src="res/icon/android/icon-96-xhdpi.png" />
     </platform>
     <platform name="ios">
         <content src="ios.html" />
@@ -25,9 +37,10 @@
         <preference name="BackupWebStorage" value="none" />
     </platform>
     <preference name="SplashScreenDelay" value="6000" />
+    <preference name="SplashScreenBackgroundColor" value="#ffffff" />
     <preference name="FadeSplashScreenDuration" value="1000" />
     <preference name="ShowSplashScreenSpinner" value="false" />
-    <preference name="StatusBarBackgroundColor" value="#2e2e2e" />
+    <preference name="StatusBarBackgroundColor" value="#ffffff" />
     <preference name="AndroidLaunchMode" value="singleTop" />
     <plugin name="cordova-plugin-device" spec="^1.1.7" />
     <plugin name="cordova-plugin-nativeclicksound" spec="0.0.3" />
