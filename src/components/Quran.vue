@@ -54,8 +54,9 @@
                      <span v-for="aya of page" class="quran-aya bounceIn" @click="activate(aya)"
                            :class="{active: isActivated(aya)}">
                         {{ aya.text }}
-                           <span class="quran-aya-separator"></span>
-                        <span class="aya-num">{{ aya.numberinsurat }}</span>
+
+                         <span class="aya-num">  ﴿ {{ aya.numberinsurat }} ﴾ </span>
+
                      </span>
 
                 </span>
