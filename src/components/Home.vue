@@ -17,7 +17,8 @@
                     <search></search>
                 </div>
                 <div id="login-tab" class="page-content tab">
-                    <login></login>
+                    <login v-if="!$app.auth.check()"></login>
+                    <profile v-if="$app.auth.check()"></profile>
                 </div>
             </div>
         </div>
@@ -47,6 +48,7 @@
             "options-toolbar": require("./partials/OptionsToolbar.vue"),
             "quran": require("./Quran.vue"),
             "search": require("./Search.vue"),
+            "profile": require("./MyProfile.vue"),
             "login": require("./Login.vue")
         }
     }
