@@ -42,6 +42,13 @@ Vue.use(VueCordova, {});
 Vue.conf = require("./config").items;
 Vue.prototype.$config = Vue.conf;
 
+
+//English to Arabic digits.
+String.prototype.toAr= function() {
+    return this.replace(/\d/g, d =>  '٠١٢٣٤٥٦٧٨٩'[d])
+}
+
+
 /**
  *  Application object
  */
