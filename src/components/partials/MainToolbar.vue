@@ -20,6 +20,9 @@
         <f7-link tab-link="#login-tab">
             <img src="../../assets/img/user.png" class="user-avater" alt=""/>
         </f7-link>
+        <!--<f7-link href="/khatima">-->
+            <!--<img src="../../assets/img/user.png" class="user-avater" alt=""/>-->
+        <!--</f7-link>-->
 
         <!--<f7-link v-if="!$app.auth.check()" href="/login" class="user-avater">-->
             <!--<img src="/user-avater.png" alt=""/>-->
