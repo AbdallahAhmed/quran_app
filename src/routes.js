@@ -50,6 +50,9 @@ export default [
     {
         path: '/register',
         component: require("./components/Register.vue")
+    }, {
+        path: '/khatima',
+        component: require("./components/Khatima.vue")
     },
     // {
     //     path: '/local_login',
