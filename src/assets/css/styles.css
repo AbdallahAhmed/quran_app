@@ -450,14 +450,16 @@
 
 .header-islamic {
 
-    background-image: url("./../img/all-in-one.png");
+    background-image: url(../img/all-in-one.png);
     background-size: 100%;
-    min-height: 219px;
-    height: 231px;
+    min-height: 284px;
+    height: 216px;
     background-position: top;
     background-repeat: no-repeat;
-    box-shadow: 0px -3px 12px 0px;
+    /* box-shadow: 0px -3px 12px 0px; */
     width: 100%;
+    position: relative;
+    top: -7px;
 }
 
 .header-islamic-content {
@@ -486,7 +488,7 @@
     width: calc(100% - 40px);
     text-align: center;
     margin: auto;
-    padding-top: 25px;
+
     overflow: scroll;
 
 }

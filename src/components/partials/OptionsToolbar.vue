@@ -23,7 +23,7 @@
 
         </div>
 
-        <a class="link aya-options-remove bounceIn" @click="close">{{ $app.trans("close") }}</a>
+        <a class="link aya-options-remove jackInTheBox" @click="close">{{ $app.trans("close") }}</a>
 
     </div>
 
