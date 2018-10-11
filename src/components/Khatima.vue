@@ -53,8 +53,12 @@
                 </div>
 
             </div>
-        </div>
+            <button class="btn-quran btn-send">
+                ارسل الثوب إلى صديق
+            </button>
 
+
+        </div>
     </f7-page>
 
 </template>
@@ -66,7 +70,6 @@
             return {};
         },
         created() {
-            console.log('sadsa')
 
         }, components: {
             "navbar": require("./partials/Navbar.vue"),

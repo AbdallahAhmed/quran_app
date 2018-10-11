@@ -8,8 +8,13 @@
 
         <options-toolbar v-if="aya"></options-toolbar>
 
-        <div class="tabs-swipeable-wrap">
+        <div class="tabs-animated-wrap">
             <div class="tabs">
+
+                <div id="khatima-tab" class="page-content  page-khatima tab">
+                    <khatima-tab></khatima-tab>
+                </div>
+
                 <div id="quran-tab" class="page-content tab tab-active">
                     <quran></quran>
                 </div>
@@ -20,6 +25,7 @@
                     <login v-if="!$app.auth.check()"></login>
                     <profile v-if="$app.auth.check()"></profile>
                 </div>
+
             </div>
         </div>
 
@@ -49,6 +55,7 @@
             "quran": require("./Quran.vue"),
             "search": require("./Search.vue"),
             "profile": require("./MyProfile.vue"),
+            "khatima-tab": require("./KhatimaTab.vue"),
             "login": require("./Login.vue")
         }
     }

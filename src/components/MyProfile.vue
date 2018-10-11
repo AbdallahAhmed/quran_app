@@ -67,7 +67,8 @@
         },
         data: function () {
             return {
-                user:this.$app.auth.user()
+                user:this.$app.auth.user(),
+                serverErrors:[]
             }
         },
         methods: {

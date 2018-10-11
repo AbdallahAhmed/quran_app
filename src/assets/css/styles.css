@@ -80,7 +80,7 @@
     text-align: right;
 }
 
-#quran-tab{
+#quran-tab {
     background: #F5F5F5;
 }
 
@@ -576,6 +576,8 @@ a.forget-password {
     display: block;
     max-width: 100%;
     padding: 0 20px;
+    margin-bottom: 28px;
+
 }
 
 .gauge-khatima {
@@ -640,6 +642,10 @@ a.forget-password {
     color: gray;
 }
 
+.khatima-wrapper .info img {
+    height: 37px;
+}
+
 .khatima-wrapper .info span:first-child {
     color: #207249;
 }
@@ -662,7 +668,7 @@ a.forget-password {
     height: 90vh;
 }
 
-.page-profile .form-container .row > div{
+.page-profile .form-container .row > div {
     background-color: #fff;
     height: 15vh;
     font-family: initial;
@@ -670,18 +676,20 @@ a.forget-password {
     padding-top: 4vh;
 }
 
-
-.page-profile .form-container .row > div>p{
+.page-profile .form-container .row > div > p {
     font-family: initial;
     font-weight: initial;
     margin: 0;
 }
+
 .page-profile .form-container .row {
     margin: 10px 0;
-}.page-profile .header-islamic-content img{
+}
 
-     border: 3px solid #207249;
-     border-radius: 3cm;
+.page-profile .header-islamic-content img {
+
+    border: 3px solid #207249;
+    border-radius: 3cm;
 }
 
 .page-profile .form-container {
@@ -689,4 +697,24 @@ a.forget-password {
     text-align: center;
     margin: -5vh auto;
     overflow: scroll;
+}
+
+.btn-quran {
+    width: 100%;
+    text-align: center;
+    padding: 10px;
+    color: white;
+    background-color: #207249;
+    font-family: initial;
+    font-size: 16px;
+    border: 0;
+    margin-top: 5px;
+}
+
+.btn-send {
+    margin-top: 20px;
+}
+
+#khatima-tab{
+    background-color: #f5f5f5;
 }

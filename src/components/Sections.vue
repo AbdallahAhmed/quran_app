@@ -80,10 +80,7 @@
         },
         methods: {
             scrollTo(index, event) {
-
-
-                console.log(this.$$('.section-wrapper').scrollTop(), this.$$('.section-wrapper').scrollTop());
-                this.$$('.section-wrapper#main-scrollable').scrollTop(
+                    this.$$('.section-wrapper#main-scrollable').scrollTop(
                     this.$$('.juz-wrapper:nth-child(' + index + ')').offset().top - 57 +
                     this.$$('.section-wrapper#main-scrollable').scrollTop(),
                     1000
