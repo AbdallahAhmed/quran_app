@@ -10,7 +10,7 @@
                         <div class="searchbar-inner">
                             <div class="searchbar-input-wrap">
                                 <input type="search" id="input-search" class="search-input rollIn" placeholder=" بحث عن الايات"
-                                       v-model="searchQuery" @input="search">
+                                       v-model="searchQuery" maxlength="50" @input="search">
                                 <i class="searchbar-icon" @click="search"></i>
                                 <!--<span class="input-clear-button"></span>-->
                             </div>
