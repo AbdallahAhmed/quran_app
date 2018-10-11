@@ -10,7 +10,7 @@
         <div class="login-page">
             <div class="header-islamic row">
                 <div class="header-islamic-content">
-                    <img src="../assets/img/user-avater.png" class="avater" alt="user avater">
+                    <img src="../assets/img/user-avater.png" @click="addPhotoImage" class="avater" alt="user avater" ref="image">
                     <p>إنشاء حساب </p>
                 </div>
             </div>
@@ -86,7 +86,8 @@
                     email: "",
                     password: "",
                     confirm_password: "",
-                    name: ""
+                    name: "",
+                    image_data: ""
                 },
                 serverErrors: [],
                 submitted: false
@@ -115,6 +116,20 @@
                 });
                 return false;
             },
+            addPhotoImage() {
+
+                navigator.camera.getPicture((imageData) => {
+                    this.user.image_data = imageData;
+                    this.$refs.image.src=imageData;
+                }, function (message) {
+                    // no selected
+                }, {
+                    quality: 50,
+                    sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
+                    allowEdit: true,
+                    destinationType: Camera.DestinationType.DATA_URL
+                });
+            }
         },
 
         components: {
