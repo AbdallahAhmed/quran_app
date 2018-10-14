@@ -30,8 +30,11 @@
 
                 <div class="row">
                     <div class="col-50">
-                        <img src="./../assets/img/settings.png" alt="Fav">
-                        <p>الاعدادات</p>
+
+                        <a href="/settings">
+                            <img src="./../assets/img/settings.png" alt="Fav">
+                            <p>الاعدادات</p>
+                        </a>
                     </div>
                     <div class="col-50">
                         <img src="./../assets/img/_share.png" alt="Fav">

@@ -14,6 +14,10 @@ export default [
         path: '/forgetpassword',
         component: require("./components/ForgetPassword.vue")
     },
+    {
+        path: '/settings',
+        component: require("./components/Settings.vue")
+    },
     // {
     //     path: '/category/:id',
     //     component: require("./components/pages/Category.vue")
