@@ -52,8 +52,18 @@ export default {
 
     actions: {
 
-        get_sura(store, id) {
-            return Vue.http.get("surah", {params: {surah_id: id, lang: "ar"}});
+        get_sura(store, options = {}) {
+            options.lang = "ar";
+            return Vue.http.get("surah", {params: options});
+        },
+
+        get_page(store, page_id) {
+            return Vue.http.get("page", {
+                params: {
+                    lang : "ar",
+                    page_id: page_id
+                }
+            });
         },
 
         save_aya(store, aya) {

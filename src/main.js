@@ -286,7 +286,7 @@ Vue.app = {
          * @returns {*}
          */
         load: function (url) {
-            return Vue.app.vue.$f7Router.framework7.mainView.router.loadPage(url);
+            return Vue.app.vue.$f7Router.mainView.router.loadPage(url);
         },
 
         /**

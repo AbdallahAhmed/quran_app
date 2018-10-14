@@ -13,10 +13,6 @@
 
             <div class="form-container">
 
-                <span class="help" v-if="serverErrors.length!=0" v-for="error in serverErrors" :key="error">
-                    {{error}}
-                </span>
-
                 <form @submit.prevent="forgetPassword">
                     <input type="text" name="email" placeholder=" البريد الكترونى " v-model="user.email"
                            v-validate="'required|email'" autocomplete="false">

@@ -103,7 +103,7 @@
 
             let sura_id = this.$f7route.params.sura_id || 1;
 
-            this.$store.dispatch("get_sura", sura_id).then((response) => {
+            this.$store.dispatch("get_sura", {surah_id: sura_id}).then((response) => {
                 this.sura = response.data.data;
             });
         },

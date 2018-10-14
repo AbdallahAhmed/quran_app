@@ -9,7 +9,8 @@
                     <form class="searchbar" onsubmit="return false">
                         <div class="searchbar-inner">
                             <div class="searchbar-input-wrap">
-                                <input type="search" id="input-search" class="search-input rollIn" placeholder=" بحث عن الايات"
+                                <input type="search" id="input-search" class="search-input rollIn"
+                                       placeholder=" بحث عن الايات"
                                        v-model="searchQuery" maxlength="50" @input="search">
                                 <i class="searchbar-icon" @click="search"></i>
                                 <!--<span class="input-clear-button"></span>-->
@@ -18,6 +19,7 @@
                         </div>
                     </form>
                 </div>
+
             </div>
 
             <div class="row">
@@ -35,10 +37,10 @@
                     <ul>
                         <li v-for="ayat of results">
                             <div class="row">
-                                <a class="col-80">
+                                <a :href="'/preview/' + ayat.page_id + '/' + ayat.id" class="col-80">
                                     {{ayat.text}}
                                 </a>
-                                <a class="col-20">{{ayat.surah.name}}</a>
+                                <a :href="'/preview/' + ayat.page_id + '/' + ayat.id" class="col-20 tab-link">{{ayat.surah.name}}</a>
                             </div>
                         </li>
                     </ul>
@@ -86,7 +88,8 @@
         },
         components: {
             "navbar": require("./partials/Navbar.vue"),
-            "main-toolbar": require("./partials/MainToolbar.vue")
+            "main-toolbar": require("./partials/MainToolbar.vue"),
+            "preview": require("./Preview.vue")
         }
     }
 </script>
