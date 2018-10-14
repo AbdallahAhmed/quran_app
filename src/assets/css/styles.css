@@ -733,3 +733,9 @@ a.forget-password {
 .page-forget .quran-navbar{
     height: 0;
 }
+
+
+.preview-back{
+    padding: 0 20px;
+    color: white !important;
+}

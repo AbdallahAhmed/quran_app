@@ -9,6 +9,9 @@ export default [
     }, {
         path: '/search',
         component: require("./components/Search.vue")
+    }, {
+        path: '/preview/:page_id/:aya_id',
+        component: require("./components/Preview.vue")
     },
     {
         path: '/forgetpassword',

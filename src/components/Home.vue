@@ -16,9 +16,7 @@
                 </div>
 
                 <div id="quran-tab" class="page-content tab tab-active">
-                    <transition>
-                        <component :is="quran"></component>
-                    </transition>
+                    <quran></quran>
                 </div>
 
                 <div id="search-tab" class="page-content tab">
