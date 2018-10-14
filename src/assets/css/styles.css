@@ -50,7 +50,13 @@
 }
 
 * {
-    font-family: me_quran;
+    font-family: kfc !important;
+    font-size: 17px;
+}
+
+.quran-aya, .aya-num {
+    font-family: me_quran !important;
+    font-size: 14px;
 }
 
 .page {
