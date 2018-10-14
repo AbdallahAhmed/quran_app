@@ -459,7 +459,7 @@
     height: 216px;
     background-position: top;
     background-repeat: no-repeat;
-     box-shadow: 0px -3px 12px 0px;
+    box-shadow: 0px 6px 20px -8px;
     width: 100%;
     position: relative;
     top: -7px;
@@ -690,6 +690,10 @@ a.forget-password {
 
     border: 3px solid #207249;
     border-radius: 3cm;
+}
+
+.page-profile .popup-reset .header-islamic {
+    box-shadow: 0px 6px 20px -8px;
 }
 
 .page-profile .form-container {
