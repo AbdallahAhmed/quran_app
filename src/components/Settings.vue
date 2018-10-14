@@ -10,7 +10,7 @@
                     <p>الأعدادت</p>
                 </div>
                 <div class="col-10">
-                    <a class="back"> <i class="f7-icons size-22 back" style="color: #fff">chevron_left</i> </a>
+                    <a class="back"> <i class="f7-icons size-22 back-icon" style="color: #fff">chevron_left</i> </a>
                 </div>
             </div>
 
@@ -36,7 +36,7 @@
                 <div class="row">
                     <div class="col-100">
                         <div class="range-slider">
-                            <input type="range" min="0" max="100" step="1" value="50">
+                            <input type="range" min="0" max="100" step="5" value="50">
                         </div>
                     </div>
                 </div>
@@ -107,7 +107,7 @@
                 el: '.range-slider',
                 on: {
                     change:  (val)=> {
-
+                        this.font_range=val.value;
                     }
                 }
             })
