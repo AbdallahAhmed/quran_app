@@ -17,13 +17,21 @@ const state = {
     overlay: false,
     tabs: {
         quran: 'quran'
-    }
+    },
+    color_theme:localStorage.getItem("color_theme") || 'white',
+    font_range:localStorage.getItem("font_range") || '50',
 };
 
 const getters = {
 
     locale(state) {
         return state.locale;
+    },
+    color_theme(state) {
+        return state.color_theme;
+    },
+    font_range(state) {
+        return state.font_range;
     },
     tabs(state) {
         return state.tabs;
@@ -63,6 +71,16 @@ const mutations = {
     locale(state, locale) {
         state.locale = locale;
         localStorage.setItem("locale", locale);
+    },
+
+    color_theme(state, color_theme) {
+        state.color_theme = color_theme;
+        localStorage.setItem("color_theme", color_theme);
+    },
+
+    font_range(state, font_range) {
+        state.font_range = font_range;
+        localStorage.setItem("font_range", font_range);
     },
 
     guest_alert(state, value) {

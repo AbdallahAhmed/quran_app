@@ -49,9 +49,8 @@
                 <span class="help" v-if="serverErrors.length!=0" v-for="error in serverErrors" :key="error">
                     {{error}}
                 </span>
-
-                        <form>
-                            <input type="text" :class="{'errors':errors.has('cpde')&&submitted}" name="code"
+                        <form @submit.prevent="resetPassword">
+                            <input type="text" :class="{'errors':errors.has('code')&&submitted}" name="code"
                                    placeholder="الرمز" v-model="user.code"
                                    v-validate="'required'" autocomplete="false"/>
 
@@ -64,14 +63,15 @@
                             <span v-show="errors.has('password')&&submitted" class="help is-danger">{{ errors.first('password') }}</span>
 
                             <input type="password" :class="{'errors':errors.has('confirm_password')&&submitted}"
-                                   name="confirm_password" placeholder="تاكيد كلمة المرور" v-model="user.confirm_password"
+                                   name="confirm_password" placeholder="تاكيد كلمة المرور"
+                                   v-model="user.confirm_password"
                                    v-validate="'confirmed:password'" autocomplete="false"/>
 
                             <button type="submit">
                                 أرسال
                             </button>
 
-                            <button  class="link popup-close" type="button">
+                            <button class="link popup-close" type="button">
                                 الرجوع
                             </button>
                         </form>
@@ -107,7 +107,7 @@
                     email: "",
                     password: "",
                     confirm_password: "",
-                    code:""
+                    code: ""
                 },
                 serverErrors: [],
                 submitted: false,
@@ -130,6 +130,31 @@
 
                         }, (res) => {
                             self.serverErrors = ['البريد الكترونى  غير صحيحة'];
+                            self.$f7.preloader.hide()
+                        })
+                    }
+
+                });
+                return false;
+            },
+            resetPassword(){
+                this.submitted = true;
+                var self = this;
+                this.$validator.validateAll(this.user).then((result) => {
+                    console.log('test' ,self.user);
+                    if (result) {
+                        self.$f7.preloader.show();
+                        self.$http.post('auth/reset-password', self.user).then((response) => {
+
+                            self.$f7.preloader.hide();
+
+                            self.popup.close();
+                            self.$store.commit('user',response.body.data.user);
+                            self.$store.commit('token',response.body.data.token);
+                            self.$f7router.navigate('/home/quran');
+
+                        }, (res) => {
+                            self.serverErrors = ['الكود غير صحيح'];
                             self.$f7.preloader.hide();
                         });
                         return;
@@ -138,6 +163,8 @@
                 });
                 return false;
             },
+
+
         },
         mounted() {
             this.popup = this.$f7.popup.create({
