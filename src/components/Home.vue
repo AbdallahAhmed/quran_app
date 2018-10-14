@@ -44,10 +44,12 @@
     export default {
 
         computed: {
+
             aya() {
                 return this.$store.getters.aya;
             },
-            'quran': function () {
+
+            quran: function () {
                 return this.$store.getters.tabs.quran;
             }
         },

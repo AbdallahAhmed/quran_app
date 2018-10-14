@@ -18,11 +18,6 @@
 
         <div class="page-content">
 
-            <div class="quran-basmla">
-                <a>
-                    بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ
-                </a>
-            </div>
 
             <div class="block quran-sura">
 
