@@ -112,7 +112,6 @@
         events: {
             close: function () {
 
-                alert("dd");
                 this.active = 0;
                 this.$store.commit("AYA", false);
             }

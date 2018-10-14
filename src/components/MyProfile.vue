@@ -19,8 +19,10 @@
 
                 <div class="row">
                     <div class="col-50">
-                        <img src="./../assets/img/fav.png" alt="Fav">
-                        <p>المفضلة</p>
+                        <a href="/fav">
+                            <img src="./../assets/img/fav.png" alt="Fav">
+                            <p>المفضلة</p>
+                        </a>
                     </div>
                     <div class="col-50">
                         <img src="./../assets/img/alarm.png" alt="Fav">
@@ -70,16 +72,12 @@
         },
         data: function () {
             return {
-                user:this.$app.auth.user(),
-                serverErrors:[]
+                user: this.$app.auth.user(),
+                serverErrors: []
             }
         },
-        methods: {
-
-        },
-        computed:{
-
-        }
+        methods: {},
+        computed: {}
     }
 
 </script>
