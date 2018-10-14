@@ -1,12 +1,13 @@
 <template>
 
-    <f7page :class="'navbar-fixed page-login'">
+    <f7-page :class="'navbar-fixed page-forget'">
 
+        <navbar></navbar>
         <div class="login-page">
             <div class="header-islamic row">
                 <div class="header-islamic-content">
                     <img src="../assets/img/user-avater.png" class="avater" alt="user avater">
-                    <p>تسجيل الدخول </p>
+                    <p class="page-title">أسترجاع الرقم السري</p>
                 </div>
             </div>
 
@@ -22,25 +23,16 @@
 
                     <span v-show="errors.has('email')&&submitted"
                           class="help is-danger">{{ errors.first('email') }}</span>
-                    <input type="password" name="password" placeholder="كلمة المرور" v-model="user.password"
-                           v-validate="'required'" autocomplete="false">
-
-                    <span v-show="errors.has('password')&&submitted" class="help is-danger">{{ errors.first('password') }}</span>
 
                     <button type="submit">
-                        تسجيل
+                        أرسال
                     </button>
                 </form>
-
-                <a class="forget-password" href="/forgetpassword">
-                    هل نسيت كلمة المرور؟
-                </a>
 
             </div>
         </div>
 
-    </f7page>
-
+    </f7-page>
 </template>
 
 <style>
@@ -53,8 +45,8 @@
     import {mapState} from 'vuex';
 
     export default {
-        beforeCreate(){
-          // if(this.$app.auth.check()){
+        beforeCreate() {
+            // if(this.$app.auth.check()){
             //   this.$f7router.back();
             // }
         },
@@ -63,7 +55,6 @@
 
                 user: {
                     email: "",
-                    password: ""
                 },
                 serverErrors: [],
                 submitted: false
@@ -76,12 +67,14 @@
                 this.$validator.validateAll().then((result) => {
                     if (result) {
                         self.$f7.preloader.show();
-                        self.$store.dispatch('login', self.user).then((response) => {
-                            self.$f7router.navigate('/quran/1');
+                        self.$store.dispatch('forgetPassword', self.user).then((response) => {
+
+                            self.$f7.dialog.alert('أفحص بريدك الكترونى');
 
                             self.$f7.preloader.hide();
+
                         }, (res) => {
-                            self.serverErrors = ['البريد الكترونى وكلمة المرور غير صحيحة'];
+                            self.serverErrors = ['البريد الكترونى  غير صحيحة'];
                             self.$f7.preloader.hide();
                         });
                         return;
@@ -93,8 +86,7 @@
         },
 
         components: {
-            "navbar": require("./partials/Navbar.vue"),
-            "main-toolbar": require("./partials/MainToolbar.vue")
+            "navbar": require("./partials/Navbar.vue")
         }
     }
 

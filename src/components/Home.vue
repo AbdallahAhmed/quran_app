@@ -8,16 +8,19 @@
 
         <options-toolbar v-if="aya"></options-toolbar>
 
-        <div class="tabs-animated-wrap">
+        <div class="tabs-swipeable-wrap">
             <div class="tabs">
 
-                <div id="khatima-tab" class="page-content  page-khatima tab">
+                <div id="khatima-tab" class="page-content  tab page-khatima ">
                     <khatima-tab></khatima-tab>
                 </div>
 
                 <div id="quran-tab" class="page-content tab tab-active">
-                    <quran></quran>
+                    <transition>
+                        <component :is="quran"></component>
+                    </transition>
                 </div>
+
                 <div id="search-tab" class="page-content tab">
                     <search></search>
                 </div>
@@ -45,6 +48,9 @@
         computed: {
             aya() {
                 return this.$store.getters.aya;
+            },
+            'quran': function () {
+                return this.$store.getters.tabs.quran;
             }
         },
 
@@ -57,6 +63,9 @@
             "profile": require("./MyProfile.vue"),
             "khatima-tab": require("./KhatimaTab.vue"),
             "login": require("./Login.vue")
+        },
+        mounted() {
+
         }
     }
 

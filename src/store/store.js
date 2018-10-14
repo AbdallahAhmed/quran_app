@@ -14,13 +14,19 @@ const state = {
     notifications: [],
     video_autoplay: localStorage.getItem("video_autoplay") || 1,
     guest_alert: false,
-    overlay: false
+    overlay: false,
+    tabs: {
+        quran: 'quran'
+    }
 };
 
 const getters = {
 
     locale(state) {
         return state.locale;
+    },
+    tabs(state) {
+        return state.tabs;
     },
 
     direction(state) {
@@ -98,7 +104,6 @@ const actions = {
             store.commit("unread", response.body.count);
         });
     },
-
     read(state, notification_id) {
         return Vue.http.get("notifications/read", {params: {notification_id: notification_id}}).then(function (response) {
 
@@ -119,7 +124,8 @@ const actions = {
         return Vue.http.get("notifications/list_notifications").then(function (response) {
             store.commit("notifications", response.body.notifications);
         });
-    }
+    },
+
 };
 
 export const store = new Vuex.Store({

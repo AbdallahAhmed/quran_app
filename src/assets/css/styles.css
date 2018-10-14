@@ -459,7 +459,7 @@
     height: 216px;
     background-position: top;
     background-repeat: no-repeat;
-    /* box-shadow: 0px -3px 12px 0px; */
+     box-shadow: 0px -3px 12px 0px;
     width: 100%;
     position: relative;
     top: -7px;
@@ -717,4 +717,15 @@ a.forget-password {
 
 #khatima-tab{
     background-color: #f5f5f5;
+}
+
+.page-title{
+    margin: 1em 0;
+    font-family: initial;
+    color: #36734a;
+    font-size: 20px;
+}
+
+.page-forget .quran-navbar{
+    height: 0;
 }

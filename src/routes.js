@@ -10,6 +10,10 @@ export default [
         path: '/search',
         component: require("./components/Search.vue")
     },
+    {
+        path: '/forgetpassword',
+        component: require("./components/ForgetPassword.vue")
+    },
     // {
     //     path: '/category/:id',
     //     component: require("./components/pages/Category.vue")
