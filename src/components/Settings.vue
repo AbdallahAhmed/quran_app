@@ -19,12 +19,12 @@
                 <p>الشكل </p>
                 <div class="row ">
                    <div class="col-50" >
-                       <a class="button-themes button-themes-back" @click="color_theme='black'">
+                       <a class="button-themes button-themes-back" :class="{'active':color_theme=='black'}" @click="color_theme='black'">
                            وَأَقِيمُوا الْوَزْنَ بِالْقِسْطِ وَلَا تُخْسِرُوا الْمِيزَانَ
                        </a>
                    </div>
                     <div class="col-50">
-                        <a class="button-themes button-themes-white" @click="color_theme='white'">
+                        <a class="button-themes button-themes-white" :class="{'active':color_theme=='white'}" @click="color_theme='white'">
                             وَأَقِيمُوا الْوَزْنَ بِالْقِسْطِ وَلَا تُخْسِرُوا الْمِيزَانَ
                         </a>
                     </div>
