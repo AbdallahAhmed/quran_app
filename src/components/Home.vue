@@ -28,7 +28,6 @@
 
             </div>
 
-
     </div>
 
 
@@ -64,7 +63,7 @@
             "login": require("./Login.vue")
         },
         mounted() {
-
+            this.$f7.dialog.alert("Comming soon", 'Quran');
         }
     }
 
