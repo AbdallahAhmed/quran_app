@@ -2,6 +2,8 @@
 
     <div :class="'page-section'">
 
+        <navbar></navbar>
+
         <div class="section-wrapper">
             <div class="row no-gap">
                 <div class="col-100 search-wrapper">
@@ -11,7 +13,7 @@
                             <div class="searchbar-input-wrap">
                                 <input type="search" id="input-search" class="search-input rollIn"
                                        placeholder=" بحث عن الايات"
-                                       v-model="searchQuery" maxlength="50" @input="search">
+                                       v-model="searchQuery" maxlength="50" @keyup="search" @keydown="clear">
                                 <i class="searchbar-icon" @click="search"></i>
                                 <!--<span class="input-clear-button"></span>-->
                             </div>
@@ -19,7 +21,6 @@
                         </div>
                     </form>
                 </div>
-
             </div>
 
             <div class="row">
@@ -37,10 +38,10 @@
                     <ul>
                         <li v-for="ayat of results">
                             <div class="row">
-                                <a :href="'/preview/' + ayat.page_id + '/' + ayat.id" class="col-80">
+                                <a class="col-80">
                                     {{ayat.text}}
                                 </a>
-                                <a :href="'/preview/' + ayat.page_id + '/' + ayat.id" class="col-20 tab-link">{{ayat.surah.name}}</a>
+                                <a class="col-20">{{ayat.surah.name}}</a>
                             </div>
                         </li>
                     </ul>
@@ -54,42 +55,70 @@
 <script>
     import debounce from './../helpers/debounce';
 
+
     var $vm = null;
     export default {
         created() {
             $vm = this;
         },
+        mounted() {
+            this.$$('#scroll').scroll(this.handleScroll);
+        },
         data() {
             return {
                 searchQuery: '',
                 results: [],
-                loading: false
+                loading: false,
+                offset: 0,
+                max: false
             };
         },
         methods: {
             search: debounce(function () {
-                if ($vm.searchQuery.trim().length == 0) {
+                if ($vm.searchQuery.trim().length == 0 || $vm.max) {
                     return;
                 }
                 $vm.$f7.preloader.show();
                 $vm.loading = true;
                 $vm.$http.get('search', {
                     params: {
-                        q: $vm.searchQuery
+                        q: $vm.searchQuery,
+                        offset: $vm.offset
                     }
                 }).then((res) => {
-                    $vm.results = res.body.data;
+                    if (res.body.data.length >= 14)
+                        $vm.offset += res.body.data.length;
+                    else
+                        $vm.max = true;
+
+                    for (var i = 0; i < res.body.data.length; i++)
+                        $vm.results.push(res.body.data[i]);
+
                     $vm.loading = false;
                     $vm.$f7.preloader.hide();
                 }, (res) => {
 
                 });
-            }, 750)
+            }, 750),
+            handleScroll(e) {
+                if (!$vm.max && ((e.target.scrollHeight - e.target.scrollTop) === e.target.clientHeight)) {
+                    $vm.search();
+                }
+            },
+            clear(e) {
+                if (e.keyCode == 13) {
+                    $vm.search();
+                } else {
+                    $vm.searchQuery = '';
+                    $vm.results = [];
+                    $vm.offset = 0;
+                    $vm.max = false;
+                }
+            }
         },
         components: {
             "navbar": require("./partials/Navbar.vue"),
-            "main-toolbar": require("./partials/MainToolbar.vue"),
-            "preview": require("./Preview.vue")
+            "main-toolbar": require("./partials/MainToolbar.vue")
         }
     }
 </script>

@@ -33,6 +33,22 @@ const getters = {
     font_range(state) {
         return state.font_range;
     },
+
+    font_size(state){
+
+        let range = state.font_range;
+
+        if(range < 50){
+            let size = 19 + (range/100) * 20;
+            return  size;
+        }else{
+            let size = 19 + (range/100) * 10;
+            console.log(size);
+            return size;
+        }
+
+    },
+
     tabs(state) {
         return state.tabs;
     },

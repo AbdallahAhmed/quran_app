@@ -10,7 +10,7 @@
                     <p>الأعدادت</p>
                 </div>
                 <div class="col-10">
-                    <a class="back"> <i class="f7-icons size-22 back-icon" style="color: #fff">chevron_left</i> </a>
+                    <a class="back link"> <i class="f7-icons size-22 back-icon" style="color: #fff">chevron_left</i> </a>
                 </div>
             </div>
 
@@ -41,9 +41,10 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col font-sm">حجم الخط</div>
-                    <div class="col font-md">حجم الخط</div>
+
                     <div class="col font-lg">حجم الخط</div>
+                    <div class="col font-md">حجم الخط</div>
+                    <div class="col font-sm">حجم الخط</div>
                 </div>
                 <br>
                 <hr>
