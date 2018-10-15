@@ -2,6 +2,8 @@
 
     <div :class="'page-section'">
 
+        <navbar></navbar>
+
         <div class="section-wrapper">
             <div class="row no-gap">
                 <div class="col-100 search-wrapper">

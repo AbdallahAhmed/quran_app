@@ -1,6 +1,8 @@
 <template>
 
-    <div :class="'navbar-fixed page-login page-profile'">
+    <div :class="'navbar-fixed page-profile'">
+
+        <navbar></navbar>
 
         <div class="login-page">
             <div class="header-islamic row">
@@ -63,23 +65,23 @@
     import {mapState} from 'vuex';
 
     export default {
+
         beforeCreate() {
             if (this.$app.auth.check()) {
                 this.$f7router.back();
             }
         },
+
         data: function () {
             return {
-                user:this.$app.auth.user(),
-                serverErrors:[]
+                user: this.$app.auth.user(),
+                serverErrors: []
             }
         },
-        methods: {
 
+        components: {
+            "navbar": require("./partials/Navbar.vue")
         },
-        computed:{
-
-        }
     }
 
 </script>

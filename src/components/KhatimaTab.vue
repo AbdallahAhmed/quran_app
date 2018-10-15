@@ -1,6 +1,8 @@
 <template>
     <div :class="'navbar-fixed  page-khatima'">
 
+        <navbar></navbar>
+
         <div class="loader-wrapper" v-if="false">
             <div class="preloader color-green"></div>
         </div>
@@ -122,6 +124,7 @@
         created() {
 
         }, components: {
+            "navbar": require("./partials/Navbar.vue"),
         },
         mounted() {
             // var gauge = this.$f7.gauge.create({

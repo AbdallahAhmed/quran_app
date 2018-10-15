@@ -2,6 +2,8 @@
 
     <div>
 
+        <navbar></navbar>
+
         <div class="quran-head" v-if="sura">
 
             <!--<div class="page-title"> lfsagsdg </div>-->
@@ -52,7 +54,7 @@
 
                 <span v-for="page in sura.pages">
                      <span v-for="aya of page" class="quran-aya bounceIn" @click="activate(aya)"
-                           :class="{active: isActivated(aya)}">
+                           :class="{active: isActivated(aya)}" :style="{ 'font-size': font_size + 'px' }">
                         {{ aya.text }}
 
                          <span class="aya-num">  ﴿ {{ aya.numberinsurat }} ﴾ </span>
@@ -75,6 +77,35 @@
 
     .loader-wrapper {
         text-align: center;
+        margin-top: 30px;
+    }
+
+    .black_mode .page-content{
+        background: #000000;
+    }
+
+    .black_mode .quran-aya{
+        color: #ffffff;
+    }
+
+    .black_mode .quran-head{
+        background: #000000;
+    }
+
+    .black_mode .quran-navbar{
+        background: #000000 !important;
+    }
+
+    .black_mode .navbar-logo{
+        background: #000000;
+    }
+
+    .black_mode{
+        background: #000000 !important;
+    }
+
+    #quran-tab{
+        padding-bottom: 0;
     }
 
 
@@ -89,6 +120,10 @@
         computed: {
             aya() {
                 return this.$store.getters.aya;
+            },
+
+            font_size(){
+                return this.$store.getters.font_size;
             }
         },
 
@@ -140,6 +175,11 @@
                 this.$store.commit("AYA", false);
             }
         },
+
+        components: {
+            "navbar": require("./partials/Navbar.vue")
+        },
+
 
 
     }

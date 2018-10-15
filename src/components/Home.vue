@@ -1,21 +1,20 @@
 <template>
 
-    <f7-page :class="'navbar-fixed'">
+    <div :class="{page: true, 'navbar-fixed': true}">
 
-        <navbar></navbar>
 
         <main-toolbar v-if="!aya"></main-toolbar>
 
         <options-toolbar v-if="aya"></options-toolbar>
 
-        <div class="tabs-swipeable-wrap">
+
             <div class="tabs">
 
                 <div id="khatima-tab" class="page-content  tab page-khatima ">
                     <khatima-tab></khatima-tab>
                 </div>
 
-                <div id="quran-tab" class="page-content tab tab-active">
+                <div id="quran-tab" class="page-content tab tab-active" :class="{black_mode: black_mode == 'black'}">
                     <quran></quran>
                 </div>
 
@@ -28,16 +27,12 @@
                 </div>
 
             </div>
-        </div>
 
-    </f7-page>
+
+    </div>
+
 
 </template>
-
-<style>
-
-
-</style>
 
 <script>
 
@@ -51,6 +46,10 @@
 
             quran: function () {
                 return this.$store.getters.tabs.quran;
+            },
+
+            black_mode(){
+                return this.$store.getters.color_theme;
             }
         },
 
