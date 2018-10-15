@@ -1,111 +1,58 @@
 <template>
 
-    <div class="page" data-page="settings">
+    <div class="page page-setting " data-page="settings">
 
-        <div class="navbar">
-            <div class="navbar-inner">
-                <div class="left">
-                    <a href="#" class="link icon-only" @click="$app.router.back()">
-                        <i class="icon f7-icons">arrow-right</i>
-                    </a>
-                </div>
-                <div class="center">
-                    <a href="#" class="link">
-                        {{ $app.trans('settings') }}
-                    </a>
-                </div>
-                <div class="right"></div>
-            </div>
-        </div>
+        <navbar></navbar>
 
         <div class="page-content">
-            <div class="content-block">
-                <div class="content-block-title">{{ $app.trans("general_settings") }}</div>
-                <div class="list-block">
-                    <ul>
-                        <li>
-                            <a href="#" class="item-link smart-select" data-open-in="picker"
-                               :data-back-text="$app.trans('back')" data-back-on-select="true">
-
-                                <select v-model="allow_notifications" @change="allow_notifications = $event.target.value">
-                                    <option value="1" :selected="allow_notifications == 1">{{ $app.trans('enabled') }}</option>
-                                    <option value="0" :selected="allow_notifications == 0">{{ $app.trans('disabled') }}</option>
-                                </select>
-
-                                <div class="item-content">
-                                    <div class="item-inner">
-                                        <div class="item-title">{{ $app.trans("notifications") }}</div>
-                                    </div>
-                                </div>
-
-                            </a>
-                        </li>
-
-                        <li>
-                            <a href="#" class="item-link smart-select" data-open-in="picker"
-                               :data-back-text="$app.trans('back')" data-back-on-select="true">
-
-                                <select v-model="video_autoplay" @change="video_autoplay = $event.target.value">
-                                    <option value="1" :selected="video_autoplay == 1">{{ $app.trans('enabled') }}</option>
-                                    <option value="0" :selected="video_autoplay == 0">{{ $app.trans('disabled') }}</option>
-                                </select>
-
-                                <div class="item-content">
-                                    <div class="item-inner">
-                                        <div class="item-title">{{ $app.trans("video_autoplay") }}</div>
-                                    </div>
-                                </div>
-
-                            </a>
-                        </li>
-
-                        <li v-if="$app.auth.check()">
-                            <a href="#" class="item-link"  @click="$app.auth.logout()">
-                                <div class="item-content">
-                                    <div class="item-inner">
-                                        {{ $app.trans("logout") }}
-                                    </div>
-                                </div>
-                            </a>
-                        </li>
-                    </ul>
-
+            <div class="row page-setting-nav">
+                <div class="col-90">
+                    <p>الأعدادت</p>
                 </div>
-
-                <div class="content-block-title">{{ $app.trans("support") }}</div>
-
-                <div class="list-block">
-                    <ul>
-                        <li>
-                            <a href="/about" class="item-link">
-                                <div class="item-content">
-                                    <div class="item-inner">
-                                        {{ $app.trans("about") }}
-                                    </div>
-                                </div>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="/contact" class="item-link">
-                                <div class="item-content">
-                                    <div class="item-inner">
-                                        {{ $app.trans("contact") }}
-                                    </div>
-                                </div>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="/help" class="item-link">
-                                <div class="item-content">
-                                    <div class="item-inner">
-                                        {{ $app.trans("help") }}
-                                    </div>
-                                </div>
-                            </a>
-                        </li>
-                    </ul>
+                <div class="col-10">
+                    <a class="back"> <i class="f7-icons size-22 back-icon" style="color: #fff">chevron_left</i> </a>
                 </div>
+            </div>
 
+
+            <div class="page-container">
+                <p>الشكل </p>
+                <div class="row ">
+                   <div class="col-50" >
+                       <a class="button-themes button-themes-back" @click="color_theme='black'">
+                           وَأَقِيمُوا الْوَزْنَ بِالْقِسْطِ وَلَا تُخْسِرُوا الْمِيزَانَ
+                       </a>
+                   </div>
+                    <div class="col-50">
+                        <a class="button-themes button-themes-white" @click="color_theme='white'">
+                            وَأَقِيمُوا الْوَزْنَ بِالْقِسْطِ وَلَا تُخْسِرُوا الْمِيزَانَ
+                        </a>
+                    </div>
+                </div>
+                <br>
+                <hr>
+
+                <p>حجم الخط</p>
+                <div class="row">
+                    <div class="col-100">
+                        <div class="range-slider">
+                            <input type="range" min="0" max="100" step="5" value="50">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col font-sm">حجم الخط</div>
+                    <div class="col font-md">حجم الخط</div>
+                    <div class="col font-lg">حجم الخط</div>
+                </div>
+                <br>
+                <hr>
+                <p>اللغة</p>
+                <p class="row button-lang">
+                    <button class="col " :class="{'active':locale=='ar'}" @click="locale='ar'">العربية </button>
+                    <button class="col"  :class="{'active':locale=='en'}" @click="locale='en'">English</button>
+                </p>
+                <br>
             </div>
         </div>
     </div>
@@ -129,29 +76,24 @@
                 }
             },
 
-            allow_notifications: {
+            color_theme: {
 
                 get: function () {
-                    return this.$store.getters.allow_notifications;
+                    return this.$store.getters.color_theme;
                 },
 
                 set: function (status) {
-                    this.$store.commit("allow_notifications", status);
-
-                    if(status == "1"){
-                        window.FirebasePlugin.grantPermission();
-                    }
+                    this.$store.commit("color_theme", status);
                 }
             },
-
-            video_autoplay: {
+            font_range: {
 
                 get: function () {
-                    return this.$store.getters.video_autoplay;
+                    return this.$store.getters.font_range;
                 },
 
                 set: function (status) {
-                    this.$store.commit("video_autoplay", parseInt(status));
+                    this.$store.commit("font_range", status);
                 }
             },
 
@@ -159,6 +101,16 @@
 
         components: {
             navbar: require("./partials/Navbar.vue")
+        },
+        mounted(){
+            var range = this.$f7.range.create({
+                el: '.range-slider',
+                on: {
+                    change:  (val)=> {
+                        this.font_range=val.value;
+                    }
+                }
+            })
         }
 
     }

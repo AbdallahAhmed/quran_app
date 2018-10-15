@@ -9,6 +9,20 @@ export default [
     }, {
         path: '/search',
         component: require("./components/Search.vue")
+    }, {
+        path: '/preview/:page_id/:aya_id',
+        component: require("./components/Preview.vue")
+    },
+    {
+        path: '/forgetpassword',
+        component: require("./components/ForgetPassword.vue")
+    },
+    {
+        path: '/settings',
+        component: require("./components/Settings.vue")
+    },  {
+        path: '/fav',
+        component: require("./components/Fav.vue")
     },
     // {
     //     path: '/category/:id',

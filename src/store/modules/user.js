@@ -81,6 +81,9 @@ export default {
 
         },
 
+        forgetPassword(store,email){
+            return Vue.http.post("auth/forget-password", email);
+        },
         edit_profile(store, user) {
 
             return Vue.http.post("user/edit", user).then(function (response) {

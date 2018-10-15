@@ -2,15 +2,16 @@
 
     <div :class="'page-section'">
 
-        <div  id="scroll" class="section-wrapper">
+        <div id="scroll" class="section-wrapper">
             <div class="row no-gap">
                 <div class="col-100 search-wrapper">
                     <!-- Searchbar with auto init -->
                     <form class="searchbar" onsubmit="return false">
                         <div class="searchbar-inner">
                             <div class="searchbar-input-wrap">
-                                <input type="search" id="input-search" class="search-input rollIn" placeholder=" بحث عن الايات"
-                                       v-model="searchQuery" maxlength="50" @keyup="search" @keydown="clearResults">
+                                <input type="search" id="input-search" class="search-input rollIn"
+                                       placeholder=" بحث عن الايات"
+                                       v-model="searchQuery" maxlength="50" @keyup="search" @keydown="clear">
                                 <i class="searchbar-icon" @click="search"></i>
                                 <!--<span class="input-clear-button"></span>-->
                             </div>
@@ -31,7 +32,7 @@
                     <p>لا يوجد نتائج بحث</p>
                 </div>
 
-                <div  class="searchbar-found" v-if="searchQuery.length!=0">
+                <div class="searchbar-found" v-if="searchQuery.length!=0">
                     <ul>
                         <li v-for="ayat of results">
                             <div class="row">
@@ -58,20 +59,21 @@
         created() {
             $vm = this;
         },
-        mounted(){
-           this.$$('#scroll').scroll(this.handleScroll);
+        mounted() {
+            this.$$('#scroll').scroll(this.handleScroll);
         },
         data() {
             return {
                 searchQuery: '',
-                results: new Array(),
+                results: [],
                 loading: false,
-                offset: 0
+                offset: 0,
+                max: false
             };
         },
         methods: {
             search: debounce(function () {
-                if ($vm.searchQuery.trim().length == 0) {
+                if ($vm.searchQuery.trim().length == 0 || $vm.max) {
                     return;
                 }
                 $vm.$f7.preloader.show();
@@ -82,10 +84,12 @@
                         offset: $vm.offset
                     }
                 }).then((res) => {
-                    if(res.body.data.length >= 14)
+                    if (res.body.data.length >= 14)
                         $vm.offset += res.body.data.length;
+                    else
+                        $vm.max = true;
 
-                    for(var i = 0; i < res.body.data.length; i++)
+                    for (var i = 0; i < res.body.data.length; i++)
                         $vm.results.push(res.body.data[i]);
 
                     $vm.loading = false;
@@ -94,15 +98,20 @@
 
                 });
             }, 750),
-            handleScroll(e){
-                if((e.target.scrollHeight - e.target.scrollTop === e.target.clientHeight)){
-                    $vm.search($vm.searchQuery);
+            handleScroll(e) {
+                if (!$vm.max && ((e.target.scrollHeight - e.target.scrollTop) === e.target.clientHeight)) {
+                    $vm.search();
                 }
             },
-            clearResults(e){
-                $vm.searchQuery = '';
-                $vm.results = new Array();
-                $vm.offset = 0;
+            clear(e) {
+                if (e.keyCode == 13) {
+                    $vm.search();
+                } else {
+                    $vm.searchQuery = '';
+                    $vm.results = [];
+                    $vm.offset = 0;
+                    $vm.max = false;
+                }
             }
         },
         components: {

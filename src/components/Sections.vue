@@ -1,9 +1,10 @@
 <template>
 
-    <f7-page :class="'page-sections no-toolbar'">
+    <f7-page :class="'page-sections'">
 
         <navbar></navbar>
 
+        <main-toolbar></main-toolbar>
         <div class="loader-wrapper" v-if="!juz_sections">
             <div class="preloader color-green"></div>
         </div>

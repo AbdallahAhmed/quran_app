@@ -1,13 +1,15 @@
 <template>
 
+
     <f7-toolbar bottom-md no-shadow>
 
         <f7-link tab-link="#khatima-tab">
             <img src="../../assets/img/trend.png" alt="">
         </f7-link>
-        <f7-link>
+
+        <a class="link" @click="soon">
             <img src="../../assets/img/cup.png" alt="">
-        </f7-link>
+        </a>
 
         <f7-link tab-link="#quran-tab" tab-link-active>
             <img class="main-image" src="../../assets/img/quran.png" alt="">
@@ -21,6 +23,8 @@
             <img src="../../assets/img/user.png" class="user-avater" alt=""/>
         </f7-link>
     </f7-toolbar>
+
+
 </template>
 
 
@@ -37,3 +41,18 @@
     }
 
 </style>
+
+
+<script>
+
+    export default {
+
+        methods: {
+            soon() {
+
+                this.$f7.dialog.alert("Comming soon", 'Quran');
+            }
+        }
+    }
+
+</script>

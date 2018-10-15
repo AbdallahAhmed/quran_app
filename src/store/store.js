@@ -14,13 +14,27 @@ const state = {
     notifications: [],
     video_autoplay: localStorage.getItem("video_autoplay") || 1,
     guest_alert: false,
-    overlay: false
+    overlay: false,
+    tabs: {
+        quran: 'quran'
+    },
+    color_theme:localStorage.getItem("color_theme") || 'white',
+    font_range:localStorage.getItem("font_range") || '50',
 };
 
 const getters = {
 
     locale(state) {
         return state.locale;
+    },
+    color_theme(state) {
+        return state.color_theme;
+    },
+    font_range(state) {
+        return state.font_range;
+    },
+    tabs(state) {
+        return state.tabs;
     },
 
     direction(state) {
@@ -57,6 +71,16 @@ const mutations = {
     locale(state, locale) {
         state.locale = locale;
         localStorage.setItem("locale", locale);
+    },
+
+    color_theme(state, color_theme) {
+        state.color_theme = color_theme;
+        localStorage.setItem("color_theme", color_theme);
+    },
+
+    font_range(state, font_range) {
+        state.font_range = font_range;
+        localStorage.setItem("font_range", font_range);
     },
 
     guest_alert(state, value) {
@@ -98,7 +122,6 @@ const actions = {
             store.commit("unread", response.body.count);
         });
     },
-
     read(state, notification_id) {
         return Vue.http.get("notifications/read", {params: {notification_id: notification_id}}).then(function (response) {
 
@@ -119,7 +142,8 @@ const actions = {
         return Vue.http.get("notifications/list_notifications").then(function (response) {
             store.commit("notifications", response.body.notifications);
         });
-    }
+    },
+
 };
 
 export const store = new Vuex.Store({

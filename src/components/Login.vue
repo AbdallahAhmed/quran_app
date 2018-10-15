@@ -1,6 +1,6 @@
 <template>
 
-    <div :class="'navbar-fixed page-login'">
+    <f7page :class="'navbar-fixed page-login'">
 
         <div class="login-page">
             <div class="header-islamic row">
@@ -32,14 +32,14 @@
                     </button>
                 </form>
 
-                <a class="forget-password">
+                <a class="forget-password" href="/forgetpassword">
                     هل نسيت كلمة المرور؟
                 </a>
 
             </div>
         </div>
 
-    </div>
+    </f7page>
 
 </template>
 

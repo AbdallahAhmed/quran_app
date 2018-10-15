@@ -49,8 +49,14 @@
     }
 }
 
-* {
-    font-family: me_quran;
+*:not(i) {
+    font-family: kfc !important;
+    font-size: 17px;
+}
+
+.quran-aya, .aya-num {
+    font-family: me_quran !important;
+    font-size: 14px;
 }
 
 .page {
@@ -459,7 +465,7 @@
     height: 216px;
     background-position: top;
     background-repeat: no-repeat;
-    /* box-shadow: 0px -3px 12px 0px; */
+    box-shadow: 0px 6px 20px -8px;
     width: 100%;
     position: relative;
     top: -7px;
@@ -676,10 +682,11 @@ a.forget-password {
     padding-top: 4vh;
 }
 
-.page-profile .form-container .row > div > p {
+.page-profile .form-container .row > div  p , .page-profile .form-container .row > div > a {
     font-family: initial;
     font-weight: initial;
     margin: 0;
+    color: black;
 }
 
 .page-profile .form-container .row {
@@ -690,6 +697,10 @@ a.forget-password {
 
     border: 3px solid #207249;
     border-radius: 3cm;
+}
+
+.page-profile .popup-reset .header-islamic {
+    box-shadow: 0px 6px 20px -8px;
 }
 
 .page-profile .form-container {
@@ -715,6 +726,192 @@ a.forget-password {
     margin-top: 20px;
 }
 
-#khatima-tab{
+#khatima-tab {
     background-color: #f5f5f5;
+}
+
+.page-title {
+    margin: 1em 0;
+    font-family: initial;
+    color: #36734a;
+    font-size: 20px;
+}
+
+.page-forget .quran-navbar {
+    height: 0;
+}
+
+.preview-back {
+    padding: 0 20px;
+    color: white !important;
+}
+
+.page-setting-nav {
+    background-color: #36734a;
+    font-family: initial;
+    padding-right: 15px;
+    color: white;
+}
+
+.page-setting-nav p {
+    margin: 3px;
+    font-family: initial;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    font-size: 21px;
+}
+
+.page-setting-nav a {
+    padding-top: 13px;
+    display: block;
+}
+
+.f7-icons.back-icon {
+    font-size: 15px;
+    color: #ffffff;
+}
+
+.page-container {
+    width: calc(100% - 30px);
+    margin: auto;
+    height: 100vh;
+}
+.page-setting .page-content,.page-fav .page-content{
+    background-color: whitesmoke;
+}
+
+.button-themes {
+    padding: 30px;
+    text-align: center;
+    display: block;
+}
+
+.page-setting .page-container p {
+    font-family: initial;
+    font-size: 20px;
+}
+
+.button-themes-back {
+    background-color: #000000;
+    color: white !important;
+    font-size: 12px;
+
+}
+
+.button-themes-white {
+    background-color: #ffffff;
+    color: #000000 !important;
+    font-size: 12px;
+}
+
+.button-lang button {
+    background-color: white;
+    color: black;
+    padding: 10px;
+    text-align: center;
+    border: 0;
+    font-family: initial;
+    display: block;
+    font-size: 18px;
+
+}
+
+.button-lang button.active {
+    background-color: #36734a;
+    color: white;
+}
+
+.page-setting .range-bar {
+    background-color: #000000;
+    opacity: .4;
+}
+
+.page-setting .range-bar-active {
+    background-color: #000000;
+}
+
+.page-setting .range-knob-wrap {
+    height: 7px;
+    width: 7px;
+    margin-top: 10px;
+    margin-left: 10px;
+}
+
+.page-setting .range-knob {
+    height: 10px;
+    width: 10px;
+    margin-top: -14px;
+    margin-left: -14px;
+    background-color: black;
+}
+
+.page-setting .page-content {
+    direction: rtl;
+}
+
+.font-sm {
+    font-size: 15px;
+    font-family: initial;
+}
+
+.font-md {
+    font-size: 18px;
+    font-family: initial;
+    text-align: center;
+
+}
+
+.font-lg {
+    font-size: 20px;
+    font-family: initial;
+    text-align: left;
+}
+
+.page-setting hr {
+     border: .5px inset white;
+}
+
+.fav-aya-item{
+    background-color: #ffffff;
+}
+
+.fav-aya-item .content p{
+    padding: 15px;
+    text-align: center;
+}
+
+.fav-aya-item .title{
+    background-color: #36734a;
+    color: #ffffff;
+    padding: 10px;
+    text-align: center;
+}
+.fav-aya-item a.surah{
+    background-color: #36734a;
+    background-image: url(../img/sura_header@2x.png);
+    color: #ffffff;
+    background-size: cover;
+    padding: 5px;
+    display: block;
+    font-size: 18px;
+}
+.fav-aya-item .title .surah{
+    width: 170px;
+    margin: auto;
+}
+
+.fav-aya-item:first-child{
+    margin-top: 15px;
+}
+
+.delete-aya i {
+    color: #F6C625;
+    font-weight: bold;
+}
+.delete-aya{
+    float: right;
+}
+
+.fav-aya-list{
+    margin-bottom: 70px;
 }
