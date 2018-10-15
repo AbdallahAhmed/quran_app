@@ -21,8 +21,10 @@
 
                 <div class="row">
                     <div class="col-50">
-                        <img src="./../assets/img/fav.png" alt="Fav">
-                        <p>المفضلة</p>
+                        <a href="/fav">
+                            <img src="./../assets/img/fav.png" alt="Fav">
+                            <p>المفضلة</p>
+                        </a>
                     </div>
                     <div class="col-50">
                         <img src="./../assets/img/alarm.png" alt="Fav">
@@ -79,9 +81,12 @@
             }
         },
 
+
         components: {
             "navbar": require("./partials/Navbar.vue")
         },
+
+
     }
 
 </script>

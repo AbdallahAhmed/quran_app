@@ -146,6 +146,7 @@
 
         events: {
             close: function () {
+
                 this.active = 0;
                 this.$store.commit("AYA", false);
             }

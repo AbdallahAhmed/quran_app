@@ -20,6 +20,9 @@ export default [
     {
         path: '/settings',
         component: require("./components/Settings.vue")
+    },  {
+        path: '/fav',
+        component: require("./components/Fav.vue")
     },
     // {
     //     path: '/category/:id',

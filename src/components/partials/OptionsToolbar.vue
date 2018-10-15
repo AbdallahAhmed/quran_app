@@ -76,7 +76,7 @@
 
             save() {
 
-                this.$store.dispatch("save_aya", this.aya.id).then((response) => {
+                this.$store.dispatch("save_aya", this.aya).then((response) => {
                     this.sura = response.data.data;
                 });
 
