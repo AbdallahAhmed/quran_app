@@ -6,11 +6,11 @@
 
         <div class="page-content">
             <div class="row page-setting-nav">
-                <div class="col-90">
+                <div class="col-80">
                     <p>الأعدادت</p>
                 </div>
-                <div class="col-10">
-                    <a class="back link"> <i class="f7-icons size-22 back-icon" style="color: #fff">chevron_left</i> </a>
+                <div class="col-20 center">
+                    <a class="back link"> <i class="f7-icons size-22 back-icon color-white">chevron_left</i> </a>
                 </div>
             </div>
 
@@ -33,6 +33,7 @@
                 <hr>
 
                 <p>حجم الخط</p>
+
                 <div class="row">
                     <div class="col-100">
                         <div class="range-slider">

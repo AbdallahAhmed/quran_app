@@ -63,7 +63,7 @@
             "login": require("./Login.vue")
         },
         mounted() {
-            this.$f7.dialog.alert("Comming soon", 'Quran');
+           // this.$f7.dialog.alert("Comming soon", 'Quran');
         }
     }
 

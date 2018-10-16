@@ -100,6 +100,11 @@
         background: #000000;
     }
 
+
+    .black_mode .quran-aya.active {
+        background: #3a3a3a;
+    }
+
     .black_mode{
         background: #000000 !important;
     }
