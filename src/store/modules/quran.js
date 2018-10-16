@@ -85,7 +85,7 @@ export default {
                 });
         },
         get_juz_section({commit}) {
-            return Vue.http.get("/juz_surat.json").then(resposne => {
+            return Vue.http.get("juz/sections").then(resposne => {
                 commit('JUZ_SECTION', resposne.body);
             }, (response) => {
                 console.log('is not loaded')
