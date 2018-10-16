@@ -112,7 +112,7 @@
                         var userData = self.user;
                         userData.lang = "ar";
                         self.$store.dispatch('register', userData).then((response) => {
-                            self.$f7router.navigate('/quran/1');
+                            self.$f7router.navigate('/home/quran/1');
                             self.$f7.preloader.hide();
                         }, (res) => {
                             self.serverErrors = res.body.errors;

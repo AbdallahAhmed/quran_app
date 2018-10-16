@@ -143,6 +143,8 @@
 
             let sura_id = this.$f7route.params.sura_id || 1;
 
+            // alert(sura_id);
+
             this.$store.dispatch("get_sura", {surah_id: sura_id}).then((response) => {
                 this.sura = response.data.data;
             });

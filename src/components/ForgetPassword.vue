@@ -158,7 +158,7 @@
                             self.popup.close();
                             self.$store.commit('user',response.body.data.user);
                             self.$store.commit('token',response.body.data.token);
-                            self.$f7router.navigate('/home/quran');
+                            self.$f7router.navigate('home/quran/1');
 
                         }, (res) => {
                             self.serverErrors = ['الكود غير صحيح'];

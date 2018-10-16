@@ -94,7 +94,7 @@
                     if (result) {
                         self.$f7.preloader.show();
                         self.$store.dispatch('login', self.user).then((response) => {
-                            self.$f7router.navigate('/quran/1');
+                            self.$f7router.navigate('home/quran/1');
 
                             self.$f7.preloader.hide();
                         }, (res) => {
