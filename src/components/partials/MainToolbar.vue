@@ -3,23 +3,23 @@
 
     <f7-toolbar bottom-md no-shadow>
 
-        <f7-link tab-link="#khatima-tab">
+        <f7-link @click="home_tab = 'khatima'" :class="{'tab-link-active': $store.getters.home_tab == 'khatima' }">
             <img src="../../assets/img/trend.png" alt="">
         </f7-link>
 
-        <a class="link" @click="soon">
+        <a class="link" @click="soon" :class="{'tab-link-active': $store.getters.home_tab == 'competition' }">
             <img src="../../assets/img/cup.png" alt="">
         </a>
 
-        <f7-link tab-link="#quran-tab" tab-link-active>
+        <f7-link @click="home_tab = 'quran'" :class="{'tab-link-active': $store.getters.home_tab == 'quran' }">
             <img class="main-image" src="../../assets/img/quran.png" alt="">
         </f7-link>
 
-        <f7-link tab-link="#search-tab">
+        <f7-link @click="home_tab = 'search'" :class="{'tab-link-active': $store.getters.home_tab == 'search' }">
             <img src="../../assets/img/search.png" alt="">
         </f7-link>
 
-        <f7-link tab-link="#login-tab">
+        <f7-link @click="home_tab = 'login'" :class="{'tab-link-active': $store.getters.home_tab == 'login' }">
             <img src="../../assets/img/user.png" class="user-avater" alt=""/>
         </f7-link>
     </f7-toolbar>
@@ -47,9 +47,20 @@
 
     export default {
 
+        computed: {
+
+            home_tab: {
+                get: function () {
+                    this.$store.getters.home_tab;
+                },
+                set: function (value) {
+                    this.$store.commit("home_tab", value);
+                }
+            }
+        },
+
         methods: {
             soon() {
-
                 this.$f7.dialog.alert("Comming soon", 'Quran');
             }
         }

@@ -10,7 +10,7 @@
                     <p>الأعدادت</p>
                 </div>
                 <div class="col-20 center">
-                    <a class="back link"> <i class="f7-icons size-22 back-icon color-white">chevron_left</i> </a>
+                    <a class="link" @click="back"> <i class="f7-icons size-22 back-icon color-white">chevron_left</i> </a>
                 </div>
             </div>
 
@@ -116,6 +116,13 @@
                     }
                 }
             })
+        },
+
+        methods: {
+            back(){
+                this.$store.commit("home_tab", "login");
+                this.$f7router.back();
+            }
         }
 
     }

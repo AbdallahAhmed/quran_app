@@ -18,7 +18,6 @@
                     {{error}}
                 </span>
 
-
                 <div class="row">
                     <div class="col-50">
                         <a href="/fav" class="link btn-setting">
@@ -94,7 +93,6 @@
                 serverErrors: []
             }
         },
-
 
         components: {
             "navbar": require("./partials/Navbar.vue")
