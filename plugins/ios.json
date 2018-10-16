@@ -10,25 +10,25 @@
     "cordova-plugin-device": {
       "PACKAGE_NAME": "com.dotdev.quran"
     },
+    "cordova-plugin-firebase": {
+      "PACKAGE_NAME": "com.dotdev.quran"
+    },
     "cordova-plugin-nativeclicksound": {
       "PACKAGE_NAME": "com.dotdev.quran"
     },
     "cordova-plugin-network-information": {
       "PACKAGE_NAME": "com.dotdev.quran"
     },
+    "cordova-plugin-splashscreen": {
+      "PACKAGE_NAME": "com.dotdev.quran"
+    },
+    "cordova-plugin-statusbar": {
+      "PACKAGE_NAME": "com.dotdev.quran"
+    },
     "cordova-plugin-whitelist": {
       "PACKAGE_NAME": "com.dotdev.quran"
     },
     "cordova-plugin-x-socialsharing": {
-      "PACKAGE_NAME": "com.dotdev.quran"
-    },
-    "cordova-plugin-splashscreen": {
-      "PACKAGE_NAME": "com.dotdev.quran"
-    },
-    "cordova-plugin-firebase": {
-      "PACKAGE_NAME": "com.dotdev.quran"
-    },
-    "cordova-plugin-statusbar": {
       "PACKAGE_NAME": "com.dotdev.quran"
     }
   },

@@ -40,7 +40,7 @@ const getters = {
         let range = state.font_range;
 
         if(range < 50){
-            let size = 19 + (range/100) * 20;
+            let size = 19 + (range/100) * 10;
             return  size;
         }else{
             let size = 19 + (range/100) * 10;
