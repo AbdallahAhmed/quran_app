@@ -70,9 +70,10 @@
     <preference name="StatusBarOverlaysWebView" value="true" />
     <preference name="StatusBarStyle" value="lightcontent" />
     <preference name="SplashScreenDelay" value="6000" />
+    <preference name="SplashScreenBackgroundColor" value="#ffffff" />
     <preference name="FadeSplashScreenDuration" value="1000" />
     <preference name="ShowSplashScreenSpinner" value="false" />
-    <preference name="StatusBarBackgroundColor" value="#2e2e2e" />
+    <preference name="StatusBarBackgroundColor" value="#ffffff" />
     <preference name="AndroidLaunchMode" value="singleTop" />
     <preference name="KeychainAccessibility" value="WhenUnlocked" />
     <preference name="UIWebViewDecelerationSpeed" value="fast" />

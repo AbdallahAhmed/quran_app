@@ -64,7 +64,7 @@
 }
 
 .quran-navbar {
-    /*background: url("../img/islam-pattern.png");*/
+    background: #ffffff;
     height: 50px;
 }
 
@@ -479,13 +479,7 @@
 
 }
 
-.page-login .navbar-logo {
-    display: none;
-}
 
-.page-login .quran-navbar {
-    height: 30px;
-}
 
 .page-login .header-islamic-content p {
     font-size: 22px;
@@ -664,7 +658,6 @@ a.forget-password {
 
 .page-profile .header-islamic {
     top: -49px;
-    box-shadow: 0px -3px 12px 0px;
     background-color: #fff;
 
 }
@@ -795,6 +788,8 @@ a.forget-password {
     background-color: #000000;
     color: white !important;
     font-size: 12px;
+    border: 2px solid black;
+
 
 }
 
@@ -802,6 +797,7 @@ a.forget-password {
     background-color: #ffffff;
     color: #000000 !important;
     font-size: 12px;
+    border: 2px solid #ffffff;
 }
 
 .button-lang button {
@@ -813,6 +809,7 @@ a.forget-password {
     font-family: initial;
     display: block;
     font-size: 18px;
+
 
 }
 
@@ -896,7 +893,7 @@ a.forget-password {
     font-size: 18px;
 }
 .fav-aya-item .title .surah{
-    width: 170px;
+    width: 180px;
     margin: auto;
 }
 
@@ -914,4 +911,8 @@ a.forget-password {
 
 .fav-aya-list{
     margin-bottom: 70px;
+}
+
+.button-themes.active{
+    border: 2px solid #36734a;
 }

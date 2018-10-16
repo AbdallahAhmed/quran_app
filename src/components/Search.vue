@@ -1,7 +1,7 @@
 <template>
 
     <div :class="'page-section'">
-
+        <navbar></navbar>
         <div class="section-wrapper infinite-scroll-content infinite-scroll-bottom" @infinite="search">
             <div class="row no-gap">
                 <div class="col-100 search-wrapper ">
