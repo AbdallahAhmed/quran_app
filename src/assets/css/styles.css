@@ -71,6 +71,7 @@
 .navbar-logo {
     background: #ffffff;
     width: 100px;
+    height: 50px;
     display: block;
     margin: 0 auto;
     text-align: center;
@@ -457,20 +458,20 @@
     font-family: 'Amiri Quran';
 }
 
-.header-islamic {
 
+
+.header-islamic {
     background-image: url(../img/all-in-one.png);
     background-size: 100%;
-    min-height: 284px;
-    height: 216px;
-    background-position: top;
+    min-height: 226px;
+    height: 165px;
+    background-position: 0 -36px;
     background-repeat: no-repeat;
     box-shadow: 0px 6px 20px -8px;
     width: 100%;
     position: relative;
     top: -7px;
 }
-
 .header-islamic-content {
     width: 200px;
     margin: auto;
@@ -879,17 +880,18 @@ a.forget-password {
 .fav-aya-item .title{
     background-color: #36734a;
     color: #ffffff;
-    padding: 10px;
+    padding: 17px;
     text-align: center;
 }
 .fav-aya-item a.surah{
     background-color: #36734a;
     background-image: url(../img/sura_header@2x.png);
     color: #ffffff;
-    background-size: cover;
-    padding: 5px;
+    background-size: contain;
+    padding: 4px;
     display: block;
     font-size: 18px;
+    background-repeat: no-repeat;
 }
 .fav-aya-item .title .surah{
     width: 180px;

@@ -1,8 +1,9 @@
 <template>
 
-    <f7-page :class="'navbar-fixed page-forget'">
+    <f7-page :class="'navbar-fixed '">
 
         <navbar></navbar>
+
         <div class="login-page">
             <div class="header-islamic row">
                 <div class="header-islamic-content">
@@ -23,6 +24,16 @@
                     <button type="submit">
                         أرسال
                     </button>
+
+                    <div class="row">
+
+                        <div class="col-20">
+                            <a class="forget-password back">
+                                رجوع
+                            </a>
+                        </div>
+
+                    </div>
                 </form>
 
             </div>

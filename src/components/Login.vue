@@ -1,50 +1,61 @@
 <template>
 
-        <div class="page" :class="'page-login'">
+    <div class="page" :class="'page-login'">
 
-            <navbar></navbar>
+        <navbar></navbar>
 
-                <div class="login-page">
-                    <div class="header-islamic row">
-                        <div class="header-islamic-content">
-                            <img src="../assets/img/user-avater.png" class="avater" alt="user avater">
-                            <p>تسجيل الدخول </p>
-                        </div>
-                    </div>
+        <div class="login-page">
+            <div class="header-islamic row">
+                <div class="header-islamic-content">
+                    <img src="../assets/img/user-avater.png" class="avater" alt="user avater">
+                    <p>تسجيل الدخول </p>
+                </div>
+            </div>
 
-                    <div class="form-container">
+            <div class="form-container">
 
                 <span class="help" v-if="serverErrors.length!=0" v-for="error in serverErrors" :key="error">
                     {{error}}
                 </span>
 
-                        <form @submit.prevent="login">
-                            <input type="text" name="email" placeholder=" البريد الكترونى " v-model="user.email"
-                                   v-validate="'required|email'" autocomplete="false">
+                <form @submit.prevent="login">
+                    <input type="text" name="email" placeholder=" البريد الكترونى " v-model="user.email"
+                           v-validate="'required|email'" autocomplete="false">
 
-                            <span v-show="errors.has('email')&&submitted"
-                                  class="help is-danger">{{ errors.first('email') }}</span>
-                            <input type="password" name="password" placeholder="كلمة المرور" v-model="user.password"
-                                   v-validate="'required'" autocomplete="false">
+                    <span v-show="errors.has('email')&&submitted"
+                          class="help is-danger">{{ errors.first('email') }}</span>
+                    <input type="password" name="password" placeholder="كلمة المرور" v-model="user.password"
+                           v-validate="'required'" autocomplete="false">
 
-                            <span v-show="errors.has('password')&&submitted" class="help is-danger">{{ errors.first('password') }}</span>
+                    <span v-show="errors.has('password')&&submitted" class="help is-danger">{{ errors.first('password') }}</span>
 
-                            <button type="submit">
-                                تسجيل
-                            </button>
-                        </form>
+                    <button type="submit">
+                        تسجيل
+                    </button>
+                </form>
 
-                        <a class="forget-password" href="/forgetpassword">
-                            هل نسيت كلمة المرور؟
+
+                <div class="row">
+
+                    <div class="col-50">
+                        <a class="forget-password" href="/register">
+                            مستخدم جديد
                         </a>
+                    </div>
 
+                    <div class="col-50">
+                        <a class="forget-password" href="/forgetpassword">
+                            نسيت كلمة المرور؟
+                        </a>
                     </div>
                 </div>
 
 
             </div>
+        </div>
 
 
+    </div>
 
 
 </template>
@@ -59,8 +70,8 @@
     import {mapState} from 'vuex';
 
     export default {
-        beforeCreate(){
-          // if(this.$app.auth.check()){
+        beforeCreate() {
+            // if(this.$app.auth.check()){
             //   this.$f7router.back();
             // }
         },

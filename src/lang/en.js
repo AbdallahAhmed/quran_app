@@ -2,9 +2,9 @@ export default {
 
     name: "Quran",
 
-    close: "close",
+    close: "إغلاق",
 
-    choose_app : "Choose application",
+    choose_app : "إختر تطبيق",
 
     messages: {
         _default: function (e) {
