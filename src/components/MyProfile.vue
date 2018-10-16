@@ -18,31 +18,44 @@
                     {{error}}
                 </span>
 
-
                 <div class="row">
                     <div class="col-50">
-                        <a href="/fav">
-                            <img src="./../assets/img/fav.png" alt="Fav">
+                        <a href="/fav" class="link btn-setting">
+
                             <p>المفضلة</p>
+
+                            <img src="./../assets/img/fav.png" alt="Fav">
+
                         </a>
                     </div>
                     <div class="col-50">
-                        <img src="./../assets/img/alarm.png" alt="Fav">
-                        <p>التبيهات</p>
+                        <a href="#" class="link btn-setting">
+
+                            <p>التبيهات</p>
+
+                            <img src="./../assets/img/alarm.png" alt="Fav">
+
+                        </a>
                     </div>
                 </div>
 
                 <div class="row">
-                    <div class="col-50">
-
-                        <a href="/settings">
-                            <img src="./../assets/img/settings.png" alt="Fav">
+                    <div class="col-50 ">
+                        <a href="/settings" class="link btn-setting">
                             <p>الاعدادات</p>
+
+                            <img src="./../assets/img/settings.png" alt="Fav">
+
+
                         </a>
                     </div>
                     <div class="col-50">
-                        <img src="./../assets/img/_share.png" alt="Fav">
-                        <p> انشر القرأن</p>
+                        <a href="#" class="link btn-setting">
+                            <p> انشر القرأن</p>
+
+                            <img src="./../assets/img/_share.png" alt="Fav">
+
+                        </a>
                     </div>
                 </div>
 
@@ -69,9 +82,9 @@
     export default {
 
         beforeCreate() {
-            if (this.$app.auth.check()) {
-                this.$f7router.back();
-            }
+            // if (this.$app.auth.check()) {
+            //     this.$f7router.back();
+            // }
         },
 
         data: function () {
@@ -80,7 +93,6 @@
                 serverErrors: []
             }
         },
-
 
         components: {
             "navbar": require("./partials/Navbar.vue")

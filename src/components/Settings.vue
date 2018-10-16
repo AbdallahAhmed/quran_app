@@ -6,11 +6,11 @@
 
         <div class="page-content">
             <div class="row page-setting-nav">
-                <div class="col-90">
+                <div class="col-80">
                     <p>الأعدادت</p>
                 </div>
-                <div class="col-10">
-                    <a class="back link"> <i class="f7-icons size-22 back-icon" style="color: #fff">chevron_left</i> </a>
+                <div class="col-20 center">
+                    <a class="link" @click="back"> <i class="f7-icons size-22 back-icon color-white">chevron_left</i> </a>
                 </div>
             </div>
 
@@ -19,12 +19,12 @@
                 <p>الشكل </p>
                 <div class="row ">
                    <div class="col-50" >
-                       <a class="button-themes button-themes-back" :class="{'active':color_theme=='black'}" @click="color_theme='black'">
+                       <a :style="{ 'font-size': font_size + 'px' }" class="button-themes button-themes-back" :class="{'active':color_theme=='black'}" @click="color_theme='black'">
                            وَأَقِيمُوا الْوَزْنَ بِالْقِسْطِ وَلَا تُخْسِرُوا الْمِيزَانَ
                        </a>
                    </div>
                     <div class="col-50">
-                        <a class="button-themes button-themes-white" :class="{'active':color_theme=='white'}" @click="color_theme='white'">
+                        <a :style="{ 'font-size': font_size + 'px' }" class="button-themes button-themes-white" :class="{'active':color_theme=='white'}" @click="color_theme='white'">
                             وَأَقِيمُوا الْوَزْنَ بِالْقِسْطِ وَلَا تُخْسِرُوا الْمِيزَانَ
                         </a>
                     </div>
@@ -33,15 +33,15 @@
                 <hr>
 
                 <p>حجم الخط</p>
+
                 <div class="row">
                     <div class="col-100">
                         <div class="range-slider">
-                            <input type="range" min="0" max="100" step="5" value="50">
+                            <input type="range" min="0" max="100" step="1" :value="font_range">
                         </div>
                     </div>
                 </div>
                 <div class="row">
-
                     <div class="col font-lg">حجم الخط</div>
                     <div class="col font-md">حجم الخط</div>
                     <div class="col font-sm">حجم الخط</div>
@@ -65,6 +65,10 @@
     export default {
 
         computed: {
+
+            font_size(){
+                return this.$store.getters.font_size;
+            },
 
             locale: {
 
@@ -112,6 +116,13 @@
                     }
                 }
             })
+        },
+
+        methods: {
+            back(){
+                this.$store.commit("home_tab", "login");
+                this.$f7router.back();
+            }
         }
 
     }

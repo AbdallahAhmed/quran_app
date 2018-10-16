@@ -100,6 +100,11 @@
         background: #000000;
     }
 
+
+    .black_mode .quran-aya.active {
+        background: #3a3a3a;
+    }
+
     .black_mode{
         background: #000000 !important;
     }
@@ -137,6 +142,8 @@
         mounted() {
 
             let sura_id = this.$f7route.params.sura_id || 1;
+
+            // alert(sura_id);
 
             this.$store.dispatch("get_sura", {surah_id: sura_id}).then((response) => {
                 this.sura = response.data.data;

@@ -36,10 +36,10 @@
                     <ul>
                         <li v-for="ayat of results">
                             <div class="row">
-                                <a class="col-80">
+                                <a :href="'/preview/' + ayat.page_id + '/' + ayat.id" class="col-80">
                                     {{ayat.text}}
                                 </a>
-                                <a class="col-20">{{ayat.surah.name}}</a>
+                                <a :href="'/preview/' + ayat.page_id + '/' + ayat.id" class="col-20 tab-link">{{ayat.surah.name}}</a>
                             </div>
                         </li>
                     </ul>

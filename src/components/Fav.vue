@@ -6,11 +6,11 @@
 
         <div class="page-content" style="direction: rtl">
             <div class="row page-setting-nav">
-                <div class="col-90">
+                <div class="col-20">
                     <p>المفضله</p>
                 </div>
-                <div class="col-10">
-                    <a class="back"> <i class="f7-icons size-22 back-icon" style="color: #fff">chevron_left</i> </a>
+                <div class="col-20 center">
+                    <a class="back link"> <i class="f7-icons size-22 back-icon color-white">chevron_left</i> </a>
                 </div>
             </div>
 

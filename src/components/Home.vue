@@ -10,24 +10,29 @@
 
             <div class="tabs">
 
-                <div id="khatima-tab" class="page-content  tab page-khatima ">
+                <div id="khatima-tab" class="page-content tab page-khatima" :class="{'tab-active' : $store.getters.home_tab == 'khatima'}">
                     <khatima-tab></khatima-tab>
                 </div>
 
-                <div id="quran-tab" class="page-content tab tab-active" :class="{black_mode: black_mode == 'black'}">
+
+                <div id="competition-tab" class="page-content tab" :class="{'tab-active' : $store.getters.home_tab == 'competition'}">
+
+                </div>
+
+                <div id="quran-tab" class="page-content tab" :class="{'tab-active' : $store.getters.home_tab == 'quran', 'black_mode': black_mode == 'black'}">
                     <quran></quran>
                 </div>
 
-                <div id="search-tab" class="page-content tab">
+                <div id="search-tab" class="page-content tab" :class="{'tab-active' : $store.getters.home_tab == 'search'}">
                     <search></search>
                 </div>
-                <div id="login-tab" class="page-content tab">
+
+                <div id="login-tab" class="page-content tab" :class="{'tab-active' :  $store.getters.home_tab == 'login'}">
                     <login v-if="!$app.auth.check()"></login>
                     <profile v-if="$app.auth.check()"></profile>
                 </div>
 
             </div>
-
 
     </div>
 
@@ -51,6 +56,7 @@
             black_mode(){
                 return this.$store.getters.color_theme;
             }
+
         },
 
         components: {
@@ -65,6 +71,9 @@
         },
         mounted() {
 
+           // let tab = this.$f7route.params.tab;
+           // alert(tab);
+           // this.$f7.dialog.alert("Comming soon", 'Quran');
         }
     }
 

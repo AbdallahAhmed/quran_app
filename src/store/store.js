@@ -3,6 +3,7 @@ import Vuex from 'vuex';
 import User from './modules/user';
 import Post from './modules/post';
 import Category from './modules/category';
+import khatma from './modules/khatma';
 import quran from './modules/quran';
 
 Vue.use(Vuex);
@@ -15,9 +16,7 @@ const state = {
     video_autoplay: localStorage.getItem("video_autoplay") || 1,
     guest_alert: false,
     overlay: false,
-    tabs: {
-        quran: 'quran'
-    },
+    home_tab: "quran",
     color_theme:localStorage.getItem("color_theme") || 'white',
     font_range:localStorage.getItem("font_range") || '50',
 };
@@ -34,12 +33,17 @@ const getters = {
         return state.font_range;
     },
 
+    home_tab(state) {
+        return state.home_tab;
+    },
+
+
     font_size(state){
 
         let range = state.font_range;
 
         if(range < 50){
-            let size = 19 + (range/100) * 20;
+            let size = 19 + (range/100) * 10;
             return  size;
         }else{
             let size = 19 + (range/100) * 10;
@@ -83,6 +87,10 @@ const getters = {
 };
 
 const mutations = {
+
+    home_tab(state, home_tab) {
+        state.home_tab = home_tab;
+    },
 
     locale(state, locale) {
         state.locale = locale;
@@ -170,6 +178,7 @@ export const store = new Vuex.Store({
     modules: [
         User,
         Post,
+        khatma,
         Category,
         quran
     ]
