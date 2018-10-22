@@ -1,19 +1,17 @@
 <template>
 
     <div :class="'page-section'">
-
         <navbar></navbar>
-
-        <div class="section-wrapper">
+        <div class="section-wrapper infinite-scroll-content infinite-scroll-bottom" @infinite="search">
             <div class="row no-gap">
-                <div class="col-100 search-wrapper">
+                <div class="col-100 search-wrapper ">
                     <!-- Searchbar with auto init -->
                     <form class="searchbar" onsubmit="return false">
                         <div class="searchbar-inner">
                             <div class="searchbar-input-wrap">
                                 <input type="search" id="input-search" class="search-input rollIn"
                                        placeholder=" بحث عن الايات"
-                                       v-model="searchQuery" maxlength="50" @keyup="search" @keydown="clear">
+                                       v-model="searchQuery" maxlength="50" @input="search" @keydown="clear">
                                 <i class="searchbar-icon" @click="search"></i>
                                 <!--<span class="input-clear-button"></span>-->
                             </div>
@@ -23,7 +21,7 @@
                 </div>
             </div>
 
-            <div class="row">
+            <div  class="row" >
                 <div class="searchbar-backdrop"></div>
                 <!-- hide-on-search element -->
                 <div class="searchbar-hide-on-search" v-if="searchQuery.length==0">
@@ -47,22 +45,36 @@
                     </ul>
                 </div>
             </div>
+            <div class="infinite-scroll-preloader">
+                <div class="preloader"></div>
+            </div>
         </div>
 
     </div>
 
 </template>
+<style>
+    .infinite-scroll-preloader {
+        margin-top:-15px;
+        margin-bottom: 10px;
+        text-align: center;
+        display: none;
+    }
+    .infinite-scroll-preloader .preloader {
+        width:34px;
+        height:34px;
+    }
+</style>
 <script>
     import debounce from './../helpers/debounce';
-
 
     var $vm = null;
     export default {
         created() {
             $vm = this;
         },
-        mounted() {
-            this.$$('#scroll').scroll(this.handleScroll);
+        mounted(){
+            $vm.preloader = document.getElementsByClassName('infinite-scroll-preloader')[0];
         },
         data() {
             return {
@@ -70,7 +82,9 @@
                 results: [],
                 loading: false,
                 offset: 0,
-                max: false
+                max: false,
+                allowInfinite: true,
+                preloader: ''
             };
         },
         methods: {
@@ -78,7 +92,8 @@
                 if ($vm.searchQuery.trim().length == 0 || $vm.max) {
                     return;
                 }
-                $vm.$f7.preloader.show();
+                //$vm.$f7.preloader.show();
+                $vm.preloader.style.display = 'block';
                 $vm.loading = true;
                 $vm.$http.get('search', {
                     params: {
@@ -88,31 +103,27 @@
                 }).then((res) => {
                     if (res.body.data.length >= 14)
                         $vm.offset += res.body.data.length;
-                    else
+                    else{
+                        $vm.preloader.style.display = 'none';
                         $vm.max = true;
+                    }
 
                     for (var i = 0; i < res.body.data.length; i++)
                         $vm.results.push(res.body.data[i]);
 
                     $vm.loading = false;
-                    $vm.$f7.preloader.hide();
+                    //$vm.$f7.preloader.hide();
                 }, (res) => {
 
                 });
             }, 750),
-            handleScroll(e) {
-                if (!$vm.max && ((e.target.scrollHeight - e.target.scrollTop) === e.target.clientHeight)) {
-                    $vm.search();
-                }
-            },
             clear(e) {
+                $vm.results = [];
+                $vm.offset = 0;
+                $vm.max = false;
+                $vm.preloader.style.display = 'none';
                 if (e.keyCode == 13) {
                     $vm.search();
-                } else {
-                    $vm.searchQuery = '';
-                    $vm.results = [];
-                    $vm.offset = 0;
-                    $vm.max = false;
                 }
             }
         },
