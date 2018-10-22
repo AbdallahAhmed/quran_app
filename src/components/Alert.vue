@@ -201,8 +201,6 @@
 
                 }
 
-                this.$f7.dialog.alert('done');
-
                 this.$store.commit("home_tab", "login");
                 this.$f7router.back();
             }
