@@ -29,7 +29,7 @@
                         </a>
                     </div>
                     <div class="col-50">
-                        <a href="#" class="link btn-setting">
+                        <a href="/alerts" class="link btn-setting">
 
                             <p>التبيهات</p>
 

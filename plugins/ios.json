@@ -7,9 +7,6 @@
     "files": {}
   },
   "installed_plugins": {
-    "cordova-plugin-device": {
-      "PACKAGE_NAME": "com.dotdev.quran"
-    },
     "cordova-plugin-firebase": {
       "PACKAGE_NAME": "com.dotdev.quran"
     },
@@ -22,18 +19,27 @@
     "cordova-plugin-splashscreen": {
       "PACKAGE_NAME": "com.dotdev.quran"
     },
-    "cordova-plugin-statusbar": {
-      "PACKAGE_NAME": "com.dotdev.quran"
-    },
     "cordova-plugin-whitelist": {
       "PACKAGE_NAME": "com.dotdev.quran"
     },
     "cordova-plugin-x-socialsharing": {
       "PACKAGE_NAME": "com.dotdev.quran"
+    },
+    "cordova-plugin-device": {
+      "PACKAGE_NAME": "com.dotdev.quran"
+    },
+    "cordova-plugin-statusbar": {
+      "PACKAGE_NAME": "com.dotdev.quran"
+    },
+    "cordova-plugin-local-notification": {
+      "PACKAGE_NAME": "com.dotdev.quran"
     }
   },
   "dependent_plugins": {
     "es6-promise-plugin": {
+      "PACKAGE_NAME": "com.dotdev.quran"
+    },
+    "cordova-plugin-badge": {
       "PACKAGE_NAME": "com.dotdev.quran"
     }
   }

@@ -67,6 +67,9 @@ export default [
     }, {
         path: '/khatima',
         component: require("./components/Khatima.vue")
+    }, {
+        path: '/alerts',
+        component: require("./components/Alert.vue")
     },
     // {
     //     path: '/local_login',

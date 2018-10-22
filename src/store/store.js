@@ -19,6 +19,12 @@ const state = {
     home_tab: "quran",
     color_theme:localStorage.getItem("color_theme") || 'white',
     font_range:localStorage.getItem("font_range") || '50',
+    alert_at:{
+        "hour":null,
+        "min": null,
+        "time": null,
+        occur:0
+    },
 };
 
 const getters = {
@@ -37,7 +43,9 @@ const getters = {
         return state.home_tab;
     },
 
-
+    alert_at(state){
+        return state.alert_at;
+    },
     font_size(state){
 
         let range = state.font_range;
@@ -109,6 +117,9 @@ const mutations = {
 
     guest_alert(state, value) {
         state.guest_alert = value;
+    },
+    alert_at(state, value) {
+        state.alert_at = value;
     },
 
     unread(state, count) {
