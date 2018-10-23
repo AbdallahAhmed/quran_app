@@ -7,6 +7,7 @@ Vue.use(Vuex);
 const state = {
     locale: "ar",
     home_tab: "quran",
+<<<<<<< HEAD
     color_theme: localStorage.getItem("color_theme") || 'white',
     font_range: localStorage.getItem("font_range") || '50',
     user: JSON.parse(localStorage.getItem("user")) || {},
@@ -14,6 +15,16 @@ const state = {
     khatema: JSON.parse(localStorage.getItem("user")).current_khatema || {pages: []},
     current_khatema: {pages: []},
     hours : 0
+=======
+    color_theme:localStorage.getItem("color_theme") || 'white',
+    font_range:localStorage.getItem("font_range") || '50',
+    alert_at:{
+        "hour":null,
+        "min": null,
+        "time": null,
+        occur:0
+    },
+>>>>>>> 8395beb595d0fec26751b1381cc7a1d1ed2fe5e2
 };
 
 const getters = {
@@ -51,8 +62,15 @@ const getters = {
         return state.home_tab;
     },
 
+<<<<<<< HEAD
 
     font_size(state) {
+=======
+    alert_at(state){
+        return state.alert_at;
+    },
+    font_size(state){
+>>>>>>> 8395beb595d0fec26751b1381cc7a1d1ed2fe5e2
 
         let range = state.font_range;
 
@@ -119,7 +137,16 @@ const mutations = {
         localStorage.setItem("font_range", font_range);
     },
 
+<<<<<<< HEAD
     FILL_CURRENT_KHATEMA(state, khatema) {
+=======
+    guest_alert(state, value) {
+        state.guest_alert = value;
+    },
+    alert_at(state, value) {
+        state.alert_at = value;
+    },
+>>>>>>> 8395beb595d0fec26751b1381cc7a1d1ed2fe5e2
 
         if (khatema) {
             state.khatema = khatema;
