@@ -2,7 +2,13 @@
 
     <f7-page :class="'page-sections no-toolbar'">
 
-        <navbar></navbar>
+        <navbar>
+            <template slot="left">
+                <a href="" class="link back navbar-back">
+                    <i class="f7-icons">arrow_left</i>
+                </a>
+            </template>
+        </navbar>
 
         <div class="loader-wrapper" v-if="!juz_sections">
             <div class="preloader color-green"></div>

@@ -78,7 +78,7 @@
 }
 
 .navbar-logo img {
-    height: 40px;
+    height: 37px;
     margin: 5px 0;
 }
 
@@ -275,12 +275,12 @@
     direction: rtl;
     margin-top: 2px;
     overflow: scroll;
-    height: 85vh;
+    height: 100vh;
 }
 
 .section-wrapper .number-list {
     background: white;
-    height: 84vh;
+    height: 100vh;
     text-align: center;
     position: fixed;
 }
@@ -339,13 +339,14 @@
 
 @media only screen and (max-width: 415px) {
     .section-wrapper .number-list a {
-        height: 18px;
+        height: 20px;
+
     }
 }
 
 @media only screen and (min-height: 735px) {
     .section-wrapper .number-list a {
-        height: 20px;
+        height: 22px;
     }
 
     .section-wrapper .number-list {
@@ -353,13 +354,13 @@
     }
 
     .section-wrapper {
-        height: 87vh;
+        height: 100vh;
     }
 }
 
 @media only screen and (min-height: 810px) {
     .section-wrapper .number-list a {
-        height: 23px;
+        height: 25px;
     }
 
     .section-wrapper .number-list {
@@ -367,13 +368,13 @@
     }
 
     .section-wrapper {
-        height: 87vh;
+        height: 100vh;
     }
 }
 
 @media only screen and (max-width: 321px) {
     .section-wrapper .number-list a {
-        height: 15px;
+        height: 17px;
     }
 }
 
@@ -972,5 +973,15 @@ a.forget-password {
 
 #quran-tab{
     padding-bottom: 0;
+}
+
+
+.navbar-back{
+    width: 56px;
+    display: block;
+    text-align: center;
+    height: 46px;
+    line-height: 65px;
+    color: #207249 !important;
 }
 
