@@ -445,6 +445,8 @@
     font-family: 'Amiri Quran';
 }
 
+
+
 .header-islamic {
     background-image: url(../img/all-in-one.png);
     background-size: 100%;
@@ -457,7 +459,6 @@
     position: relative;
     top: -7px;
 }
-
 .header-islamic-content {
     width: 200px;
     margin: auto;
@@ -465,6 +466,8 @@
     padding: 68px 30px 0;
 
 }
+
+
 
 .page-login .header-islamic-content p {
     font-size: 22px;
@@ -659,7 +662,7 @@ a.forget-password {
     font-weight: initial;
 }
 
-.page-profile .form-container .row > div p, .page-profile .form-container .row > div > a {
+.page-profile .form-container .row > div  p , .page-profile .form-container .row > div > a {
     font-family: initial;
     font-weight: initial;
     margin: 0;
@@ -753,8 +756,7 @@ a.forget-password {
     margin: auto;
     height: 100vh;
 }
-
-.page-setting .page-content, .page-fav .page-content {
+.page-setting .page-content,.page-fav .page-content{
     background-color: whitesmoke;
 }
 
@@ -775,6 +777,7 @@ a.forget-password {
     font-size: 12px;
     border: 2px solid black;
 
+
 }
 
 .button-themes-white {
@@ -793,6 +796,7 @@ a.forget-password {
     font-family: initial;
     display: block;
     font-size: 18px;
+
 
 }
 
@@ -848,26 +852,25 @@ a.forget-password {
 }
 
 .page-setting hr {
-    border: .5px inset white;
+     border: .5px inset white;
 }
 
-.fav-aya-item {
+.fav-aya-item{
     background-color: #ffffff;
 }
 
-.fav-aya-item .content p {
+.fav-aya-item .content p{
     padding: 15px;
     text-align: center;
 }
 
-.fav-aya-item .title {
+.fav-aya-item .title{
     background-color: #36734a;
     color: #ffffff;
     padding: 17px;
     text-align: center;
 }
-
-.fav-aya-item a.surah {
+.fav-aya-item a.surah{
     background-color: #36734a;
     background-image: url(../img/sura_header@2x.png);
     color: #ffffff;
@@ -900,21 +903,21 @@ a.forget-password {
     margin-bottom: 70px;
 }
 
-.button-themes.active {
+.button-themes.active{
     border: 2px solid #36734a;
 }
 
-.btn-setting {
+.btn-setting{
     width: 100%;
     height: 100%;
 }
 
-.btn-setting p {
+.btn-setting p{
     position: absolute;
     top: 60px;
 }
 
-.btn-setting img {
+.btn-setting img{
     position: absolute;
     top: 40px;
 }
@@ -969,6 +972,9 @@ a.forget-password {
     color: #207249 !important;
 }
 
+.juz-wrapper:last-child {
+  margin-bottom: 50px;
+}
 .page-content {
     padding-bottom: 100px !important;
 }
