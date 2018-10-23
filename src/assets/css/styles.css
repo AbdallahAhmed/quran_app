@@ -1,4 +1,4 @@
-*{
+* {
     outline: none;
 }
 
@@ -60,6 +60,9 @@
     background: #ffffff;
     width: 100px;
     height: 50px;
+    display: block;
+    margin: 0 auto;
+    text-align: center;
 }
 
 .navbar-logo img {
@@ -260,12 +263,12 @@
     direction: rtl;
     margin-top: 2px;
     overflow: scroll;
-    height: 85vh;
+    height: 100vh;
 }
 
 .section-wrapper .number-list {
     background: white;
-    height: 84vh;
+    height: 100vh;
     text-align: center;
     position: fixed;
 }
@@ -324,13 +327,14 @@
 
 @media only screen and (max-width: 415px) {
     .section-wrapper .number-list a {
-        height: 18px;
+        height: 20px;
+
     }
 }
 
 @media only screen and (min-height: 735px) {
     .section-wrapper .number-list a {
-        height: 20px;
+        height: 22px;
     }
 
     .section-wrapper .number-list {
@@ -338,13 +342,13 @@
     }
 
     .section-wrapper {
-        height: 87vh;
+        height: 100vh;
     }
 }
 
 @media only screen and (min-height: 810px) {
     .section-wrapper .number-list a {
-        height: 23px;
+        height: 25px;
     }
 
     .section-wrapper .number-list {
@@ -352,13 +356,13 @@
     }
 
     .section-wrapper {
-        height: 87vh;
+        height: 100vh;
     }
 }
 
 @media only screen and (max-width: 321px) {
     .section-wrapper .number-list a {
-        height: 15px;
+        height: 17px;
     }
 }
 
@@ -441,8 +445,6 @@
     font-family: 'Amiri Quran';
 }
 
-
-
 .header-islamic {
     background-image: url(../img/all-in-one.png);
     background-size: 100%;
@@ -455,6 +457,7 @@
     position: relative;
     top: -7px;
 }
+
 .header-islamic-content {
     width: 200px;
     margin: auto;
@@ -462,8 +465,6 @@
     padding: 68px 30px 0;
 
 }
-
-
 
 .page-login .header-islamic-content p {
     font-size: 22px;
@@ -658,7 +659,7 @@ a.forget-password {
     font-weight: initial;
 }
 
-.page-profile .form-container .row > div  p , .page-profile .form-container .row > div > a {
+.page-profile .form-container .row > div p, .page-profile .form-container .row > div > a {
     font-family: initial;
     font-weight: initial;
     margin: 0;
@@ -752,7 +753,8 @@ a.forget-password {
     margin: auto;
     height: 100vh;
 }
-.page-setting .page-content,.page-fav .page-content{
+
+.page-setting .page-content, .page-fav .page-content {
     background-color: whitesmoke;
 }
 
@@ -773,7 +775,6 @@ a.forget-password {
     font-size: 12px;
     border: 2px solid black;
 
-
 }
 
 .button-themes-white {
@@ -792,7 +793,6 @@ a.forget-password {
     font-family: initial;
     display: block;
     font-size: 18px;
-
 
 }
 
@@ -848,25 +848,26 @@ a.forget-password {
 }
 
 .page-setting hr {
-     border: .5px inset white;
+    border: .5px inset white;
 }
 
-.fav-aya-item{
+.fav-aya-item {
     background-color: #ffffff;
 }
 
-.fav-aya-item .content p{
+.fav-aya-item .content p {
     padding: 15px;
     text-align: center;
 }
 
-.fav-aya-item .title{
+.fav-aya-item .title {
     background-color: #36734a;
     color: #ffffff;
     padding: 17px;
     text-align: center;
 }
-.fav-aya-item a.surah{
+
+.fav-aya-item a.surah {
     background-color: #36734a;
     background-image: url(../img/sura_header@2x.png);
     color: #ffffff;
@@ -876,12 +877,13 @@ a.forget-password {
     font-size: 18px;
     background-repeat: no-repeat;
 }
-.fav-aya-item .title .surah{
+
+.fav-aya-item .title .surah {
     width: 180px;
     margin: auto;
 }
 
-.fav-aya-item:first-child{
+.fav-aya-item:first-child {
     margin-top: 15px;
 }
 
@@ -889,78 +891,76 @@ a.forget-password {
     color: #F6C625;
     font-weight: bold;
 }
-.delete-aya{
+
+.delete-aya {
     float: right;
 }
 
-.fav-aya-list{
+.fav-aya-list {
     margin-bottom: 70px;
 }
 
-.button-themes.active{
+.button-themes.active {
     border: 2px solid #36734a;
 }
 
-.btn-setting{
+.btn-setting {
     width: 100%;
     height: 100%;
 }
 
-.btn-setting p{
+.btn-setting p {
     position: absolute;
     top: 60px;
 }
 
-.btn-setting img{
+.btn-setting img {
     position: absolute;
     top: 40px;
 }
 
-.center{
+.center {
     text-align: center;
 }
-
 
 .loader-wrapper {
     text-align: center;
     margin-top: 30px;
 }
 
-.black_mode .page-content{
+.black_mode .page-content {
     background: #000000;
 }
 
-.black_mode .quran-aya{
+.black_mode .quran-aya {
     color: #ffffff;
 }
 
-.black_mode .quran-head{
+.black_mode .quran-head {
     background: #000000;
 }
 
-.black_mode .quran-navbar{
+.black_mode .quran-navbar {
     background: #000000 !important;
 }
 
-.black_mode .navbar-logo{
+.black_mode .navbar-logo {
     background: #000000;
 }
-
 
 .black_mode .quran-aya.active {
     background: #3a3a3a;
 }
 
-.black_mode{
+.black_mode {
     background: #000000 !important;
 }
 
-#quran-tab{
+#quran-tab {
     padding-bottom: 0;
 }
 
-
-.navbar-back{
+.navbar-back {
     width: 56px;
     display: block;
     text-align: center;
@@ -969,10 +969,11 @@ a.forget-password {
     color: #207249 !important;
 }
 
-.page-content{
+.page-content {
     padding-bottom: 100px !important;
 }
 
-[data-name=preview] .page-content{
-padding-bottom: 140px !important;
+[data-name=preview] .page-content {
+    padding-bottom: 140px !important;
 }
+

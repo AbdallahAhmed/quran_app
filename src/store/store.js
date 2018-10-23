@@ -11,14 +11,19 @@ const state = {
     font_range: localStorage.getItem("font_range") || '50',
     user: JSON.parse(localStorage.getItem("user")) || {},
     token: localStorage.getItem("token") || null,
-    khatema: JSON.parse(localStorage.getItem("user")).current_khatema || {pages: []},
+    khatema: JSON.parse(localStorage.getItem("user"))?JSON.parse(localStorage.getItem("user")).current_khatema : {pages: []},
     current_khatema: {pages: []},
     alert_at: {
         "hour": null,
         "min": null,
         "time": null,
         occur: 0
+<<<<<<< HEAD
     }
+=======
+    },
+    hour:0
+>>>>>>> 9e1daaf27e84550ce75e2ea23649439bfde5e12f
 };
 
 const getters = {
@@ -168,12 +173,15 @@ const mutations = {
             state.khatema.pages.push(page_id);
         }
 
-        // save Khatema to currentObject
-        state.user.current_khatema = state.khatema;
+        if(state.user.id){
+            // save Khatema to currentObject
+            state.user.current_khatema = state.khatema;
 
 
-        // save user Data
-        localStorage.setItem("user", JSON.stringify(state.user));
+            // save user Data
+            localStorage.setItem("user", JSON.stringify(state.user));
+        }
+
     }
 };
 
@@ -217,7 +225,9 @@ const actions = {
 
         commit('READ_PAGE', page_id);
 
-        var promise = null;
+        var promise = new Promise((resolve,reject)=>{
+            resolve();
+        });
 
         // if khatema completed
 
@@ -228,28 +238,40 @@ const actions = {
             state.khatema.completed_at = Date.now().toISOString();
 
 
-            promise = Vue.http.post("khatemas/update", state.khatema);
+            if(state.user.id){
+                promise = Vue.http.post("khatemas/update", state.khatema);
+            }
 
 
             commit('FILL_CURRENT_KHATEMA')
 
         } else {
 
+<<<<<<< HEAD
             promise = Vue.http.post("khatemas/update", {
                 page_id: page_id
             }).then((response) => {
+=======
+            if(state.user.id) {
+                promise = Vue.http.post("khatemas/update",{
+                    page_id:   page_id
+                }).then((response) => {
 
-                let data = response.body.data;
+                    let data = response.body.data;
+>>>>>>> 9e1daaf27e84550ce75e2ea23649439bfde5e12f
 
-                data.pages = JSON.parse(data.pages);
-
-
-                commit('FILL_CURRENT_KHATEMA', data)
-
-            }, (response) => {
+                    data.pages = JSON.parse(data.pages);
 
 
-            });
+                    commit('FILL_CURRENT_KHATEMA', data)
+
+                }, (response) => {
+
+
+                });
+            }
+
+
         }
 
         return promise;
