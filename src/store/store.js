@@ -237,7 +237,6 @@ const actions = {
                 promise = Vue.http.post("khatemas/update", state.khatema);
             }
 
-
             commit('FILL_CURRENT_KHATEMA')
 
         } else {

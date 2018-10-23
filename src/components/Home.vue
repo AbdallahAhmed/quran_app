@@ -70,12 +70,6 @@
             "profile": require("./MyProfile.vue"),
             "khatima-tab": require("./KhatimaTab.vue"),
             "login": require("./Login.vue")
-        },
-        mounted() {
-
-           // let tab = this.$f7route.params.tab;
-           // alert(tab);
-           // this.$f7.dialog.alert("Comming soon", 'Quran');
         }
     }
 

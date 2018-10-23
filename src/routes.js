@@ -1,6 +1,6 @@
 export default [
     {
-        path: '/home/:tab/:sura_id',
+        path: '/home/:tab/:sura_id?',
         component: require("./components/Home.vue"),
     },
     {

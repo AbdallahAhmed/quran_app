@@ -7,7 +7,7 @@
         </div>
 
         <div class="col-40 center">
-            <a href="/home/quran/1" class="navbar-logo">
+            <a href="/home/quran" class="navbar-logo">
                 <img src="../../assets/img/app-logo.png" alt="">
             </a>
         </div>
