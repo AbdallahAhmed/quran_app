@@ -158,13 +158,10 @@
 
 
             isActivated(aya) {
-                return aya.number == this.active;
+                return aya.number == this.active && this.aya;
             },
 
-            close() {
-                this.active = 0;
-                this.$store.commit("AYA", false);
-            }
+
         },
 
         components: {

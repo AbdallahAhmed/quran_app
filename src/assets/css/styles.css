@@ -72,13 +72,10 @@
     background: #ffffff;
     width: 100px;
     height: 50px;
-    display: block;
-    margin: 0 auto;
-    text-align: center;
 }
 
 .navbar-logo img {
-    height: 40px;
+    height: 37px;
     margin: 5px 0;
 }
 
@@ -972,4 +969,14 @@ a.forget-password {
 
 #quran-tab{
     padding-bottom: 0;
+}
+
+
+.navbar-back{
+    width: 56px;
+    display: block;
+    text-align: center;
+    height: 46px;
+    line-height: 65px;
+    color: #207249 !important;
 }

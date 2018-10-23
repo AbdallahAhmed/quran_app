@@ -6,7 +6,7 @@
 
             <div class="row aya-options">
 
-                <div class="options-message" v-if="message"> {{ message}}</div>
+                <div class="options-message" v-if="message"> {{ message}} </div>
 
                 <a class="col-30 link spaceInDown" @click="share" v-if="!message">
                     <img src="../../assets/img/share.png">
