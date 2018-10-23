@@ -7,95 +7,83 @@ Vue.use(Vuex);
 const state = {
     locale: "ar",
     home_tab: "quran",
-<<<<<<< HEAD
     color_theme: localStorage.getItem("color_theme") || 'white',
     font_range: localStorage.getItem("font_range") || '50',
     user: JSON.parse(localStorage.getItem("user")) || {},
     token: localStorage.getItem("token") || null,
     khatema: JSON.parse(localStorage.getItem("user")).current_khatema || {pages: []},
     current_khatema: {pages: []},
-    hours : 0
-=======
-    color_theme:localStorage.getItem("color_theme") || 'white',
-    font_range:localStorage.getItem("font_range") || '50',
-    alert_at:{
-        "hour":null,
+    alert_at: {
+        "hour": null,
         "min": null,
         "time": null,
-        occur:0
+        occur: 0
     },
->>>>>>> 8395beb595d0fec26751b1381cc7a1d1ed2fe5e2
 };
 
 const getters = {
 
-    user(state) {
-        return state.user;
-    },
+        user(state) {
+            return state.user;
+        },
 
-    token(state) {
-        return state.token;
-    },
+        token(state) {
+            return state.token;
+        },
 
-    auth(state) {
+        auth(state) {
 
-        if (state.token && state.user) {
-            return true;
+            if (state.token && state.user) {
+                return true;
+            }
+
+            return false;
+        },
+
+        locale(state) {
+            return state.locale;
+        },
+
+        color_theme(state) {
+            return state.color_theme;
+        },
+
+        font_range(state) {
+            return state.font_range;
+        },
+
+        home_tab(state) {
+            return state.home_tab;
+        },
+
+        font_size(state) {
+
+            let range = state.font_range;
+
+            if (range < 50) {
+                let size = 19 + (range / 100) * 10;
+                return size;
+            } else {
+                let size = 19 + (range / 100) * 10;
+                console.log(size);
+                return size;
+            }
+
+        },
+        tabs(state) {
+            return state.tabs;
         }
+        ,
 
-        return false;
-    },
-
-    locale(state) {
-        return state.locale;
-    },
-
-    color_theme(state) {
-        return state.color_theme;
-    },
-
-    font_range(state) {
-        return state.font_range;
-    },
-
-    home_tab(state) {
-        return state.home_tab;
-    },
-
-<<<<<<< HEAD
-
-    font_size(state) {
-=======
-    alert_at(state){
-        return state.alert_at;
-    },
-    font_size(state){
->>>>>>> 8395beb595d0fec26751b1381cc7a1d1ed2fe5e2
-
-        let range = state.font_range;
-
-        if (range < 50) {
-            let size = 19 + (range / 100) * 10;
-            return size;
-        } else {
-            let size = 19 + (range / 100) * 10;
-            console.log(size);
-            return size;
+        direction(state) {
+            return state.locale == "ar" ? "rtl" : "ltr";
         }
-
-    },
-
-    tabs(state) {
-        return state.tabs;
-    },
-
-    direction(state) {
-        return state.locale == "ar" ? "rtl" : "ltr";
-    },
-    current_khatema(state) {
-        return state.khatema;
+        ,
+        current_khatema(state) {
+            return state.khatema;
+        }
     }
-};
+;
 
 const mutations = {
 
@@ -137,16 +125,7 @@ const mutations = {
         localStorage.setItem("font_range", font_range);
     },
 
-<<<<<<< HEAD
     FILL_CURRENT_KHATEMA(state, khatema) {
-=======
-    guest_alert(state, value) {
-        state.guest_alert = value;
-    },
-    alert_at(state, value) {
-        state.alert_at = value;
-    },
->>>>>>> 8395beb595d0fec26751b1381cc7a1d1ed2fe5e2
 
         if (khatema) {
             state.khatema = khatema;
@@ -253,13 +232,14 @@ const actions = {
 
         } else {
 
-            promise = Vue.http.post("khatemas/update", state.khatema).then((response) => {
+            promise = Vue.http.post("khatemas/update",{
+                page_id:   page_id
+            }).then((response) => {
 
                 let data = response.body.data;
 
                 data.pages = JSON.parse(data.pages);
 
-                console.log(data);
 
                 commit('FILL_CURRENT_KHATEMA', data)
 

@@ -1,6 +1,6 @@
 <template>
 
-    <div class="page page-setting " data-page="settings">
+    <div class="page  page-setting " data-page="settings">
 
         <navbar></navbar>
 
