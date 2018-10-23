@@ -2,16 +2,20 @@
 
     <div class="page  page-setting " data-page="settings">
 
-        <navbar></navbar>
+        <navbar>
+            <template slot="left">
+                <a href="" class="link back navbar-back">
+                    <i class="f7-icons">arrow_left</i>
+                </a>
+            </template>
+        </navbar>
 
         <div class="page-content">
             <div class="row page-setting-nav">
                 <div class="col-80">
                     <p>الأعدادت</p>
                 </div>
-                <div class="col-20 center">
-                    <a class="link" @click="back"> <i class="f7-icons size-22 back-icon color-white">chevron_left</i> </a>
-                </div>
+
             </div>
 
 
@@ -50,8 +54,8 @@
                 <hr>
                 <p>اللغة</p>
                 <p class="row button-lang">
-                    <button class="col " :class="{'active':locale=='ar'}" @click="locale='ar'">العربية </button>
-                    <button class="col"  :class="{'active':locale=='en'}" @click="locale='en'">English</button>
+                    <button class="col link" :class="{'active':locale=='ar'}" @click="locale='ar'">العربية </button>
+                    <button class="col link"  :class="{'active':locale=='en'}" @click="locale='en'">English</button>
                 </p>
                 <br>
             </div>

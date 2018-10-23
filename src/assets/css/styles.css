@@ -1,3 +1,7 @@
+*{
+    outline: none;
+}
+
 @font-face {
     font-family: 'kfc';
     src: url("../fonts/kfc_naskh-webfont.eot") format("embedded-opentype"),
@@ -12,22 +16,6 @@
     url("../fonts/me_quran-webfont.svg") format("svg"),
     url("../fonts/me_quran-webfont.ttf") format("truetype"),
     url("../fonts/me_quran-webfont.woff") format("woff");
-}
-
-@font-face {
-    font-family: 'saleem';
-    src: url("../fonts/pdms_saleem-webfont.eot") format("embedded-opentype"),
-    url("../fonts/pdms_saleem-webfont.svg") format("svg"),
-    url("../fonts/pdms_saleem-webfont.ttf") format("truetype"),
-    url("../fonts/pdms_saleem-webfont.woff") format("woff");
-}
-
-@font-face {
-    font-family: 'scheherazade';
-    src: url("../fonts/scheherazade-webfont.eot") format("embedded-opentype"),
-    url("../fonts/scheherazade-webfont.svg") format("svg"),
-    url("../fonts/scheherazade-webfont.ttf") format("truetype"),
-    url("../fonts/scheherazade-webfont.woff") format("woff");
 }
 
 .spaceInDown {
@@ -979,4 +967,12 @@ a.forget-password {
     height: 46px;
     line-height: 65px;
     color: #207249 !important;
+}
+
+.page-content{
+    padding-bottom: 100px !important;
+}
+
+[data-name=preview] .page-content{
+padding-bottom: 140px !important;
 }

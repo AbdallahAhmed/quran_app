@@ -18,72 +18,75 @@ const state = {
         "min": null,
         "time": null,
         occur: 0
-    },
+    }
 };
 
 const getters = {
 
-        user(state) {
-            return state.user;
-        },
+    user(state) {
+        return state.user;
+    },
 
-        token(state) {
-            return state.token;
-        },
+    alert_at() {
+        return state.alert_at;
+    },
 
-        auth(state) {
+    token(state) {
+        return state.token;
+    },
 
-            if (state.token && state.user) {
-                return true;
-            }
+    auth(state) {
 
-            return false;
-        },
-
-        locale(state) {
-            return state.locale;
-        },
-
-        color_theme(state) {
-            return state.color_theme;
-        },
-
-        font_range(state) {
-            return state.font_range;
-        },
-
-        home_tab(state) {
-            return state.home_tab;
-        },
-
-        font_size(state) {
-
-            let range = state.font_range;
-
-            if (range < 50) {
-                let size = 19 + (range / 100) * 10;
-                return size;
-            } else {
-                let size = 19 + (range / 100) * 10;
-                console.log(size);
-                return size;
-            }
-
-        },
-        tabs(state) {
-            return state.tabs;
+        if (state.token && state.user) {
+            return true;
         }
-        ,
 
-        direction(state) {
-            return state.locale == "ar" ? "rtl" : "ltr";
+        return false;
+    },
+
+    locale(state) {
+        return state.locale;
+    },
+
+    color_theme(state) {
+        return state.color_theme;
+    },
+
+    font_range(state) {
+        return state.font_range;
+    },
+
+    home_tab(state) {
+        return state.home_tab;
+    },
+
+    font_size(state) {
+
+        let range = state.font_range;
+
+        if (range < 50) {
+            let size = 19 + (range / 100) * 10;
+            return size;
+        } else {
+            let size = 19 + (range / 100) * 10;
+            console.log(size);
+            return size;
         }
-        ,
-        current_khatema(state) {
-            return state.khatema;
-        }
+
+    },
+    tabs(state) {
+        return state.tabs;
     }
-;
+    ,
+
+    direction(state) {
+        return state.locale == "ar" ? "rtl" : "ltr";
+    }
+    ,
+    current_khatema(state) {
+        return state.khatema;
+    }
+};
 
 const mutations = {
 
@@ -232,8 +235,8 @@ const actions = {
 
         } else {
 
-            promise = Vue.http.post("khatemas/update",{
-                page_id:   page_id
+            promise = Vue.http.post("khatemas/update", {
+                page_id: page_id
             }).then((response) => {
 
                 let data = response.body.data;

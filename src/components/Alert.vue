@@ -2,19 +2,23 @@
 
     <div class="page page-setting " data-page="settings">
 
-        <navbar></navbar>
+        <navbar>
+            <template slot="left">
+                <a href="" class="link back navbar-back">
+                    <i class="f7-icons">arrow_left</i>
+                </a>
+            </template>
+        </navbar>
 
         <div class="page-content">
+
             <div class="row page-setting-nav">
                 <div class="col-80">
                     <p>التبيهات</p>
                 </div>
                 <div class="col-20 center">
-                    <a class="link" @click="back"> <i class="f7-icons size-22 back-icon color-white">chevron_left</i>
-                    </a>
                 </div>
             </div>
-
 
             <div class="page-container" style="direction: rtl">
 
@@ -22,13 +26,13 @@
                     <div id="demo-picker-date-container"></div>
                 </div>
 
-
                 <a class="item-link smart-select smart-select-init" data-open-in="sheet">
 
-                    <select :value="occur" v-model="occur">
+                    <select :value="occur" v-model="occur" >
                         <option value="0">أبدا</option>
                         <option value="1">يوميأ</option>
                     </select>
+
                     <div class="item-content">
                         <div class="item-inner">
                             <div class="item-title">تكرار</div>
@@ -71,6 +75,7 @@
         max-width: 100% !important;
         color: #000;
         margin-top: 15px !important;
+        padding: 0 10px;
     }
 
     .item-after::after {
@@ -108,11 +113,14 @@
             navbar: require("./partials/Navbar.vue")
         },
         mounted() {
+
             var today = new Date();
+
             var alert_at = this.alert_at;
+
             var currentHour = alert_at.hour ? alert_at.hour : (today.getHours() >= 12 ? today.getHours() - 12 : today.getHours());
             var cuurentMin = alert_at.min ? alert_at.min : (today.getMinutes() < 10 ? "0" + today.getMinutes() : today.getMinutes());
-            var currentTime = alert_at.time ? alert_at.time : (today.getHours() < 12 ? "Am" : "Pm");
+            var currentTime = alert_at.time ? alert_at.time : (today.getHours() < 12 ? "AM" : "PM");
             this.picker = this.$f7.picker.create({
                 containerEl: '#demo-picker-date-container',
                 // inputEl: '#demo-picker-date',
@@ -143,7 +151,7 @@
                         })(),
                     }, {
                         values: (function () {
-                            return ["Am", "Pm"]
+                            return ["AM", "PM"]
                         })()
                     }
                 ],
@@ -152,7 +160,9 @@
 
         methods: {
             back() {
+
                 var now = new Date();
+
                 this.$store.commit("alert_at", {
                     occur: this.occur,
                     hour: this.picker.value[0],
@@ -164,14 +174,13 @@
                 if (this.alert_at.occur == 0) {
                     var nextDate = (new Date());
 
-                    nextDate.setHours(this.alert_at.time == "Am" ? this.alert_at.hour : (parseInt(this.alert_at.hour) + 12));
+                    nextDate.setHours(this.alert_at.time == "AM" ? this.alert_at.hour : (parseInt(this.alert_at.hour) + 12));
                     nextDate.setMinutes(this.alert_at.min);
 
                     if (nextDate <= now) {
                         nextDate.setDate(now.getDate() + 1);
                     }
 
-                    console.log(nextDate);
                     if (cordova) {
                         cordova.plugins.notification.local.clearAll();
                         cordova.plugins.notification.local.schedule({
@@ -192,7 +201,7 @@
                             trigger: {
                                 every: {
                                     minute: parseInt(this.alert_at.min),
-                                    hour: this.alert_at.time == "Am" ? this.alert_at.hour : (parseInt(this.alert_at.hour) + 12)
+                                    hour: this.alert_at.time == "AM" ? this.alert_at.hour : (parseInt(this.alert_at.hour) + 12)
                                 }
                             },
                             foreground: true
