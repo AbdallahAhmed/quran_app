@@ -242,40 +242,26 @@ const actions = {
 
         } else {
 
-        <<<<<<<
-            HEAD
-            promise = Vue.http.post("khatemas/update", {
-                page_id: page_id
-            }).then((response) => {
-            ======
-                =
-                if (state.user.id) {
-                    promise = Vue.http.post("khatemas/update", {
-                        page_id: page_id
-                    }).then((response) => {
+            if (state.user.id) {
+                promise = Vue.http.post("khatemas/update", {
+                    page_id: page_id
+                }).then((response) => {
 
-                        let data = response.body.data;
-                    >>>>>>>
-                        9e1
-                        daaf27e84550ce75e2ea23649439bfde5e12f
+                    data.pages = JSON.parse(data.pages);
 
-                        data.pages = JSON.parse(data.pages);
+                    commit('FILL_CURRENT_KHATEMA', data)
+
+                }, (response) => {
 
 
-                        commit('FILL_CURRENT_KHATEMA', data)
-
-                    }, (response) => {
-
-
-                    });
-                }
-
-
+                });
             }
-
-            return promise;
         }
-    };
+
+
+        return promise;
+    }
+};
 
 export const store = new Vuex.Store({
     state,
