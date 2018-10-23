@@ -11,7 +11,8 @@
             <div class="tabs">
 
                 <div id="khatima-tab" class="page-content tab page-khatima" :class="{'tab-active' : $store.getters.home_tab == 'khatima'}">
-                    <khatima-tab></khatima-tab>
+                    <khatima-tab  v-if="$app.auth.check()"></khatima-tab>
+                    <login v-if="!$app.auth.check()"></login>
                 </div>
 
 
@@ -26,6 +27,7 @@
                 <div id="search-tab" class="page-content tab" :class="{'tab-active' : $store.getters.home_tab == 'search'}">
                     <search></search>
                 </div>
+
 
                 <div id="login-tab" class="page-content tab" :class="{'tab-active' :  $store.getters.home_tab == 'login'}">
                     <login v-if="!$app.auth.check()"></login>
