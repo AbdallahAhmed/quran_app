@@ -183,11 +183,9 @@
 }
 
 .quran-sura .quran-aya {
-
     font-size: 18px;
-    line-height: 54px;
+    line-height: 53px;
     overflow: hidden;
-
     padding-bottom: 5px;
 }
 
@@ -935,4 +933,43 @@ a.forget-password {
 
 .center{
     text-align: center;
+}
+
+
+.loader-wrapper {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.black_mode .page-content{
+    background: #000000;
+}
+
+.black_mode .quran-aya{
+    color: #ffffff;
+}
+
+.black_mode .quran-head{
+    background: #000000;
+}
+
+.black_mode .quran-navbar{
+    background: #000000 !important;
+}
+
+.black_mode .navbar-logo{
+    background: #000000;
+}
+
+
+.black_mode .quran-aya.active {
+    background: #3a3a3a;
+}
+
+.black_mode{
+    background: #000000 !important;
+}
+
+#quran-tab{
+    padding-bottom: 0;
 }

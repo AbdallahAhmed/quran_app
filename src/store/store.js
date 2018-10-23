@@ -1,34 +1,48 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
-import User from './modules/user';
-import Post from './modules/post';
-import Category from './modules/category';
-import khatma from './modules/khatma';
 import quran from './modules/quran';
 
 Vue.use(Vuex);
 
 const state = {
     locale: "ar",
-    unread: 0,
-    allow_notifications: localStorage.getItem("allow_notifications") || 1,
-    notifications: [],
-    video_autoplay: localStorage.getItem("video_autoplay") || 1,
-    guest_alert: false,
-    overlay: false,
     home_tab: "quran",
-    color_theme:localStorage.getItem("color_theme") || 'white',
-    font_range:localStorage.getItem("font_range") || '50',
+    color_theme: localStorage.getItem("color_theme") || 'white',
+    font_range: localStorage.getItem("font_range") || '50',
+    user: JSON.parse(localStorage.getItem("user")) || {},
+    token: localStorage.getItem("token") || null,
+    khatema: JSON.parse(localStorage.getItem("user")).current_khatema || {pages: []},
+    current_khatema: {pages: []},
+    hours : 0
 };
 
 const getters = {
 
+    user(state) {
+        return state.user;
+    },
+
+    token(state) {
+        return state.token;
+    },
+
+    auth(state) {
+
+        if (state.token && state.user) {
+            return true;
+        }
+
+        return false;
+    },
+
     locale(state) {
         return state.locale;
     },
+
     color_theme(state) {
         return state.color_theme;
     },
+
     font_range(state) {
         return state.font_range;
     },
@@ -38,15 +52,15 @@ const getters = {
     },
 
 
-    font_size(state){
+    font_size(state) {
 
         let range = state.font_range;
 
-        if(range < 50){
-            let size = 19 + (range/100) * 10;
-            return  size;
-        }else{
-            let size = 19 + (range/100) * 10;
+        if (range < 50) {
+            let size = 19 + (range / 100) * 10;
+            return size;
+        } else {
+            let size = 19 + (range / 100) * 10;
             console.log(size);
             return size;
         }
@@ -60,33 +74,31 @@ const getters = {
     direction(state) {
         return state.locale == "ar" ? "rtl" : "ltr";
     },
-
-    guest_alert(state) {
-        return state.guest_alert;
-    },
-
-    unread(state) {
-        return state.unread;
-    },
-
-    allow_notifications(state) {
-        return state.allow_notifications;
-    },
-
-    notifications(state) {
-        return state.notifications;
-    },
-
-    video_autoplay(state) {
-        return parseInt(state.video_autoplay);
-    },
-
-    overlay(state) {
-        return state.overlay;
+    current_khatema(state) {
+        return state.khatema;
     }
 };
 
 const mutations = {
+
+    token(state, token) {
+        state.token = token;
+        localStorage.setItem("token", token);
+    },
+
+    user(state, user) {
+        state.user = user;
+        localStorage.setItem("user", JSON.stringify(user));
+    },
+
+    logout(state) {
+
+        state.user = {};
+        localStorage.removeItem("user");
+
+        state.token = null;
+        localStorage.removeItem("token");
+    },
 
     home_tab(state, home_tab) {
         state.home_tab = home_tab;
@@ -107,67 +119,131 @@ const mutations = {
         localStorage.setItem("font_range", font_range);
     },
 
-    guest_alert(state, value) {
-        state.guest_alert = value;
-    },
+    FILL_CURRENT_KHATEMA(state, khatema) {
 
-    unread(state, count) {
-        state.unread = count;
-    },
+        if (khatema) {
+            state.khatema = khatema;
+            state.user.current_khatema = state.khatema;
+            localStorage.setItem("user", JSON.stringify(state.user));
+            return;
+        }
 
-    overlay(state, overlay) {
-        console.log("->" + overlay);
-        state.overlay = overlay;
-    },
+        state.khatema = {
+            pages: [],
+            created_at: Date.now().toISOString()
+        };
 
-    allow_notifications(state, value) {
-        state.allow_notifications = value;
-        localStorage.setItem("allow_notifications", value);
     },
+    READ_PAGE(state, page_id) {
 
-    notifications(state, notifications) {
-        state.notifications = notifications;
-    },
+        // init new khatma if not exist
+        if (!(state.khatema && state.khatema.pages)) {
+            if (state.user && state.user.current_khatema) {
+                state.khatema = state.user.current_khatema;
 
-    video_autoplay(state, value) {
-        state.video_autoplay = value;
-        localStorage.setItem("video_autoplay", value);
+            } else {
+
+                state.khatema = {
+                    pages: [],
+                    created_at: Date.now().toISOString()
+                }
+
+            }
+        }
+
+
+        // if you has object
+        if (!state.khatema.pages.find((item) => {
+            return item === page_id;
+        })) {
+            state.khatema.pages.push(page_id);
+        }
+
+        // save Khatema to currentObject
+        state.user.current_khatema = state.khatema;
+
+
+        // save user Data
+        localStorage.setItem("user", JSON.stringify(state.user));
     }
 };
 
 const actions = {
 
-    guest_alert(store, value) {
-        store.commit('guest_alert', value);
-    },
+    login(store, user) {
 
-    unread(state, count) {
-        return Vue.http.get("notifications/get_new").then(function (response) {
-            store.commit("unread", response.body.count);
+        return Vue.http.post("auth", user).then(function (response) {
+
+            if (response.body.status) {
+
+                store.commit("token", response.body.data.token);
+                store.commit("user", response.body.data.user);
+
+            } else {
+                throw new Error("auth failed");
+            }
         });
+
     },
-    read(state, notification_id) {
-        return Vue.http.get("notifications/read", {params: {notification_id: notification_id}}).then(function (response) {
 
-            let notifications = store.getters.notifications.map(function (notification) {
+    register(store, user) {
 
-                if (notification.id == notification_id) {
-                    notification.seen = 1;
-                }
+        return Vue.http.post("register", user).then(function (response) {
 
-                return notification;
+            if (response.body.status) {
+
+                store.commit("token", response.body.data.token);
+                store.commit("user", response.body.data.user);
+
+            }
+        });
+
+    },
+
+    forgetPassword(store, email) {
+        return Vue.http.post("auth/forget-password", email);
+    },
+
+    read_page({state, commit}, page_id) {
+
+        commit('READ_PAGE', page_id);
+
+        var promise = null;
+
+        // if khatema completed
+
+        if (state.khatema.pages.length >= 604) {
+
+            state.khatema.completed = 1;
+
+            state.khatema.completed_at = Date.now().toISOString();
+
+
+            promise = Vue.http.post("khatemas/update", state.khatema);
+
+
+            commit('FILL_CURRENT_KHATEMA')
+
+        } else {
+
+            promise = Vue.http.post("khatemas/update", state.khatema).then((response) => {
+
+                let data = response.body.data;
+
+                data.pages = JSON.parse(data.pages);
+
+                console.log(data);
+
+                commit('FILL_CURRENT_KHATEMA', data)
+
+            }, (response) => {
+
+
             });
+        }
 
-            store.commit("unread", store.getters.unread - 1);
-        });
-    },
-
-    notifications(store) {
-        return Vue.http.get("notifications/list_notifications").then(function (response) {
-            store.commit("notifications", response.body.notifications);
-        });
-    },
-
+        return promise;
+    }
 };
 
 export const store = new Vuex.Store({
@@ -176,10 +252,6 @@ export const store = new Vuex.Store({
     mutations,
     actions,
     modules: [
-        User,
-        Post,
-        khatma,
-        Category,
         quran
     ]
 });

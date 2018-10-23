@@ -118,14 +118,29 @@
 <script>
 
     export default {
+
         data() {
-            return {};
+            return {
+                khatemas: 0,
+
+            };
         },
+
         created() {
 
-        }, components: {
+
+            this.$http.get("khatemas").then((response) => {
+
+                console.log(response.data);
+                this.khatemas = response.data.data;
+            });
+
+        },
+
+        components: {
             "navbar": require("./partials/Navbar.vue"),
         },
+
         mounted() {
             // var gauge = this.$f7.gauge.create({
             //     el: '.gauge-khatima',

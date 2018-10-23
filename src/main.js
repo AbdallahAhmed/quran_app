@@ -316,9 +316,9 @@ Vue.app.initialize();
 
 // Enable FastClick
 
-document.addEventListener('deviceready', () => {
-    FastClick.attach(document.body);
-});
+// document.addEventListener('deviceready', () => {
+//     FastClick.attach(document.body);
+// });
 
 /*document.addEventListener('deviceready', () => {
 

@@ -83,7 +83,6 @@
                 loading: false,
                 offset: 0,
                 max: false,
-                allowInfinite: true,
                 preloader: ''
             };
         },

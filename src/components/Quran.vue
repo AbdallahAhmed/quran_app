@@ -4,6 +4,7 @@
 
         <navbar></navbar>
 
+
         <div class="quran-head" v-if="sura">
 
             <!--<div class="page-title"> lfsagsdg </div>-->
@@ -38,32 +39,26 @@
 
         <div class="page-content">
 
-
-            <div class="loader-wrapper" v-if="!sura">
-                <div class="preloader color-green"></div>
-            </div>
-
-
             <div class="quran-basmla" v-if="sura">
                 <a>
                     بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ
                 </a>
             </div>
 
-            <div class="block quran-sura" v-if="sura">
+            <div class="block quran-sura">
 
-                <span v-for="page in sura.pages">
-                     <span v-for="aya of page" class="quran-aya bounceIn" @click="activate(aya)"
+
+                <span v-for="page in pages" v-if="sura">
+
+                     <span v-for="aya of page" class="quran-aya" @click="activate(aya)"
                            :class="{active: isActivated(aya)}" :style="{ 'font-size': font_size + 'px' }">
-                        {{ aya.text }}
+
+                         {{ aya.text }}
 
                          <span class="aya-num">  ﴿ {{ aya.numberinsurat }} ﴾ </span>
-
                      </span>
 
                 </span>
-
-
             </div>
 
         </div>
@@ -73,49 +68,6 @@
 
 </template>
 
-<style>
-
-    .loader-wrapper {
-        text-align: center;
-        margin-top: 30px;
-    }
-
-    .black_mode .page-content{
-        background: #000000;
-    }
-
-    .black_mode .quran-aya{
-        color: #ffffff;
-    }
-
-    .black_mode .quran-head{
-        background: #000000;
-    }
-
-    .black_mode .quran-navbar{
-        background: #000000 !important;
-    }
-
-    .black_mode .navbar-logo{
-        background: #000000;
-    }
-
-
-    .black_mode .quran-aya.active {
-        background: #3a3a3a;
-    }
-
-    .black_mode{
-        background: #000000 !important;
-    }
-
-    #quran-tab{
-        padding-bottom: 0;
-    }
-
-
-</style>
-
 <script>
 
     import Vue from 'vue';
@@ -123,37 +75,67 @@
     export default {
 
         computed: {
+
             aya() {
                 return this.$store.getters.aya;
             },
 
-            font_size(){
+            font_size() {
                 return this.$store.getters.font_size;
+            },
+
+            sura() {
+                return this.$store.getters.sura;
+            },
+
+            pages() {
+                return this.$store.getters.pages;
             }
+
         },
 
         data() {
             return {
-                sura: false,
                 active: 0
             }
         },
 
         mounted() {
 
-            let sura_id = this.$f7route.params.sura_id || 1;
-
-            // alert(sura_id);
+            let sura_id = this.$f7route.params.sura_id || this.sura.id;
 
             this.$store.dispatch("get_sura", {surah_id: sura_id}).then((response) => {
-                this.sura = response.data.data;
+
+                this.$store.commit("SURA", response.data.data);
+
+                // Increment views
+
+                setTimeout(()=>{
+                    this.$store.dispatch("read_page", this.$store.getters.page);
+                }, 5000);
             });
+
+            this.Dom7('.page-content').on('scroll', (e) => {
+
+                var elem = this.Dom7(e.currentTarget);
+
+                if (elem[0].scrollHeight - elem.scrollTop() == elem.outerHeight()) {
+
+                    // Increment page
+
+                    this.$store.commit("PAGE", this.$store.getters.page + 1);
+
+                    setTimeout(()=>{
+                        this.$store.dispatch("read_page", this.$store.getters.page);
+                    }, 5000);
+                }
+            });
+
         },
 
 
         events: {
             close: function () {
-
                 this.active = 0;
                 this.$store.commit("AYA", false);
             }
@@ -174,6 +156,7 @@
 
             },
 
+
             isActivated(aya) {
                 return aya.number == this.active;
             },
@@ -186,8 +169,7 @@
 
         components: {
             "navbar": require("./partials/Navbar.vue")
-        },
-
+        }
 
 
     }
