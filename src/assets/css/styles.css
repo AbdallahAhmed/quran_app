@@ -985,3 +985,6 @@ a.forget-password {
     color: #207249 !important;
 }
 
+.juz-wrapper:last-child {
+  margin-bottom: 50px;
+}
