@@ -11,80 +11,82 @@ const state = {
     font_range: localStorage.getItem("font_range") || '50',
     user: JSON.parse(localStorage.getItem("user")) || {},
     token: localStorage.getItem("token") || null,
-    khatema: JSON.parse(localStorage.getItem("user"))?JSON.parse(localStorage.getItem("user")).current_khatema : {pages: []},
+    khatema: JSON.parse(localStorage.getItem("user")) ? JSON.parse(localStorage.getItem("user")).current_khatema : {pages: []},
     current_khatema: {pages: []},
     alert_at: {
         "hour": null,
         "min": null,
         "time": null,
         occur: 0
-    },
-    hour:0
+    }
 };
 
 const getters = {
 
-        user(state) {
-            return state.user;
-        },
+    user(state) {
+        return state.user;
+    },
 
-        token(state) {
-            return state.token;
-        },
+    alert_at() {
+        return state.alert_at;
+    },
 
-        auth(state) {
+    token(state) {
+        return state.token;
+    },
 
-            if (state.token && state.user) {
-                return true;
-            }
+    auth(state) {
 
-            return false;
-        },
-
-        locale(state) {
-            return state.locale;
-        },
-
-        color_theme(state) {
-            return state.color_theme;
-        },
-
-        font_range(state) {
-            return state.font_range;
-        },
-
-        home_tab(state) {
-            return state.home_tab;
-        },
-
-        font_size(state) {
-
-            let range = state.font_range;
-
-            if (range < 50) {
-                let size = 19 + (range / 100) * 10;
-                return size;
-            } else {
-                let size = 19 + (range / 100) * 10;
-                console.log(size);
-                return size;
-            }
-
-        },
-        tabs(state) {
-            return state.tabs;
+        if (state.token && state.user) {
+            return true;
         }
-        ,
 
-        direction(state) {
-            return state.locale == "ar" ? "rtl" : "ltr";
+        return false;
+    },
+
+    locale(state) {
+        return state.locale;
+    },
+
+    color_theme(state) {
+        return state.color_theme;
+    },
+
+    font_range(state) {
+        return state.font_range;
+    },
+
+    home_tab(state) {
+        return state.home_tab;
+    },
+
+    font_size(state) {
+
+        let range = state.font_range;
+
+        if (range < 50) {
+            let size = 19 + (range / 100) * 10;
+            return size;
+        } else {
+            let size = 19 + (range / 100) * 10;
+            console.log(size);
+            return size;
         }
-        ,
-        current_khatema(state) {
-            return state.khatema;
-        }
+
+    },
+    tabs(state) {
+        return state.tabs;
     }
-;
+    ,
+
+    direction(state) {
+        return state.locale == "ar" ? "rtl" : "ltr";
+    }
+    ,
+    current_khatema(state) {
+        return state.khatema;
+    }
+};
 
 const mutations = {
 
@@ -166,7 +168,7 @@ const mutations = {
             state.khatema.pages.push(page_id);
         }
 
-        if(state.user.id){
+        if (state.user.id) {
             // save Khatema to currentObject
             state.user.current_khatema = state.khatema;
 
@@ -218,7 +220,7 @@ const actions = {
 
         commit('READ_PAGE', page_id);
 
-        var promise = new Promise((resolve,reject)=>{
+        var promise = new Promise((resolve, reject) => {
             resolve();
         });
 
@@ -231,7 +233,7 @@ const actions = {
             state.khatema.completed_at = Date.now().toISOString();
 
 
-            if(state.user.id){
+            if (state.user.id) {
                 promise = Vue.http.post("khatemas/update", state.khatema);
             }
 
@@ -240,15 +242,12 @@ const actions = {
 
         } else {
 
-            if(state.user.id) {
-                promise = Vue.http.post("khatemas/update",{
-                    page_id:   page_id
+            if (state.user.id) {
+                promise = Vue.http.post("khatemas/update", {
+                    page_id: page_id
                 }).then((response) => {
 
-                    let data = response.body.data;
-
                     data.pages = JSON.parse(data.pages);
-
 
                     commit('FILL_CURRENT_KHATEMA', data)
 
@@ -257,9 +256,8 @@ const actions = {
 
                 });
             }
-
-
         }
+
 
         return promise;
     }
