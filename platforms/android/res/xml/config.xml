@@ -65,6 +65,7 @@
     <preference name="loglevel" value="DEBUG" />
     <preference name="SplashScreenDelay" value="6000" />
     <preference name="SplashScreenBackgroundColor" value="#ffffff" />
+    <preference name="StatusBarOverlaysWebView" value="false" />
     <preference name="FadeSplashScreenDuration" value="1000" />
     <preference name="ShowSplashScreenSpinner" value="false" />
     <preference name="StatusBarBackgroundColor" value="#ffffff" />
