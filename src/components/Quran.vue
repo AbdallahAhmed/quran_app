@@ -169,6 +169,10 @@
 
         },
 
+        beforeRouteLeave (to, from , next) {
+            alert("leave");
+        },
+
         components: {
             "navbar": require("./partials/Navbar.vue"),
             "quran-page": require("./partials/QuranPage.vue")

@@ -2,7 +2,13 @@
 
     <f7-page :class="'navbar-fixed page-login page-register'">
 
-        <navbar></navbar>
+        <navbar>
+            <template slot="left">
+                <a href="" class="link back navbar-back">
+                    <i class="f7-icons">arrow_left</i>
+                </a>
+            </template>
+        </navbar>
 
         <div class="login-page">
             <div class="header-islamic row">
@@ -52,15 +58,6 @@
                         سجل
                     </button>
 
-                    <div class="row">
-
-                        <div class="col-20">
-                            <a class="forget-password back">
-                                رجوع
-                            </a>
-                        </div>
-
-                    </div>
                 </form>
 
 

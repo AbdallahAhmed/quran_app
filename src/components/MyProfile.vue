@@ -10,7 +10,11 @@
                 <div class="header-islamic-content">
                     <img src="../assets/img/user-avater.png" class="avater" alt="user avater">
                     <p v-if="user"> {{user.first_name}} </p>
-                    <p v-if="!user"> تسجيل الدخول </p>
+                    <p v-if="!user">
+                        <a href="/login" class="link color-green">
+                            تسجيل الدخول
+                        </a>
+                    </p>
                 </div>
             </div>
 
@@ -55,7 +59,7 @@
                         <a href="#" class="link btn-setting">
                             <p> انشر القرأن</p>
 
-                            <img src="./../assets/img/_share.png" alt="Fav">
+                            <img src="./../assets/img/share.png" alt="Fav">
 
                         </a>
                     </div>
