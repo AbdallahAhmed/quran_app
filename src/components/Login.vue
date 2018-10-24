@@ -2,7 +2,13 @@
 
     <div class="page" :class="'page-login'">
 
-        <navbar></navbar>
+        <navbar>
+            <template slot="left">
+                <a href="" class="link back navbar-back">
+                    <i class="f7-icons">arrow_left</i>
+                </a>
+            </template>
+        </navbar>
 
         <div class="login-page">
             <div class="header-islamic row">
