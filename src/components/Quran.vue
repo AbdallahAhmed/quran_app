@@ -101,8 +101,7 @@
         },
 
         mounted() {
-
-            let sura_id = this.$f7route.params.sura_id || this.sura.id;
+            let sura_id = this.$f7route.params.sura_id || this.sura.id || 1;
 
             this.$store.dispatch("get_sura", {surah_id: sura_id}).then((response) => {
 
