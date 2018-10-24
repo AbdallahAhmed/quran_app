@@ -9,7 +9,7 @@ const state = {
     home_tab: "quran",
     color_theme: localStorage.getItem("color_theme") || 'white',
     font_range: localStorage.getItem("font_range") || '50',
-    user: JSON.parse(localStorage.getItem("user")) || {},
+    user: JSON.parse(localStorage.getItem("user")) || false,
     token: localStorage.getItem("token") || null,
     khatema: JSON.parse(localStorage.getItem("user")) ? JSON.parse(localStorage.getItem("user")).current_khatema : {pages: []},
     current_khatema: {pages: []},

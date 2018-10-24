@@ -41,6 +41,7 @@
                                 </a>
                                 <a :href="'/preview/' + ayat.page_id + '/' + ayat.id" class="col-20 tab-link">{{ayat.surah.name}}</a>
                             </div>
+                            <hr>
                         </li>
                     </ul>
                 </div>

@@ -11,7 +11,11 @@
                     <img :src="user.photo?user.photo.thumbnail:'user-avater.png'" class="avater"
                          alt="user avater">
                     <p v-if="user"> {{user.first_name }}   {{ user.last_name }}</p>
-                    <p v-if="!user"> تسجيل الدخول </p>
+                    <p v-if="!user">
+                        <a href="/login" class="link color-green">
+                            تسجيل الدخول
+                        </a>
+                    </p>
                 </div>
             </div>
 
@@ -34,7 +38,7 @@
                     <div class="col-50">
                         <a href="/alerts" class="link btn-setting">
 
-                            <p>التبيهات</p>
+                            <p>التنبيهات</p>
 
                             <img src="./../assets/img/alarm.png" alt="Fav">
 

@@ -433,12 +433,20 @@
     padding: 0;
 }
 
-.searchbar-found ul li {
-    padding: 15px;
-    border-bottom: 1px #aba4a43d solid;
+
+.searchbar-found ul li{
     list-style: none;
+}
+.searchbar-found ul li div {
+    padding: 15px;
+    /* border-bottom: 1px #aba4a43d solid; */
     background: white;
 }
+.searchbar-found ul li hr {
+    margin: 0px;
+    border-top: 1px solid #aba4a43d;
+}
+
 
 .searchbar-found ul li a {
     color: #000;
@@ -452,7 +460,7 @@
     background-size: 100%;
     min-height: 226px;
     height: 165px;
-    background-position: 0 -36px;
+    background-position: 0 -50px;
     background-repeat: no-repeat;
     box-shadow: 0px 6px 7px -8px;
     width: 100%;
@@ -629,7 +637,7 @@ a.forget-password {
     background-color: #f5f5f5;
 }
 
-.page-khatima .page-title {
+.page-khatima .page-title , .page-contest .page-title {
     color: #f5f5f5;
     background-color: #207249;
     font-family: initial;
@@ -662,14 +670,14 @@ a.forget-password {
 }
 
 .page-profile .header-islamic {
-    top: -49px;
+
     background-color: #fff;
 
 }
 
 .page-profile {
     background-color: #f5f5f5;
-    height: 90vh;
+    height: 100%;
 }
 
 .page-profile .form-container .row > div {
@@ -705,7 +713,7 @@ a.forget-password {
 .page-profile .form-container {
     width: calc(100% - 40px);
     text-align: center;
-    margin: -5vh auto;
+    margin-top: 5px;
     overflow: scroll;
 }
 
@@ -871,7 +879,7 @@ a.forget-password {
 }
 
 .page-setting hr {
-     border: .5px inset white;
+     border: .5px inset #707070;
 }
 
 .fav-aya-item{
@@ -929,16 +937,21 @@ a.forget-password {
 .btn-setting{
     width: 100%;
     height: 100%;
+    padding: 0;
 }
 
 .btn-setting p{
     position: absolute;
-    top: 55px;
+    height: 50%;
+    display: block;
+    width: 100%;
+    bottom: 0;
 }
 
 .btn-setting img{
     position: absolute;
-    top: 22px;
+    width: 14px;
+    top: 27%;
 }
 
 .center {
@@ -995,7 +1008,7 @@ a.forget-password {
   margin-bottom: 50px;
 }
 .page-content {
-    padding-bottom: 100px !important;
+    padding-bottom: 50px !important;
 }
 
 [data-name=preview] .page-content {
@@ -1012,6 +1025,10 @@ a.forget-password {
     width: 100px;
 }
 
+
+.color-green{
+    color:#207249 !important;
+}
 
 .login-page{
     overflow: auto;

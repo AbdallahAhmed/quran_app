@@ -11,13 +11,12 @@
         </navbar>
 
         <div class="page-content">
+
             <div class="row page-setting-nav">
                 <div class="col-80">
                     <p>الأعدادت</p>
                 </div>
-
             </div>
-
 
             <div class="page-container">
                 <p>الشكل </p>

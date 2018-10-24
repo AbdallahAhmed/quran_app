@@ -7,9 +7,9 @@
             <img src="../../assets/img/trend.png" alt="">
         </f7-link>
 
-        <a class="link" @click="soon" :class="{'tab-link-active': $store.getters.home_tab == 'competition' }">
+        <f7-link class="link" @click="home_tab = 'competition'" :class="{'tab-link-active': $store.getters.home_tab == 'competition' }">
             <img src="../../assets/img/cup.png" alt="">
-        </a>
+        </f7-link>
 
         <f7-link @click="home_tab = 'quran'" :class="{'tab-link-active': $store.getters.home_tab == 'quran' }">
             <img class="main-image" src="../../assets/img/quran.png" alt="">
@@ -19,8 +19,8 @@
             <img src="../../assets/img/search.png" alt="">
         </f7-link>
 
-        <f7-link @click="home_tab = 'login'" :class="{'tab-link-active': $store.getters.home_tab == 'login' }">
-            <img :src="$store.getters.user.photo?$store.getters.user.photo.thumbnail:'user-avater.png'" class="user-avater user-avater-tab" alt=""/>
+        <f7-link @click="home_tab = 'profile'" :class="{'tab-link-active': $store.getters.home_tab == 'profile' }">
+            <img :src="$store.getters.user.photo?$store.getters.user-avater.photo.thumbnail:'user-avater.png'" class="user-avater user-avater-tab" style="width: 30px;border: 3px solid green;" alt=""/>
         </f7-link>
     </f7-toolbar>
 
