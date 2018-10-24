@@ -33,7 +33,7 @@
                     <div class="col-50">
                         <a href="/alerts" class="link btn-setting">
 
-                            <p>التبيهات</p>
+                            <p>التنبيهات</p>
 
                             <img src="./../assets/img/alarm.png" alt="Fav">
 

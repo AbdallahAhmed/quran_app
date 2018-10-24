@@ -60,17 +60,8 @@
                     chooserTitle: this.$app.trans("choose_app")
 
                 },  () => {
-
                     this.share_loading = false;
-
-                    this.message = "تم المشاركة";
-
-                    let timer = setInterval(() => {
-                        this.message = false;
-                        clearInterval(timer);
-                    }, 4000);
                 });
-
 
             },
 

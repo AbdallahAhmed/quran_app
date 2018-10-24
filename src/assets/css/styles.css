@@ -433,12 +433,20 @@
     padding: 0;
 }
 
-.searchbar-found ul li {
-    padding: 15px;
-    border-bottom: 1px #aba4a43d solid;
+
+.searchbar-found ul li{
     list-style: none;
+}
+.searchbar-found ul li div {
+    padding: 15px;
+    /* border-bottom: 1px #aba4a43d solid; */
     background: white;
 }
+.searchbar-found ul li hr {
+    margin: 0px;
+    border-top: 1px solid #aba4a43d;
+}
+
 
 .searchbar-found ul li a {
     color: #000;
@@ -852,7 +860,7 @@ a.forget-password {
 }
 
 .page-setting hr {
-     border: .5px inset white;
+     border: .5px inset #707070;
 }
 
 .fav-aya-item{

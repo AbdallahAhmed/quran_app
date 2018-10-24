@@ -33,7 +33,7 @@
                                     <div class="swiper-slide" v-for="surah in juz.swar">
                                         <a class="surah-card">
                                             <a class="surah-title link" :href="'/home/quran/'+surah.id">
-                                                {{surah.id}} &nbsp;&nbsp; {{surah.name.split('سورة')[1]}}
+                                                {{surah.id}}.&nbsp;&nbsp; {{surah.name.split('سورة')[1]}}
                                             </a>
 
                                             <div class="surah-info">
