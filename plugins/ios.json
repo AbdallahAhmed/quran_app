@@ -33,6 +33,9 @@
     },
     "cordova-plugin-local-notification": {
       "PACKAGE_NAME": "com.dotdev.quran"
+    },
+    "cordova-plugin-camera": {
+      "PACKAGE_NAME": "com.dotdev.quran"
     }
   },
   "dependent_plugins": {

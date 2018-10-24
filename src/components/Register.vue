@@ -7,7 +7,9 @@
         <div class="login-page">
             <div class="header-islamic row">
                 <div class="header-islamic-content">
-                    <img src="../assets/img/user-avater.png" @click="addPhotoImage" class="avater" alt="user avater" ref="image">
+                    <img src="../assets/img/Repeat Grid 17@2x.png" @click="addPhotoImage" class="avater"
+                         alt="user avater"
+                         ref="image">
                     <p>إنشاء حساب </p>
                 </div>
             </div>
@@ -19,36 +21,39 @@
                 </span>
                 <form @submit.prevent="register">
 
-                    <input type="text" :class="{'errors':errors.has('password')&&submitted}" name="name"
-                           placeholder=" الأسم كامل " v-model="user.name"
-                           v-validate="'required|alpha_spaces'" autocomplete="false"/>
+                    <div class="input-border">
+                        <input type="text" :class="{'errors':errors.has('password')&&submitted}" name="name"
+                               placeholder=" الأسم كامل " v-model="user.name"
+                               v-validate="'required|alpha_spaces'" autocomplete="false"/>
 
+                    </div>
                     <span v-show="errors.has('email')&&submitted"
                           class="help is-danger">{{ errors.first('name') }}</span>
 
-
-                    <input type="text" :class="{'errors':errors.has('password')&&submitted}" name="email"
-                           placeholder=" البريد الكترونى " v-model="user.email"
-                           v-validate="'required|email'" autocomplete="false"/>
+                    <div class="input-border">
+                        <input type="text" :class="{'errors':errors.has('password')&&submitted}" name="email"
+                               placeholder=" البريد الكترونى " v-model="user.email"
+                               v-validate="'required|email'" autocomplete="false"/>
+                    </div>
 
                     <span v-show="errors.has('email')&&submitted"
                           class="help is-danger">{{ errors.first('email') }}</span>
 
-
-                    <input type="password" :class="{'errors':errors.has('password')&&submitted}" name="password"
-                           placeholder="كلمة المرور" v-model="user.password"
-                           v-validate="'required'" autocomplete="false"/>
-
+                    <div class="input-border">
+                        <input type="password" :class="{'errors':errors.has('password')&&submitted}" name="password"
+                               placeholder="كلمة المرور" v-model="user.password"
+                               v-validate="'required'" autocomplete="false"/>
+                    </div>
                     <span v-show="errors.has('password')&&submitted" class="help is-danger">{{ errors.first('password') }}</span>
 
-
-                    <input type="password" :class="{'errors':errors.has('confirm_password')&&submitted}"
-                           name="confirm_password" placeholder="تاكيد كلمة المرور" v-model="user.confirm_password"
-                           v-validate="'confirmed:password'" autocomplete="false"/>
-
+                    <div class="input-border">
+                        <input type="password" :class="{'errors':errors.has('confirm_password')&&submitted}"
+                               name="confirm_password" placeholder="تاكيد كلمة المرور" v-model="user.confirm_password"
+                               v-validate="'required|confirmed:password'" autocomplete="false"/>
+                    </div>
                     <span v-show="errors.has('confirm_password')&&submitted" class="help is-danger">{{ errors.first('confirm_password') }}</span>
 
-                    <button type="submit">
+                    <button type="submit" class="link" @click.prevent="register">
                         سجل
                     </button>
 
@@ -72,7 +77,6 @@
 </template>
 
 <style scoped>
-
 
 
 </style>
@@ -108,13 +112,16 @@
                 this.$validator.validateAll().then((result) => {
                     if (result) {
                         self.$f7.preloader.show();
-
                         var userData = self.user;
                         userData.lang = "ar";
+                        self.$f7.dialog.alert('start send');
                         self.$store.dispatch('register', userData).then((response) => {
+                            self.$f7.dialog.alert('rigister send');
                             self.$f7router.navigate('/home/quran/1');
                             self.$f7.preloader.hide();
                         }, (res) => {
+                            self.$f7.dialog.alert(JSON.stringify(res.body.errors));
+                            self.$f7.dialog.alert(JSON.stringify(res.status));
                             self.serverErrors = res.body.errors;
                             self.$f7.preloader.hide();
                         });
@@ -126,14 +133,17 @@
             },
             addPhotoImage() {
 
+
                 navigator.camera.getPicture((imageData) => {
-                    this.user.image_data = imageData;
-                    this.$refs.image.src=imageData;
+                    this.user.image_data = "data:image/jpeg;base64," + imageData;
+                    this.$refs.image.src = "data:image/jpeg;base64," + imageData;
                 }, function (message) {
                     // no selected
                 }, {
                     quality: 50,
                     sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
+                    targetWidth: 60,
+                    targetHeight: 60,
                     allowEdit: true,
                     destinationType: Camera.DestinationType.DATA_URL
                 });
