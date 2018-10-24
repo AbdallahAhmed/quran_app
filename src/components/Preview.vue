@@ -2,6 +2,8 @@
 
     <div class="page" data-name="preview">
 
+        <navbar></navbar>
+
         <options-toolbar v-if="aya"></options-toolbar>
 
         <div class="sura-stats row rollIn">
@@ -140,6 +142,7 @@
 
         components: {
             "options-toolbar": require("./partials/OptionsToolbar.vue"),
+            "navbar": require("./partials/Navbar.vue")
         }
 
 

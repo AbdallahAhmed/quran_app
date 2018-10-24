@@ -46,19 +46,15 @@
             </div>
 
             <div class="block quran-sura">
-
-
-                <span v-for="page in pages" v-if="sura">
-
-                     <span v-for="aya of page" class="quran-aya" @click="activate(aya)"
+                <quran-page v-for="page in pages" :page="page" v-if="sura">
+                     <span v-for="aya in page" class="quran-aya" @click="activate(aya)"
                            :class="{active: isActivated(aya)}" :style="{ 'font-size': font_size + 'px' }">
 
                          {{ aya.text }}
 
                          <span class="aya-num">  ﴿ {{ aya.numberinsurat }} ﴾ </span>
                      </span>
-
-                </span>
+                </quran-page>
             </div>
 
         </div>
@@ -71,6 +67,7 @@
 <script>
 
     import Vue from 'vue';
+
 
     export default {
 
@@ -86,6 +83,10 @@
 
             sura() {
                 return this.$store.getters.sura;
+            },
+
+            page() {
+                return this.$store.getters.page;
             },
 
             pages() {
@@ -104,13 +105,18 @@
 
             let sura_id = this.$f7route.params.sura_id || this.sura.id;
 
+            if (this.Dom7('.page-' + this.page).length) {
+                //  alert("scrolling..");
+                this.Dom7('.page-content').scrollTop(this.Dom7('.page-' + this.page).offset().top, 300);
+            }
+
             this.$store.dispatch("get_sura", {surah_id: sura_id}).then((response) => {
 
                 this.$store.commit("SURA", response.data.data);
 
                 // Increment views
 
-                setTimeout(()=>{
+                setTimeout(() => {
                     this.$store.dispatch("read_page", this.$store.getters.page);
                 }, 5000);
             });
@@ -125,7 +131,7 @@
 
                     this.$store.commit("PAGE", this.$store.getters.page + 1);
 
-                    setTimeout(()=>{
+                    setTimeout(() => {
                         this.$store.dispatch("read_page", this.$store.getters.page);
                     }, 5000);
                 }
@@ -165,7 +171,8 @@
         },
 
         components: {
-            "navbar": require("./partials/Navbar.vue")
+            "navbar": require("./partials/Navbar.vue"),
+            "quran-page": require("./partials/QuranPage.vue")
         }
 
 
