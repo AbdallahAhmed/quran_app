@@ -17,7 +17,7 @@
 
 
                 <div id="competition-tab" class="page-content tab" :class="{'tab-active' : $store.getters.home_tab == 'competition'}">
-
+                    <competition/>
                 </div>
 
                 <div id="quran-tab" class="page-content tab" :class="{'tab-active' : $store.getters.home_tab == 'quran', 'black_mode': black_mode == 'black'}">
@@ -69,7 +69,8 @@
             "search": require("./Search.vue"),
             "profile": require("./MyProfile.vue"),
             "khatima-tab": require("./KhatimaTab.vue"),
-            "login": require("./Login.vue")
+            "login": require("./Login.vue"),
+            "competition": require("./ContestTab/index.vue")
         }
     }
 
