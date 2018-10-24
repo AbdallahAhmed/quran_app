@@ -246,6 +246,8 @@ const actions = {
                     page_id: page_id
                 }).then((response) => {
 
+                    let data = response.data.data;
+
                     data.pages = JSON.parse(data.pages);
 
                     commit('FILL_CURRENT_KHATEMA', data)

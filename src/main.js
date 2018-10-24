@@ -376,10 +376,6 @@ document.addEventListener('deviceready', () => {
             return f7.closeModal();
         }
 
-        if (store.getters.overlay) {
-            return store.commit("overlay", false);
-        }
-
         // If we have a back button, we want it to go back
         if (f7.mainView.history.length > 1) {
             return f7.mainView.router.back();

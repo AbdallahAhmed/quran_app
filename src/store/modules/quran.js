@@ -62,7 +62,7 @@ export default {
             localStorage.setItem("sura", JSON.stringify(state.sura));
 
             state.page = parseInt(Object.keys(state.sura.pages)[0]);
-            localStorage.setItem("page", parseInt(state.page));
+            localStorage.setItem("page", state.page);
         },
 
         SAVED_AYA: (state, ayat) => {

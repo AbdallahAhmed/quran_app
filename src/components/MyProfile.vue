@@ -5,10 +5,12 @@
         <navbar></navbar>
 
         <div class="login-page">
+
             <div class="header-islamic row">
                 <div class="header-islamic-content">
                     <img src="../assets/img/user-avater.png" class="avater" alt="user avater">
-                    <p> {{user.first_name}} </p>
+                    <p v-if="user"> {{user.first_name}} </p>
+                    <p v-if="!user"> تسجيل الدخول </p>
                 </div>
             </div>
 

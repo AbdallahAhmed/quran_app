@@ -19,7 +19,7 @@
             <img src="../../assets/img/search.png" alt="">
         </f7-link>
 
-        <f7-link @click="home_tab = 'login'" :class="{'tab-link-active': $store.getters.home_tab == 'login' }">
+        <f7-link @click="home_tab = 'profile'" :class="{'tab-link-active': $store.getters.home_tab == 'profile' }">
             <img src="../../assets/img/user.png" class="user-avater" alt=""/>
         </f7-link>
     </f7-toolbar>

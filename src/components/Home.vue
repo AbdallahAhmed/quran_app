@@ -7,14 +7,12 @@
 
         <options-toolbar v-if="aya"></options-toolbar>
 
-
             <div class="tabs">
 
                 <div id="khatima-tab" class="page-content tab page-khatima" :class="{'tab-active' : $store.getters.home_tab == 'khatima'}">
                     <khatima-tab  v-if="$app.auth.check()"></khatima-tab>
                     <login v-if="!$app.auth.check()"></login>
                 </div>
-
 
                 <div id="competition-tab" class="page-content tab" :class="{'tab-active' : $store.getters.home_tab == 'competition'}">
                     <competition/>
@@ -28,10 +26,8 @@
                     <search></search>
                 </div>
 
-
-                <div id="login-tab" class="page-content tab" :class="{'tab-active' :  $store.getters.home_tab == 'login'}">
-                    <login v-if="!$app.auth.check()"></login>
-                    <profile v-if="$app.auth.check()"></profile>
+                <div id="profile-tab" class="page-content tab" :class="{'tab-active' :  $store.getters.home_tab == 'profile'}">
+                    <profile></profile>
                 </div>
 
             </div>
