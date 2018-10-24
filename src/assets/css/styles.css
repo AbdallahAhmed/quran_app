@@ -468,7 +468,7 @@
 
 
 
-.page-login .header-islamic-content p {
+ .header-islamic-content p {
     font-size: 22px;
     color: #207249;
     font-family: -webkit-body;
@@ -1014,5 +1014,6 @@ a.forget-password {
 
 
 .login-page{
-    height: 90vh;
+    overflow: auto;
+    height: 100vh;
 }
