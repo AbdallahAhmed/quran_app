@@ -714,7 +714,7 @@ a.forget-password {
     width: calc(100% - 40px);
     text-align: center;
     margin-top: 5px;
-    overflow: scroll;
+    overflow: auto;
 }
 
 .btn-quran {
