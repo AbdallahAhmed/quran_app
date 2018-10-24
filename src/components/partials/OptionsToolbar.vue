@@ -9,7 +9,7 @@
                 <div class="options-message" v-if="message"> {{ message}} </div>
 
                 <a class="col-30 link spaceInDown" @click="share" v-if="!message">
-                    <img src="../../assets/img/share.png">
+                    <img src="../../assets/img/share_inverse.png">
                 </a>
                 <a class="col-30 link spaceInDown" @click="copy" v-if="!message" >
                     <input type="hidden" id="clipboard" :value="aya.text"/>
