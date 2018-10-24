@@ -2,16 +2,15 @@
     <div :class="'navbar-fixed  page-khatima'">
 
         <navbar></navbar>
+
         <p class="page-title">تقدمك</p>
 
-
-
-        <div class="loader-wrapper" v-if="loading">
-            <div class="preloader color-green"></div>
+        <div class="loader-wrapper">
+            <div class="preloader color-green" v-if="loading"></div>
         </div>
 
-
         <div class="khatima-list" v-if="khatemas.pending.id">
+
             <div class="khatima-wrapper">
                 <h1 class="khatima-title">الخاتمة الحالية </h1>
 
@@ -28,16 +27,20 @@
                         <span>{{((len(khatemas.pending.pages)/60).toFixed(1))}}</span>
                         <span>ساعات</span>
                     </p>
+
                 </div>
+
                 <div class="row footer">
                     <div class="col-100">
                         <p>{{(10-(len(khatemas.pending.pages)/60)).toFixed(1)}} ساعة متبقية تقربيأ</p>
                     </div>
                 </div>
+
             </div>
         </div>
 
         <div class="khatima-list" v-for="khtma in this.khatemas.completed" :key="khtma.id">
+
             <div class="khatima-wrapper">
                 <h1 class="khatima-title">الخاتمة السابقة </h1>
                 <div class="row info">
@@ -97,9 +100,11 @@
         margin-bottom: 18px;
     }
 </style>
+
 <script>
 
     import moment from 'moment';
+
     export default {
 
         data() {
@@ -128,23 +133,22 @@
         },
 
         methods: {
+
             percentage(pages) {
                 return ((JSON.parse(pages).length / 604))
 
             },
+
             len(pages) {
                 return JSON.parse(pages).length
             },
+
             moment(...arg){
                 return moment(...arg);
             }
         },
         components: {
             "navbar": require("./partials/Navbar.vue"),
-        },
-
-        mounted() {
-
         }
     }
 </script>

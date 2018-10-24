@@ -7,8 +7,8 @@ export default {
         "juz_sections": false,
         // "saved_ayat": JSON.parse(localStorage.getItem("saved_ayat")) || []
         "saved_ayat": [],
-        "page": 0,
-        "sura": false
+        "page": parseInt(localStorage.getItem("page")) || 0,
+        "sura": JSON.parse(localStorage.getItem("sura")) || false,
     },
 
     getters: {
@@ -53,11 +53,16 @@ export default {
 
         PAGE(state, page = 1) {
             state.page = page;
+            localStorage.setItem("page", parseInt(state.page));
         },
 
         SURA(state, sura) {
+
             state.sura = sura;
+            localStorage.setItem("sura", JSON.stringify(state.sura));
+
             state.page = parseInt(Object.keys(state.sura.pages)[0]);
+            localStorage.setItem("page", parseInt(state.page));
         },
 
         SAVED_AYA: (state, ayat) => {

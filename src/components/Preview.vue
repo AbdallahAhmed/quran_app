@@ -6,7 +6,7 @@
 
         <div class="sura-stats row rollIn">
 
-            <a @click="$f7router.back()" class="link preview-back">
+            <a @click="back" class="link preview-back">
                 <i class="f7-icons">arrow_left</i>
             </a>
 
@@ -125,16 +125,16 @@
 
 
             isActivated(aya) {
-                return aya.number == this.active;
+                return aya.number == this.active && this.aya;
             },
 
             isFocused(aya) {
                 return aya.id == this.aya_id;
             },
 
-            close() {
-                this.active = 0;
+            back() {
                 this.$store.commit("AYA", false);
+                this.$f7router.back()
             }
         },
 
