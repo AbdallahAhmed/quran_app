@@ -15,8 +15,10 @@
             <div class="form-container">
 
                 <form @submit.prevent="forgetPassword">
-                    <input type="text" name="email" placeholder=" البريد الكترونى " v-model="user.email"
-                           v-validate="'required|email'" autocomplete="false">
+                    <div class="input-border">
+                        <input type="text" name="email" placeholder=" البريد الكترونى " v-model="user.email"
+                               v-validate="'required|email'" autocomplete="false">
+                    </div>
 
                     <span v-show="errors.has('email')&&submitted"
                           class="help is-danger">{{ errors.first('email') }}</span>
@@ -57,23 +59,28 @@
                     {{error}}
                 </span>
                         <form @submit.prevent="resetPassword">
-                            <input type="text" :class="{'errors':errors.has('code')&&submitted}" name="code"
-                                   placeholder="الرمز" v-model="user.code"
-                                   v-validate="'required'" autocomplete="false"/>
+                            <div class="input-border">
 
+                                <input type="text" :class="{'errors':errors.has('code')&&submitted}" name="code"
+                                       placeholder="الرمز" v-model="user.code"
+                                       v-validate="'required'" autocomplete="false"/>
+                            </div>
                             <span v-show="errors.has('password')&&submitted" class="help is-danger">{{ errors.first('password') }}</span>
 
-                            <input type="password" :class="{'errors':errors.has('password')&&submitted}" name="password"
-                                   placeholder="كلمة المرور" v-model="user.password"
-                                   v-validate="'required'" autocomplete="false"/>
-
+                            <div class="input-border">
+                                <input type="password" :class="{'errors':errors.has('password')&&submitted}"
+                                       name="password"
+                                       placeholder="كلمة المرور" v-model="user.password"
+                                       v-validate="'required'" autocomplete="false"/>
+                            </div>
                             <span v-show="errors.has('password')&&submitted" class="help is-danger">{{ errors.first('password') }}</span>
 
-                            <input type="password" :class="{'errors':errors.has('confirm_password')&&submitted}"
-                                   name="confirm_password" placeholder="تاكيد كلمة المرور"
-                                   v-model="user.confirm_password"
-                                   v-validate="'confirmed:password'" autocomplete="false"/>
-
+                            <div class="input-border">
+                                <input type="password" :class="{'errors':errors.has('confirm_password')&&submitted}"
+                                       name="confirm_password" placeholder="تاكيد كلمة المرور"
+                                       v-model="user.confirm_password"
+                                       v-validate="'confirmed:password'" autocomplete="false"/>
+                            </div>
                             <button type="submit">
                                 أرسال
                             </button>
@@ -144,11 +151,11 @@
                 });
                 return false;
             },
-            resetPassword(){
+            resetPassword() {
                 this.submitted = true;
                 var self = this;
                 this.$validator.validateAll(this.user).then((result) => {
-                    console.log('test' ,self.user);
+                    console.log('test', self.user);
                     if (result) {
                         self.$f7.preloader.show();
                         self.$http.post('auth/reset-password', self.user).then((response) => {
@@ -156,8 +163,8 @@
                             self.$f7.preloader.hide();
 
                             self.popup.close();
-                            self.$store.commit('user',response.body.data.user);
-                            self.$store.commit('token',response.body.data.token);
+                            self.$store.commit('user', response.body.data.user);
+                            self.$store.commit('token', response.body.data.token);
                             self.$f7router.navigate('home/quran/1');
 
                         }, (res) => {
