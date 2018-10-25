@@ -26,8 +26,16 @@
                     id: 'com.dotdev.quran',
                     name: 'Quran',
                     // theme: 'auto',
+                    notification: {
+                        icon: '<i class="f7-icons">book_fill</i>',
+                        title: 'القران',
+                        subtitle: '',
+                        closeButton: true,
+                        closeTimeout: 3000,
+                    },
                     material: true,
-                    routes: routes
+                    routes: routes,
+
                 },
             }
         }
