@@ -37,7 +37,7 @@
 
                     <!--<span v-show="errors.has('password')&&submitted" class="help is-danger">{{ errors.first('password') }}</span>-->
 
-                    <button type="submit">
+                    <button type="submit" class="link">
                         تسجيل
                     </button>
                 </form>
