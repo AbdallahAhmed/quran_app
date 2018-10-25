@@ -25,14 +25,17 @@
                 </span>
 
                 <form @submit.prevent="login">
-                    <input type="text" name="email" placeholder=" البريد الكترونى " v-model="user.email"
-                           v-validate="'required|email'" autocomplete="false">
+                    <div class="input-border">
 
+                        <input type="text" name="email" placeholder=" البريد الكترونى " v-model="user.email"
+                               v-validate="'required|email'" autocomplete="false">
+                    </div>
                     <span v-show="errors.has('email')&&submitted"
                           class="help is-danger">{{ errors.first('email') }}</span>
-                    <input type="password" name="password" placeholder="كلمة المرور" v-model="user.password"
-                           v-validate="'required'" autocomplete="false">
-
+                    <div class="input-border">
+                        <input type="password" name="password" placeholder="كلمة المرور" v-model="user.password"
+                               v-validate="'required'" autocomplete="false" />
+                    </div>
                     <span v-show="errors.has('password')&&submitted" class="help is-danger">{{ errors.first('password') }}</span>
 
                     <button type="submit">

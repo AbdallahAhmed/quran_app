@@ -462,7 +462,7 @@
     height: 165px;
     background-position: 0 -50px;
     background-repeat: no-repeat;
-    box-shadow: 0px 6px 20px -8px;
+    box-shadow: 0px 6px 7px -8px;
     width: 100%;
     position: relative;
     top: -7px;
@@ -471,13 +471,12 @@
     width: 200px;
     margin: auto;
     text-align: center;
-    padding: 68px 30px 0;
-
+    padding: 40px 30px 0;
 }
 
 
 
-.page-login .header-islamic-content p {
+ .header-islamic-content p {
     font-size: 22px;
     color: #207249;
     font-family: -webkit-body;
@@ -487,20 +486,38 @@
     width: calc(100% - 40px);
     text-align: center;
     margin: auto;
-
-    overflow: scroll;
+    overflow: auto;
 
 }
 
 .form-container input {
     width: 100%;
     text-align: center;
-    border-bottom: 1px #c7c7c794 solid;
+    /*border-bottom: 1px #c7c7c794 solid;*/
     margin-bottom: 15px;
     padding: 10px;
     font-family: initial;
     color: black !important;
     font-size: 18px;
+}
+.input-border{
+    position: relative;
+    margin-top: 14px;
+}
+.form-container .input-border:after {
+    content: '';
+    position: absolute;
+    background-color: #eaeaea;
+    display: block;
+    z-index: 15;
+    top: auto;
+    right: auto;
+    bottom: 0;
+    left: 0;
+    height: 1px;
+    width: 100%;
+    -webkit-transform-origin: 50% 100%;
+    transform-origin: 50% 100%;
 }
 
 .form-container button {
@@ -685,6 +702,8 @@ a.forget-password {
 
     border: 3px solid #207249;
     border-radius: 3cm;
+    height: 100px;
+    width: 100px;
 }
 
 .page-profile .popup-reset .header-islamic {
@@ -695,7 +714,7 @@ a.forget-password {
     width: calc(100% - 40px);
     text-align: center;
     margin-top: 5px;
-    overflow: scroll;
+    overflow: auto;
 }
 
 .btn-quran {
@@ -995,8 +1014,23 @@ a.forget-password {
 [data-name=preview] .page-content {
     padding-bottom: 140px !important;
 }
+.user-avater-tab{
+    width: 30px;
+    height: 30px;
+    border: 3px solid #207249;
+    border-radius: 3cm;
+}
+
+.header-islamic-content img{
+    width: 100px;
+}
 
 
 .color-green{
     color:#207249 !important;
+}
+
+.login-page{
+    overflow: auto;
+    height: 100vh;
 }

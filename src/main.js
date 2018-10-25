@@ -362,6 +362,9 @@ document.body.addEventListener('click', () => {
 
 document.addEventListener('deviceready', () => {
 
+
+    // StatusBar.show();
+
     // Bind to the back button for Android
 
     document.addEventListener('backbutton', function () {

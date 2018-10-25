@@ -8,8 +8,9 @@
 
             <div class="header-islamic row">
                 <div class="header-islamic-content">
-                    <img src="../assets/img/user-avater.png" class="avater" alt="user avater">
-                    <p v-if="user"> {{user.first_name}} </p>
+                    <img :src="user.photo?user.photo.thumbnail:'user-avater.png'" class="avater"
+                         alt="user avater">
+                    <p v-if="user"> {{user.first_name }}   {{ user.last_name }}</p>
                     <p v-if="!user">
                         <a href="/login" class="link color-green">
                             تسجيل الدخول
@@ -59,7 +60,7 @@
                         <a href="#" class="link btn-setting">
                             <p> انشر القرأن</p>
 
-                            <img src="./../assets/img/share.png" alt="Fav">
+                            <img src="./../assets/img/_share.png" alt="Fav">
 
                         </a>
                     </div>
