@@ -39,7 +39,7 @@
 
         <div class="page-content">
 
-            <div class="quran-basmla" v-if="sura">
+            <div class="quran-basmla" v-if="sura && sura.id !== 9">
                 <a>
                     بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ
                 </a>
