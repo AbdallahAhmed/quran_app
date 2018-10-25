@@ -32,6 +32,7 @@
                             <p>{{aya.text}}</p>
                         </div>
                     </div>
+                    <p class="no-found" v-if="saved_ayat.length==0">لا يوجد إيات مفضله</p>
                 </div>
             </div>
         </div>
@@ -49,6 +50,7 @@
                 this.$f7.preloader.hide();
             }, () => {
                 this.$f7.preloader.hide();
+
             });
         },
         computed: {
