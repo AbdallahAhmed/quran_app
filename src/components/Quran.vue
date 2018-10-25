@@ -59,7 +59,6 @@
 
         </div>
 
-
     </div>
 
 </template>
@@ -153,6 +152,8 @@
 
                 if (this.active != aya.number) {
                     this.active = aya.number;
+                    aya.surah = this.sura;
+                    delete aya.surah.pages;
                     this.$store.commit("AYA", aya);
                 } else {
                     this.active = 0;
@@ -169,8 +170,7 @@
 
         },
 
-        beforeRouteLeave (to, from , next) {
-            alert("leave");
+        beforeRouteLeave(to, from, next) {
         },
 
         components: {

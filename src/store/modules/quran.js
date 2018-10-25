@@ -5,8 +5,8 @@ export default {
     state: {
         "aya": false,
         "juz_sections": false,
-        // "saved_ayat": JSON.parse(localStorage.getItem("saved_ayat")) || []
-        "saved_ayat": [],
+        "saved_ayat": JSON.parse(localStorage.getItem("saved_ayat")) || [],
+        // "saved_ayat": [],
         "page": parseInt(localStorage.getItem("page")) || 0,
         "sura": JSON.parse(localStorage.getItem("sura")) || false,
     },
@@ -66,17 +66,17 @@ export default {
         },
 
         SAVED_AYA: (state, ayat) => {
-            // if (!state.saved_ayat.find((item) => {
-            //     return ayat.id === item.id;
-            // })) {
-            //     state.saved_ayat.unshift(ayat);
-            // }
-            // localStorage.setItem("saved_ayat", JSON.stringify(state.saved_ayat));
+            if (!state.saved_ayat.find((item) => {
+                return ayat.id === item.id;
+            })) {
+                state.saved_ayat.unshift(ayat);
+            }
+            localStorage.setItem("saved_ayat", JSON.stringify(state.saved_ayat));
         },
 
         SAVED_AYAT: (state, ayat) => {
             state.saved_ayat = ayat;
-            // localStorage.setItem("saved_ayat", JSON.stringify(state.saved_ayat));
+            localStorage.setItem("saved_ayat", JSON.stringify(state.saved_ayat));
         },
 
         REMOVE_AYAT: (state, ayat_id) => {
@@ -84,7 +84,7 @@ export default {
                 return ayat_id != item.id;
             })
             state.saved_ayat = ayat;
-            // localStorage.setItem("saved_ayat", JSON.stringify(state.saved_ayat));
+            localStorage.setItem("saved_ayat", JSON.stringify(state.saved_ayat));
         }
     },
 
@@ -114,6 +114,7 @@ export default {
                 (res) => {
                     store.commit('SAVED_AYAT', res.body.data);
                 }, () => {
+                    store.commit('SAVED_AYAT', JSON.parse(localStorage.getItem("saved_ayat")) );
                 });
         },
 

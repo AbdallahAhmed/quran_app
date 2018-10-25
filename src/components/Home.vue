@@ -10,8 +10,7 @@
             <div class="tabs">
 
                 <div id="khatima-tab" class="page-content tab page-khatima" :class="{'tab-active' : $store.getters.home_tab == 'khatima'}">
-                    <khatima-tab  v-if="$app.auth.check()"></khatima-tab>
-                    <login v-if="!$app.auth.check()"></login>
+                    <khatima-tab></khatima-tab>
                 </div>
 
                 <div id="competition-tab" class="page-content tab" :class="{'tab-active' : $store.getters.home_tab == 'competition'}">

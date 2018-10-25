@@ -1052,3 +1052,9 @@ a.forget-password {
     overflow: auto;
     height: 100vh;
 }
+
+.no-found{
+    width: 100%;
+    text-align: center;
+    margin-top: 60%;
+}

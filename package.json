@@ -17,7 +17,6 @@
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-es2016": "^6.24.1",
     "cordova": "^8.1.2",
-    "cordova-android": "^6.4.0",
     "cordova-browser": "^5.0.4",
     "cordova-ios": "^4.5.5",
     "cordova-plugin-badge": "^0.8.7",
@@ -86,8 +85,7 @@
     },
     "platforms": [
       "browser",
-      "ios",
-      "android"
+      "ios"
     ]
   }
 }
