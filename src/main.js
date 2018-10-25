@@ -357,7 +357,6 @@ document.body.addEventListener('click', () => {
     }
 });
 
-
 // Fix android Back behaviour
 
 document.addEventListener('deviceready', () => {
@@ -382,8 +381,8 @@ document.addEventListener('deviceready', () => {
         }
 
         // If we have a back button, we want it to go back
-        if (f7.mainView.history.length > 1) {
-            return Vue.app.vue.$f7.router.back();
+        if (Vue.app.vue.$f7.view.main.history.length > 1) {
+            return Vue.app.vue.$f7.view.main.router.back();
         }
         // Default to closing the app
         return window.navigator.app.exitApp();

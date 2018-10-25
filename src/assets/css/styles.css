@@ -366,6 +366,24 @@
     }
 }
 
+@media only screen and (max-height: 650px) {
+    .section-wrapper .number-list a {
+        height: 19px;
+    }
+}
+
+@media only screen and (max-height: 600px) {
+    .section-wrapper .number-list a {
+        height: 18px;
+    }
+}
+@media only screen and (max-height: 500px) {
+    .section-wrapper .number-list a {
+        height: 14px;
+    }
+}
+
+
 .page-sections .page-content {
     overflow: hidden;
 }

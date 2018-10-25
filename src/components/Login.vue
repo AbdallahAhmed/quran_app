@@ -20,23 +20,22 @@
 
             <div class="form-container">
 
-                <span class="help" v-if="serverErrors.length!=0" v-for="error in serverErrors" :key="error">
-                    {{error}}
-                </span>
-
                 <form @submit.prevent="login">
                     <div class="input-border">
 
                         <input type="text" name="email" placeholder=" البريد الكترونى " v-model="user.email"
                                v-validate="'required|email'" autocomplete="false">
                     </div>
-                    <span v-show="errors.has('email')&&submitted"
-                          class="help is-danger">{{ errors.first('email') }}</span>
+
+                    <!--<span v-show="errors.has('email')&&submitted"-->
+                          <!--class="help is-danger">{{ errors.first('email') }}</span>-->
+
                     <div class="input-border">
                         <input type="password" name="password" placeholder="كلمة المرور" v-model="user.password"
-                               v-validate="'required'" autocomplete="false" />
+                               v-validate="'required'" autocomplete="false"/>
                     </div>
-                    <span v-show="errors.has('password')&&submitted" class="help is-danger">{{ errors.first('password') }}</span>
+
+                    <!--<span v-show="errors.has('password')&&submitted" class="help is-danger">{{ errors.first('password') }}</span>-->
 
                     <button type="submit">
                         تسجيل
@@ -79,41 +78,52 @@
     import {mapState} from 'vuex';
 
     export default {
-        beforeCreate() {
-            // if(this.$app.auth.check()){
-            //   this.$f7router.back();
-            // }
-        },
+
         data: function () {
             return {
-
                 user: {
                     email: "",
                     password: ""
                 },
-                serverErrors: [],
                 submitted: false
             }
         },
+
         methods: {
+
             login() {
+
                 this.submitted = true;
+
                 var self = this;
-                this.$validator.validateAll().then((result) => {
-                    if (result) {
-                        self.$f7.preloader.show();
+
+                this.$validator.validateAll(this.user).then((valid) => {
+
+                    if (valid) {
+
+                        self.$f7.dialog.preloader('جاري تسجيل الدخول');
+
                         self.$store.dispatch('login', self.user).then((response) => {
                             self.$f7router.navigate('home/quran/1');
-
-                            self.$f7.preloader.hide();
                         }, (res) => {
-                            self.serverErrors = ['البريد الكترونى وكلمة المرور غير صحيحة'];
-                            self.$f7.preloader.hide();
+                            self.$f7.notification.create({
+                                subtitle: 'البريد الكترونى وكلمة المرور غير صحيحين'
+                            }).open();
+                        }).then(()=>{
+                            self.$f7.dialog.close();
                         });
-                        return;
+
+                    }else{
+
+                        self.$f7.notification.create({
+                            subtitle: 'البريد الكترونى وكلمة المرور غير صحيحين'
+                        }).open();
+
+                        self.$f7.dialog.close();
                     }
 
                 });
+
                 return false;
             },
         },
