@@ -25,12 +25,10 @@ export default {
       let component = this.$app.auth.check()
         ? ContestTabAuthed
         : ContestTabUnauthed;
-      console.log(component);
       return component;
     }
   },
   created() {
-    console.log("WOOW");
   },
   mounted() {}
 };

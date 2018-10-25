@@ -107,7 +107,7 @@
                             self.$f7router.navigate('home/quran/1');
                         }, (res) => {
                             self.$f7.notification.create({
-                                subtitle: 'البريد الكترونى وكلمة المرور غير صحيحة'
+                                subtitle: 'البريد الكترونى وكلمة المرور غير صحيحين'
                             }).open();
                         }).then(()=>{
                             self.$f7.dialog.close();
@@ -116,7 +116,7 @@
                     }else{
 
                         self.$f7.notification.create({
-                            subtitle: 'البريد الكترونى وكلمة المرور غير صحيحة'
+                            subtitle: 'البريد الكترونى وكلمة المرور غير صحيحين'
                         }).open();
 
                         self.$f7.dialog.close();
