@@ -192,6 +192,10 @@ const mutations = {
             }
         }
         // if you has object
+        if ((typeof state.khatema.pages) == "string") {
+            state.khatema.pages=JSON.parse(state.khatema.pages)
+        }
+        ;
         if (!state.khatema.pages.find((item) => {
             return item === page_id;
         })) {
@@ -294,10 +298,16 @@ const actions = {
         return promise;
     },
 
-    upload_local_data({store, state, commit}) {
+    upload_local_data({state, commit, rootState}) {
         Vue.http.post("khatemas/update", {
             pages: state.khatema.pages,
         });
+
+        Vue.http.post("bookmarks/create", {
+            ayah_id: (JSON.parse(localStorage.getItem('saved_ayat')) || []).map(function (item) {
+                return item.id;
+            })
+        })
     }
 };
 

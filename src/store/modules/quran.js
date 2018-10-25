@@ -71,13 +71,12 @@ export default {
             })) {
                 state.saved_ayat.unshift(ayat);
             }
-            console.log(state.saved_ayat);
             localStorage.setItem("saved_ayat", JSON.stringify(state.saved_ayat));
         },
 
         SAVED_AYAT: (state, ayat) => {
             state.saved_ayat = ayat;
-            // localStorage.setItem("saved_ayat", JSON.stringify(state.saved_ayat));
+            localStorage.setItem("saved_ayat", JSON.stringify(state.saved_ayat));
         },
 
         REMOVE_AYAT: (state, ayat_id) => {
