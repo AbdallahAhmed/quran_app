@@ -136,6 +136,30 @@ module.exports = [
     "clobbers": [
       "CameraPopoverHandle"
     ]
+  },
+  {
+    "id": "cordova-plugin-ionic-webview.IonicWebView",
+    "file": "plugins/cordova-plugin-ionic-webview/src/www/util.js",
+    "pluginId": "cordova-plugin-ionic-webview",
+    "clobbers": [
+      "Ionic.WebView"
+    ]
+  },
+  {
+    "id": "cordova-plugin-ionic-webview.ios-wkwebview-exec",
+    "file": "plugins/cordova-plugin-ionic-webview/src/www/ios/ios-wkwebview-exec.js",
+    "pluginId": "cordova-plugin-ionic-webview",
+    "clobbers": [
+      "cordova.exec"
+    ]
+  },
+  {
+    "id": "cordova-plugin-ionic-keyboard.keyboard",
+    "file": "plugins/cordova-plugin-ionic-keyboard/www/ios/keyboard.js",
+    "pluginId": "cordova-plugin-ionic-keyboard",
+    "clobbers": [
+      "window.Keyboard"
+    ]
   }
 ];
 module.exports.metadata = 
@@ -152,7 +176,9 @@ module.exports.metadata =
   "cordova-plugin-statusbar": "2.4.2",
   "cordova-plugin-badge": "0.8.7",
   "cordova-plugin-local-notification": "0.9.0-beta.2",
-  "cordova-plugin-camera": "4.0.3"
+  "cordova-plugin-camera": "4.0.3",
+  "cordova-plugin-ionic-webview": "2.2.0",
+  "cordova-plugin-ionic-keyboard": "2.1.3"
 };
 // BOTTOM OF METADATA
 });
