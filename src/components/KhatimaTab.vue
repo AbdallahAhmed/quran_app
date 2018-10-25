@@ -9,7 +9,7 @@
             <div class="preloader color-green" v-if="loading"></div>
         </div>
 
-        <div class="khatima-list" v-if="khatemas.pending.id">
+        <div class="khatima-list" v-if="!loading">
 
             <div class="khatima-wrapper">
                 <h1 class="khatima-title">الخاتمة الحالية </h1>
@@ -96,7 +96,7 @@
 
 
 <style>
-    .page-title{
+    .page-title {
         margin-bottom: 18px;
     }
 </style>
@@ -118,32 +118,43 @@
         },
 
         created() {
-
             this.loading = true;
             this.$http.get("khatemas").then((response) => {
                 this.khatemas = response.data.data;
+                this.loading = false;
+            }, () => {
+                this.khatemas.pending = this.$store.getters.current_khatema;
+                this.khatemas.completed = JSON.parse(localStorage.getItem("completed_khatema")) || [];
                 this.loading = false;
             }).then(() => {
 
                 this.$$('.gauge-khatima').each((index, item) => {
                     this.$f7.gauge.create(Object.assign({}, item.dataset, {el: item}))
                 });
+            }, () => {
+                this.$$('.gauge-khatima').each((index, item) => {
+                    this.$f7.gauge.create(Object.assign({}, item.dataset, {el: item}))
+                });
             });
-
         },
 
         methods: {
 
             percentage(pages) {
-                return ((JSON.parse(pages).length / 604))
+
+                return this.parse(pages).length / 604
+
+            },
+            parse(pages) {
+                return (typeof pages) == "string" ? JSON.parse(pages) : pages;
 
             },
 
             len(pages) {
-                return JSON.parse(pages).length
+                return this.parse(pages).length
             },
 
-            moment(...arg){
+            moment(...arg) {
                 return moment(...arg);
             }
         },

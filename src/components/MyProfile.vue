@@ -10,8 +10,8 @@
                 <div class="header-islamic-content">
                     <img :src="user.photo?user.photo.thumbnail:'user-avater.png'" class="avater"
                          alt="user avater">
-                    <p v-if="user"> {{user.first_name }}   {{ user.last_name }}</p>
-                    <p v-if="!user">
+                    <p v-if="check"> {{user.first_name }} {{ user.last_name }}</p>
+                    <p v-if="!check">
                         <a href="/login" class="link color-green">
                             تسجيل الدخول
                         </a>
@@ -66,10 +66,13 @@
                     </div>
                 </div>
 
-                <button type="submit">
+                <button type="submit" class="link" v-if="check">
                     تعديل الملف الشخصى
                 </button>
 
+                <button type="submit" @click="$f7router.navigate('/login')" class="link" v-if="!check">
+                    تسجيل الدخول
+                </button>
             </div>
         </div>
 
@@ -89,15 +92,23 @@
     export default {
 
         beforeCreate() {
-            // if (this.$app.auth.check()) {
-            //     this.$f7router.back();
-            // }
+
         },
 
         data: function () {
             return {
-                user: this.$app.auth.user(),
                 serverErrors: []
+            }
+        },
+        computed: {
+            check() {
+                if (this.$store.getters.auth) {
+                    return true;
+                }
+                return false;
+            },
+            user() {
+                return this.$store.getters.user;
             }
         },
 

@@ -170,7 +170,6 @@
         },
 
         beforeRouteLeave (to, from , next) {
-            alert("leave");
         },
 
         components: {
