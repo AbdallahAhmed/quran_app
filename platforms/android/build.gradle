@@ -263,6 +263,7 @@ dependencies {
     compile "com.google.firebase:firebase-config:+"
     compile "com.android.support:support-v4:24.1.1+"
     compile "com.android.support:support-v4:26.+"
+    compile "com.android.support:support-annotations:27.+"
     // SUB-PROJECT DEPENDENCIES END
 }
 

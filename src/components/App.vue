@@ -1,45 +1,40 @@
 <template>
 
-    <f7-app :params="f7params">
+  <f7-app :params="f7params">
 
-        <f7-statusbar></f7-statusbar>
+    <f7-statusbar></f7-statusbar>
 
-        <div class="views">
+    <div class="views">
 
-            <f7-view url="/home/quran" main></f7-view>
+      <f7-view url="/home/quran" main></f7-view>
 
-        </div>
+    </div>
 
-    </f7-app>
+  </f7-app>
 
 </template>
 
 <script>
+import routes from "../routes.js";
 
-    import routes from '../routes.js'
-
-    export default {
-
-        data() {
-            return {
-                f7params: {
-                    id: 'com.dotdev.quran',
-                    name: 'Quran',
-                    // theme: 'auto',
-                    notification: {
-                        icon: '<i class="f7-icons">book_fill</i>',
-                        title: 'القران',
-                        subtitle: '',
-                        closeButton: true,
-                        closeTimeout: 3000,
-                    },
-                    material: true,
-                    routes: routes,
-
-                },
-            }
-        }
-
-    }
-
+export default {
+  data() {
+    return {
+      f7params: {
+        id: "com.dotdev.quran",
+        name: "Quran",
+        // theme: 'auto',
+        notification: {
+          icon: '<i class="f7-icons">book_fill</i>',
+          title: "القران",
+          subtitle: "",
+          closeButton: true,
+          closeTimeout: 3000
+        },
+        material: true,
+        routes: routes
+      }
+    };
+  }
+};
 </script>

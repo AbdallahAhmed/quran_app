@@ -36,6 +36,12 @@
     },
     "cordova-plugin-camera": {
       "PACKAGE_NAME": "com.dotdev.quran"
+    },
+    "cordova-plugin-ionic-webview": {
+      "PACKAGE_NAME": "com.dotdev.quran"
+    },
+    "cordova-plugin-ionic-keyboard": {
+      "PACKAGE_NAME": "com.dotdev.quran"
     }
   },
   "dependent_plugins": {
