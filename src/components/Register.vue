@@ -31,10 +31,7 @@
                         <input type="text" :class="{'errors':errors.has('password')&&submitted}" name="name"
                                placeholder=" الأسم كامل " v-model="user.name"
                                v-validate="'required|alpha_spaces'" autocomplete="false"/>
-
                     </div>
-                    <span v-show="errors.has('email')&&submitted"
-                          class="help is-danger">{{ errors.first('name') }}</span>
 
                     <div class="input-border">
                         <input type="text" :class="{'errors':errors.has('password')&&submitted}" name="email"
@@ -42,22 +39,17 @@
                                v-validate="'required|email'" autocomplete="false"/>
                     </div>
 
-                    <span v-show="errors.has('email')&&submitted"
-                          class="help is-danger">{{ errors.first('email') }}</span>
-
                     <div class="input-border">
                         <input type="password" :class="{'errors':errors.has('password')&&submitted}" name="password"
                                placeholder="كلمة المرور" v-model="user.password"
                                v-validate="'required'" autocomplete="false"/>
                     </div>
-                    <span v-show="errors.has('password')&&submitted" class="help is-danger">{{ errors.first('password') }}</span>
 
                     <div class="input-border">
                         <input type="password" :class="{'errors':errors.has('confirm_password')&&submitted}"
                                name="confirm_password" placeholder="تاكيد كلمة المرور" v-model="user.confirm_password"
                                v-validate="'required|confirmed:password'" autocomplete="false"/>
                     </div>
-                    <span v-show="errors.has('confirm_password')&&submitted" class="help is-danger">{{ errors.first('confirm_password') }}</span>
 
                     <button type="submit" class="link" @click.prevent="register">
                         سجل
@@ -98,36 +90,50 @@
                     name: "",
                     image_data: ""
                 },
-                serverErrors: [],
                 submitted: false
             }
         },
         methods: {
             register() {
+
                 this.submitted = true;
+
                 var self = this;
-                this.$validator.validateAll().then((result) => {
-                    if (result) {
-                        self.$f7.preloader.show();
+
+                this.$validator.validateAll(this.user).then((valid) => {
+
+                    if (valid) {
+
+                        self.$f7.dialog.preloader('جاري التسجيل');
+
                         var userData = self.user;
+
                         userData.lang = "ar";
-                        self.$f7.dialog.alert('start send');
+
                         self.$store.dispatch('register', userData).then((response) => {
-                            self.$f7.dialog.alert('rigister send');
                             self.$f7router.navigate('/home/quran/1');
-                            self.$f7.preloader.hide();
                         }, (res) => {
-                            self.$f7.dialog.alert(JSON.stringify(res.body.errors));
-                            self.$f7.dialog.alert(JSON.stringify(res.status));
-                            self.serverErrors = res.body.errors;
-                            self.$f7.preloader.hide();
+                            self.$f7.notification.create({
+                                subtitle: 'حدث خطا'
+                            }).open();
+                        }).then(()=>{
+                            self.$f7.dialog.close();
                         });
-                        return;
+
+                    }else{
+
+                        self.$f7.notification.create({
+                            subtitle: self.$validator.errors.items[0].msg
+                        }).open();
+
+                        self.$f7.dialog.close();
                     }
 
                 });
+
                 return false;
             },
+
             addPhotoImage() {
 
 
