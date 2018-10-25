@@ -10,6 +10,7 @@
     <allow-navigation href="*" />
     <allow-intent href="*" />
     <access origin="*" />
+    <preference name="WKPort" value="8080" />
     <preference name="SplashScreenDelay" value="6000" />
     <preference name="SplashScreenBackgroundColor" value="#ffffff" />
     <preference name="StatusBarOverlaysWebView" value="false" />

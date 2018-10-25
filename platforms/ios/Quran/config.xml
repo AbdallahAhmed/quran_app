@@ -88,6 +88,7 @@
     <preference name="StatusBarStyle" value="lightcontent" />
     <preference name="CameraUsesGeolocation" value="false" />
     <preference name="CordovaWebViewEngine" value="CDVWKWebViewEngine" />
+    <preference name="WKPort" value="8080" />
     <preference name="SplashScreenDelay" value="6000" />
     <preference name="SplashScreenBackgroundColor" value="#ffffff" />
     <preference name="FadeSplashScreenDuration" value="1000" />
@@ -97,4 +98,7 @@
     <preference name="KeychainAccessibility" value="WhenUnlocked" />
     <preference name="UIWebViewDecelerationSpeed" value="fast" />
     <preference name="MediaPlaybackRequiresUserAction" value="false" />
+    <preference name="WKSuspendInBackground" value="false" />
+    <preference name="WKBind" value="localhost" />
+    <preference name="WKInternalConnectionsOnly" value="true" />
 </widget>

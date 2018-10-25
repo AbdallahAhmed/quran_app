@@ -92,8 +92,8 @@ ext {
 }
 
 // PLUGIN GRADLE EXTENSIONS START
-apply from: "cordova-plugin-firebase/quran-build.gradle"
 apply from: "cordova-plugin-badge/quran-badge.gradle"
+apply from: "cordova-plugin-firebase/quran-build.gradle"
 apply from: "cordova-plugin-local-notification/quran-localnotification.gradle"
 // PLUGIN GRADLE EXTENSIONS END
 
@@ -255,15 +255,15 @@ dependencies {
     implementation fileTree(dir: 'libs', include: '*.jar')
     // SUB-PROJECT DEPENDENCIES START
     implementation(project(path: "CordovaLib"))
+    compile "com.android.support:support-v4:24.1.1+"
     compile "com.google.gms:google-services:+"
     compile "com.google.android.gms:play-services-tagmanager:+"
     compile "com.google.firebase:firebase-core:+"
     compile "com.google.firebase:firebase-messaging:+"
     compile "com.google.firebase:firebase-crash:+"
     compile "com.google.firebase:firebase-config:+"
-    compile "com.android.support:support-v4:24.1.1+"
-    compile "com.android.support:support-v4:26.+"
     compile "com.android.support:support-annotations:27.+"
+    compile "com.android.support:support-v4:26.+"
     // SUB-PROJECT DEPENDENCIES END
 }
 
