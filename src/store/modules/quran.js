@@ -28,7 +28,7 @@ export default {
         },
 
         pages: (state) => {
-            return Object.keys(state.sura.pages).filter((id)=>{
+            return Object.keys(state.sura.pages).filter((id) => {
                 return id <= state.page;
             }).map(function (key) {
                 return state.sura.pages[key]
@@ -113,7 +113,7 @@ export default {
                 (res) => {
                     store.commit('SAVED_AYAT', res.body.data);
                 }, () => {
-                    store.commit('SAVED_AYAT', JSON.parse(localStorage.getItem("saved_ayat")) );
+                    store.commit('SAVED_AYAT', JSON.parse(localStorage.getItem("saved_ayat")));
                 });
         },
 
@@ -130,7 +130,6 @@ export default {
             return Vue.http.get("juz/sections").then(resposne => {
                 commit('JUZ_SECTION', resposne.body);
             }, (response) => {
-                console.log('is not loaded')
             });
         }
 
