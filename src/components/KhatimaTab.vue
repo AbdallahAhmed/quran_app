@@ -118,23 +118,32 @@
         },
 
         created() {
+
             this.loading = true;
+
             this.$http.get("khatemas").then((response) => {
+
                 this.khatemas = response.data.data;
                 this.loading = false;
+
             }, () => {
+
                 this.khatemas.pending = this.$store.getters.current_khatema;
                 this.khatemas.completed = JSON.parse(localStorage.getItem("completed_khatema")) || [];
                 this.loading = false;
+
             }).then(() => {
 
                 this.$$('.gauge-khatima').each((index, item) => {
                     this.$f7.gauge.create(Object.assign({}, item.dataset, {el: item}))
                 });
+
             }, () => {
+
                 this.$$('.gauge-khatima').each((index, item) => {
                     this.$f7.gauge.create(Object.assign({}, item.dataset, {el: item}))
                 });
+
             });
         },
 
