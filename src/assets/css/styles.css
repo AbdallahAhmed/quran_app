@@ -6,11 +6,10 @@
     overflow: unset !important;
 }
 
-
-.md .toolbar a.link
-{
+.md .toolbar a.link {
     padding: 0;
 }
+
 @font-face {
     font-family: 'kfc';
     src: url("../fonts/kfc_naskh-webfont.eot") format("embedded-opentype"),
@@ -102,7 +101,7 @@
     background-size: 457px !important;;
     background-repeat: no-repeat !important;;
     background-position: 50% 62% !important;;
-    background-color:unset !important;
+    background-color: unset !important;
 }
 
 .toolbar-options {
@@ -389,12 +388,12 @@
         height: 18px;
     }
 }
+
 @media only screen and (max-height: 500px) {
     .section-wrapper .number-list a {
         height: 14px;
     }
 }
-
 
 .page-sections .page-content {
     overflow: hidden;
@@ -463,27 +462,25 @@
     padding: 0;
 }
 
-
-.searchbar-found ul li{
+.searchbar-found ul li {
     list-style: none;
 }
+
 .searchbar-found ul li div {
     padding: 15px;
     /* border-bottom: 1px #aba4a43d solid; */
     background: white;
 }
+
 .searchbar-found ul li hr {
     margin: 0px;
     border-top: 1px solid #aba4a43d;
 }
 
-
 .searchbar-found ul li a {
     color: #000;
     font-family: 'Amiri Quran';
 }
-
-
 
 .header-islamic {
     background-image: url(../img/all-in-one.png);
@@ -495,17 +492,18 @@
     width: 100%;
     position: relative;
 }
+
 .header-islamic-content {
     width: 200px;
     margin: auto;
     text-align: center;
 }
 
- .header-islamic-content p {
+.header-islamic-content p {
     font-size: 22px;
     color: #207249;
     font-family: -webkit-body;
-     margin: 0;
+    margin: 0;
 }
 
 .form-container {
@@ -526,10 +524,12 @@
     color: black !important;
     font-size: 18px;
 }
-.input-border{
+
+.input-border {
     position: relative;
     margin-top: 14px;
 }
+
 .form-container .input-border:after {
     content: '';
     position: absolute;
@@ -663,7 +663,7 @@ a.forget-password {
     background-color: #f5f5f5;
 }
 
-.page-khatima .page-title , .page-contest .page-title {
+.page-khatima .page-title, .page-contest .page-title {
     color: #f5f5f5;
     background-color: #207249;
     font-family: initial;
@@ -713,7 +713,7 @@ a.forget-password {
     font-weight: initial;
 }
 
-.page-profile .form-container .row > div  p , .page-profile .form-container .row > div > a {
+.page-profile .form-container .row > div p, .page-profile .form-container .row > div > a {
     font-family: initial;
     font-weight: initial;
     margin: 0;
@@ -809,7 +809,8 @@ a.forget-password {
     margin: auto;
     height: 100vh;
 }
-.page-setting .page-content,.page-fav .page-content{
+
+.page-setting .page-content, .page-fav .page-content {
     background-color: whitesmoke;
 }
 
@@ -830,7 +831,6 @@ a.forget-password {
     font-size: 12px;
     border: 2px solid black;
 
-
 }
 
 .button-themes-white {
@@ -849,7 +849,6 @@ a.forget-password {
     font-family: initial;
     display: block;
     font-size: 18px;
-
 
 }
 
@@ -905,25 +904,26 @@ a.forget-password {
 }
 
 .page-setting hr {
-     border: .5px inset #e8e8e8;
+    border: .5px inset #e8e8e8;
 }
 
-.fav-aya-item{
+.fav-aya-item {
     background-color: #ffffff;
 }
 
-.fav-aya-item .content p{
+.fav-aya-item .content p {
     padding: 15px;
     text-align: center;
 }
 
-.fav-aya-item .title{
+.fav-aya-item .title {
     background-color: #36734a;
     color: #ffffff;
     padding: 17px;
     text-align: center;
 }
-.fav-aya-item a.surah{
+
+.fav-aya-item a.surah {
     background-color: #36734a;
     background-image: url(../img/sura_header@2x.png);
     color: #ffffff;
@@ -956,17 +956,17 @@ a.forget-password {
     margin-bottom: 70px;
 }
 
-.button-themes.active{
+.button-themes.active {
     border: 3px solid #36734a;
 }
 
-.btn-setting{
+.btn-setting {
     width: 100%;
     height: 100%;
     padding: 0;
 }
 
-.btn-setting p{
+.btn-setting p {
     position: absolute;
     height: 50%;
     display: block;
@@ -974,7 +974,7 @@ a.forget-password {
     bottom: 0;
 }
 
-.btn-setting img{
+.btn-setting img {
     position: absolute;
     width: 14px;
     top: 27%;
@@ -1031,8 +1031,9 @@ a.forget-password {
 }
 
 .juz-wrapper:last-child {
-  margin-bottom: 50px;
+    margin-bottom: 50px;
 }
+
 .page-content {
     padding-bottom: 0px !important;
 }
@@ -1040,33 +1041,99 @@ a.forget-password {
 [data-name=preview] .page-content {
     padding-bottom: 140px !important;
 }
-.user-avater-tab{
+
+.user-avater-tab {
     width: 30px;
     height: 30px;
     border: 3px solid #207249;
     border-radius: 3cm;
 }
 
-.header-islamic-content img{
+.header-islamic-content img {
     width: 100px;
 }
 
-
-.color-green{
-    color:#207249 !important;
+.color-green {
+    color: #207249 !important;
 }
 
-.login-page{
+.login-page {
     overflow: auto;
     height: 100vh;
 }
 
-.no-found{
+.no-found {
     width: 100%;
     text-align: center;
     margin-top: 60%;
 }
 
-.bg-white{
+.bg-white {
     background: white;
+}
+
+.contest-wrapper .page-title a {
+    color: #ffffff;
+}
+
+.contest-cards-comming {
+    margin-bottom: 10px;
+}
+
+.contest-cards-comming .contest-cards-item {
+    height: 20vh;
+    background-color: #ffffff;
+    width: 50%;
+    padding: 5px 8px 5px 8px;
+    margin: 5px;
+}
+
+.contest-wrapper .page-container {
+    margin-top: 15px;
+}
+
+.contest-cards-item .title {
+    color: #36734a;
+    width: 100%;
+    margin-top: 2px;
+    margin-bottom: 4px;
+    font-size: 26px;
+    font-weight: bold;
+    word-break: break-all;
+}
+
+.contest-cards-list .contest-cards-item:first-child {
+    margin-right: 0;
+}
+
+.contest-goal {
+    color: gray;
+}
+
+.contest-cards-item .share {
+    float: left;
+}
+
+.contest-cards-item .time {
+    font-size: 15px !important;
+    font-family: initial !important;
+}
+
+.contest-cards-item a.contest-button {
+    border: 0;
+    color: #ffffff;
+    background-color: #36734a;
+    width: 100%;
+    text-align: center;
+    display: block;
+    padding: 9px 0;
+}
+
+.contest-cards-comming, .contest-cards-list {
+    width: 100%;
+}
+
+.contest-wrapper .page-container .page-title {
+    width: calc(100% + 15px);
+    margin-right: -15px;
 }

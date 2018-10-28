@@ -1,15 +1,19 @@
 <template>
   <div>
-    <div @click="openDetails" class="contest-card-unauthed row" v-for="contest in contests" :key="contest.id">
+
+      <p class="page-title"> <span>المسابقات</span> <a href="#">الكل</a> </p>
+
+
+      <div @click="openDetails" class="contest-card-unauthed row" v-for="contest in contests" :key="contest.id">
       <div class="jastfy-img col-30">
         <div style="direction:rtl">
           <img class="kas-img" src="../../assets/img/noun_users_140450@2x.png" />
-          <span style="font-size:14px; margin-top:3px; margin-left: 3px;" >5</span>         
-          <span> عضو </span>         
+          <span style="font-size:14px; margin-top:3px; margin-left: 3px;" >5</span>
+          <span> عضو </span>
         </div>
       </div>
       <div class="col-50">
-        <strong> <h1 class="contest-title">المسابقة الاولى</h1> </strong> 
+        <strong> <h1 class="contest-title">المسابقة الاولى</h1> </strong>
         <h2 class="contest-text"> الهدف من المسابقة </h2>
       </div>
       <div class="col-20 jastfy-img">
@@ -56,7 +60,7 @@ export default {
 }
 .jastfy-img{
   display: flex;
-  justify-content: space-around; 
+  justify-content: space-around;
   align-items: center;
   height: 100%;
 }
