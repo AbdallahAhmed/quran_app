@@ -2,7 +2,6 @@
   <div class="page-contest">
 
     <navbar></navbar>
-    <p class="page-title"> <span>المسابقات</span> <a href="#">الكل</a> </p>
 
     <component :is="ContestTab" />
   </div>
