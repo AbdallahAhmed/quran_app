@@ -2,6 +2,15 @@
     outline: none;
 }
 
+.toolbar-inner {
+    overflow: unset !important;
+}
+
+
+.md .toolbar a.link
+{
+    padding: 0;
+}
 @font-face {
     font-family: 'kfc';
     src: url("../fonts/kfc_naskh-webfont.eot") format("embedded-opentype"),
@@ -87,10 +96,13 @@
 }
 
 .toolbar {
-    height: 60px !important;
-    background: #ffffff !important;
+    height: 52px !important;
     box-shadow: none !important;
-    border-top: 1px solid #DBDBDB;
+    background-image: url(../img/tabbar.png) !important;
+    background-size: 457px !important;;
+    background-repeat: no-repeat !important;;
+    background-position: 50% 62% !important;;
+    background-color:unset !important;
 }
 
 .toolbar-options {
@@ -475,29 +487,25 @@
 
 .header-islamic {
     background-image: url(../img/all-in-one.png);
-    background-size: 100%;
-    min-height: 226px;
-    height: 165px;
-    background-position: 0 -50px;
+    background-size: 100% 244px;
+    min-height: 193px;
+    background-position: bottom;
     background-repeat: no-repeat;
     box-shadow: 0px 6px 7px -8px;
     width: 100%;
     position: relative;
-    top: -7px;
 }
 .header-islamic-content {
     width: 200px;
     margin: auto;
     text-align: center;
-    padding: 40px 30px 0;
 }
-
-
 
  .header-islamic-content p {
     font-size: 22px;
     color: #207249;
     font-family: -webkit-body;
+     margin: 0;
 }
 
 .form-container {
@@ -575,7 +583,7 @@ a.forget-password {
     font-family: initial;
     font-size: 18px;
     text-decoration: underline;
-    padding: 19px;
+    padding: 19px 0;
     display: block;
     font-weight: 400;
 }
@@ -851,7 +859,7 @@ a.forget-password {
 }
 
 .page-setting .range-bar {
-    background-color: #000000;
+    background-color: #b3b3b3;
     opacity: .4;
 }
 
@@ -897,7 +905,7 @@ a.forget-password {
 }
 
 .page-setting hr {
-     border: .5px inset #707070;
+     border: .5px inset #e8e8e8;
 }
 
 .fav-aya-item{
@@ -949,7 +957,7 @@ a.forget-password {
 }
 
 .button-themes.active{
-    border: 2px solid #36734a;
+    border: 3px solid #36734a;
 }
 
 .btn-setting{
@@ -1026,7 +1034,7 @@ a.forget-password {
   margin-bottom: 50px;
 }
 .page-content {
-    padding-bottom: 50px !important;
+    padding-bottom: 0px !important;
 }
 
 [data-name=preview] .page-content {
@@ -1057,4 +1065,8 @@ a.forget-password {
     width: 100%;
     text-align: center;
     margin-top: 60%;
+}
+
+.bg-white{
+    background: white;
 }

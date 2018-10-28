@@ -6,16 +6,16 @@
 
             <div class="row aya-options">
 
-                <div class="options-message" v-if="message"> {{ message}} </div>
+                <div class="options-message" v-if="message"> {{ message}}</div>
 
-                <a class="col-30 link spaceInDown" @click="share" v-if="!message">
+                <a class="col-30 link bounceIn" @click="share" v-if="!message">
                     <img src="../../assets/img/share_inverse.png">
                 </a>
-                <a class="col-30 link spaceInDown" @click="copy" v-if="!message" >
+                <a class="col-30 link bounceIn" @click="copy" v-if="!message">
                     <input type="hidden" id="clipboard" :value="aya.text"/>
                     <img src="../../assets/img/copy.png">
                 </a>
-                <a class="col-30 link spaceInDown" @click="save" v-if="!message">
+                <a class="col-30 link bounceIn" @click="save" v-if="!message">
                     <img src="../../assets/img/save.png">
                 </a>
 
@@ -35,7 +35,7 @@
     export default {
 
         computed: {
-            aya(){
+            aya() {
                 return this.$store.getters.aya;
             }
         },
@@ -43,7 +43,7 @@
         data() {
             return {
                 message: "",
-                share_loading:false
+                share_loading: false
             }
         },
 
@@ -53,15 +53,26 @@
 
                 this.share_loading = true;
 
-                window.plugins.socialsharing.shareWithOptions({
+                new Promise((resolve, reject) => {
 
-                    message: this.aya.text,
-                    subject: this.aya.text,
-                    chooserTitle: this.$app.trans("choose_app")
+                    window.plugins.socialsharing.shareWithOptions({
+                        message: this.aya.text,
+                        subject: this.aya.text,
+                        chooserTitle: this.$app.trans("choose_app")
+                    }, () => {
+                        resolve();
+                    });
 
-                },  () => {
-                    this.share_loading = false;
+                }).then(() => {
+                    this.$f7.notification.create({
+                        subtitle: "تمت المشاركة"
+                    }).open();
+                }).catch(() => {
+                    this.$f7.notification.create({
+                        subtitle: "خطأ"
+                    }).open();
                 });
+
 
             },
 
@@ -72,6 +83,10 @@
                 });
 
                 this.message = "تم الحفظ";
+
+                this.$f7.notification.create({
+                    subtitle: "تم الحفظ"
+                }).open();
 
                 let timer = setInterval(() => {
                     this.message = false;
@@ -98,6 +113,10 @@
                 window.getSelection().removeAllRanges();
 
                 this.message = "تم النسخ";
+
+                this.$f7.notification.create({
+                    subtitle: "تم النسخ"
+                }).open();
 
                 let timer = setInterval(() => {
                     this.message = false;

@@ -114,7 +114,7 @@
                             self.$f7router.navigate('/home/quran/1');
                         }, (res) => {
                             self.$f7.notification.create({
-                                subtitle: 'حدث خطا'
+                                subtitle: res.data.errors[0]
                             }).open();
                         }).then(()=>{
                             self.$f7.dialog.close();

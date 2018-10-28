@@ -104,7 +104,7 @@
                         self.$f7.dialog.preloader('جاري تسجيل الدخول');
 
                         self.$store.dispatch('login', self.user).then((response) => {
-                            self.$f7router.navigate('home/quran/1');
+                            self.$f7router.back();
                         }, (res) => {
                             self.$f7.notification.create({
                                 subtitle: 'البريد الكترونى وكلمة المرور غير صحيحين'

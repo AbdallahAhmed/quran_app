@@ -4,22 +4,16 @@
 
         <navbar></navbar>
 
-
         <div class="quran-head" v-if="sura">
-
-            <!--<div class="page-title"> lfsagsdg </div>-->
 
             <div class="sura-header">
 
                 <a href="/sections" class="sura-name link bounceIn">
-
                     <img src="../assets/img/arrow-down.png" class="sura-name-arrow">
                     {{ sura.juz_name }}
-
                 </a>
 
             </div>
-
 
             <div class="sura-stats row rollIn">
 
@@ -36,7 +30,6 @@
 
         </div>
 
-
         <div class="page-content">
 
             <div class="quran-basmla" v-if="sura && sura.id !== 9">
@@ -47,13 +40,13 @@
 
             <div class="block quran-sura">
                 <quran-page v-for="page in pages" :page="page" v-if="sura">
-                     <span v-for="aya in page" class="quran-aya" @click="activate(aya)"
+
+                    <span v-for="aya in page" class="quran-aya" @click="activate(aya)"
                            :class="{active: isActivated(aya)}" :style="{ 'font-size': font_size + 'px' }">
-
-                         {{ aya.text }}
-
-                         <span class="aya-num">  ﴿ {{ aya.numberinsurat }} ﴾ </span>
+                        {{ aya.text }}
+                        <span class="aya-num">  ﴿ {{ aya.numberinsurat }} ﴾ </span>
                      </span>
+
                 </quran-page>
             </div>
 
@@ -66,7 +59,6 @@
 <script>
 
     import Vue from 'vue';
-
 
     export default {
 
@@ -91,7 +83,6 @@
             pages() {
                 return this.$store.getters.pages;
             }
-
         },
 
         data() {
@@ -101,11 +92,11 @@
         },
 
         mounted() {
+
             let sura_id = this.$f7route.params.sura_id || this.sura.id || 1;
 
             if (this.Dom7('.page-' + this.page).length) {
-                //  alert("scrolling..");
-                this.Dom7('.page-content').scrollTop(this.Dom7('.page-' + this.page).offset().top, 300);
+             //   this.Dom7('.page-content').scrollTop(this.Dom7('.page-' + this.page).offset().top, 300);
             }
 
             this.$store.dispatch("get_sura", {surah_id: sura_id}).then((response) => {
@@ -114,9 +105,9 @@
 
                 // Increment views
 
-                setTimeout(() => {
-                    this.$store.dispatch("read_page", this.$store.getters.page);
-                }, 5000);
+                // setTimeout(() => {
+                //     this.$store.dispatch("read_page", this.$store.getters.page);
+                // }, 5000);
             });
 
             this.Dom7('.page-content').on('scroll', (e) => {
@@ -129,9 +120,14 @@
 
                     this.$store.commit("PAGE", this.$store.getters.page + 1);
 
-                    setTimeout(() => {
-                        this.$store.dispatch("read_page", this.$store.getters.page);
-                    }, 5000);
+                   // alert(this.$store.getters.page);
+                   // this.$store.commit("PAGE", this.$store.getters.page + 1);
+
+                    // setTimeout(() => {
+                    //     this.$store.dispatch("read_page", this.$store.getters.page);
+                    // }, 5000);
+
+                    //this.$store.dispatch("read_page", this.$store.getters.page);
                 }
             });
 
@@ -152,8 +148,6 @@
 
                 if (this.active != aya.number) {
                     this.active = aya.number;
-                    aya.surah = this.sura;
-                    delete aya.surah.pages;
                     this.$store.commit("AYA", aya);
                 } else {
                     this.active = 0;

@@ -381,14 +381,27 @@ document.addEventListener('deviceready', () => {
         }
 
         // If we have a back button, we want it to go back
+
         if (Vue.app.vue.$f7.view.main.history.length > 1) {
             return Vue.app.vue.$f7.view.main.router.back();
+        }else{
+            Vue.app.vue.$f7.dialog.confirm('هل تريد الخروج من البرنامج ؟', () => {
+                window.navigator.app.exitApp();
+            });
         }
-        // Default to closing the app
-        return window.navigator.app.exitApp();
     });
 
 });
+
+document.addEventListener('deviceready', function () {
+
+    cordova.plugins.notification.local.hasPermission(function (granted) {
+        if(!granted){
+            cordova.plugins.notification.local.requestPermission();
+        }
+    });
+
+}, false);
 
 // On offline event
 document.addEventListener("offline", function () {

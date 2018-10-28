@@ -1,6 +1,6 @@
 <template>
 
-    <span ref="page" :class="'page-' + page[0].page_id">
+    <span ref="page" :class="'page-' + page[0].page_id" :data-id="page[0].page_id">
         <slot></slot>
     </span>
 
@@ -9,6 +9,7 @@
 <script>
 
     import debounce from './../../helpers/debounce';
+    import inView from 'in-view';
 
     export default {
 
@@ -18,23 +19,33 @@
 
         mounted() {
 
-            let self = this;
+            let id = this.page[0].page_id;
 
-            self.$$('.page-content').scroll(debounce(function () {
+            // Saving last rendered page
 
-                // console.log(self.$refs.page);
+            this.$store.commit("PAGE", id);
 
-                let isElementInView = self.$app.isElementInView(self.$$(self.$refs.page), false, self.$$);
+            inView(".page-" + id)
 
-                if (isElementInView) {
-                    console.log("yes");
-                } else {
-                    // console.log("no");
-                }
+                .on('enter', () => {
+
+                    setTimeout(() => {
+
+                       // inView(".page-" + id)
+
+                         //   .once('enter', () => {
+                                console.log(".page-" + id + " has been viewed");
+                          //  });
+
+                    }, 10000);
 
 
-            }, 200));
+                    console.log("hello" + id);
+                })
 
+                .on('exit', () => {
+                    // Bye Bye
+                });
 
         }
     }

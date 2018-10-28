@@ -14,20 +14,18 @@
             <div class="header-islamic row">
                 <div class="header-islamic-content">
                     <img src="../assets/img/user-avater.png" class="avater" alt="user avater">
-                    <p class="page-title">أسترجاع الرقم السري</p>
+                    <p class="page-title">إسترجاع الرقم السري</p>
                 </div>
             </div>
 
             <div class="form-container">
 
                 <form @submit.prevent="forgetPassword">
+
                     <div class="input-border">
                         <input type="text" name="email" placeholder=" البريد الكترونى " v-model="user.email"
                                v-validate="'required|email'" autocomplete="false">
                     </div>
-
-                    <span v-show="errors.has('email')&&submitted"
-                          class="help is-danger">{{ errors.first('email') }}</span>
 
                     <button type="submit">
                         أرسال
@@ -53,17 +51,14 @@
 
                     <div class="form-container">
 
-                <span class="help" v-if="serverErrors.length!=0" v-for="error in serverErrors" :key="error">
-                    {{error}}
-                </span>
                         <form @submit.prevent="resetPassword">
+
                             <div class="input-border">
 
                                 <input type="text" :class="{'errors':errors.has('code')&&submitted}" name="code"
-                                       placeholder="الرمز" v-model="user.code"
+                                       placeholder="كود الدخول" v-model="user.code"
                                        v-validate="'required'" autocomplete="false"/>
                             </div>
-                            <span v-show="errors.has('password')&&submitted" class="help is-danger">{{ errors.first('password') }}</span>
 
                             <div class="input-border">
                                 <input type="password" :class="{'errors':errors.has('password')&&submitted}"
@@ -71,7 +66,6 @@
                                        placeholder="كلمة المرور" v-model="user.password"
                                        v-validate="'required'" autocomplete="false"/>
                             </div>
-                            <span v-show="errors.has('password')&&submitted" class="help is-danger">{{ errors.first('password') }}</span>
 
                             <div class="input-border">
                                 <input type="password" :class="{'errors':errors.has('confirm_password')&&submitted}"
@@ -79,6 +73,7 @@
                                        v-model="user.confirm_password"
                                        v-validate="'confirmed:password'" autocomplete="false"/>
                             </div>
+
                             <button type="submit">
                                 أرسال
                             </button>
@@ -104,11 +99,13 @@
     import {mapState} from 'vuex';
 
     export default {
+
         beforeCreate() {
             if (this.$app.auth.check()) {
                 this.$f7router.back();
             }
         },
+
         data: function () {
             return {
 
@@ -123,54 +120,89 @@
                 popup: null
             }
         },
+
         methods: {
+
             forgetPassword() {
+
                 this.submitted = true;
+
                 var self = this;
-                console.log(this.$validator.validateAll);
-                this.$validator.validateAll(this.user.email).then((result) => {
-                    if (result) {
-                        self.$f7.preloader.show();
+
+                this.$validator.validateAll(this.user.email).then((valid) => {
+
+                    if (valid) {
+
+                        self.$f7.dialog.preloader('جاري الفحص');
+
                         self.$store.dispatch('forgetPassword', self.user).then((response) => {
 
                             self.popup.open();
 
-                            self.$f7.preloader.hide();
-
                         }, (res) => {
-                            self.serverErrors = ['البريد الكترونى  غير صحيحة'];
-                            self.$f7.preloader.hide()
-                        })
+
+                            self.$f7.notification.create({
+                                subtitle: 'البريد الكترونى غير مسجل مسبقاً'
+                            }).open();
+
+                        }).then(() => {
+                            self.$f7.dialog.close();
+                        });
+
+                    } else {
+
+                        self.$f7.notification.create({
+                            subtitle: self.$validator.errors.items[0].msg
+                        }).open();
+
+                        self.$f7.dialog.close();
+
                     }
 
                 });
-                return false;
             },
+
             resetPassword() {
+
                 this.submitted = true;
+
                 var self = this;
-                this.$validator.validateAll(this.user).then((result) => {
-                    console.log('test', self.user);
-                    if (result) {
-                        self.$f7.preloader.show();
+
+                this.$validator.validateAll(this.user).then((valid) => {
+
+                    if (valid) {
+
+                        self.$f7.dialog.preloader('جاري الفحص');
+
                         self.$http.post('auth/reset-password', self.user).then((response) => {
 
-                            self.$f7.preloader.hide();
-
                             self.popup.close();
+
                             self.$store.commit('user', response.body.data.user);
                             self.$store.commit('token', response.body.data.token);
                             self.$f7router.navigate('home/quran/1');
 
                         }, (res) => {
-                            self.serverErrors = ['الكود غير صحيح'];
-                            self.$f7.preloader.hide();
+
+                            self.$f7.notification.create({
+                                subtitle: 'الكود غير صحيح'
+                            }).open();
+
+                        }).then(() => {
+                            self.$f7.dialog.close();
                         });
-                        return;
+                    } else {
+
+                        self.$f7.notification.create({
+                            subtitle: self.$validator.errors.items[0].msg
+                        }).open();
+
+                        self.$f7.dialog.close();
+
                     }
 
                 });
-                return false;
+
             },
 
 
