@@ -21,13 +21,9 @@
 
             <div class="form-container">
 
-                <span class="help" v-if="serverErrors.length!=0" v-for="error in serverErrors" :key="error">
-                    {{error}}
-                </span>
-
                 <div class="row">
-                    <div class="col-50">
-                        <a href="/fav" class="link btn-setting">
+                    <div class="col-50 spaceInDown">
+                        <a href="/fav" class="link btn-setting ">
 
                             <p>المفضلة</p>
 
@@ -35,11 +31,9 @@
 
                         </a>
                     </div>
-                    <div class="col-50">
-                        <a href="/alerts" class="link btn-setting">
-
+                    <div class="col-50 spaceInDown">
+                        <a href="/alerts" class="link btn-setting ">
                             <p>التنبيهات</p>
-
                             <img src="./../assets/img/alarm.png" alt="Fav">
 
                         </a>
@@ -47,21 +41,19 @@
                 </div>
 
                 <div class="row">
-                    <div class="col-50 ">
+                    <div class="col-50 spaceInDown">
                         <a href="/settings" class="link btn-setting">
-                            <p>الاعدادات</p>
+                            <p>الإعدادات</p>
 
                             <img src="./../assets/img/settings.png" alt="Fav">
 
 
                         </a>
                     </div>
-                    <div class="col-50">
-                        <a href="#" class="link btn-setting">
+                    <div class="col-50 spaceInDown">
+                        <a href="#" @click="share_app" class="link btn-setting">
                             <p> انشر القرأن</p>
-
                             <img src="./../assets/img/_share.png" alt="Fav">
-
                         </a>
                     </div>
                 </div>
@@ -95,11 +87,6 @@
 
         },
 
-        data: function () {
-            return {
-                serverErrors: []
-            }
-        },
         computed: {
             check() {
                 if (this.$store.getters.auth) {
@@ -109,6 +96,38 @@
             },
             user() {
                 return this.$store.getters.user;
+            }
+        },
+
+        methods: {
+            share_app(){
+
+                new Promise((resolve, reject) => {
+
+                    window.plugins.socialsharing.shareWithOptions({
+                        message: "https://goo.gl/JqCHK6 يرجي تحميل تطبيق القرآن الكريم من متجر جوجل بلاي من الرابط",
+                        subject: "https://goo.gl/JqCHK6 يرجي تحميل تطبيق القرآن الكريم من متجر جوجل بلاي من الرابط",
+                        chooserTitle: this.$app.trans("choose_app")
+                    }, () => {
+                        resolve();
+                    });
+
+                }).then(() => {
+
+                    this.$f7.notification.create({
+                        subtitle: "تمت المشاركة"
+                    }).open();
+
+                    this.$f7.dialog.confirm('هل تريد تقييم التطبيق ؟', () => {
+                        window.open('https://play.google.com/store/apps/details?id=games.onebutton.golfbattle', '_system');
+                    });
+
+                }).catch(() => {
+                    this.$f7.notification.create({
+                        subtitle: "خطأ"
+                    }).open();
+                });
+
             }
         },
 

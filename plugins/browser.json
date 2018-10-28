@@ -42,6 +42,12 @@
     },
     "cordova-plugin-ionic-keyboard": {
       "PACKAGE_NAME": "com.dotdev.quran"
+    },
+    "cordova-plugin-inappbrowser": {
+      "PACKAGE_NAME": "com.dotdev.quran"
+    },
+    "cordova-plugin-media": {
+      "PACKAGE_NAME": "com.dotdev.quran"
     }
   },
   "dependent_plugins": {
@@ -49,6 +55,9 @@
       "PACKAGE_NAME": "com.dotdev.quran"
     },
     "cordova-plugin-badge": {
+      "PACKAGE_NAME": "com.dotdev.quran"
+    },
+    "cordova-plugin-file": {
       "PACKAGE_NAME": "com.dotdev.quran"
     }
   }

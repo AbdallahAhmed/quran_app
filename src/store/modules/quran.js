@@ -6,7 +6,6 @@ export default {
         "aya": false,
         "juz_sections": false,
         "saved_ayat": JSON.parse(localStorage.getItem("saved_ayat")) || [],
-        // "saved_ayat": [],
         "page": parseInt(localStorage.getItem("page")) || 0,
         "sura": JSON.parse(localStorage.getItem("sura")) || false,
     },

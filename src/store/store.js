@@ -127,6 +127,10 @@ const mutations = {
         state.home_tab = home_tab;
     },
 
+    alert_at(state, alert_at) {
+        state.alert_at = alert_at;
+    },
+
     locale(state, locale) {
         state.locale = locale;
         localStorage.setItem("locale", locale);

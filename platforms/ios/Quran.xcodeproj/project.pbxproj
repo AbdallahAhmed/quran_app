@@ -77,6 +77,11 @@
 		E31061D91BD84F3A93BACF00 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1CD49B505CA450D9E8EB107 /* WebKit.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		BB6505944EF24053BE06984D /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = E0D5218E8D2540778048593A /* libz.tbd */; };
 		6EAB7DCC055546F3ABC5158B /* CDVIonicKeyboard.m in Sources */ = {isa = PBXBuildFile; fileRef = C5480A5AFC714879BD8B61C5 /* CDVIonicKeyboard.m */; };
+		54144BA1C6E1418FBD11F157 /* CDVInAppBrowser.m in Sources */ = {isa = PBXBuildFile; fileRef = 90F903943100482ABDB4FA72 /* CDVInAppBrowser.m */; };
+		1D0D670331FA4D88BF2464B4 /* CDVFile.m in Sources */ = {isa = PBXBuildFile; fileRef = E1CFF22DF61D465A915B3D3A /* CDVFile.m */; };
+		12373DD674C64FB3827D1F7B /* CDVLocalFilesystem.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BC0299FDF16481BB50FCB98 /* CDVLocalFilesystem.m */; };
+		EAE0E9223E3743ABB48C1EA3 /* CDVAssetLibraryFilesystem.m in Sources */ = {isa = PBXBuildFile; fileRef = E035A0B518094631A414D2CC /* CDVAssetLibraryFilesystem.m */; };
+		F12CE1CE1B87408D81C77885 /* CDVSound.m in Sources */ = {isa = PBXBuildFile; fileRef = F2AB68707A144BA68FF28248 /* CDVSound.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -219,6 +224,16 @@
 		E0D5218E8D2540778048593A /* libz.tbd */ = {isa = PBXFileReference; name = "libz.tbd"; path = "usr/lib/libz.tbd"; sourceTree = SDKROOT; fileEncoding = undefined; lastKnownFileType = sourcecode.text-based-dylib-definition; explicitFileType = undefined; includeInIndex = 0; };
 		C5480A5AFC714879BD8B61C5 /* CDVIonicKeyboard.m */ = {isa = PBXFileReference; name = "CDVIonicKeyboard.m"; path = "cordova-plugin-ionic-keyboard/CDVIonicKeyboard.m"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; explicitFileType = undefined; includeInIndex = 0; };
 		1AA8E629044D42F8A4280244 /* CDVIonicKeyboard.h */ = {isa = PBXFileReference; name = "CDVIonicKeyboard.h"; path = "cordova-plugin-ionic-keyboard/CDVIonicKeyboard.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
+		90F903943100482ABDB4FA72 /* CDVInAppBrowser.m */ = {isa = PBXFileReference; name = "CDVInAppBrowser.m"; path = "cordova-plugin-inappbrowser/CDVInAppBrowser.m"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; explicitFileType = undefined; includeInIndex = 0; };
+		C0BD951D60CA4EEFA1F012A8 /* CDVInAppBrowser.h */ = {isa = PBXFileReference; name = "CDVInAppBrowser.h"; path = "cordova-plugin-inappbrowser/CDVInAppBrowser.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
+		E1CFF22DF61D465A915B3D3A /* CDVFile.m */ = {isa = PBXFileReference; name = "CDVFile.m"; path = "cordova-plugin-file/CDVFile.m"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; explicitFileType = undefined; includeInIndex = 0; };
+		2BC0299FDF16481BB50FCB98 /* CDVLocalFilesystem.m */ = {isa = PBXFileReference; name = "CDVLocalFilesystem.m"; path = "cordova-plugin-file/CDVLocalFilesystem.m"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; explicitFileType = undefined; includeInIndex = 0; };
+		E035A0B518094631A414D2CC /* CDVAssetLibraryFilesystem.m */ = {isa = PBXFileReference; name = "CDVAssetLibraryFilesystem.m"; path = "cordova-plugin-file/CDVAssetLibraryFilesystem.m"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; explicitFileType = undefined; includeInIndex = 0; };
+		0D531779B1AE4AE39C24BDC5 /* CDVFile.h */ = {isa = PBXFileReference; name = "CDVFile.h"; path = "cordova-plugin-file/CDVFile.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
+		DEE04EEB604F4296B5775BCF /* CDVLocalFilesystem.h */ = {isa = PBXFileReference; name = "CDVLocalFilesystem.h"; path = "cordova-plugin-file/CDVLocalFilesystem.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
+		39BD53748554419284B93E08 /* CDVAssetLibraryFilesystem.h */ = {isa = PBXFileReference; name = "CDVAssetLibraryFilesystem.h"; path = "cordova-plugin-file/CDVAssetLibraryFilesystem.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
+		F2AB68707A144BA68FF28248 /* CDVSound.m */ = {isa = PBXFileReference; name = "CDVSound.m"; path = "cordova-plugin-media/CDVSound.m"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; explicitFileType = undefined; includeInIndex = 0; };
+		4DBE3434D7D44B27822D30E8 /* CDVSound.h */ = {isa = PBXFileReference; name = "CDVSound.h"; path = "cordova-plugin-media/CDVSound.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -447,6 +462,16 @@
 				AA0AF9FD3E7F4376A29C454E /* GCDWebServerStreamedResponse.h */,
 				C5480A5AFC714879BD8B61C5 /* CDVIonicKeyboard.m */,
 				1AA8E629044D42F8A4280244 /* CDVIonicKeyboard.h */,
+				90F903943100482ABDB4FA72 /* CDVInAppBrowser.m */,
+				C0BD951D60CA4EEFA1F012A8 /* CDVInAppBrowser.h */,
+				E1CFF22DF61D465A915B3D3A /* CDVFile.m */,
+				2BC0299FDF16481BB50FCB98 /* CDVLocalFilesystem.m */,
+				E035A0B518094631A414D2CC /* CDVAssetLibraryFilesystem.m */,
+				0D531779B1AE4AE39C24BDC5 /* CDVFile.h */,
+				DEE04EEB604F4296B5775BCF /* CDVLocalFilesystem.h */,
+				39BD53748554419284B93E08 /* CDVAssetLibraryFilesystem.h */,
+				F2AB68707A144BA68FF28248 /* CDVSound.m */,
+				4DBE3434D7D44B27822D30E8 /* CDVSound.h */,
 			);
 			name = Plugins;
 			path = "Quran/Plugins";
@@ -597,6 +622,11 @@
 				4A92620DCC4D4513908E5CF6 /* GCDWebServerFileResponse.m in Sources */,
 				94ACF46E20F84857BA446E77 /* GCDWebServerStreamedResponse.m in Sources */,
 				6EAB7DCC055546F3ABC5158B /* CDVIonicKeyboard.m in Sources */,
+				54144BA1C6E1418FBD11F157 /* CDVInAppBrowser.m in Sources */,
+				1D0D670331FA4D88BF2464B4 /* CDVFile.m in Sources */,
+				12373DD674C64FB3827D1F7B /* CDVLocalFilesystem.m in Sources */,
+				EAE0E9223E3743ABB48C1EA3 /* CDVAssetLibraryFilesystem.m in Sources */,
+				F12CE1CE1B87408D81C77885 /* CDVSound.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

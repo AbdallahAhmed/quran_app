@@ -12,14 +12,15 @@
 
         <div class="page-content" style="direction: rtl">
             <div class="row page-setting-nav">
-                <div class="col-20">
-                    <p>المفضله</p>
+                <div class="col-100">
+                    <p>آياتي المفضلة</p>
                 </div>
             </div>
 
             <div class="page-container">
                 <div class="fav-aya-list">
-                    <div class="fav-aya-item" v-for=" aya in  saved_ayat" :key="aya.id">
+
+                    <div class="fav-aya-item" v-for="aya in saved_ayat" :key="aya.id">
                         <div class="title">
                             <a  class="delete-aya" @click="removeAya(aya.id)">
                                 <i class="f7-icons">close</i>
@@ -32,7 +33,7 @@
                             <p>{{aya.text}}</p>
                         </div>
                     </div>
-                    <p class="no-found" v-if="saved_ayat.length==0">لا يوجد إيات مفضله</p>
+                    <p class="no-found" v-if="saved_ayat.length==0">لا يوجد آيات </p>
                 </div>
             </div>
         </div>
@@ -44,15 +45,18 @@
 
     export default {
 
-        created() {
+        mounted() {
+
             this.$f7.preloader.show();
+
             this.$store.dispatch('get_saved_ayat').then((res) => {
                 this.$f7.preloader.hide();
             }, () => {
                 this.$f7.preloader.hide();
-
             });
+
         },
+
         computed: {
 
             saved_ayat: {
@@ -62,22 +66,18 @@
             },
 
         },
+
         methods:{
             removeAya(id){
-                this.$store.dispatch('remove_saved_aya',id).then((res) => {
-
-                }, () => {
-
+                this.$f7.dialog.confirm('هل تريد حذف الآية ؟', () => {
+                    this.$store.dispatch('remove_saved_aya',id)
                 });
             }
         },
+
         components: {
             navbar: require("./partials/Navbar.vue")
-        },
-        mounted() {
-
         }
-
     }
 
 </script>

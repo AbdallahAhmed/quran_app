@@ -4,7 +4,7 @@
 
         <navbar>
             <template slot="left">
-                <a href="" class="link back navbar-back">
+                <a @click="back" class="link navbar-back">
                     <i class="f7-icons">arrow_left</i>
                 </a>
             </template>
@@ -16,17 +16,19 @@
                 <div class="col-80">
                     <p>التبيهات</p>
                 </div>
-                <div class="col-20 center">
-                </div>
+                <div class="col-20 center"></div>
             </div>
 
-            <div class="page-container" style="direction: rtl">
+            <div class="" style="direction: rtl">
 
                 <div class="block block-strong no-padding no-margin margin-bottom" style="direction: ltr">
                     <div id="demo-picker-date-container"></div>
                 </div>
 
-                <a class="item-link smart-select smart-select-init" data-open-in="sheet">
+
+                <div class="page-container">
+
+                <a class="item-link smart-select smart-select-init closeOnSelect"  data-open-in="sheet">
 
                     <select :value="occur" v-model="occur" >
                         <option value="0">أبدا</option>
@@ -41,15 +43,16 @@
 
                 </a>
 
+                </div>
             </div>
         </div>
     </div>
 </template>
 
 <style>
+
     .picker-item span, .item-title {
         color: black;
-        font-family: initial !important;
     }
 
     .picker-item-selected span {
@@ -68,14 +71,14 @@
     .item-after {
         background: white;
         border: 1px solid #e6e6e6;
-        padding: 5px;
-        padding-right: 20px;
-        width: calc(100% - 33px) !important;
-        margin: auto;
+        padding: 0;
+        margin: 0;
         max-width: 100% !important;
         color: #000;
         margin-top: 15px !important;
-        padding: 0 10px;
+        height: 37px;
+        padding: 6px 14px;
+        line-height: 32px;
     }
 
     .item-after::after {
@@ -84,6 +87,28 @@
         font-size: 12px;
         margin-top: 5px;
         margin-left: 9px;
+    }
+
+   .picker-columns{
+       background: #ffffff;
+   }
+
+   .block-strong .picker-item span{
+        color: #757575;
+        font-family: tahoma !important;
+    }
+
+    .block-strong .picker-item.picker-item-selected span{
+        color: #207249;
+    }
+
+    .smart-select-sheet .toolbar
+    {
+        display: none;
+    }
+
+    .sheet-modal {
+        height: unset;
     }
 
 </style>
@@ -121,11 +146,14 @@
             var currentHour = alert_at.hour ? alert_at.hour : (today.getHours() >= 12 ? today.getHours() - 12 : today.getHours());
             var cuurentMin = alert_at.min ? alert_at.min : (today.getMinutes() < 10 ? "0" + today.getMinutes() : today.getMinutes());
             var currentTime = alert_at.time ? alert_at.time : (today.getHours() < 12 ? "AM" : "PM");
+
+
             this.picker = this.$f7.picker.create({
                 containerEl: '#demo-picker-date-container',
-                // inputEl: '#demo-picker-date',
                 toolbar: false,
                 rotateEffect: true,
+                momentumRatio:7,
+
                 value: [
                     currentHour, cuurentMin, currentTime
                 ],
@@ -156,62 +184,81 @@
                     }
                 ],
             });
+
         },
 
         methods: {
+
             back() {
 
-                var now = new Date();
+                new Promise((resolve, reject) => {
 
-                this.$store.commit("alert_at", {
-                    occur: this.occur,
-                    hour: this.picker.value[0],
-                    min: this.picker.value[1],
-                    time: this.picker.value[2],
+                    this.$f7router.back()
+
+                    var now = new Date();
+
+                    this.$store.commit("alert_at", {
+                        occur: this.occur,
+                        hour: this.picker.value[0],
+                        min: this.picker.value[1],
+                        time: this.picker.value[2],
+                    });
+
+                    // Once
+
+                    if (this.occur == 0) {
+
+                        var nextDate = (new Date());
+
+                        nextDate.setHours(this.alert_at.time == "AM" ? this.alert_at.hour : (parseInt(this.alert_at.hour) + 12));
+
+                        nextDate.setMinutes(this.alert_at.min);
+
+                        if (nextDate <= now) {
+                            nextDate.setDate(now.getDate() + 1);
+                        }
+
+                        if (cordova) {
+                            cordova.plugins.notification.local.clearAll();
+                            cordova.plugins.notification.local.schedule({
+                                title: 'تذكير بتلاوة بعض آيات القرآن',
+                                trigger: {at: nextDate},
+                                foreground: true
+                            }, undefined, undefined, {skipPermission: true});
+                        }
+
+                    }
+
+                    // Daily
+
+                    if (this.occur == 1) {
+
+                        if (cordova) {
+                            cordova.plugins.notification.local.clearAll();
+                            cordova.plugins.notification.local.schedule({
+                                title: 'تذكير بتلاوة بعض آيات القرآن',
+                                trigger: {
+                                    every: {
+                                        minute: parseInt(this.alert_at.min),
+                                        hour: this.alert_at.time == "AM" ? this.alert_at.hour : (parseInt(this.alert_at.hour) + 12)
+                                    }
+                                },
+                                foreground: true
+                            }, undefined, undefined, {skipPermission: true});
+                        }
+
+                    }
+
+                }).then(() => {
+
+                }).catch(() => {
+
+                    this.$f7.notification.create({
+                        subtitle: "خطأ"
+                    }).open();
                 });
 
 
-                if (this.alert_at.occur == 0) {
-                    var nextDate = (new Date());
-
-                    nextDate.setHours(this.alert_at.time == "AM" ? this.alert_at.hour : (parseInt(this.alert_at.hour) + 12));
-                    nextDate.setMinutes(this.alert_at.min);
-
-                    if (nextDate <= now) {
-                        nextDate.setDate(now.getDate() + 1);
-                    }
-
-                    if (cordova) {
-                        cordova.plugins.notification.local.clearAll();
-                        cordova.plugins.notification.local.schedule({
-                            title: ' تنبيه قرأن',
-                            trigger: {at: nextDate},
-                            foreground: true
-                        }, undefined, undefined, {skipPermission: true});
-                    }
-
-                }
-
-                // if daily
-                if (this.alert_at.occur == 1) {
-                    if (cordova) {
-                        cordova.plugins.notification.local.clearAll();
-                        cordova.plugins.notification.local.schedule({
-                            title: ' تنبيه قرأن',
-                            trigger: {
-                                every: {
-                                    minute: parseInt(this.alert_at.min),
-                                    hour: this.alert_at.time == "AM" ? this.alert_at.hour : (parseInt(this.alert_at.hour) + 12)
-                                }
-                            },
-                            foreground: true
-                        }, undefined, undefined, {skipPermission: true});
-                    }
-
-                }
-
-                this.$store.commit("home_tab", "login");
-                this.$f7router.back();
             }
         }
 
