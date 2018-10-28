@@ -26,7 +26,7 @@ export default {
         ? ContestTabAuthed
         : ContestTabUnauthed;
       return component;
-    }
+    },
   },
   created() {
   },

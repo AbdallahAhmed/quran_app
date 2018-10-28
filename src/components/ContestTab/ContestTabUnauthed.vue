@@ -22,24 +22,34 @@
 
 <script>
 export default {
+  data(){
+    return {
+      loading: true
+    }
+  },
   computed:{
     contests(){
-      return[
-        {
-          id:1
-        },
-        {
-          id:2
-        },
-        {
-          id:3
-        }
-      ]
+      return this.$store.getters.contests;
     }
   },
   methods:{
     openDetails(){
       console.log("Details");
+    },
+    loadmore(){
+      this.loading = true;
+      this.$store.dispatch("getContests").then(()=>{
+        this.loading = false;
+      });
+    }
+  },
+  created(){
+    if(!this.$store.getters.contests){
+      this.$store.dispatch("getContests").then(()=>{
+        this.loading = false;
+      });
+    }else{
+      this.loading = false;
     }
   }
 };
