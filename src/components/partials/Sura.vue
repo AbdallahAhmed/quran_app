@@ -38,7 +38,7 @@
 
             <div class="block quran-sura">
 
-                <page v-for="page in pages" :page="page" v-if="sura">
+                <page v-for="page in pages" :page="page" :id="page[0].page_id" v-if="sura">
                     <aya v-for="aya in page" :aya_row="aya"></aya>
                 </page>
 
@@ -59,10 +59,6 @@
         props: ["sura"],
 
         computed: {
-
-            sura() {
-                return this.$store.getters.sura;
-            },
 
             page() {
                 return this.$store.getters.page;
