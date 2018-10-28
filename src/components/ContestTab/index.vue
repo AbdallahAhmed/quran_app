@@ -42,7 +42,9 @@ export default {
   margin-top: 7px;
 }
 .page-contest{
-  height: 100%;
+  height: auto;
+  min-height: 100%;
+  padding-bottom: 68px;
   background-color:#f5f5f5;
 }
 </style>

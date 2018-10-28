@@ -18,14 +18,14 @@ const actions = {
                 params: { offset: state.contests.offset, limit: 10 }
             })
             .then(contests => {
-                commit("CONTESTS", contests);
+                commit("CONTESTS", contests.body.data);
             });
     }
 };
 
 const mutations = {
     CONTESTS(state, payload) {
-        state.contests = { offset: state.contests.offset+10 , data: payload};
+        state.contests = { offset: state.contests.offset+10 , data: state.contests.data.concat(payload) };
     }
 };
 
