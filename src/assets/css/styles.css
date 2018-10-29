@@ -336,7 +336,7 @@
 .juz-wrapper .surah-card .surah-info {
     color: gray;
 }
-/* 
+/*
 @media only screen and (max-width: 415px) {
     .section-wrapper .number-list a {
         height: 20px;
@@ -1218,4 +1218,13 @@ a.forget-password {
     .contest-cards-item{
         height: auto;
     }
+}
+
+.contest-cards-item.contest-current{
+    width: 100%;
+    margin: 0 -5px 0 0;
+}
+.contest-cards-item.contest-current p{
+  text-align: center;
+    width: 100%;
 }
