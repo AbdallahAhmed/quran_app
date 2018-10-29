@@ -14,10 +14,10 @@
                 <khatima-tab></khatima-tab>
             </div>
 
-            <div id="competition-tab" class="page-content tab"
-                 :class="{'tab-active' : $store.getters.home_tab == 'competition'}">
-                <competition/>
-            </div>
+            <!--<div id="competition-tab" class="page-content tab"-->
+                 <!--:class="{'tab-active' : $store.getters.home_tab == 'competition'}">-->
+                <!--<competition/>-->
+            <!--</div>-->
 
             <div id="quran-tab" class="page-content tab"
                  :class="{'tab-active' : $store.getters.home_tab == 'quran', 'black_mode': black_mode == 'black'}">
