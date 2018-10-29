@@ -38,13 +38,16 @@ export default [
         path: '/register',
         component: require("./components/Register.vue")
     }, {
+        path: '/editProfile',
+        component: require("./components/EditProfile.vue")
+    }, {
         path: '/khatima',
         component: require("./components/Khatima.vue")
     }, {
         path: '/alerts',
         component: require("./components/Alert.vue")
-    },{
-        path:"/contest/:contest_id",
+    }, {
+        path: "/contest/:contest_id",
         component: require("./components/ContestDetailes.vue")
     }, {
         path: '/allcontests',

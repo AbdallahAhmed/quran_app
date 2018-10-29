@@ -58,7 +58,7 @@
                     </div>
                 </div>
 
-                <button type="submit" class="link" v-if="check">
+                <button type="submit" @click="$f7router.navigate('/editProfile')" class="link" v-if="check">
                     تعديل الملف الشخصى
                 </button>
 
@@ -100,7 +100,7 @@
         },
 
         methods: {
-            share_app(){
+            share_app() {
 
                 new Promise((resolve, reject) => {
 
