@@ -73,11 +73,9 @@
             "competition": require("./ContestTab/index.vue")
         },
         mounted() {
-            this.$$('.tab').on('tab:show', function () {
-                console.log('event test');
-            })
-
-
+            // this.$$('.tab').on('tab:show', function () {
+            //     console.log('event test');
+            // })
         }
     }
 

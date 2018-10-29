@@ -25,7 +25,7 @@
                             <a  class="delete-aya" @click="removeAya(aya.id)">
                                 <i class="f7-icons">close</i>
                             </a>
-                            <a class="surah" :href="'/home/quran/'+aya.surat_id">
+                            <a class="surah" v-if="aya.surah" :href="'/home/quran/'+aya.surat_id">
                                 {{aya.surah.name}}
                             </a>
                         </div>
