@@ -28,11 +28,14 @@ export default {
         },
 
         pages: (state) => {
-            return Object.keys(state.sura.pages).filter((id) => {
-                return id <= state.page;
-            }).map(function (key) {
-                return state.sura.pages[key]
-            });
+
+            return Object.values(state.sura.pages)
+            // return Object.keys(state.sura.pages).filter((id) => {
+            //     return id <= state.page;
+            //     return true;
+            // }).map(function (key) {
+            //     return state.sura.pages[key]
+            // });
         },
 
         saved_ayat: (state, ayat) => {
