@@ -1080,12 +1080,12 @@ a.forget-password {
     margin-bottom: 10px;
 }
 
-.contest-cards-comming .contest-cards-item {
+.contest-cards-item {
     height: 20vh;
     background-color: #ffffff;
     width: 50%;
     padding: 5px 8px 5px 8px;
-    margin: 5px;
+    margin: 0px 5px;
 }
 
 .contest-wrapper .page-container {
@@ -1100,6 +1100,10 @@ a.forget-password {
     font-size: 26px;
     font-weight: bold;
     word-break: break-all;
+}
+
+.contest-cards-comming .contest-cards-item .title {
+    margin: 0;
 }
 
 .contest-cards-list .contest-cards-item:first-child {
@@ -1129,6 +1133,16 @@ a.forget-password {
     padding: 9px 0;
 }
 
+.contest-cards-item a.contest-button {
+    border: 0;
+    color: #ffffff;
+    background-color: #36734a;
+    width: 100%;
+    text-align: center;
+    display: block;
+    padding: 9px 0;
+}
+
 .contest-cards-comming, .contest-cards-list {
     width: 100%;
 }
@@ -1136,4 +1150,60 @@ a.forget-password {
 .contest-wrapper .page-container .page-title {
     width: calc(100% + 15px);
     margin-right: -15px;
+}
+
+.contest-current .contest-cards-item {
+    width: calc(100% - 15px);
+    height: auto;
+    padding-bottom: 15px;
+    margin: 10px auto;
+}
+
+.contest-current .time, .contest-current .share {
+    margin-top: 7px;
+}
+
+.contest-cards-old .contest-goal {
+    color: gray;
+    margin: 0;
+}
+
+.contest-cards-old .kas img {
+    height: 25px;
+}
+
+.member-number {
+    color: gray;
+}
+
+.contest-cards-old .contest-cards-item {
+    margin-top: 10px;
+    height: auto;
+}
+
+.contest-wrapper {
+    overflow: hidden;
+}
+
+.right {
+    float: left;
+    margin-left: 15px;
+
+}
+
+.left {
+    float: right;
+    margin-right: 0px;
+}
+
+.contest-wrapper .page-container .right {
+    float: left;
+    margin-left: 20px;
+}
+
+.contest-wrapper{background-color: #f5f5f5;}
+@media only screen and (max-width: 321px) {
+    .contest-cards-item{
+        height: auto;
+    }
 }
