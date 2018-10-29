@@ -178,7 +178,8 @@
 .quran-sura {
     text-align: justify;
     direction: rtl;
-    margin: 0 !important;
+    margin: 0 0 10px 0 !important;
+    padding-bottom: 80px !important;
 }
 
 .quran-sura .quran-aya {
@@ -335,7 +336,7 @@
 .juz-wrapper .surah-card .surah-info {
     color: gray;
 }
-
+/* 
 @media only screen and (max-width: 415px) {
     .section-wrapper .number-list a {
         height: 20px;
@@ -393,6 +394,17 @@
     .section-wrapper .number-list a {
         height: 14px;
     }
+} */
+
+.section-wrapper .number-list a {
+    height: 2.8%;
+}
+.section-wrapper .number-list {
+    height: 100vh;
+}
+
+.section-wrapper {
+    height: 100vh;
 }
 
 .page-sections .page-content {
@@ -454,7 +466,7 @@
 
 .searchbar-found {
     width: 100%;
-    padding: 0px 15px 0px 15px;
+    padding: 0px 15px 90px 15px;
 }
 
 .searchbar-found ul {

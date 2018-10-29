@@ -17,7 +17,7 @@
                     <competition/>
                 </div>
 
-                <div id="quran-tab" class="page-content tab" :class="{'tab-active' : $store.getters.home_tab == 'quran', 'black_mode': black_mode == 'black'}">
+                <div id="quran-tab" class="tab" :class="{'tab-active' : $store.getters.home_tab == 'quran', 'black_mode': black_mode == 'black'}">
                     <quran></quran>
                 </div>
 

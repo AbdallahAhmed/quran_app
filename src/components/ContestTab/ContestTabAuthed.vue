@@ -2,7 +2,7 @@
     <div style="direction: rtl" class="contest-wrapper">
         <p class="page-title">
             <span class="row"><a class="left"> المسابقات</a>
-            <a href="#" class="link right">الكل المسابقات</a>
+            <a href="/allcontests" class="link right">الكل المسابقات</a>
 
             </span>
         </p>

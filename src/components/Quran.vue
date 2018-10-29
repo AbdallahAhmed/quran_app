@@ -1,10 +1,11 @@
 <template>
 
     <div>
-
         <navbar></navbar>
 
-        <sura :sura="sura"></sura>
+        <scroller :on-infinite="down" :on-refresh="up" refresh-text="">
+            <sura v-for="sura in suras" :sura="sura"></sura>
+        </scroller>
 
     </div>
 
@@ -16,52 +17,85 @@
 
     export default {
 
+        data() {
+            return {
+                suras: [],
+                sura_id: 0
+            }
+        },
+
         computed: {
             sura() {
                 return this.$store.getters.sura;
             }
         },
 
-        mounted() {
+        created() {
 
-            let sura_id = this.$f7route.params.sura_id || this.sura.id || 1;
+            this.sura_id = parseInt(this.$f7route.params.sura_id || this.sura.id || 1);
 
-            if (this.Dom7('.page-' + this.page).length) {
-             //   this.Dom7('.page-content').scrollTop(this.Dom7('.page-' + this.page).offset().top, 300);
-            }
+            this.load(this.sura_id);
+        },
 
-            this.$store.dispatch("get_sura", {surah_id: sura_id}).then((response) => {
+        methods: {
 
-                this.$store.commit("SURA", response.data.data);
+            load(id) {
 
-                // Increment views
+                this.$store.commit("LOADER", true);
 
-                // setTimeout(() => {
-                //     this.$store.dispatch("read_page", this.$store.getters.page);
-                // }, 5000);
-            });
+                this.$store.dispatch("get_sura", {surah_id: id}).then((response) => {
+                    this.suras = [response.data.data];
+                    this.$store.commit("LOADER", false);
+                });
 
-            this.Dom7('.page-content').on('scroll', (e) => {
+            },
 
-                var elem = this.Dom7(e.currentTarget);
+            up(done) {
 
-                if (elem[0].scrollHeight - elem.scrollTop() == elem.outerHeight()) {
+                this.$store.commit("LOADER", true);
 
-                    // Increment page
+                this.$store.dispatch("get_sura", {surah_id: this.getPrevId()}).then((response) => {
 
-                    this.$store.commit("PAGE", this.$store.getters.page + 1);
+                    this.suras = [response.data.data].concat(this.suras);
 
-                   // alert(this.$store.getters.page);
-                   // this.$store.commit("PAGE", this.$store.getters.page + 1);
+                    this.$store.commit("LOADER", false);
 
-                    // setTimeout(() => {
-                    //     this.$store.dispatch("read_page", this.$store.getters.page);
-                    // }, 5000);
+                    done();
 
-                    //this.$store.dispatch("read_page", this.$store.getters.page);
+                });
+
+            },
+
+            down(done) {
+
+                if (this.suras.length) {
+
+                    this.$store.commit("LOADER", true);
+
+                    this.$store.dispatch("get_sura", {surah_id: this.getNextId()}).then((response) => {
+
+                        this.suras.push(response.data.data);
+
+                        // this.Dom7('.page-content').scrollTop(0, 300);
+
+                        this.$store.commit("LOADER", false);
+
+                        done();
+
+                    });
+
                 }
-            });
 
+
+            },
+
+            getNextId() {
+                return this.suras[this.suras.length - 1].id + 1;
+            },
+
+            getPrevId() {
+                return this.suras[0].id - 1;
+            }
         },
 
         components: {
@@ -73,3 +107,10 @@
     }
 
 </script>
+
+<style>
+    ._v-container {
+        margin-top: 50px
+    }
+</style>
+

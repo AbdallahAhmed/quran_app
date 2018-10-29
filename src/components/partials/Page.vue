@@ -1,6 +1,6 @@
 <template>
 
-    <span ref="page" :class="'page-' + page[0].page_id" :data-id="page[0].page_id">
+    <span ref="page" :id="'page-'+id">
         <slot></slot>
     </span>
 
@@ -8,45 +8,95 @@
 
 <script>
 
-    import debounce from './../../helpers/debounce';
     import inView from 'in-view';
 
     export default {
 
-        name: "QuranPage",
+        name: "Page",
 
-        props: ["page"],
+        props: ["id", "page"],
+
+
+        data() {
+            return {
+                timer: null,
+                seconds: 0,
+            }
+        },
+
+        computed: {},
 
         mounted() {
 
-            let id = this.page[0].page_id;
+            let id = this.id;
 
-            // Saving last rendered page
+            // inView("#page-" + id)
+            //     .on("enter", () => {
+            //         this.$store.commit("LAST_PAGE", id);
+            //     });
 
-            this.$store.commit("PAGE", id);
+            inView("#page-" + id)
 
-            inView(".page-" + id)
+                .on("enter", () => {
 
-                .on('enter', () => {
+                    if (!this.isViewed()) {
 
-                    setTimeout(() => {
+                        this.timer = setInterval(() => {
 
-                       // inView(".page-" + id)
+                            if (this.seconds >= this.getPageReadTime()) {
 
-                         //   .once('enter', () => {
-                                console.log(".page-" + id + " has been viewed");
-                          //  });
+                                clearInterval(this.timer);
+                                this.timer = false;
 
-                    }, 10000);
+                                // mark as seen
+
+                                this.$store.dispatch("read_page", id);
+
+                                // Saving last viewed page
+
+                                this.$store.commit("PAGE", id);
+
+                            }
+
+                            if (inView("#page-" + id).check()) {
+
+                                this.seconds++;
+
+                                console.log(this.id + " - " + this.seconds + " - " + this.getPageReadTime());
+                            }
 
 
-                    console.log("hello" + id);
-                })
+                        }, 1000);
 
-                .on('exit', () => {
-                    // Bye Bye
-                });
+                    }
 
+                }).on("exit", () => {
+                clearInterval(this.timer);
+                this.timer = false;
+            });
+
+        },
+
+
+        methods: {
+
+            getPageReadTime() {
+                return this.page.reduce((sum, aya) => {
+                    return Math.ceil(sum + (aya.text.split(' ').length * 0.28));
+                }, 0)
+            },
+
+            isViewed: function () {
+                return this.$store.getters.current_khatema.pages.indexOf(this.id) > -1
+            }
         }
     }
 </script>
+
+
+<style>
+    .bg-grey {
+        /*text-shadow: 1px 1px 1px #248e11;*/
+        /*opacity: 0.4;*/
+    }
+</style>

@@ -17,9 +17,7 @@
         <div class="section-wrapper" id="main-scrollable" v-if="juz_sections">
             <div class="row no-gap">
                 <div class="col-15 number-list">
-                    <a href="javascript:void(0)" @click="scrollTo(number+1,$event)" :id="number"
-                       v-for="number in Array.from({length: 30}, (_, id) => (id))"
-                       v-text="(number+1)%5==0||number==0?number+1:'.'" :key="number"></a>
+                    <a href="javascript:void(0)" @click="scrollTo(number+1,$event)" :id="number" v-for="number in Array.from({length: 30}, (_, id) => (id))" v-text="(number+1)%5==0||number==0?number+1:'.'" :key="number"></a>
                 </div>
                 <div class="col-85 juz-list " v-if="juz_sections.length!=0">
 
@@ -37,7 +35,7 @@
                                             </a>
 
                                             <div class="surah-info">
-                                                <span>عدد الايات  {{surah.numberOfAyats}}</span>
+                                                <span>عدد الايات {{surah.numberOfAyats}}</span>
                                             </div>
                                         </a>
                                     </div>
@@ -54,55 +52,57 @@
 </template>
 
 <style>
-
-
 </style>
 
 <script>
+import { mapState } from "vuex";
 
-    import {mapState} from 'vuex';
-
-    export default {
-
-
-        mounted() {
-
-
-            // setTimeout(()=> {
-            this.$store.dispatch('get_juz_section').then(() => {
-                var swiper = this.$f7.swiper.create('.swiper-container', {
-                    spaceBetween: 0,
-                    slidesPerView: 1.5
-                });
-            });
-            // }, 4000)
-
-
-        },
-        data() {
-            return {
-                prev: 0
-            };
-        },
-        methods: {
-            scrollTo(index, event) {
-                    this.$$('.section-wrapper#main-scrollable').scrollTop(
-                    this.$$('.juz-wrapper:nth-child(' + index + ')').offset().top - 57 +
-                    this.$$('.section-wrapper#main-scrollable').scrollTop(),
-                    1000
-                )
-            },
-        },
-        computed: {
-            juz_sections() {
-                return this.$store.getters.juz_sections
-            }
-        },
-        components: {
-            "navbar": require("./partials/Navbar.vue"),
-            "main-toolbar": require("./partials/MainToolbar.vue")
-        }
+export default {
+  mounted() {
+    // setTimeout(()=> {
+    this.$store.dispatch("get_juz_section").then(() => {
+      var swiper = this.$f7.swiper.create(".swiper-container", {
+        spaceBetween: 0,
+        slidesPerView: 1.5
+      });
+    });
+    // }, 4000)
+  },
+  data() {
+    return {
+      prev: 0
+    };
+  },
+  methods: {
+    scrollTo(index, event) {
+      this.$$(".section-wrapper#main-scrollable").scrollTop(
+        this.$$(".juz-wrapper:nth-child(" + index + ")").offset().top -
+          57 +
+          this.$$(".section-wrapper#main-scrollable").scrollTop(),
+        1000
+      );
     }
-
+  },
+  computed: {
+    juz_sections() {
+      let juzs = this.$store.getters.juz_sections;
+      for (const key in juzs) {
+        if (juzs.hasOwnProperty(key)) {
+          juzs[key].name_ar = juzs[key].name_ar.replace("ء", "ء ");
+        }
+      }
+      return juzs;
+    }
+  },
+  components: {
+    navbar: require("./partials/Navbar.vue"),
+    "main-toolbar": require("./partials/MainToolbar.vue")
+  }
+};
 </script>
 
+
+<style scoped>
+.juz-title {
+}
+</style>
