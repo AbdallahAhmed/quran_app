@@ -1,83 +1,122 @@
 <template>
   <div>
+    <p class="page-title"> <span>المسابقات</span>  </p>
 
-      <p class="page-title"> <span>المسابقات</span> <a href="#">الكل</a> </p>
-
-
+    <div v-if="!loading">
       <div @click="openDetails" class="contest-card-unauthed row" v-for="contest in contests" :key="contest.id">
-      <div class="jastfy-img col-30">
-        <div style="direction:rtl">
-          <img class="kas-img" src="../../assets/img/noun_users_140450@2x.png" />
-          <span style="font-size:14px; margin-top:3px; margin-left: 3px;" >5</span>
-          <span> عضو </span>
+        <div class="jastfy-img col-30">
+          <div style="direction:rtl">
+            <img class="kas-img" src="../../assets/img/noun_users_140450@2x.png" />
+            <span style="font-size:14px; margin-top:3px; margin-left: 3px;">{content.member_counter}</span>
+            <span> عضو </span>
+          </div>
+        </div>
+        <div class="col-50">
+          <strong>
+            <h1 class="contest-title">{content.name}</h1>
+          </strong>
+          <h2 class="contest-text"> {content.goal}</h2>
+        </div>
+        <div class="col-20 jastfy-img">
+          <img class="kas-img" src="../../assets/img/Group 1034@2x.png" />
         </div>
       </div>
-      <div class="col-50">
-        <strong> <h1 class="contest-title">المسابقة الاولى</h1> </strong>
-        <h2 class="contest-text"> الهدف من المسابقة </h2>
-      </div>
-      <div class="col-20 jastfy-img">
-        <img class="kas-img" src="../../assets/img/Group 1034@2x.png" />
-      </div>
-    </div>
 
+    </div>
+    <div class="loader-wrapper" v-else>
+      <div class="preloader color-green"></div>
+    </div>
+    <div v-if="!loading&&contests.length===0" class="searchbar-hide-on-search">
+      <p><label for="input-search">لا يوجد مسابقات</label></p>
+    </div>
   </div>
 </template>
 
 <script>
 export default {
-  computed:{
-    contests(){
-      return[
-        {
-          id:1
-        },
-        {
-          id:2
-        },
-        {
-          id:3
-        }
-      ]
+  data() {
+    return {
+      loading: true
+    };
+  },
+  computed: {
+    contests() {
+      return this.$store.getters.contests;
     }
   },
-  methods:{
-    openDetails(){
-      console.log("Details");
+  methods: {
+    openDetails() {
+      this.$f7router.navigate("/contest/1");
+    },
+    loadmore() {
+      this.loading = true;
+      this.$store.dispatch("getContests").then(() => {
+        this.loading = false;
+      });
     }
+  },
+  created() {
+    console.log(this.$store.getters.contests.length === 0);
+    if (this.$store.getters.contests.length === 0) {
+      this.$store.dispatch("getContests").then(() => {
+        this.loading = false;
+      });
+    } else {
+      this.loading = false;
+    }
+  },
+  mounted() {
+    this.Dom7(".page-content").on("scroll", e => {
+      var elem = this.Dom7(e.currentTarget);
+
+      if (elem[0].scrollHeight - elem.scrollTop() == elem.outerHeight()) {
+        // loadmore
+        this.loadmore();
+      }
+    });
   }
 };
 </script>
 
 <style scoped>
-
-.contest-card-unauthed{
+.contest-card-unauthed {
   height: 100px;
   background-color: white;
   width: 90%;
   margin: 20px auto;
   text-align: justify;
 }
-.jastfy-img{
+.jastfy-img {
   display: flex;
   justify-content: space-around;
   align-items: center;
   height: 100%;
 }
-.kas-img{
+.kas-img {
   max-height: 25px;
   margin: 0 auto;
   display: block;
 }
-.contest-text, .contest-title{
+.contest-text,
+.contest-title {
   text-align: right;
 }
-.contest-title{
+.contest-title {
   font-size: 20px;
   margin-bottom: 0px;
 }
-.contest-text{
+.contest-text {
   font-weight: 100;
   margin-top: 0px;
+}
+.page-content {
+  height: auto;
+  padding-bottom: 50px;
+}
+.page-title a {
+  float: left;
+  color: #fff;
+  margin-left: 20px;
+  margin-top: 7px;
 }
 </style>

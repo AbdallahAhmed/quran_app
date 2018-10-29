@@ -25,7 +25,7 @@ export default {
         ? ContestTabAuthed
         : ContestTabUnauthed;
       return component;
-    }
+    },
   },
   created() {
   },
@@ -33,15 +33,13 @@ export default {
 };
 </script>
 
+
 <style scoped>
-.page-title a {
-  float: left;
-  color: #fff;
-  margin-left: 20px;
-  margin-top: 7px;
-}
 .page-contest{
-  height: 100%;
+  height: auto;
+  min-height: 100%;
+  padding-bottom: 68px;
   background-color:#f5f5f5;
 }
+
 </style>
