@@ -8,11 +8,7 @@ const getters = {
 
 const state = {
     contests: {
-<<<<<<< HEAD
         data: [],
-=======
-        data: [1, 2],
->>>>>>> 316f899b1977b37b2ee1a1b891188900777d4a94
         offset: 0
     },
     contests_authed_tab: {
