@@ -239,6 +239,13 @@ const actions = {
             }
         });
     },
+    profileUpdate(store, user) {
+        return Vue.http.post("profile/update", user).then(function(response) {
+            if (response.body.status) {
+                store.commit("user", response.body.data);
+            }
+        });
+    },
 
     forgetPassword(store, email) {
         return Vue.http.post("auth/forget-password", email);
