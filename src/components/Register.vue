@@ -22,9 +22,6 @@
 
             <div class="form-container">
 
-                <span class="help" v-if="serverErrors.length!=0" v-for="error in serverErrors" :key="error">
-                    {{error}}
-                </span>
                 <form @submit.prevent="register">
 
                     <div class="input-border">
