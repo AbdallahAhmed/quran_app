@@ -66,6 +66,14 @@
             "khatima-tab": require("./KhatimaTab.vue"),
             "login": require("./Login.vue"),
             "competition": require("./ContestTab/index.vue")
+        },
+        mounted(){
+            this.$$('.tab').on('tab:show',function () {
+                console.log('event test');
+            })
+
+
+
         }
     }
 

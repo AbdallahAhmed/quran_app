@@ -6,7 +6,7 @@ const getters = {
 
 const state = {
     contests: {
-        data: [],
+        data: [1,2],
         offset: 0
     }
 };

@@ -1,5 +1,7 @@
 <template>
   <div>
+    <p class="page-title"> <span>المسابقات</span>  </p>
+
     <div v-if="!loading">
       <div @click="openDetails" class="contest-card-unauthed row" v-for="contest in contests" :key="contest.id">
         <div class="jastfy-img col-30">
@@ -24,7 +26,9 @@
     <div class="loader-wrapper" v-else>
       <div class="preloader color-green"></div>
     </div>
-    <div v-if="!loading&&contests.length===0" class="searchbar-hide-on-search"><p><label for="input-search">لا يوجد مسابقات</label></p></div>
+    <div v-if="!loading&&contests.length===0" class="searchbar-hide-on-search">
+      <p><label for="input-search">لا يوجد مسابقات</label></p>
+    </div>
   </div>
 </template>
 
@@ -42,7 +46,7 @@ export default {
   },
   methods: {
     openDetails() {
-      console.log("Details");
+      this.$f7router.navigate("/contest/1");
     },
     loadmore() {
       this.loading = true;
@@ -108,5 +112,11 @@ export default {
 .page-content {
   height: auto;
   padding-bottom: 50px;
+}
+.page-title a {
+  float: left;
+  color: #fff;
+  margin-left: 20px;
+  margin-top: 7px;
 }
 </style>
