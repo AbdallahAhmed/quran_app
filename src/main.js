@@ -8,7 +8,7 @@ import Vue from 'vue';
 import App from './components/App.vue';
 import VueResource from 'vue-resource';
 import VueCordova from 'vue-cordova';
-
+import VueScroller from 'vue-scroller'
 import Routes from './routes';
 import {store} from './store/store';
 import {i18n} from "./i18n";
@@ -33,6 +33,8 @@ require('./assets/css/styles.css');
 require('./assets/css/animations.css');
 
 Vue.use(VueResource);
+
+Vue.use(VueScroller);
 
 // Init F7 Vue Plugin
 Framework7.use(Framework7Vue)
