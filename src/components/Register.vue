@@ -21,6 +21,7 @@
             </div>
 
             <div class="form-container">
+
                 <form @submit.prevent="register">
 
                     <div class="input-border">

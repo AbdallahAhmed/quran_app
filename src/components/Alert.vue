@@ -147,7 +147,6 @@
             var cuurentMin = alert_at.min ? alert_at.min : (today.getMinutes() < 10 ? "0" + today.getMinutes() : today.getMinutes());
             var currentTime = alert_at.time ? alert_at.time : (today.getHours() < 12 ? "AM" : "PM");
 
-
             this.picker = this.$f7.picker.create({
                 containerEl: '#demo-picker-date-container',
                 toolbar: false,
@@ -208,6 +207,8 @@
 
                     if (this.occur == 0) {
 
+                        alert("0");
+
                         var nextDate = (new Date());
 
                         nextDate.setHours(this.alert_at.time == "AM" ? this.alert_at.hour : (parseInt(this.alert_at.hour) + 12));
@@ -232,6 +233,8 @@
                     // Daily
 
                     if (this.occur == 1) {
+
+                        alert("0");
 
                         if (cordova) {
                             cordova.plugins.notification.local.clearAll();

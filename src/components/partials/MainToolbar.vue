@@ -8,20 +8,20 @@
             <img src="../../assets/img/trend.png" alt="">
         </f7-link>
 
-        <f7-link class="link bg-white" @click="home_tab = 'competition'"
+        <f7-link class="link" @click="home_tab = 'competition'"
                  :class="{'tab-link-active': $store.getters.home_tab == 'competition' }">
             <img src="../../assets/img/cup.png" alt="">
         </f7-link>
 
         <f7-link @click="home_tab = 'quran'">
 
-            <span href="#" class="btn-main" :class="{loader: loader}">
+            <span href="#" class="btn-main" :class="{bounceIn: true, loader: loader}">
                 <img class="main-image" src="../../assets/img/mos7af.png" alt="">
             </span>
 
         </f7-link>
 
-        <f7-link class="link bg-white" @click="home_tab = 'search'"
+        <f7-link class="link" @click="home_tab = 'search'"
                  :class="{'tab-link-active': $store.getters.home_tab == 'search' }">
             <img src="../../assets/img/search.png" alt="">
         </f7-link>

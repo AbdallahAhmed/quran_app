@@ -6,16 +6,14 @@
 
             <div class="row aya-options">
 
-                <div class="options-message" v-if="message"> {{ message}}</div>
-
-                <a class="col-30 link bounceIn" @click="share" v-if="!message">
+                <a class="col-30 link bounceIn" @click="share">
                     <img src="../../assets/img/share_inverse.png">
                 </a>
-                <a class="col-30 link bounceIn" @click="copy" v-if="!message">
+                <a class="col-30 link bounceIn" @click="copy">
                     <input type="hidden" id="clipboard" :value="aya.text"/>
                     <img src="../../assets/img/copy.png">
                 </a>
-                <a class="col-30 link bounceIn" @click="save" v-if="!message">
+                <a class="col-30 link bounceIn" @click="save">
                     <img src="../../assets/img/save.png">
                 </a>
 
@@ -42,7 +40,6 @@
 
         data() {
             return {
-                message: "",
                 share_loading: false
             }
         },
@@ -82,17 +79,9 @@
                     this.sura = response.data.data;
                 });
 
-                this.message = "تم الحفظ";
-
                 this.$f7.notification.create({
                     subtitle: "تم الحفظ"
                 }).open();
-
-                let timer = setInterval(() => {
-                    this.message = false;
-                    clearInterval(timer);
-                }, 4000);
-
             },
 
             copy() {
@@ -112,16 +101,9 @@
                 clipboard.setAttribute('type', 'hidden')
                 window.getSelection().removeAllRanges();
 
-                this.message = "تم النسخ";
-
                 this.$f7.notification.create({
                     subtitle: "تم النسخ"
                 }).open();
-
-                let timer = setInterval(() => {
-                    this.message = false;
-                    clearInterval(timer);
-                }, 4000);
 
             },
 

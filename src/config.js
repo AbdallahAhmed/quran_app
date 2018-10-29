@@ -9,7 +9,7 @@ export const items ={
     /**
      * Uploads base URL
      */
-    uploads_url: "http://quran.uniative.com/uploads/"
+    uploads_url: "https://quran.uniative.com/uploads/"
 
 }
 
