@@ -43,6 +43,9 @@ export default [
     }, {
         path: '/alerts',
         component: require("./components/Alert.vue")
+    }, {
+        path: '/allcontests',
+        component: require("./components/AllContests.vue")
     }
 
 ];

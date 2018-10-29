@@ -3,7 +3,7 @@
         <p class="page-title">
             <span class="row">
                  <a class="col-70"> المسابقات</a>
-            <a href="#" class="link col-30">الكل المسابقات</a>
+            <a href="/allcontests" class="link col-30">الكل المسابقات</a>
 
             </span>
         </p>
