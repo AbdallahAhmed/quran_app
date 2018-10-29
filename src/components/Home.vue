@@ -7,29 +7,33 @@
 
         <options-toolbar v-if="aya"></options-toolbar>
 
-            <div class="tabs">
+        <div class="tabs">
 
-                <div id="khatima-tab" class="page-content tab page-khatima" :class="{'tab-active' : $store.getters.home_tab == 'khatima'}">
-                    <khatima-tab></khatima-tab>
-                </div>
-
-                <div id="competition-tab" class="page-content tab" :class="{'tab-active' : $store.getters.home_tab == 'competition'}">
-                    <competition/>
-                </div>
-
-                <div id="quran-tab" class="tab" :class="{'tab-active' : $store.getters.home_tab == 'quran', 'black_mode': black_mode == 'black'}">
-                    <quran></quran>
-                </div>
-
-                <div id="search-tab" class="page-content tab" :class="{'tab-active' : $store.getters.home_tab == 'search'}">
-                    <search></search>
-                </div>
-
-                <div id="profile-tab" class="page-content tab" :class="{'tab-active' :  $store.getters.home_tab == 'profile'}">
-                    <profile></profile>
-                </div>
-
+            <div id="khatima-tab" class="page-content tab page-khatima"
+                 :class="{'tab-active' : $store.getters.home_tab == 'khatima'}">
+                <khatima-tab></khatima-tab>
             </div>
+
+            <div id="competition-tab" class="page-content tab"
+                 :class="{'tab-active' : $store.getters.home_tab == 'competition'}">
+                <competition/>
+            </div>
+
+            <div id="quran-tab" class="page-content tab"
+                 :class="{'tab-active' : $store.getters.home_tab == 'quran', 'black_mode': black_mode == 'black'}">
+                <quran></quran>
+            </div>
+
+            <div id="search-tab" class="page-content tab" :class="{'tab-active' : $store.getters.home_tab == 'search'}">
+                <search></search>
+            </div>
+
+            <div id="profile-tab" class="page-content tab"
+                 :class="{'tab-active' :  $store.getters.home_tab == 'profile'}">
+                <profile></profile>
+            </div>
+
+        </div>
 
     </div>
 
@@ -50,11 +54,12 @@
                 return this.$store.getters.tabs.quran;
             },
 
-            black_mode(){
+            black_mode() {
                 return this.$store.getters.color_theme;
             }
 
         },
+
 
         components: {
             "navbar": require("./partials/Navbar.vue"),
@@ -67,11 +72,10 @@
             "login": require("./Login.vue"),
             "competition": require("./ContestTab/index.vue")
         },
-        mounted(){
-            this.$$('.tab').on('tab:show',function () {
+        mounted() {
+            this.$$('.tab').on('tab:show', function () {
                 console.log('event test');
             })
-
 
 
         }
