@@ -25,26 +25,26 @@
                 <form @submit.prevent="register">
 
                     <div class="input-border">
-                        <input type="text" :class="{'errors':errors.has('password')&&submitted}" name="name"
+                        <input type="text" name="name"
                                placeholder=" الأسم كامل " v-model="user.name"
                                v-validate="'required|alpha_spaces'" autocomplete="false"/>
                     </div>
 
                     <div class="input-border">
-                        <input type="text" :class="{'errors':errors.has('password')&&submitted}" name="email"
+                        <input type="text" name="email"
                                placeholder=" البريد الكترونى " v-model="user.email"
                                v-validate="'required|email'" autocomplete="false"/>
                     </div>
 
                     <div class="input-border">
-                        <input type="password" :class="{'errors':errors.has('password')&&submitted}" name="password"
+                        <input type="password" name="password"
                                placeholder="كلمة المرور" v-model="user.password"
                                v-validate="'required'" autocomplete="false"/>
                     </div>
 
                     <div class="input-border">
-                        <input type="password" :class="{'errors':errors.has('confirm_password')&&submitted}"
-                               name="confirm_password" placeholder="تاكيد كلمة المرور" v-model="user.confirm_password"
+                        <input type="password" name="confirm_password" placeholder="تاكيد كلمة المرور"
+                               v-model="user.confirm_password"
                                v-validate="'required|confirmed:password'" autocomplete="false"/>
                     </div>
 
