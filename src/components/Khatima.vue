@@ -56,8 +56,6 @@
             <button class="btn-quran btn-send">
                 ارسل الثوب إلى صديق
             </button>
-
-
         </div>
     </f7-page>
 

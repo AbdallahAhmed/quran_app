@@ -1,6 +1,6 @@
 <template>
 
-    <span ref="page" :class="'page-' + page[0].page_id" :data-id="page[0].page_id">
+    <span ref="page" :id="'page-'+id" :class="{'bg-grey' : isViewed()}">
         <slot></slot>
     </span>
 
@@ -13,40 +13,86 @@
 
     export default {
 
-        name: "QuranPage",
+        name: "Page",
 
-        props: ["page"],
+        props: ["id", "page"],
+
+
+        data() {
+            return {
+                timer: null,
+                seconds: 0,
+            }
+        },
+
+        computed: {},
 
         mounted() {
 
-            let id = this.page[0].page_id;
+            let id = this.id;
 
-            // Saving last rendered page
+            inView("#page-" + id)
 
-            this.$store.commit("PAGE", id);
+                .on("enter", () => {
 
-            inView(".page-" + id)
+                    if (!this.isViewed()) {
 
-                .on('enter', () => {
+                            this.timer = setInterval(() => {
 
-                    setTimeout(() => {
+                                if (this.seconds >= this.getPageReadTime()) {
 
-                       // inView(".page-" + id)
+                                    clearInterval(this.timer);
 
-                         //   .once('enter', () => {
-                                console.log(".page-" + id + " has been viewed");
-                          //  });
+                                    // mark as seen
 
-                    }, 10000);
+                                    this.$store.dispatch("read_page", id);
+
+                                    // Saving last viewed page
+
+                                    this.$store.commit("PAGE", id);
+
+                                }
+
+                                if (inView("#page-" + id).check()) {
+
+                                    this.seconds++;
+
+                                    console.log(this.id + " - " + this.seconds + " - " + this.getPageReadTime());
+                                }
 
 
-                    console.log("hello" + id);
-                })
+                            }, 1000);
 
-                .on('exit', () => {
-                    // Bye Bye
+                    }
+
+                }).on("exit", () => {
+                    clearInterval(this.timer);
                 });
 
+
+
+
+        },
+
+
+        methods: {
+            getPageReadTime() {
+                return this.page.reduce((sum, aya) => {
+                    return Math.ceil(sum + (aya.text.split(' ').length * 0.28));
+                }, 0)
+            },
+
+            isViewed: function () {
+                return this.$store.getters.current_khatema.pages.indexOf(this.id) > -1
+            }
         }
     }
 </script>
+
+
+<style>
+    .bg-grey {
+        text-shadow: 1px 1px 1px #248e11;
+        opacity: 0.4;
+    }
+</style>
