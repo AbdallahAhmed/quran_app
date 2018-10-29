@@ -232,7 +232,7 @@ const actions = {
     },
 
     register(store, user) {
-        return Vue.http.post("register", user).then(function(response) {
+        return Vue.http.post("auth/add_user", user).then(function(response) {
             if (response.body.status) {
                 store.commit("token", response.body.data.token);
                 store.commit("user", response.body.data.user);
