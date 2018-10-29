@@ -8,6 +8,9 @@ export default {
         "saved_ayat": JSON.parse(localStorage.getItem("saved_ayat")) || [],
         "page": parseInt(localStorage.getItem("page")) || 0,
         "sura": JSON.parse(localStorage.getItem("sura")) || false,
+        "last_sura": parseInt(localStorage.getItem("last_sura")) || 0,
+        "last_page":  parseInt(localStorage.getItem("last_page")) || 0,
+        "loader": true
     },
 
     getters: {
@@ -19,8 +22,20 @@ export default {
             return state.aya
         },
 
+        loader: (state) => {
+            return state.loader
+        },
+
         sura: (state) => {
             return state.sura
+        },
+
+        last_sura: (state) => {
+            return state.last_sura;
+        },
+
+        last_page: (state) => {
+            return state.last_page;
         },
 
         page: (state) => {
@@ -45,6 +60,10 @@ export default {
 
     mutations: {
 
+        LOADER(state, status = true) {
+            state.loader = status;
+        },
+
         JUZ_SECTION(state, data) {
             state.juz_sections = data;
         },
@@ -56,6 +75,16 @@ export default {
         PAGE(state, page = 1) {
             state.page = page;
             localStorage.setItem("page", parseInt(state.page));
+        },
+
+        LAST_SURA(state, sura) {
+            state.last_sura = sura;
+            localStorage.setItem("last_sura", parseInt(state.last_sura));
+        },
+
+        LAST_PAGE(state, page) {
+            state.last_page = page;
+            localStorage.setItem("last_page", parseInt(state.last_page));
         },
 
         SURA(state, sura) {

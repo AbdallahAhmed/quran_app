@@ -2,7 +2,7 @@
 
     <div>
 
-        <div class="quran-head" v-if="sura">
+        <div class="quran-head" :id="'sura-' + sura.id" v-if="sura">
 
             <div class="sura-header">
 
@@ -52,6 +52,8 @@
 
 <script>
 
+    import inView from 'in-view';
+
     export default {
 
         name: "Sura",
@@ -60,13 +62,28 @@
 
         computed: {
 
+            last_sura() {
+                return this.$store.getters.last_sura;
+            },
+
             page() {
                 return this.$store.getters.page;
             },
 
             pages() {
-                return this.$store.getters.pages;
+                return this.sura.pages;
             }
+        },
+
+
+        mounted() {
+
+            // inView("#sura-" + this.sura.id)
+            //     .on("enter", () => {
+            //         this.$store.commit("LAST_SURA", this.sura.id);
+            //         this.$store.commit("SURA", this.sura);
+            //     });
+
         },
 
         components: {

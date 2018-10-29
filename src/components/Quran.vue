@@ -4,19 +4,33 @@
 
         <navbar></navbar>
 
-        <sura :sura="sura"></sura>
+        <div class="scroll-area">
 
+            <vue-scroll
+                @refresh-start="getPrevSura"
+                @load-start="getNextSura">
 
+                <sura v-for="sura in suras" :sura="sura"></sura>
+
+            </vue-scroll>
+
+        </div>
 
     </div>
+
 
 </template>
 
 <script>
 
-    import Vue from 'vue';
-
     export default {
+
+        data() {
+            return {
+                suras: [],
+                sura_id: 0
+            }
+        },
 
         computed: {
             sura() {
@@ -25,53 +39,84 @@
         },
 
         mounted() {
+            this.sura_id = parseInt(this.$f7route.params.sura_id || this.sura.id || 1);
+            this.load(this.sura_id);
+        },
 
-            let sura_id = this.$f7route.params.sura_id || this.sura.id || 1;
+        methods: {
 
-            if (this.Dom7('.page-' + this.page).length) {
-             //   this.Dom7('.page-content').scrollTop(this.Dom7('.page-' + this.page).offset().top, 300);
-            }
+            load(id) {
 
-            this.$store.dispatch("get_sura", {surah_id: sura_id}).then((response) => {
+                this.$store.commit("LOADER", true);
 
-                this.$store.commit("SURA", response.data.data);
+                this.$store.dispatch("get_sura", {surah_id: id}).then((response) => {
+                    this.suras = [response.data.data];
+                    this.$store.commit("LOADER", false);
+                });
 
-                // Increment views
+            },
 
-                // setTimeout(() => {
-                //     this.$store.dispatch("read_page", this.$store.getters.page);
-                // }, 5000);
-            });
+            getNextSura(x, y, done) {
 
-            this.Dom7('.page-content').on('scroll', (e) => {
+                if (this.suras.length) {
 
-                var elem = this.Dom7(e.currentTarget);
+                    this.$store.commit("LOADER", true);
 
-                if (elem[0].scrollHeight - elem.scrollTop() == elem.outerHeight()) {
+                    this.$store.dispatch("get_sura", {surah_id: this.getNextId()}).then((response) => {
 
-                    // Increment page
+                        this.suras.push(response.data.data);
 
-                    this.$store.commit("PAGE", this.$store.getters.page + 1);
+                        this.$store.commit("LOADER", false);
 
-                   // alert(this.$store.getters.page);
-                   // this.$store.commit("PAGE", this.$store.getters.page + 1);
+                        done();
 
-                    // setTimeout(() => {
-                    //     this.$store.dispatch("read_page", this.$store.getters.page);
-                    // }, 5000);
+                    });
 
-                    //this.$store.dispatch("read_page", this.$store.getters.page);
                 }
-            });
+            },
 
+            getPrevSura(x, y, done) {
+
+                this.$store.commit("LOADER", true);
+
+                this.$store.dispatch("get_sura", {surah_id: this.getPrevId()}).then((response) => {
+
+                    this.suras = [response.data.data].concat(this.suras);
+
+                    this.$f7.ptr.done();
+
+                    this.$store.commit("LOADER", false);
+
+                    done();
+
+                });
+
+            },
+
+
+            getNextId() {
+                return this.suras[this.suras.length - 1].id + 1;
+            },
+
+            getPrevId() {
+                return this.suras[0].id - 1;
+            }
         },
 
         components: {
             "navbar": require("./partials/Navbar.vue"),
-            "sura": require("./partials/Sura.vue")
+            "sura": require("./partials/Sura.vue"),
+            "test": require("./partials/Test.vue"),
         }
-
-
     }
 
 </script>
+
+<style>
+
+    .scroll-area {
+        height: 36rem;
+        overflow: auto;
+    }
+
+</style>
