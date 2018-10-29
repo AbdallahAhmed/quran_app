@@ -3,19 +3,19 @@
     <p class="page-title"> <span>المسابقات</span>  </p>
 
     <div v-if="!loading">
-      <div @click="openDetails" class="contest-card-unauthed row" v-for="contest in contests" :key="contest.id">
+      <div class="contest-card-unauthed row" v-for="contest in contests" :key="contest.id" @click="openDetails(contest.id)">
         <div class="jastfy-img col-30">
           <div style="direction:rtl">
             <img class="kas-img" src="../../assets/img/noun_users_140450@2x.png" />
-            <span style="font-size:14px; margin-top:3px; margin-left: 3px;">{content.member_counter}</span>
+            <span style="font-size:14px; margin-top:3px; margin-left: 3px;">{{contest.member_counter}}</span>
             <span> عضو </span>
           </div>
         </div>
         <div class="col-50">
           <strong>
-            <h1 class="contest-title">{content.name}</h1>
+            <h1 class="contest-title">{{contest.name}}</h1>
           </strong>
-          <h2 class="contest-text"> {content.goal}</h2>
+          <h2 class="contest-text"> {{contest.goal}}</h2>
         </div>
         <div class="col-20 jastfy-img">
           <img class="kas-img" src="../../assets/img/Group 1034@2x.png" />
@@ -45,8 +45,8 @@ export default {
     }
   },
   methods: {
-    openDetails() {
-      this.$f7router.navigate("/contest/1");
+    openDetails(id) {
+      this.$f7router.navigate(`/contest/${id}`);
     },
     loadmore() {
       this.loading = true;
