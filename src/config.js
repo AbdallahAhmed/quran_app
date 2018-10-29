@@ -3,13 +3,13 @@ export const items ={
     /**
      * Application base URL
      */
-    url: "http://quran.uniative.com/api",
+    url: "https://quran.uniative.com/api",
 
 
     /**
      * Uploads base URL
      */
-    uploads_url: "http://quran.uniative.com/uploads/"
+    uploads_url: "https://quran.uniative.com/uploads/"
 
 }
 
