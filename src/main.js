@@ -17,6 +17,58 @@ import {isElementInView} from "./helpers/helpers";
 
 let FastClick = require('fastclick');
 
+
+import vuescroll from 'vuescroll';
+import 'vuescroll/dist/vuescroll.css';
+
+Vue.use(vuescroll);
+
+Vue.prototype.$vuescrollConfig = {
+
+    rail: {
+        background: '#207249',
+    },
+
+    bar: {
+        background: '#207249',
+        opacity: 0.4
+    },
+
+    vuescroll: {
+
+        mode: 'slide',
+        sizeStrategy: 'percent',
+
+        detectResize: true,
+
+        pullRefresh: {
+            enable: true,
+            tips: {
+                deactive: '',
+                active: '',
+                start: '',
+                beforeDeactive: ''
+            }
+        },
+
+        pushLoad: {
+            enable: true,
+            auto: true,
+            autoLoadDistance: 10,
+            tips: {
+                deactive: '',
+                active: '',
+                start: '',
+                beforeDeactive: ''
+            },
+        },
+
+        scroller: {
+            bouncing: true
+        }
+    }
+};
+
 // Import F7
 import Framework7 from 'framework7/framework7.esm.bundle.js';
 
@@ -35,6 +87,9 @@ require('./assets/css/animations.css');
 Vue.use(VueResource);
 
 Vue.use(VueScroller);
+
+import infiniteScroll from 'vue-infinite-scroll'
+Vue.use(infiniteScroll)
 
 // Init F7 Vue Plugin
 Framework7.use(Framework7Vue)

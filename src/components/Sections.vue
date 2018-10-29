@@ -10,11 +10,11 @@
             </template>
         </navbar>
 
-        <div class="loader-wrapper" v-if="!juz_sections">
+        <div class="loader-wrapper" v-if="loading">
             <div class="preloader color-green"></div>
         </div>
 
-        <div class="section-wrapper" id="main-scrollable" v-if="juz_sections">
+        <div class="section-wrapper" id="main-scrollable" v-if="juz_sections" :hidden="loading">
             <div class="row no-gap">
                 <div class="col-15 number-list">
                     <a href="javascript:void(0)" @click="scrollTo(number+1,$event)" :id="number" v-for="number in Array.from({length: 30}, (_, id) => (id))" v-text="(number+1)%5==0||number==0?number+1:'.'" :key="number"></a>
@@ -58,11 +58,14 @@
 import { mapState } from "vuex";
 
 export default {
-  mounted() {
+  created() {
     // setTimeout(()=> {
     this.$store.dispatch("get_juz_section").then(() => {
+      setTimeout(()=>{
+          this.loading = false;
+      },50);
       var swiper = this.$f7.swiper.create(".swiper-container", {
-        spaceBetween: 0,
+        spaceBetween: 20,
         slidesPerView: 1.5
       });
     });
@@ -70,7 +73,8 @@ export default {
   },
   data() {
     return {
-      prev: 0
+      prev: 0,
+      loading: true
     };
   },
   methods: {

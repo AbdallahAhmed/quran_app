@@ -1,19 +1,27 @@
 <template>
 
     <div>
+
         <navbar></navbar>
 
-        <scroller :on-infinite="down" :on-refresh="up" refresh-text="">
-            <sura v-for="sura in suras" :sura="sura"></sura>
-        </scroller>
+        <div class="scroll-area">
+
+            <vue-scroll
+                @refresh-start="getPrevSura"
+                @load-start="getNextSura">
+
+                <sura v-for="sura in suras" :sura="sura"></sura>
+
+            </vue-scroll>
+
+        </div>
 
     </div>
+
 
 </template>
 
 <script>
-
-    import Vue from 'vue';
 
     export default {
 
@@ -30,10 +38,8 @@
             }
         },
 
-        created() {
-
+        mounted() {
             this.sura_id = parseInt(this.$f7route.params.sura_id || this.sura.id || 1);
-
             this.load(this.sura_id);
         },
 
@@ -50,23 +56,7 @@
 
             },
 
-            up(done) {
-
-                this.$store.commit("LOADER", true);
-
-                this.$store.dispatch("get_sura", {surah_id: this.getPrevId()}).then((response) => {
-
-                    this.suras = [response.data.data].concat(this.suras);
-
-                    this.$store.commit("LOADER", false);
-
-                    done();
-
-                });
-
-            },
-
-            down(done) {
+            getNextSura(x, y, done) {
 
                 if (this.suras.length) {
 
@@ -76,8 +66,6 @@
 
                         this.suras.push(response.data.data);
 
-                        // this.Dom7('.page-content').scrollTop(0, 300);
-
                         this.$store.commit("LOADER", false);
 
                         done();
@@ -85,9 +73,26 @@
                     });
 
                 }
+            },
 
+            getPrevSura(x, y, done) {
+
+                this.$store.commit("LOADER", true);
+
+                this.$store.dispatch("get_sura", {surah_id: this.getPrevId()}).then((response) => {
+
+                    this.suras = [response.data.data].concat(this.suras);
+
+                    this.$f7.ptr.done();
+
+                    this.$store.commit("LOADER", false);
+
+                    done();
+
+                });
 
             },
+
 
             getNextId() {
                 return this.suras[this.suras.length - 1].id + 1;
@@ -100,17 +105,18 @@
 
         components: {
             "navbar": require("./partials/Navbar.vue"),
-            "sura": require("./partials/Sura.vue")
+            "sura": require("./partials/Sura.vue"),
+            "test": require("./partials/Test.vue"),
         }
-
-
     }
 
 </script>
 
 <style>
-    ._v-container {
-        margin-top: 50px
-    }
-</style>
 
+    .scroll-area {
+        height: 36rem;
+        overflow: auto;
+    }
+
+</style>
