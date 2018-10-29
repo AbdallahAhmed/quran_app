@@ -1,9 +1,8 @@
 <template>
     <div style="direction: rtl" class="contest-wrapper">
         <p class="page-title">
-            <span class="row">
-                 <a class="col-70"> المسابقات</a>
-            <a href="/allcontests" class="link col-30">الكل المسابقات</a>
+            <span class="row"><a class="left"> المسابقات</a>
+            <a href="/allcontests" class="link right">الكل المسابقات</a>
 
             </span>
         </p>
@@ -12,7 +11,7 @@
                 <div class="contest-cards-list swiper-comming">
                     <div class="swiper-wrapper">
                         <div class="swiper-slide contest-cards-item">
-                            <p class="title">المسابقة الاولى</p>
+                            <a class="title">المسابقة الاولى</a>
                             <div class="contest-goal">
                                 الهدف من المسابقة
                             </div>
@@ -96,15 +95,115 @@
 
             <p class="page-title">
             <span class="row">
-                 <a class="col-70"> المسابقة لمنضم ليها</a>
+                 <a class="col-70"> المسابقة المنضم ليها</a>
             </span>
             </p>
 
             <div class="contest-current">
-
+                <div class="contest-cards-item">
+                    <div class="row">
+                        <a class="title col-50">المسابقة الاولى</a>
+                        <span class="time col-30">50:10:30</span>
+                        <a class="share link col-20">
+                            <img src="./../../assets/img/share-black.png" alt="share">
+                        </a>
+                    </div>
+                    <div class="row">
+                        <div class="contest-goal col-50">
+                            الهدف من المسابقة
+                        </div>
+                        <a class="contest-button link col-50">
+                            خروج
+                        </a>
+                    </div>
+                </div>
             </div>
 
 
+            <p class="page-title">
+            <span class="row"><a class="left"> المسابقات</a>
+            <a href="#" class="link right">الكل المسابقات</a>
+
+            </span>
+            </p>
+
+
+            <div class="contest-cards-old" v-if="showed">
+                <div class="contest-cards-list swiper-comming">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide contest-cards-item">
+                            <div class="kas">
+                                <img class="kas-img" src="../../assets/img/Group 1034@2x.png" />
+
+                            </div>
+                            <a class="title">المسابقة الاولى</a>
+                            <div class="contest-goal">
+                                الهدف من المسابقة
+                            </div>
+
+                            <div class="member-number">
+                                11 عضو انضموا
+                            </div>
+                        </div>
+                        <div class="swiper-slide contest-cards-item">
+                            <div class="kas">
+                                <img class="kas-img" src="../../assets/img/Group 1034@2x.png" />
+
+                            </div>
+                            <a class="title">المسابقة الاولى</a>
+                            <div class="contest-goal">
+                                الهدف من المسابقة
+                            </div>
+
+                            <div class="member-number">
+                                11 عضو انضموا
+                            </div>
+                        </div>
+                        <div class="swiper-slide contest-cards-item">
+                            <div class="kas">
+                                <img class="kas-img" src="../../assets/img/Group 1034@2x.png" />
+
+                            </div>
+                            <a class="title">المسابقة الاولى</a>
+                            <div class="contest-goal">
+                                الهدف من المسابقة
+                            </div>
+
+                            <div class="member-number">
+                                11 عضو انضموا
+                            </div>
+                        </div>
+                        <div class="swiper-slide contest-cards-item">
+                            <div class="kas">
+                                <img class="kas-img" src="../../assets/img/Group 1034@2x.png" />
+
+                            </div>
+                            <a class="title">المسابقة الاولى</a>
+                            <div class="contest-goal">
+                                الهدف من المسابقة
+                            </div>
+
+                            <div class="member-number">
+                                11 عضو انضموا
+                            </div>
+                        </div>
+                        <div class="swiper-slide contest-cards-item">
+                            <div class="kas">
+                                <img class="kas-img" src="../../assets/img/Group 1034@2x.png" />
+
+                            </div>
+                            <a class="title">المسابقة الاولى</a>
+                            <div class="contest-goal">
+                                الهدف من المسابقة
+                            </div>
+
+                            <div class="member-number">
+                                11 عضو انضموا
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
 
     </div>
@@ -140,9 +239,5 @@
 </script>
 
 <style scoped>
-    .contest-card-unauthed {
-        height: 100px;
-        background-color: white;
-        width: 90%;
-    }
+
 </style>
