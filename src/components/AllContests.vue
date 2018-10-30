@@ -20,7 +20,7 @@
                     <div class="col-100 margin-bottom contest">
                         <div class="col-40 display-inline-block">
                             <div class="col-100" >
-                                <a :href="'/contest/'+contest.id">{{contest.name}}</a>
+                                <a :href="'/contest/'+contest.id"><h1>{{contest.name}}</h1></a>
                             </div>
                             <div class="col-100">{{contest.creator.first_name}} {{contest.creator.last_name}}</div>
                         </div>
