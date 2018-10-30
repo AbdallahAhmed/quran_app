@@ -32,7 +32,7 @@
 
                                     <div class="swiper-slide" v-for="surah in juz.swar">
                                         <a class="surah-card">
-                                            <a class="surah-title link" :href="'/home/quran/'+surah.id">
+                                            <a class="surah-title link" :href="'/home/quran/'+ surah.id + '/' + index">
                                                 {{surah.id}}.&nbsp;&nbsp; {{surah.name.split('سورة')[1]}}
                                             </a>
 
@@ -59,32 +59,33 @@
 <script>
     import {mapState} from "vuex";
 
-    export default {
-        created() {
+export default {
+  created() {
 
-        },
-        data() {
-            return {
-                prev: 0,
-                loading: true,
+  },
+  data() {
+    return {
+      prev: 0,
+      loading: true,
                 juz_sections:false,
-            };
-        },
-        methods: {
-            scrollTo(index, event) {
-                this.$$(".section-wrapper#main-scrollable").scrollTop(
-                    this.$$(".juz-wrapper:nth-child(" + index + ")").offset().top -
-                    57 +
-                    this.$$(".section-wrapper#main-scrollable").scrollTop(),
-                    1000
-                );
-            }
-        },
-        components: {
-            navbar: require("./partials/Navbar.vue"),
-            "main-toolbar": require("./partials/MainToolbar.vue")
-        },
-        mounted() {
+    };
+  },
+  methods: {
+    scrollTo(index, event) {
+      this.$$(".section-wrapper#main-scrollable").scrollTop(
+        this.$$(".juz-wrapper:nth-child(" + index + ")").offset().top -
+          57 +
+          this.$$(".section-wrapper#main-scrollable").scrollTop(),
+        1000
+      );
+
+    }
+  },
+  components: {
+    navbar: require("./partials/Navbar.vue"),
+    "main-toolbar": require("./partials/MainToolbar.vue")
+  },
+mounted() {
             this.$store.dispatch("get_juz_section").then(() => {
                 this.juz_sections = this.$store.getters.juz_sections;
                 this.loading = false;
@@ -95,8 +96,7 @@
                 });
                 console.log(swiper);
             });
-        }
-    }
+        }}
 </script>
 
 

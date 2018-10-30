@@ -2,7 +2,7 @@ import Vue from 'vue';
 
 export default [
     {
-        path: '/home/:tab/:sura_id?',
+        path: '/home/:tab/:sura_id?/:part_id?',
         component: require("./components/Home.vue"),
         beforeLeave: function (routeTo, routeFrom, resolve, reject) {
             Vue.app.store.commit("AYA", false);
