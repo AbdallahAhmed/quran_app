@@ -28,20 +28,20 @@
 
                 <div class="page-container">
 
-                <a class="item-link smart-select smart-select-init closeOnSelect"  data-open-in="sheet">
+                    <a class="item-link smart-select smart-select-init closeOnSelect" data-open-in="sheet">
 
-                    <select :value="occur" v-model="occur" >
-                        <option value="0">أبدا</option>
-                        <option value="1">يوميأ</option>
-                    </select>
+                        <select :value="occur" v-model="occur">
+                            <option value="0">أبدا</option>
+                            <option value="1">يوميأ</option>
+                        </select>
 
-                    <div class="item-content">
-                        <div class="item-inner">
-                            <div class="item-title">تكرار</div>
+                        <div class="item-content">
+                            <div class="item-inner">
+                                <div class="item-title">تكرار</div>
+                            </div>
                         </div>
-                    </div>
 
-                </a>
+                    </a>
 
                 </div>
             </div>
@@ -89,21 +89,20 @@
         margin-left: 9px;
     }
 
-   .picker-columns{
-       background: #ffffff;
-   }
+    .picker-columns {
+        background: #ffffff;
+    }
 
-   .block-strong .picker-item span{
+    .block-strong .picker-item span {
         color: #757575;
         font-family: tahoma !important;
     }
 
-    .block-strong .picker-item.picker-item-selected span{
+    .block-strong .picker-item.picker-item-selected span {
         color: #207249;
     }
 
-    .smart-select-sheet .toolbar
-    {
+    .smart-select-sheet .toolbar {
         display: none;
     }
 
@@ -151,7 +150,7 @@
                 containerEl: '#demo-picker-date-container',
                 toolbar: false,
                 rotateEffect: true,
-                momentumRatio:7,
+                momentumRatio: 7,
 
                 value: [
                     currentHour, cuurentMin, currentTime
@@ -205,19 +204,18 @@
 
                     // Once
 
+                    var nextDate = (new Date());
+
+                    nextDate.setHours(this.alert_at.time == "AM" ? this.alert_at.hour : (parseInt(this.alert_at.hour) + 12));
+
+                    nextDate.setMinutes(this.alert_at.min);
+
+                    if (nextDate <= now) {
+                        nextDate.setDate(now.getDate() + 1);
+                    }
+
+
                     if (this.occur == 0) {
-
-                        alert("0");
-
-                        var nextDate = (new Date());
-
-                        nextDate.setHours(this.alert_at.time == "AM" ? this.alert_at.hour : (parseInt(this.alert_at.hour) + 12));
-
-                        nextDate.setMinutes(this.alert_at.min);
-
-                        if (nextDate <= now) {
-                            nextDate.setDate(now.getDate() + 1);
-                        }
 
                         if (cordova) {
                             cordova.plugins.notification.local.clearAll();
@@ -230,25 +228,18 @@
 
                     }
 
-                    // Daily
-
                     if (this.occur == 1) {
-
-                        alert("0");
 
                         if (cordova) {
                             cordova.plugins.notification.local.clearAll();
                             cordova.plugins.notification.local.schedule({
-                                title: 'تذكير بتلاوة بعض آيات القرآن',
-                                trigger: {
-                                    every: {
-                                        minute: parseInt(this.alert_at.min),
-                                        hour: this.alert_at.time == "AM" ? this.alert_at.hour : (parseInt(this.alert_at.hour) + 12)
-                                    }
-                                },
-                                foreground: true
+                                title: 'تذكير بتلاوة بعض آيات القرآن اليومية',
+                                foreground: true,
+                                repeat:  'daily',
+                                date:    nextDate
                             }, undefined, undefined, {skipPermission: true});
                         }
+
 
                     }
 

@@ -9,7 +9,7 @@ export default {
         "page": parseInt(localStorage.getItem("page")) || 0,
         "sura": JSON.parse(localStorage.getItem("sura")) || false,
         "last_sura": parseInt(localStorage.getItem("last_sura")) || 0,
-        "last_page":  parseInt(localStorage.getItem("last_page")) || 0,
+        "last_page": parseInt(localStorage.getItem("last_page")) || 0,
         "loader": true
     },
 
@@ -148,10 +148,12 @@ export default {
         },
 
         get_juz_section({commit}) {
-            return Vue.http.get("juz/sections").then(resposne => {
-                commit('JUZ_SECTION', resposne.body);
-            }, (response) => {
-            });
+            return new Promise((resolve, reject) => {
+                var sections=require('./../../assets/quran/juz_surat');
+                commit('JUZ_SECTION', sections);
+                resolve(sections);
+
+            })
         }
 
     }
