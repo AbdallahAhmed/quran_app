@@ -17,20 +17,22 @@
         <div class="section-wrapper" id="main-scrollable" v-if="juz_sections" :hidden="loading">
             <div class="row no-gap">
                 <div class="col-15 number-list">
-                    <a href="javascript:void(0)" @click="scrollTo(number+1,$event)" :id="number" v-for="number in Array.from({length: 30}, (_, id) => (id))" v-text="(number+1)%5==0||number==0?number+1:'.'" :key="number"></a>
+                    <a href="javascript:void(0)" @click="scrollTo(number+1,$event)" :id="number"
+                       v-for="number in Array.from({length: 30}, (_, id) => (id))"
+                       v-text="(number+1)%5==0||number==0?number+1:'.'" :key="number"></a>
                 </div>
-                <div class="col-85 juz-list " v-if="juz_sections.length!=0">
+                <div class="col-85 juz-list " v-if="juz_sections">
 
                     <div class="juz-wrapper" v-for="(juz,index) in juz_sections" :key="juz.name_ar">
                         <h2 class="juz-title">{{juz.name_ar}}</h2>
                         <div class="juz-content">
 
-                            <div data-space-between="0" data-slides-per-view="1.5" class="swiper-container ">
+                            <div class="swiper-container-juz">
                                 <div class="swiper-wrapper swiper-slide-surah-card">
 
                                     <div class="swiper-slide" v-for="surah in juz.swar">
                                         <a class="surah-card">
-                                            <a class="surah-title link" :href="'/home/quran/'+surah.id">
+                                            <a class="surah-title link" :href="'/home/quran/'+ surah.id + '/' + index">
                                                 {{surah.id}}.&nbsp;&nbsp; {{surah.name.split('سورة')[1]}}
                                             </a>
 
@@ -55,26 +57,17 @@
 </style>
 
 <script>
-import { mapState } from "vuex";
+    import {mapState} from "vuex";
 
 export default {
   created() {
-    // setTimeout(()=> {
-    this.$store.dispatch("get_juz_section").then(() => {
-      setTimeout(()=>{
-          this.loading = false;
-      },50);
-      var swiper = this.$f7.swiper.create(".swiper-container", {
-        spaceBetween: 20,
-        slidesPerView: 1.5
-      });
-    });
-    // }, 4000)
+
   },
   data() {
     return {
       prev: 0,
-      loading: true
+      loading: true,
+                juz_sections:false,
     };
   },
   methods: {
@@ -85,28 +78,29 @@ export default {
           this.$$(".section-wrapper#main-scrollable").scrollTop(),
         1000
       );
-    }
-  },
-  computed: {
-    juz_sections() {
-      let juzs = this.$store.getters.juz_sections;
-      for (const key in juzs) {
-        if (juzs.hasOwnProperty(key)) {
-          juzs[key].name_ar = juzs[key].name_ar.replace("ء", "ء ");
-        }
-      }
-      return juzs;
+
     }
   },
   components: {
     navbar: require("./partials/Navbar.vue"),
     "main-toolbar": require("./partials/MainToolbar.vue")
-  }
-};
+  },
+mounted() {
+            this.$store.dispatch("get_juz_section").then(() => {
+                this.juz_sections = this.$store.getters.juz_sections;
+                this.loading = false;
+            }).then(()=>{
+                var swiper = this.$f7.swiper.create(".swiper-container-juz", {
+                    spaceBetween: 0,
+                    slidesPerView: 1.5
+                });
+                console.log(swiper);
+            });
+        }}
 </script>
 
 
 <style scoped>
-.juz-title {
-}
+    .juz-title {
+    }
 </style>

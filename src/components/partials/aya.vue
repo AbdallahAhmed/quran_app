@@ -1,6 +1,6 @@
 <template>
 
-    <span class="quran-aya" @click="activate(aya_row)"
+    <span class="quran-aya" @click="activate(aya_row)" :part="aya_row.juz_id"
           :class="{active: isActivated(aya_row)}" :style="{ 'font-size': font_size + 'px' }">
         {{ aya_row.text }}
         <span class="aya-num">  ﴿ {{ aya_row.numberinsurat }} ﴾ </span>
