@@ -105,13 +105,13 @@
                         self.$f7.dialog.preloader('جاري تسجيل الدخول');
 
                         self.$store.dispatch('login', self.user).then((response) => {
-                            self.$f7router.back();
+                            setTimeout(()=> self.$f7router.back() , 500);                    
                         }, (res) => {
                             self.$f7.notification.create({
                                 subtitle: 'البريد الكترونى وكلمة المرور غير صحيحين'
                             }).open();
                         }).then(()=>{
-                            self.$f7.dialog.close();
+                            setTimeout(()=> self.$f7.dialog.close() , 500);
                         });
 
                     }else{
