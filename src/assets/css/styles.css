@@ -335,6 +335,7 @@
 .juz-wrapper .surah-card .surah-info {
     color: gray;
 }
+
 /*
 @media only screen and (max-width: 415px) {
     .section-wrapper .number-list a {
@@ -398,6 +399,7 @@
 .section-wrapper .number-list a {
     height: 2.8%;
 }
+
 .section-wrapper .number-list {
     height: 100vh;
 }
@@ -1212,18 +1214,28 @@ a.forget-password {
     margin-left: 20px;
 }
 
-.contest-wrapper{background-color: #f5f5f5;}
+.contest-wrapper {
+    background-color: #f5f5f5;
+}
+
 @media only screen and (max-width: 321px) {
-    .contest-cards-item{
+    .contest-cards-item {
         height: auto;
     }
 }
 
-.contest-cards-item.contest-current{
+.contest-cards-item.contest-current {
     width: 100%;
     margin: 0 -5px 0 0;
 }
-.contest-cards-item.contest-current p{
-  text-align: center;
+
+.contest-cards-item.contest-current p {
+    text-align: center;
     width: 100%;
+}
+
+.page-register .header-islamic-content img {
+    border-radius: 3cm;
+    width: 100px;
+    height: 100px;
 }

@@ -72,10 +72,6 @@
 
 </template>
 
-<style>
-
-
-</style>
 
 <script>
 
