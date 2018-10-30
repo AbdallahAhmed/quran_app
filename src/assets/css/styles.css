@@ -320,11 +320,13 @@
 }
 
 .juz-wrapper .swiper-slide .surah-card {
-    margin-right: 20px
+    margin-right: 20px ;
+    margin-left: 20px ;
 }
 
 .juz-wrapper .swiper-slide {
     width: 55%;
+    margin-left: 20px;
 }
 
 .juz-wrapper .surah-card .surah-title {
