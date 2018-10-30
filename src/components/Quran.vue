@@ -4,9 +4,13 @@
 
         <navbar></navbar>
 
+        <div class="center quran-loader" v-if="!suras.length">
+            <f7-preloader class="color-green"></f7-preloader>
+        </div>
+
         <div class="scroll-area">
 
-            <vue-scroll @refresh-start="getPrevSura" @load-start="getNextSura">
+            <vue-scroll ref="quran" @refresh-start="getPrevSura" @load-start="getNextSura">
 
                 <sura v-for="sura in suras" :sura="sura"></sura>
 
@@ -37,22 +41,35 @@
         },
 
         mounted() {
-            this.sura_id = parseInt(this.$f7route.params.sura_id || this.sura.id || 1);
-            this.load(this.sura_id);
+
+            let sura_id = parseInt(this.$f7route.params.sura_id || this.sura.id || 1);
+            let part_id = this.$f7route.params.part_id;
+
+            this.$store.dispatch("get_sura", {surah_id: sura_id}).then((response) => {
+
+                this.suras = [response.data.data];
+
+                console.log(response.data.data);
+
+                if (part_id) {
+
+                    setTimeout(() => {
+
+                        if (response.data.data.juz_id != part_id) {
+                            this.$refs['quran'].scrollTo({
+                                x: 0,
+                                y: this.Dom7("[part='" + part_id + "']").eq(0).offset().top
+                            });
+                        }
+
+                    });
+
+                }
+            });
+
         },
 
         methods: {
-
-            load(id) {
-
-                this.$store.commit("LOADER", true);
-
-                this.$store.dispatch("get_sura", {surah_id: id}).then((response) => {
-                    this.suras = [response.data.data];
-                    this.$store.commit("LOADER", false);
-                });
-
-            },
 
             getNextSura(x, y, done) {
 
@@ -119,6 +136,10 @@
     .scroll-area {
         height: 36rem;
         overflow: auto;
+    }
+
+    .quran-loader {
+        margin: 50px 0;
     }
 
 </style>

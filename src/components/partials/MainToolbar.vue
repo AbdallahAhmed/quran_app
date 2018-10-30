@@ -1,7 +1,5 @@
 <template>
 
-
-
     <f7-toolbar bottom-md no-shadow>
 
         <f7-link class="link bg-white" @click="home_tab = 'khatima'"
