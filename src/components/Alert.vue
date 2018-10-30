@@ -217,7 +217,6 @@
 
                     if (this.occur == 0) {
 
-                        this.$f7.dialog.alert(nextDate);
                         if (cordova) {
                             cordova.plugins.notification.local.clearAll();
                             cordova.plugins.notification.local.schedule({
@@ -230,28 +229,12 @@
                     }
 
                     if (this.occur == 1) {
-                        this.$f7.dialog.alert(nextDate);
 
                         if (cordova) {
                             cordova.plugins.notification.local.clearAll();
                             cordova.plugins.notification.local.schedule({
                                 title: 'تذكير بتلاوة بعض آيات القرآن اليومية',
-                                // firstAt: nextDate,
-                                // // at:nextDate,
-                                //
-                                // // trigger: {
-                                // //     every: {
-                                // //         minute: parseInt(this.alert_at.min),
-                                // //         hour: this.alert_at.time == "AM" ? this.alert_at.hour : (parseInt(this.alert_at.hour) + 12)
-                                // //     }
-                                // // },
-                                // trigger: {every: "day", firstAt: nextDate},
                                 foreground: true,
-                                // every: {
-                                //     hour: nextDate.getHours(),
-                                //     minute: nextDate.getMinutes(),
-                                //     firstAt: nextDate
-                                // },
                                 repeat:  'daily',
                                 date:    nextDate
                             }, undefined, undefined, {skipPermission: true});

@@ -70,10 +70,12 @@
 
                     }
 
-                }).on("exit", () => {
-                clearInterval(this.timer);
-                this.timer = false;
-            });
+                })
+
+                .on("exit", () => {
+                    clearInterval(this.timer);
+                    this.timer = false;
+                });
 
         },
 

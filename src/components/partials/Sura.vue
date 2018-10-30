@@ -1,8 +1,8 @@
 <template>
 
-    <div>
+    <div :id="'sura-' + sura.id">
 
-        <div class="quran-head" :id="'sura-' + sura.id" v-if="sura">
+        <div class="quran-head" v-if="sura">
 
             <div class="sura-header">
 
@@ -38,7 +38,7 @@
 
             <div class="block quran-sura">
 
-                <page v-for="page in pages" :page="page" :id="page[0].page_id" v-if="sura">
+                <page v-for="page in sura.pages" :page="page" :id="page[0].page_id" v-if="sura">
                     <aya v-for="aya in page" :aya_row="aya"></aya>
                 </page>
 
@@ -68,22 +68,44 @@
 
             page() {
                 return this.$store.getters.page;
-            },
-
-            pages() {
-                return this.sura.pages;
             }
         },
 
 
         mounted() {
 
-            // inView("#sura-" + this.sura.id)
-            //     .on("enter", () => {
-            //         this.$store.commit("LAST_SURA", this.sura.id);
-            //         this.$store.commit("SURA", this.sura);
-            //     });
+            inView("#sura-" + this.sura.id)
+                .on("enter", (el) => {
+                    this.$store.commit("LAST_SURA", this.sura.id);
+                });
 
+        },
+
+
+        methods: {
+
+
+            isElementVisible(el) {
+                var rect = el.getBoundingClientRect(),
+                    vWidth = window.innerWidth || doc.documentElement.clientWidth,
+                    vHeight = window.innerHeight || doc.documentElement.clientHeight,
+                    efp = function (x, y) {
+                        return document.elementFromPoint(x, y)
+                    };
+
+                // Return false if it's not in the viewport
+                if (rect.right < 0 || rect.bottom < 0
+                    || rect.left > vWidth || rect.top > vHeight)
+                    return false;
+
+                // Return true if any of its four corners are visible
+                return (
+                    el.contains(efp(rect.left, rect.top))
+                    || el.contains(efp(rect.right, rect.top))
+                    || el.contains(efp(rect.right, rect.bottom))
+                    || el.contains(efp(rect.left, rect.bottom))
+                );
+            }
         },
 
         components: {

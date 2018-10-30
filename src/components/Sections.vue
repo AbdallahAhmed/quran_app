@@ -59,44 +59,45 @@
 <script>
     import {mapState} from "vuex";
 
-export default {
-  created() {
+    export default {
+        created() {
 
-  },
-  data() {
-    return {
-      prev: 0,
-      loading: true,
-                juz_sections:false,
-    };
-  },
-  methods: {
-    scrollTo(index, event) {
-      this.$$(".section-wrapper#main-scrollable").scrollTop(
-        this.$$(".juz-wrapper:nth-child(" + index + ")").offset().top -
-          57 +
-          this.$$(".section-wrapper#main-scrollable").scrollTop(),
-        1000
-      );
+        },
+        data() {
+            return {
+                prev: 0,
+                loading: true,
+                juz_sections: false,
+            };
+        },
+        methods: {
+            scrollTo(index, event) {
+                this.$$(".section-wrapper#main-scrollable").scrollTop(
+                    this.$$(".juz-wrapper:nth-child(" + index + ")").offset().top -
+                    57 +
+                    this.$$(".section-wrapper#main-scrollable").scrollTop(),
+                    1000
+                );
 
-    }
-  },
-  components: {
-    navbar: require("./partials/Navbar.vue"),
-    "main-toolbar": require("./partials/MainToolbar.vue")
-  },
-mounted() {
+            }
+        },
+        components: {
+            navbar: require("./partials/Navbar.vue"),
+            "main-toolbar": require("./partials/MainToolbar.vue")
+        },
+        mounted() {
             this.$store.dispatch("get_juz_section").then(() => {
                 this.juz_sections = this.$store.getters.juz_sections;
                 this.loading = false;
-            }).then(()=>{
+            }).then(() => {
                 var swiper = this.$f7.swiper.create(".swiper-container-juz", {
                     spaceBetween: 0,
                     slidesPerView: 1.5
                 });
                 console.log(swiper);
             });
-        }}
+        }
+    }
 </script>
 
 
