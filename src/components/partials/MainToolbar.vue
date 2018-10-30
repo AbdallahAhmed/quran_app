@@ -1,6 +1,7 @@
 <template>
 
 
+
     <f7-toolbar bottom-md no-shadow>
 
         <f7-link class="link bg-white" @click="home_tab = 'khatima'"
@@ -14,11 +15,9 @@
         </f7-link>
 
         <f7-link @click="home_tab = 'quran'">
-
-            <span href="#" class="btn-main" :class="{bounceIn: true, loader: loader}">
+            <span href="#" class="btn-main" :class="{bounceIn: true}">
                 <img class="main-image" src="../../assets/img/mos7af.png" alt="">
             </span>
-
         </f7-link>
 
         <f7-link class="link" @click="home_tab = 'search'"
@@ -28,8 +27,11 @@
 
         <f7-link class="link bg-white" @click="home_tab = 'profile'"
                  :class="{'tab-link-active': $store.getters.home_tab == 'profile' }">
-            <img :src="$store.getters.user.photo?$store.getters.user-avater.photo.thumbnail:'user-avater.png'"
+            <img src="../../assets/img/user-avater.png"
                  class="user-avater user-avater-tab" style="width: 30px;border: 3px solid green;" alt=""/>
+
+            <!--<img :src="$store.getters.user.photo?$store.getters['user-avater'].photo.thumbnail:'../../assets/img/user-avater.png'"-->
+            <!--class="user-avater user-avater-tab" style="width: 30px;border: 3px solid green;" alt=""/>-->
         </f7-link>
     </f7-toolbar>
 
@@ -80,8 +82,6 @@
     }
 
 
-
-
 </style>
 
 
@@ -107,7 +107,6 @@
                 }
             }
         },
-
 
 
         methods: {
