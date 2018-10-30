@@ -56,14 +56,10 @@
                         message: this.aya.text,
                         subject: this.aya.text,
                         chooserTitle: this.$app.trans("choose_app")
-                    }, () => {
-                        resolve();
                     });
 
                 }).then(() => {
-                    this.$f7.notification.create({
-                        subtitle: "تمت المشاركة"
-                    }).open();
+                    // Nothing
                 }).catch(() => {
                     this.$f7.notification.create({
                         subtitle: "خطأ"

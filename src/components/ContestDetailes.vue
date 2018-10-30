@@ -8,7 +8,12 @@
         </a>
       </template>
     </navbar>
-    <div class="contest-detailes">
+
+    <div class="loader-wrapper" v-if="!contest">
+      <div class="preloader color-green" v-if="!contest"></div>
+    </div>
+
+    <div v-else class="contest-detailes">
       <div class="row rtl padding10">
 
         <div class="col-55">
@@ -19,7 +24,7 @@
           </div>
         </div>
         <div class=" col-42 is-150px">
-          <button class="btn green-btn"> أنضم</button>
+          <button class="btn green-btn" @click="()=>contest.is_joined?leave():join()"> {{contest.is_joined?"خروج":"أنضم"}}</button>
           <button class="btn yellow-btn"> تجاهل</button>
         </div>
       </div>
@@ -29,7 +34,7 @@
             <img class="img" src="./../assets/img/noun_calender_652711.png" />
           </div>
           <div class="col-70">
-            
+
             <div class="title sm"> تاريخ الإنتهاء </div>
             <div class="date"> {{moment(contest.expired_at)}}</div>
           </div>
@@ -61,7 +66,7 @@
 
       <!-- ~~~~~~~~~ users list ~~~~~~~~~~ -->
       <div v-for="user of contest.members" :key="user.id">
-        <div class="row">
+        <div class="row" style="margin-top:30px;">
           <div class="img-div" :style="{backgroundImage: 'url(http://misharialafasy.net/wp-content/uploads/2014/09/5.jpg)'}" />
           <strong class="p-text">{{user.first_name}}</strong>
         </div>
@@ -131,7 +136,7 @@ export default {
   data() {
     return {
       loading: true,
-      contest: {}
+      contest: null
     };
   },
   created() {
@@ -143,6 +148,56 @@ export default {
   methods: {
     moment(...args) {
       return moment(...args).format("YYYY/MM/DD");
+    },
+    leave() {
+      console.log("leave");
+      this.$f7.dialog.confirm("هل تريد الخروج من المسابقة ؟", () => {
+        this.$f7.dialog.preloader("جاري الخروج من المسابقة");
+        this.$http
+          .post("contests/leave", {
+            contest_id: this.contest.id
+          })
+          .then(() => {
+            this.contest.is_joined = false;
+            this.$f7.dialog.close();
+          })
+          .catch(err => {
+            this.$f7.dialog.alert("حاول مرة أخرى في وقت لاحق!", "خطأ !");
+            setTimeout(() => {
+              this.$f7.dialog.close();
+            }, 2000);
+          });
+      });
+    },
+    join() {
+      console.log("join");
+      this.$f7.dialog.confirm(
+        this.currentContest
+          ? "هل تريد الأنضمام في هذه المسابقة و الخروج من المسابقة الحالية ؟"
+          : "هل تريد الأنضمام في هذه المسابقة ؟",
+        () => {
+          this.$f7.dialog.preloader("جاري الإنضمام إلى المسابقة");
+          this.$http
+            .post("contests/join", {
+              contest_id: this.contest.id
+            })
+            .then(() => {
+              this.contest.is_joined = true;
+            })
+            .catch(err => {
+              if (err.status == 401) this.$f7router.navigate("/login");
+              else {
+                this.$f7.dialog.alert("حاول مرة أخرى في وقت لاحق!", "خطأ !");
+                setTimeout(() => {
+                  this.$f7.dialog.close();
+                }, 2000);
+              }
+            })
+            .finally(() => {
+              this.$f7.dialog.close();
+            });
+        }
+      );
     }
   },
   components: {
@@ -152,6 +207,10 @@ export default {
 </script>
 
 <style scoped>
+.page{
+  overflow: scroll;
+  padding-bottom: 30px;
+}
 .contest-detailes {
   background-color: white;
 }
@@ -252,5 +311,12 @@ export default {
 }
 .flex1 {
   flex: 1;
+}
+</style>
+
+<style>
+.preloader-inner-gap{
+  display: none !important;
+  width: 0px !important;
 }
 </style>

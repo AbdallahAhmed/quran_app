@@ -6,9 +6,7 @@
 
         <div class="scroll-area">
 
-            <vue-scroll
-                @refresh-start="getPrevSura"
-                @load-start="getNextSura">
+            <vue-scroll @refresh-start="getPrevSura" @load-start="getNextSura">
 
                 <sura v-for="sura in suras" :sura="sura"></sura>
 
@@ -58,15 +56,17 @@
 
             getNextSura(x, y, done) {
 
-                if (this.suras.length) {
+                let next_id = this.getNextId();
 
-                    this.$store.commit("LOADER", true);
+                if (next_id > 114) {
+                    return done();
+                }
+
+                if (this.suras.length) {
 
                     this.$store.dispatch("get_sura", {surah_id: this.getNextId()}).then((response) => {
 
                         this.suras.push(response.data.data);
-
-                        this.$store.commit("LOADER", false);
 
                         done();
 
@@ -77,20 +77,19 @@
 
             getPrevSura(x, y, done) {
 
-                this.$store.commit("LOADER", true);
+                let prev_id = this.getPrevId();
 
-                this.$store.dispatch("get_sura", {surah_id: this.getPrevId()}).then((response) => {
+                if (prev_id <= 0) {
+                    return done();
+                }
+
+                this.$store.dispatch("get_sura", {surah_id: prev_id}).then((response) => {
 
                     this.suras = [response.data.data].concat(this.suras);
-
-                    this.$f7.ptr.done();
-
-                    this.$store.commit("LOADER", false);
 
                     done();
 
                 });
-
             },
 
 
@@ -104,9 +103,12 @@
         },
 
         components: {
-            "navbar": require("./partials/Navbar.vue"),
-            "sura": require("./partials/Sura.vue"),
-            "test": require("./partials/Test.vue"),
+            "navbar":
+                require("./partials/Navbar.vue"),
+            "sura":
+                require("./partials/Sura.vue"),
+            "test":
+                require("./partials/Test.vue"),
         }
     }
 

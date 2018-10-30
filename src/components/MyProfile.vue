@@ -46,8 +46,6 @@
                             <p>الإعدادات</p>
 
                             <img src="./../assets/img/settings.png" alt="Fav">
-
-
                         </a>
                     </div>
                     <div class="col-50 spaceInDown">

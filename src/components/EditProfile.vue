@@ -104,7 +104,7 @@
                         userData.lang = "ar";
 
                         self.$store.dispatch('profileUpdate', userData).then((response) => {
-                            self.$f7router.navigate('/home/quran/1');
+                            self.$f7router.back();
                         }, (res) => {
                             self.$f7.notification.create({
                                 subtitle: res.data.errors[0]

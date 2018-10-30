@@ -14,11 +14,9 @@
         </f7-link>
 
         <f7-link @click="home_tab = 'quran'">
-
-            <span href="#" class="btn-main" :class="{bounceIn: true, loader: loader}">
+            <span href="#" class="btn-main" :class="{bounceIn: true}">
                 <img class="main-image" src="../../assets/img/mos7af.png" alt="">
             </span>
-
         </f7-link>
 
         <f7-link class="link" @click="home_tab = 'search'"
@@ -105,10 +103,9 @@
                 }
             },
             avater() {
-                return this.$store.getters.user.photo ? this.$store.getters.user.photo.thumbnail : 'user-avater.png';
+                return this.$store.getters.user && this.$store.getters.user.photo ? this.$store.getters.user.photo.thumbnail : 'user-avater.png';
             }
         },
-
 
         methods: {
             soon() {

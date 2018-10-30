@@ -10,7 +10,7 @@
             <div class="contest-cards-comming" v-if="showed">
                 <div class="contest-cards-list swiper-comming">
                     <div class="swiper-wrapper">
-                        <div class="swiper-slide contest-cards-item" v-for="contest  in contests.all">
+                        <div class="swiper-slide contest-cards-item" v-for="contest  in contests.all" @click="openContestDetailes(contest.id)" :key="contest.id">
                             <a class="title">{{contest.name}}</a>
                             <div class="contest-goal">
                                 {{contest.goal}}
@@ -70,7 +70,7 @@
 
 
             <div class="contest-cards-old" v-if="showed">
-                <div class="contest-cards-list swiper-comming" v-for="contest in contests.expired">
+                <div class="contest-cards-list swiper-comming" v-for="contest in contests.expired" :key="contest.id">
                     <div class="swiper-wrapper">
                         <div class="swiper-slide contest-cards-item">
                             <div class="kas">
@@ -137,6 +137,9 @@
             toTime(time) {
                 let s = moment.duration(moment(time).diff(moment(), 'seconds'));
                 return `${parseInt(s / 3600)}:${parseInt(s / 60) % 60}:${s % 60}`
+            },
+            openContestDetailes(id){
+                this.$f7router.navigate(`/contest/${id}`);
             }
         }
     }

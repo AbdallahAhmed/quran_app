@@ -19,8 +19,8 @@
                 <div class="col-100 contest-card">
                     <div class="col-100 margin-bottom contest">
                         <div class="col-40 display-inline-block">
-                            <div class="col-100">
-                                <label>{{contest.name}}</label>
+                            <div class="col-100" >
+                                <a :href="'/contest/'+contest.id"><h1>{{contest.name}}</h1></a>
                             </div>
                             <div class="col-100">{{contest.creator.first_name}} {{contest.creator.last_name}}</div>
                         </div>
@@ -82,7 +82,7 @@
                 limit: 6,
             }
         },
-        mounted() {
+        created() {
             this.loadContests();
         },
         methods: {
@@ -125,11 +125,6 @@
                 this.$f7.dialog.confirm(
                     this.currentContest ? 'هل تريد الأنضمام في هذه المسابقة و الخروج من المسابقة الأخرى ؟' : 'هل تريد الأنضمام في هذه المسابقة ؟'
                     , () => {
-                        if (this.currentContest) {
-                            this.$http.post('contests/leave', {
-                                'contest_id': this.currentContest.id
-                            })
-                        }
                         this.$http.post('contests/join', {
                             'contest_id': this.contests[id].id
                         }).then(() => {
@@ -163,6 +158,9 @@
 
     .contest-wrapper .contest-card .contest {
         margin: 0 auto;
+    }
+    .contest a{
+        color: inherit;
     }
 
 </style>
