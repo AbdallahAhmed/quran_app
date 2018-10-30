@@ -42,17 +42,6 @@ export default {
             return state.page
         },
 
-        pages: (state) => {
-
-            return Object.values(state.sura.pages)
-            // return Object.keys(state.sura.pages).filter((id) => {
-            //     return id <= state.page;
-            //     return true;
-            // }).map(function (key) {
-            //     return state.sura.pages[key]
-            // });
-        },
-
         saved_ayat: (state, ayat) => {
             return state.saved_ayat;
         },

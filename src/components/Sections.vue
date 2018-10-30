@@ -60,8 +60,9 @@
     import {mapState} from "vuex";
 
     export default {
-        created() {
-            // setTimeout(()=> {
+
+        mounted() {
+
             this.$store.dispatch("get_juz_section").then(() => {
                 setTimeout(() => {
                     this.loading = false;
@@ -71,14 +72,15 @@
                     slidesPerView: 1.5
                 });
             });
-            // }, 4000)
         },
+
         data() {
             return {
                 prev: 0,
                 loading: true
             };
         },
+
         methods: {
             scrollTo(index, event) {
                 this.$$(".section-wrapper#main-scrollable").scrollTop(
@@ -89,6 +91,7 @@
                 );
             }
         },
+
         computed: {
             juz_sections() {
                 let juzs = this.$store.getters.juz_sections;
@@ -100,6 +103,7 @@
                 return juzs;
             }
         },
+
         components: {
             navbar: require("./partials/Navbar.vue"),
             "main-toolbar": require("./partials/MainToolbar.vue")

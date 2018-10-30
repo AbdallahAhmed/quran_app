@@ -35,21 +35,19 @@
         },
 
         computed: {
-            sura() {
-                return this.$store.getters.sura;
+            last_sura() {
+                return this.$store.getters.last_sura;
             }
         },
 
         mounted() {
 
-            let sura_id = parseInt(this.$f7route.params.sura_id || this.sura.id || 1);
+            let sura_id = parseInt(this.$f7route.params.sura_id || this.last_sura.id || 1);
             let part_id = this.$f7route.params.part_id;
 
             this.$store.dispatch("get_sura", {surah_id: sura_id}).then((response) => {
 
                 this.suras = [response.data.data];
-
-                console.log(response.data.data);
 
                 if (part_id) {
 
