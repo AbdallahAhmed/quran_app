@@ -25,11 +25,8 @@
 
         <f7-link class="link bg-white" @click="home_tab = 'profile'"
                  :class="{'tab-link-active': $store.getters.home_tab == 'profile' }">
-            <img src="../../assets/img/user-avater.png"
+            <img :src="avater"
                  class="user-avater user-avater-tab" style="width: 30px;border: 3px solid green;" alt=""/>
-
-            <!--<img :src="$store.getters.user.photo?$store.getters['user-avater'].photo.thumbnail:'../../assets/img/user-avater.png'"-->
-            <!--class="user-avater user-avater-tab" style="width: 30px;border: 3px solid green;" alt=""/>-->
         </f7-link>
     </f7-toolbar>
 
@@ -103,9 +100,11 @@
                 get: function () {
                     return this.$store.getters.loader;
                 }
+            },
+            avater() {
+                return this.$store.getters.user && this.$store.getters.user.photo ? this.$store.getters.user.photo.thumbnail : 'user-avater.png';
             }
         },
-
 
         methods: {
             soon() {

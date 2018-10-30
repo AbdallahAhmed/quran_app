@@ -113,11 +113,11 @@
                             self.$f7.notification.create({
                                 subtitle: res.data.errors[0]
                             }).open();
-                        }).then(()=>{
+                        }).then(() => {
                             self.$f7.dialog.close();
                         });
 
-                    }else{
+                    } else {
 
                         self.$f7.notification.create({
                             subtitle: self.$validator.errors.items[0].msg
@@ -140,10 +140,11 @@
                 }, function (message) {
                     // no selected
                 }, {
-                    quality: 50,
+                    quality: 100,
                     sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
-                    targetWidth: 60,
-                    targetHeight: 60,
+                    targetHeight: 150,
+                    targetWidth: 150,
+                    encodingType: Camera.EncodingType.JPEG,
                     allowEdit: true,
                     destinationType: Camera.DestinationType.DATA_URL
                 });

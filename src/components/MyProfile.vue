@@ -70,10 +70,6 @@
 
 </template>
 
-<style>
-
-
-</style>
 
 <script>
 

@@ -158,6 +158,7 @@ export default {
             contest_id: this.contest.id
           })
           .then(() => {
+            this.contest.is_joined = false;
             this.$f7.dialog.close();
           })
           .catch(err => {
