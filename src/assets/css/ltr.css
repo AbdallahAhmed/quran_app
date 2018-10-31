@@ -1,0 +1,29 @@
+* {
+    direction: ltr;
+    text-align: left;
+}
+
+.section-wrapper {
+    direction: ltr !important;
+}
+
+[type="search"] {
+    text-align: right;
+}
+
+.page-khatima .page-title, .page-contest .page-title {
+    text-align: left;
+}
+
+.juz-list {
+    margin-left: 15%;
+    margin-right: 0;
+}
+
+.quran-sura .aya-num {
+    direction: rtl;
+}
+
+.khatima-title{
+    text-align: left !important;
+}

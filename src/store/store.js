@@ -6,7 +6,7 @@ import contests from "./modules/contests";
 Vue.use(Vuex);
 
 const state = {
-    locale:  localStorage.getItem("locale") || "ar",
+    locale:  localStorage.getItem("locale") || "en",
     home_tab: "quran",
     color_theme: localStorage.getItem("color_theme") || "white",
     font_range: localStorage.getItem("font_range") || "50",
