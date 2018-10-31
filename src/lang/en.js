@@ -2,10 +2,28 @@ export default {
 
     name: "Quran",
 
-    close: "إغلاق",
+    close: "Close",
 
-    choose_app : "إختر تطبيق",
+    choose_app: "Choose App",
 
+    surah: "Surah",
+
+    number_ayat: "Number of ayat",
+
+    "search_ayat": "Search for ayat",
+
+    "no_result": "No result found",
+    "alarms": "Alarms",
+    "repetition": "Repetition",
+    "never": "Never",
+    "daily": "Daily",
+    "reminder_never": "A reminder to recite some verses of the Qur'an",
+    "reminder_daily": "A reminder to recite some of the Quran's daily verses",
+    "error":"error",
+    "my_fav":"My bookmarks",
+    "fav":"Bookmarks",
+    "no_ayat": "No ayat exists",
+    "delete_aya":"Do you want to delete the aya ?",
     messages: {
         _default: function (e) {
             return "The " + e + " value is not valid."
@@ -93,7 +111,7 @@ export default {
         password: "Password",
         repassword: "Confirm Password",
         first_name: "First name",
-        last_name: "Last Name" ,
-        confirm_password:"Confirm password"
+        last_name: "Last Name",
+        confirm_password: "Confirm password"
     }
 }

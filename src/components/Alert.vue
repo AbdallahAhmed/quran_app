@@ -14,7 +14,7 @@
 
             <div class="row page-setting-nav">
                 <div class="col-80">
-                    <p>التبيهات</p>
+                    <p>{{$app.trans('alarms')}}</p>
                 </div>
                 <div class="col-20 center"></div>
             </div>
@@ -31,13 +31,13 @@
                     <a class="item-link smart-select smart-select-init closeOnSelect" data-open-in="sheet">
 
                         <select :value="occur" v-model="occur">
-                            <option value="0">أبدا</option>
-                            <option value="1">يوميأ</option>
+                            <option value="0">{{$app.trans('never')}}</option>
+                            <option value="1">{{$app.trans('daily')}}</option>
                         </select>
 
                         <div class="item-content">
                             <div class="item-inner">
-                                <div class="item-title">تكرار</div>
+                                <div class="item-title">{{$app.trans('repetition')}}</div>
                             </div>
                         </div>
 
@@ -220,7 +220,7 @@
                         if (cordova) {
                             cordova.plugins.notification.local.clearAll();
                             cordova.plugins.notification.local.schedule({
-                                title: 'تذكير بتلاوة بعض آيات القرآن',
+                                title: this.$app.trans('reminder_never'),
                                 trigger: {at: nextDate},
                                 foreground: true
                             }, undefined, undefined, {skipPermission: true});
@@ -233,10 +233,10 @@
                         if (cordova) {
                             cordova.plugins.notification.local.clearAll();
                             cordova.plugins.notification.local.schedule({
-                                title: 'تذكير بتلاوة بعض آيات القرآن اليومية',
+                                title: this.$app.trans('reminder_daily'),
                                 foreground: true,
-                                repeat:  'daily',
-                                date:    nextDate
+                                repeat: 'daily',
+                                date: nextDate
                             }, undefined, undefined, {skipPermission: true});
                         }
 
@@ -248,7 +248,7 @@
                 }).catch(() => {
 
                     this.$f7.notification.create({
-                        subtitle: "خطأ"
+                        subtitle: this.$app.trans('error')
                     }).open();
                 });
 

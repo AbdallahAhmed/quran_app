@@ -68,7 +68,7 @@
             sura() {
 
                 if (this.page.length) {
-                    return this.page[0].surah.name;
+                    return this.$store.getters.locale=="ar"?this.page[0].surah.name:this.page[0].surah.englishname;
                 }
 
                 return "";
@@ -99,8 +99,6 @@
                         this.$store.commit("AYA", aya);
                     }
                 });
-
-                console.log(this.page);
             });
         },
 

@@ -4,11 +4,12 @@ const getters = {
     contests: state => state.unauthedContests.data,
     contests_authed_tab: state => state.contests,
     currentContest: state => state.currentContest,
-    allContests: state => state.contests.data
+    allContests: state => state.contests.data,
+    expiredContests: state => state.contests.expired
 };
 
 const state = {
-    unauthedContests:{
+    unauthedContests: {
         data: [],
         offset: 0
     },
@@ -16,19 +17,24 @@ const state = {
         data: [],
         expired: [],
         offset: 0,
-        expiredOffset:0
+        expiredOffset: 0
     },
-    currentContest: {},
+    currentContest: {}
 };
 
 const actions = {
     getContests({ commit, state }) {
         Vue.http
             .get(`contests`, {
-                params: { offset: state.unauthedContests.offset, limit: 10 }
+                params: {
+                    offset: state.unauthedContests.offset,
+                    limit: 10,
+                    status: "all"
+                }
             })
             .then(res => {
-                commit("CONTESTS", res.body.data);
+                commit("CONTESTS", res.body.data.all);
+                return res.body.data.all;
             });
     },
     getAuthedContests({ commit, state }) {
@@ -44,18 +50,33 @@ const actions = {
                 commit("CONTESTS_AUTHED_TAB", res.body.data);
             });
     },
+    
     loadAllContests({ commit, state }) {
         return Vue.http
             .get("contests", {
                 params: {
                     offset: state.contests.offset,
                     limit: 5,
-                    status:'all'
+                    status: "all"
                 }
             })
             .then(res => {
                 commit("ALL_CONTESTS", res.body.data.all);
                 return res.body.data.all;
+            });
+    },
+    loadExpiredContests({ commit, state }) {
+        return Vue.http
+            .get("contests", {
+                params: {
+                    offset: state.contests.expiredOffset,
+                    limit: 5,
+                    status: "expired"
+                }
+            })
+            .then(res => {
+                commit("EXPIRED_CONTESTS", res.body.data.expired);
+                return res.body.data.expired;
             });
     },
     leaveContest({ commit, state }, payload) {
@@ -66,7 +87,6 @@ const actions = {
             .then(() => {
                 commit("LEAVE_CONTEST", payload);
             });
-            
     },
     joinContest({ commit, state }, payload) {
         return Vue.http
@@ -91,12 +111,15 @@ const mutations = {
         state.contests.data = payload.all;
         state.contests.expired = payload.expired;
         state.contests.offset += 5;
-
+        state.contests.expiredOffset += 5;
     },
     ALL_CONTESTS(state, payload) {
-        state.contests.data = (state.contests.data).concat(payload);
+        state.contests.data = state.contests.data.concat(payload);
         state.contests.offset += 5;
-        console.log(state.contests.offset)
+    },
+    EXPIRED_CONTESTS(state, payload) {
+        state.contests.expired = state.contests.expired.concat(payload);
+        state.contests.expiredOffset += 5;
     },
     JOIN_CONTEST(state, payload) {
         var contests = state.contests.data;
@@ -111,11 +134,10 @@ const mutations = {
     LEAVE_CONTEST(state, payload) {
         var contests = state.contests.data;
         for (let i = 0; i < contests.length; i++)
-            if (contests[i].id == payload) 
-            (contests[i].is_joined = false) || (state.currentContest = {});
+            if (contests[i].id == payload)
+                (contests[i].is_joined = false) || (state.currentContest = {});
         state.contests.data = contests;
         state.currentContest = {};
-
     }
 };
 
