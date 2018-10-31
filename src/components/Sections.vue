@@ -80,18 +80,17 @@
                     1000
                 );
 
-            },
-        },
-        components: {
-            navbar: require("./partials/Navbar.vue"),
-            "main-toolbar": require("./partials/MainToolbar.vue")
-        },
-        computed: {
+    },
+  },
+  components: {
+    navbar: require("./partials/Navbar.vue"),
+    "main-toolbar": require("./partials/MainToolbar.vue")
+  },
+computed: {
             lang() {
                 return this.$store.getters.locale;
             }
-        },
-        mounted() {
+        },mounted() {
             this.$store.dispatch("get_juz_section").then(() => {
                 this.juz_sections = this.$store.getters.juz_sections;
                 this.loading = false;

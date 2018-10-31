@@ -150,13 +150,11 @@ export default {
       return moment(...args).format("YYYY/MM/DD");
     },
     leave() {
-      console.log("leave");
+      let { id } = this.contest;
       this.$f7.dialog.confirm("هل تريد الخروج من المسابقة ؟", () => {
         this.$f7.dialog.preloader("جاري الخروج من المسابقة");
-        this.$http
-          .post("contests/leave", {
-            contest_id: this.contest.id
-          })
+        this.$store
+          .dispatch("leaveContest", id)
           .then(() => {
             this.contest.is_joined = false;
             this.$f7.dialog.close();
@@ -170,31 +168,29 @@ export default {
       });
     },
     join() {
-      console.log("join");
+      let { id } = this.contest;
       this.$f7.dialog.confirm(
-        this.currentContest
-          ? "هل تريد الأنضمام في هذه المسابقة و الخروج من المسابقة الحالية ؟"
+        this.$store.getters.currentContest.id
+          ? "هل تريد الأنضمام في هذه المسابقة و الخروج من المسابقة الأخرى ؟"
           : "هل تريد الأنضمام في هذه المسابقة ؟",
         () => {
           this.$f7.dialog.preloader("جاري الإنضمام إلى المسابقة");
-          this.$http
-            .post("contests/join", {
-              contest_id: this.contest.id
-            })
+          this.$store
+            .dispatch("joinContest", id)
             .then(() => {
               this.contest.is_joined = true;
+              this.$f7.dialog.close();
             })
             .catch(err => {
-              if (err.status == 401) this.$f7router.navigate("/login");
-              else {
+              if (err.status == 401) {
+                this.$f7router.navigate("/login");
+                this.$f7.dialog.close();
+              } else {
                 this.$f7.dialog.alert("حاول مرة أخرى في وقت لاحق!", "خطأ !");
                 setTimeout(() => {
                   this.$f7.dialog.close();
                 }, 2000);
               }
-            })
-            .finally(() => {
-              this.$f7.dialog.close();
             });
         }
       );
@@ -207,7 +203,7 @@ export default {
 </script>
 
 <style scoped>
-.page{
+.page {
   overflow: scroll;
   padding-bottom: 30px;
 }
@@ -315,7 +311,7 @@ export default {
 </style>
 
 <style>
-.preloader-inner-gap{
+.preloader-inner-gap {
   display: none !important;
   width: 0px !important;
 }

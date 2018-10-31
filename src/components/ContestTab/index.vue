@@ -38,7 +38,6 @@ export default {
 .page-contest{
   height: auto;
   min-height: 100%;
-  padding-bottom: 68px;
   background-color:#f5f5f5;
 }
 

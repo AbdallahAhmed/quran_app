@@ -15,6 +15,7 @@
         <resource-file src="resources/android/custom/notification_icon.png" target="res/drawable/notification_icon.png" />
         <preference name="KeepRunning" value="false" />
         <preference name="KeyboardResize" value="true" />
+        <preference name="KeyboardResizeMode" value="body" />
         <splash density="land-hdpi" src="res/android/splash/drawable-land-hdpi.png" />
         <splash density="land-ldpi" src="res/android/splash/drawable-land-ldpi.png" />
         <splash density="land-mdpi" src="res/android/splash/drawable-land-mdpi.png" />
