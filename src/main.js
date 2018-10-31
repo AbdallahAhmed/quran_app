@@ -131,6 +131,10 @@ Vue.app = {
          */
         Vue.http.options.root = Vue.app.config.get("url");
 
+        let locale = store.getters.locale;
+
+        alert(locale);
+
         /**
          * append access token to every request
          */

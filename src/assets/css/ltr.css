@@ -1,37 +1,42 @@
-* {
+.ltr * {
     direction: ltr;
-    text-align: left;
 }
 
-.section-wrapper {
+.ltr .section-wrapper {
     direction: ltr !important;
 }
 
-[type="search"] {
+.ltr [type="search"] {
     text-align: right;
 }
 
-.page-khatima .page-title, .page-contest .page-title {
+.ltr .page-khatima .page-title,  .ltr .page-contest .page-title {
     text-align: left;
 }
 
-.juz-list {
+.ltr .juz-list {
     margin-left: 15%;
     margin-right: 0;
 }
 
-.quran-sura .aya-num {
+.ltr .quran-sura .aya-num {
     direction: rtl;
 }
 
-.khatima-title{
+.ltr .khatima-title {
     text-align: left !important;
 }
 
-.form-container * {
+.ltr .form-container * {
     text-align: center;
 }
 
-.header-islamic-content p{
+.ltr .header-islamic-content p {
     text-align: center;
+}
+
+
+.page-setting-nav {
+    padding-left: 0;
+    padding-left: 23px;
 }
