@@ -33,7 +33,7 @@ export default {
     font_size: "حجم الخط",
     lang: "اللغة",
     signup: "  مستخدم جديد",
-    forget_password: "  نسيت كلمة المرور؟",
+    forget_password: "نسيت كلمة المرور؟",
     login_loading: "جاري تسجيل الدخول",
     error_login: "البريد الكترونى وكلمة المرور غير صحيحين",
     add_user: "إنشاء حساب",
@@ -60,6 +60,9 @@ export default {
     copied:"تم النسخ",
     err:"خطأ",
     "exist":"هل تريد الخروج من البرنامج ؟",
+    "quran": "القرآن الكريم",
+    "ok" : "موافق",
+    "cancel" : "إلغاء",
     messages: {
         _default: function(n) {
             return "قيمة الحقل " + n + " غير صحيحة.";
