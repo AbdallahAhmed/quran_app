@@ -16,6 +16,11 @@ export default {
     "reminder_never":" اليوم تذكير بتلاوة بعض آيات القرآن",
     "reminder_daily": "تذكير بتلاوة بعض آيات القرآن اليومية",
     "error":"خطأ",
+    "my_fav":"آياتي المفضلة",
+    "fav":"المفضلة",
+    "no_ayat": "لا يوجد آيات",
+    "delete_aya":"هل تريد حذف الآية ؟",
+
     messages: {
         _default: function (n) {
             return "قيمة الحقل " + n + " غير صحيحة."

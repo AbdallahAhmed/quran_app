@@ -25,7 +25,7 @@
                     <div class="col-50 spaceInDown">
                         <a href="/fav" class="link btn-setting ">
 
-                            <p>المفضلة</p>
+                            <p>{{$app.trans('fav')}}</p>
 
                             <img src="./../assets/img/fav.png" alt="Fav">
 
@@ -33,9 +33,8 @@
                     </div>
                     <div class="col-50 spaceInDown">
                         <a href="/alerts" class="link btn-setting ">
-                            <p>التنبيهات</p>
-                            <img src="./../assets/img/alarm.png" alt="Fav">
-
+                            <p>{{$app.trans('alarms')}}</p>
+                            <img src="./../assets/img/alarm.png" alt="alarms">
                         </a>
                     </div>
                 </div>

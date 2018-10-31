@@ -20,6 +20,10 @@ export default {
     "reminder_never": "A reminder to recite some verses of the Qur'an",
     "reminder_daily": "A reminder to recite some of the Quran's daily verses",
     "error":"error",
+    "my_fav":"My bookmarks",
+    "fav":"Bookmarks",
+    "no_ayat": "No ayat exists",
+    "delete_aya":"Do you want to delete the aya ?",
     messages: {
         _default: function (e) {
             return "The " + e + " value is not valid."
