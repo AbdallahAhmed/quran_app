@@ -16,7 +16,7 @@
                     <img src="../assets/img/Repeat Grid 17@2x.png" @click="addPhotoImage" class="avater"
                          alt="user avater"
                          ref="image">
-                    <p>إنشاء حساب </p>
+                    <p>{{$app.trans('add_user')}}</p>
                 </div>
             </div>
 
@@ -26,30 +26,31 @@
 
                     <div class="input-border">
                         <input type="text" name="name"
-                               placeholder=" الأسم كامل " v-model="user.name"
+                               :placeholder="$app.trans('attributes.name') " v-model="user.name"
                                v-validate="'required|alpha_spaces'" autocomplete="false"/>
                     </div>
 
                     <div class="input-border">
                         <input type="text" name="email"
-                               placeholder=" البريد الكترونى " v-model="user.email"
+                               :placeholder="$app.trans('attributes.email') " v-model="user.email"
                                v-validate="'required|email'" autocomplete="false"/>
                     </div>
 
                     <div class="input-border">
                         <input type="password" name="password"
-                               placeholder="كلمة المرور" v-model="user.password"
+                               :placeholder="$app.trans('attributes.password')" v-model="user.password"
                                v-validate="'required'" autocomplete="false"/>
                     </div>
 
                     <div class="input-border">
-                        <input type="password" name="confirm_password" placeholder="تاكيد كلمة المرور"
+                        <input type="password" name="confirm_password"
+                               :placeholder="$app.trans('attributes.confirm_password')"
                                v-model="user.confirm_password"
                                v-validate="'required|confirmed:password'" autocomplete="false"/>
                     </div>
 
                     <button type="submit" class="link" @click.prevent="register">
-                        سجل
+                        {{$app.trans('signup')}}
                     </button>
 
                 </form>
@@ -101,7 +102,7 @@
 
                     if (valid) {
 
-                        self.$f7.dialog.preloader('جاري التسجيل');
+                        self.$f7.dialog.preloader(self.$app.trans('login_loading'));
 
                         var userData = self.user;
 

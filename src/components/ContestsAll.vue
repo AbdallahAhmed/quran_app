@@ -176,7 +176,7 @@
     }
     .flex-align{
         display: inline-flex;
-        justify-content: space-between;
+        justify-content: space-around;
         align-items: center;
     }
     .paddingtop10{

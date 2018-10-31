@@ -33,6 +33,12 @@ export default {
     "themes":"الشكل",
     "font_size":"حجم الخط",
     "lang":"اللغة",
+    "signup":"  مستخدم جديد",
+    "forget_password":"  نسيت كلمة المرور؟",
+    "login_loading":"جاري تسجيل الدخول",
+    "error_login":"البريد الكترونى وكلمة المرور غير صحيحين",
+    "add_user":"إنشاء حساب",
+
     messages: {
         _default: function (n) {
             return "قيمة الحقل " + n + " غير صحيحة."
