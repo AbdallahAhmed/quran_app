@@ -15,9 +15,6 @@ import {i18n} from "./i18n";
 import debounce from "./helpers/debounce";
 import {isElementInView} from "./helpers/helpers";
 
-let FastClick = require('fastclick');
-
-
 import vuescroll from 'vuescroll';
 import 'vuescroll/dist/vuescroll.css';
 
@@ -80,6 +77,7 @@ import Application from './components/App.vue';
 
 require('framework7-icons/css/framework7-icons.css');
 require('./assets/css/styles.css');
+require('./assets/css/ltr.css');
 require('./assets/css/animations.css');
 
 Vue.use(VueResource);
