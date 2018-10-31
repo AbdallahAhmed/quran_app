@@ -9,21 +9,18 @@
         </div>
 
         <div class="scroll-area">
-
-            <vue-scroll ref="quran" @refresh-start="getPrevSura" @load-start="getNextSura">
-
+            <vue-scroll ref="quran" @handle-scroll-complete="handeScroll" @refresh-start="getPrevSura" @load-start="getNextSura">
                 <sura v-for="sura in suras" :sura="sura"></sura>
-
             </vue-scroll>
-
         </div>
 
     </div>
 
-
 </template>
 
 <script>
+
+    import EventBus from "../events";
 
     export default {
 
@@ -44,6 +41,8 @@
 
             let sura_id = parseInt(this.$f7route.params.sura_id || this.last_sura.id || 1);
             let part_id = this.$f7route.params.part_id;
+
+            this.$store.commit("LAST_SURA", sura_id);
 
             this.$store.dispatch("get_sura", {surah_id: sura_id}).then((response) => {
 
@@ -102,6 +101,7 @@
 
                     this.suras = [response.data.data].concat(this.suras);
 
+
                     done();
 
                 });
@@ -114,6 +114,10 @@
 
             getPrevId() {
                 return this.suras[0].id - 1;
+            },
+
+            handeScroll(){
+                EventBus.$emit("vscroll");
             }
         },
 
@@ -138,6 +142,10 @@
 
     .quran-loader {
         margin: 50px 0;
+    }
+
+    .__refresh, .__load{
+        margin: 30px 0;
     }
 
 </style>

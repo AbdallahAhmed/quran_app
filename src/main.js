@@ -38,9 +38,7 @@ Vue.prototype.$vuescrollConfig = {
 
         mode: 'slide',
         sizeStrategy: 'percent',
-
         detectResize: true,
-
         pullRefresh: {
             enable: true,
             tips: {

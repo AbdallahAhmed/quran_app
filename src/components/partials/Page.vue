@@ -35,6 +35,7 @@
             //         this.$store.commit("LAST_PAGE", id);
             //     });
 
+
             inView("#page-" + id)
 
                 .on("enter", () => {
@@ -62,6 +63,9 @@
 
                                 this.seconds++;
 
+                                console.log(this.page);
+
+
                                 console.log(this.id + " - " + this.seconds + " - " + this.getPageReadTime());
                             }
 
@@ -83,9 +87,12 @@
         methods: {
 
             getPageReadTime() {
-                return this.page.reduce((sum, aya) => {
-                    return Math.ceil(sum + (aya.text.split(' ').length * 0.28));
-                }, 0)
+                if (this.page) {
+                    return this.page.reduce((sum, aya) => {
+                        return Math.ceil(sum + (aya.text.split(' ').length * 0.28));
+                    }, 0)
+                }
+
             },
 
             isViewed: function () {
