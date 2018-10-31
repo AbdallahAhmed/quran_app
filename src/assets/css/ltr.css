@@ -65,3 +65,18 @@
     width: 165px;
     margin: auto;
 }
+
+.ltr .sura-name{
+    direction: rtl;
+}
+
+.ltr .sura-name-arrow {
+    margin-left: 15px;
+    margin-right: 0px;
+    width: 14px;
+}
+
+
+.ltr .sura-stats .sura-ayat-count {
+    direction: rtl;
+}
