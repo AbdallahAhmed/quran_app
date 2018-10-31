@@ -80,3 +80,20 @@
 .ltr .sura-stats .sura-ayat-count {
     direction: rtl;
 }
+
+.ltr .page-title{
+    font-size: 20px;
+}
+
+.ltr .page-setting-nav p {
+    font-size: 18px;
+}
+
+.ltr .item-after::after{
+    float: right;
+}
+
+.ltr .page-setting .page-container p {
+    font-family: initial;
+    font-size: 17px;
+}
