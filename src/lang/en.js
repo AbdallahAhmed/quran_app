@@ -10,6 +10,11 @@ export default {
 
     number_ayat: "Number of ayat",
 
+    "search_ayat": "Search for ayat",
+
+    "no_result": "No result found",
+
+
     messages: {
         _default: function (e) {
             return "The " + e + " value is not valid."

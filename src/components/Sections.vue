@@ -93,7 +93,7 @@
         },
         mounted() {
             this.$store.dispatch("get_juz_section").then(() => {
-                this.juz_sections = th  is.$store.getters.juz_sections;
+                this.juz_sections = this.$store.getters.juz_sections;
                 this.loading = false;
             }).then(() => {
                 var swiper = this.$f7.swiper.create(".swiper-container-juz", {

@@ -7,6 +7,8 @@ export default {
     choose_app : "إختر تطبيق",
     surah:"سورة",
     number_ayat:"عدد الايات",
+    "search_ayat":"بحث عن الأيات",
+    "no_result":"لا يوجد نتائج بحث",
     messages: {
         _default: function (n) {
             return "قيمة الحقل " + n + " غير صحيحة."
