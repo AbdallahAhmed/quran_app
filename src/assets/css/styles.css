@@ -320,8 +320,8 @@
 }
 
 .juz-wrapper .swiper-slide .surah-card {
-    margin-right: 20px ;
-    margin-left: 20px ;
+    margin-right: 20px;
+    margin-left: 20px;
 }
 
 .juz-wrapper .swiper-slide {
@@ -1243,12 +1243,13 @@ a.forget-password {
     height: 100px;
 }
 
-
-.page-previous .form-container{
+.page-previous .form-container {
     display: none;
 }
 
-
 /** {*/
-    /*direction: ltr;*/
+/*direction: ltr;*/
 /*}*/
+.khatima-list:last-child .footer {
+    margin-bottom: 75px;
+}
