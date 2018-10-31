@@ -14,7 +14,7 @@
             <div class="header-islamic row">
                 <div class="header-islamic-content">
                     <img src="../assets/img/user-avater.png" class="avater" alt="user avater">
-                    <p>تسجيل الدخول </p>
+                    <p> {{$app.trans('login')}} </p>
                 </div>
             </div>
 
@@ -23,22 +23,19 @@
                 <form @submit.prevent="login">
                     <div class="input-border">
 
-                        <input type="text" name="email" placeholder=" البريد الكترونى " v-model="user.email"
+                        <input type="text" name="email" :placeholder="$app.trans('email')" v-model="user.email"
                                v-validate="'required|email'" autocomplete="false">
                     </div>
 
-                    <!--<span v-show="errors.has('email')&&submitted"-->
-                          <!--class="help is-danger">{{ errors.first('email') }}</span>-->
 
                     <div class="input-border">
-                        <input type="password" name="password" placeholder="كلمة المرور" v-model="user.password"
+                        <input type="password" name="password" :placeholder="$app.trans('password')" v-model="user.password"
                                v-validate="'required'" autocomplete="false"/>
                     </div>
 
-                    <!--<span v-show="errors.has('password')&&submitted" class="help is-danger">{{ errors.first('password') }}</span>-->
 
                     <button type="submit" class="link">
-                        تسجيل
+                        {{$app.trans('login')}}
                     </button>
                 </form>
 
@@ -47,14 +44,14 @@
 
                     <div class="col-50">
                         <a class="forget-password" href="/register">
-                            مستخدم جديد
+                            {{$app.trans('signup')}}
                         </a>
                     </div>
 
 
                     <div class="col-50">
                         <a class="forget-password" href="/forgetpassword">
-                            نسيت كلمة المرور؟
+                           {{$app.trans('forget_password')}}
                         </a>
                     </div>
                 </div>
@@ -102,13 +99,13 @@
 
                     if (valid) {
 
-                        self.$f7.dialog.preloader('جاري تسجيل الدخول');
+                        self.$f7.dialog.preloader(self.$app.trans('login_loading'));
 
                         self.$store.dispatch('login', self.user).then((response) => {
-                            setTimeout(()=> self.$f7router.back() , 500);                    
+                            setTimeout(()=> self.$f7router.back() , 500);
                         }, (res) => {
                             self.$f7.notification.create({
-                                subtitle: 'البريد الكترونى وكلمة المرور غير صحيحين'
+                                subtitle: self.$app.trans('error_login')
                             }).open();
                         }).then(()=>{
                             setTimeout(()=> self.$f7.dialog.close() , 500);
@@ -117,7 +114,7 @@
                     }else{
 
                         self.$f7.notification.create({
-                            subtitle: 'البريد الكترونى وكلمة المرور غير صحيحين'
+                            subtitle: self.$app.trans('error_login')
                         }).open();
 
                         self.$f7.dialog.close();

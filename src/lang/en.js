@@ -43,6 +43,11 @@ export default {
     "lang":"Language",
 
 
+    "signup":"Sign up",
+    "forget_password":" Forgot your password?",
+    "login_loading":"Signing in",
+
+
     messages: {
         _default: function (e) {
             return "The " + e + " value is not valid."
