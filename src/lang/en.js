@@ -24,6 +24,17 @@ export default {
     "fav":"Bookmarks",
     "no_ayat": "No ayat exists",
     "delete_aya":"Do you want to delete the aya ?",
+    "quran_share":"Quran share",
+
+    "setting":"Setting",
+    "login":"Login",
+    "edit_profile":"Edit profile",
+    "eval_app":"Evaluate app?",
+    "shared_done":"Shared successfully",
+
+    "share_message":"Please download the Quran app from the Google Play store of the link" ,
+
+
     messages: {
         _default: function (e) {
             return "The " + e + " value is not valid."

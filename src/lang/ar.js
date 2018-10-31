@@ -20,7 +20,14 @@ export default {
     "fav":"المفضلة",
     "no_ayat": "لا يوجد آيات",
     "delete_aya":"هل تريد حذف الآية ؟",
+    "quran_share":"انشر القرأن",
 
+    "setting":"اﻷعدادات",
+    "login":"تسجيل الدخول",
+    "edit_profile":" تعديل الملف الشخصى",
+    "eval_app":"هل تريد تقييم التطبيق ؟",
+    "shared_done":"تمت المشاركة",
+    "share_message":"يرجي تحميل تطبيق القرآن الكريم من متجر جوجل بلاي من الرابط" ,
     messages: {
         _default: function (n) {
             return "قيمة الحقل " + n + " غير صحيحة."
