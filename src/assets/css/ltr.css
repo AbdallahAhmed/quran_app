@@ -97,3 +97,7 @@
     font-family: initial;
     font-size: 17px;
 }
+
+.ltr .fonts-wrapper{
+    direction: rtl;
+}

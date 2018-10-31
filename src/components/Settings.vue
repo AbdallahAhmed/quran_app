@@ -46,7 +46,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="row">
+                <div class="row fonts-wrapper">
                     <div class="col font-lg">{{$app.trans('font_size')}}</div>
                     <div class="col font-md">{{$app.trans('font_size')}}</div>
                     <div class="col font-sm">{{$app.trans('font_size')}}</div>
