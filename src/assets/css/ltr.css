@@ -27,3 +27,11 @@
 .khatima-title{
     text-align: left !important;
 }
+
+.form-container * {
+    text-align: center;
+}
+
+.header-islamic-content p{
+    text-align: center;
+}
