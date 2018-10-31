@@ -72,6 +72,9 @@ export default {
     copied: "Copied",
     err: "Error",
     "exist": "Do you want to exit the program ?",
+    "quran": "Holly quran",
+    "ok" : "OK",
+    "cancel" : "Cancel",
     messages: {
         _default: function (e) {
             return "The " + e + " value is not valid.";

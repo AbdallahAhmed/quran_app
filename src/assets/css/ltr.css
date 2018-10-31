@@ -52,7 +52,7 @@
     font-family: 'initial';
 }
 
-.ltr .page-khatima .page-title, .page-contest .page-title {
+.ltr .page-khatima .page-title, .ltr .page-contest .page-title {
     padding: 7px 22px 7px 22px;
 }
 

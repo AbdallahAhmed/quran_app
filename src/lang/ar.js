@@ -60,6 +60,9 @@ export default {
     copied:"تم النسخ",
     err:"خطأ",
     "exist":"هل تريد الخروج من البرنامج ؟",
+    "quran": "القرآن الكريم",
+    "ok" : "موافق",
+    "cancel" : "إلغاء",
     messages: {
         _default: function(n) {
             return "قيمة الحقل " + n + " غير صحيحة.";
