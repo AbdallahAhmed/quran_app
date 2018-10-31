@@ -4,11 +4,18 @@ export default {
 
     close: "إغلاق",
 
-    choose_app : "إختر تطبيق",
-    surah:"سورة",
-    number_ayat:"عدد الايات",
-    "search_ayat":"بحث عن الأيات",
-    "no_result":"لا يوجد نتائج بحث",
+    choose_app: "إختر تطبيق",
+    surah: "سورة",
+    number_ayat: "عدد الايات",
+    "search_ayat": "بحث عن الأيات",
+    "no_result": "لا يوجد نتائج بحث",
+    "alarms": "التنبيهات",
+    "repetition":"تكرار",
+    "never":"أبدا",
+    "daily":"يوميا",
+    "reminder_never":" اليوم تذكير بتلاوة بعض آيات القرآن",
+    "reminder_daily": "تذكير بتلاوة بعض آيات القرآن اليومية",
+    "error":"خطأ",
     messages: {
         _default: function (n) {
             return "قيمة الحقل " + n + " غير صحيحة."
@@ -90,10 +97,10 @@ export default {
         repassword: "تأكيد كلمة المرور",
         first_name: "الإسم الأول",
         last_name: "الإسم الأخير",
-        form_subject:'الموضوع',
-        form_messages:'الرسالة',
+        form_subject: 'الموضوع',
+        form_messages: 'الرسالة',
 
-        confirm_password:"كلمة المرور"
+        confirm_password: "كلمة المرور"
     }
 
 }

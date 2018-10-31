@@ -13,8 +13,13 @@ export default {
     "search_ayat": "Search for ayat",
 
     "no_result": "No result found",
-
-
+    "alarms": "Alarms",
+    "repetition": "Repetition",
+    "never": "Never",
+    "daily": "Daily",
+    "reminder_never": "A reminder to recite some verses of the Qur'an",
+    "reminder_daily": "A reminder to recite some of the Quran's daily verses",
+    "error":"error",
     messages: {
         _default: function (e) {
             return "The " + e + " value is not valid."
