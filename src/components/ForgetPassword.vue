@@ -14,7 +14,7 @@
             <div class="header-islamic row">
                 <div class="header-islamic-content">
                     <img src="../assets/img/user-avater.png" class="avater" alt="user avater">
-                    <p class="page-title">إسترجاع الرقم السري</p>
+                    <p class="page-title">{{$app.t('restore_pass')}}</p>
                 </div>
             </div>
 
@@ -23,12 +23,12 @@
                 <form @submit.prevent="forgetPassword">
 
                     <div class="input-border">
-                        <input type="text" name="email" placeholder=" البريد الكترونى " v-model="user.email"
+                        <input type="text" name="email" :placeholder="$app.t('email')" v-model="user.email"
                                v-validate="'required|email'" autocomplete="false">
                     </div>
 
                     <button type="submit">
-                        أرسال
+                        {{$app.t("send")}}
                     </button>
 
 
@@ -44,7 +44,7 @@
                     <div class="header-islamic row">
                         <div class="header-islamic-content">
                             <img src="../assets/img/user-avater.png" class="avater" alt="user avater">
-                            <p class="page-title">إفحص بريدك الكترونى</p>
+                            <p class="page-title">{{$app.t('check_email')}}</p>
 
                         </div>
                     </div>
@@ -56,26 +56,26 @@
                             <div class="input-border">
 
                                 <input type="text" :class="{'errors':errors.has('code')&&submitted}" name="code"
-                                       placeholder="كود الدخول" v-model="user.code"
+                                       :placeholder="$app.t('v_code')" v-model="user.code"
                                        v-validate="'required'" autocomplete="false"/>
                             </div>
 
                             <div class="input-border">
                                 <input type="password" :class="{'errors':errors.has('password')&&submitted}"
                                        name="password"
-                                       placeholder="كلمة المرور" v-model="user.password"
+                                       :placeholder="$app.t('password')" v-model="user.password"
                                        v-validate="'required'" autocomplete="false"/>
                             </div>
 
                             <div class="input-border">
                                 <input type="password" :class="{'errors':errors.has('confirm_password')&&submitted}"
-                                       name="confirm_password" placeholder="تاكيد كلمة المرور"
+                                       name="confirm_password" :placeholder="$app.t('confirm_pass')"
                                        v-model="user.confirm_password"
                                        v-validate="'confirmed:password'" autocomplete="false"/>
                             </div>
 
                             <button type="submit">
-                                أرسال
+                                {{$app.t("send")}}
                             </button>
 
                         </form>

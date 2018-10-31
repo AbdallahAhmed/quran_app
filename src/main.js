@@ -329,7 +329,9 @@ Vue.app = {
     trans: function (key) {
         return this.i18n.t(key, this.store.getters.locale)
     },
-
+    t: function (key) {
+        return this.i18n.t(key, this.store.getters.locale)
+    },
     /**
      * application router object
      */

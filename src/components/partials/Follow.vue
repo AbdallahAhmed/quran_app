@@ -1,8 +1,8 @@
 <template>
 
     <div class="subscription-btn" :class="{puffIn: animated}">
-        <a href="#" @click="follow" v-if="!category.followed && !isLoading" class="button on-state">إشتراك</a>
-        <a href="#" @click="follow" v-if="category.followed && !isLoading" class="button color-gray off-state">مشترك</a>
+        <a href="#" @click="follow" v-if="!category.followed && !isLoading" class="button on-state">{{$app.t("enroll")}}</a>
+        <a href="#" @click="follow" v-if="category.followed && !isLoading" class="button color-gray off-state">{{$app.t('enrolled')}}</a>
         <a href="#"  v-if="isLoading">
             <img src="../../assets/img/loader.gif">
         </a>

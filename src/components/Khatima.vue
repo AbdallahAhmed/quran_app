@@ -8,10 +8,10 @@
         </div>
 
 
-        <p class="page-title">تقدمك</p>
+        <p class="page-title">{{$app.t('progress')}}</p>
         <div class="khatima-list">
             <div class="khatima-wrapper">
-                <h1 class="khatima-title">الخاتمة الحالية </h1>
+                <h1 class="khatima-title">{{$app.t('curr_khatma')}} </h1>
                 <div class="row info">
                     <div class="col-50">
                         <div class="row">
@@ -31,8 +31,8 @@
                                 <img src="./../assets/img/clock.png"/>
                             </div>
                             <div class="col-70">
-                                <span>أكتمل فى </span>
-                                <span> 25 ساعة  </span>
+                                <span>{{$app.t('completed_at')}} </span>
+                                <span> 25 {{$app.t('hour')}}  </span>
                             </div>
                         </div>
                     </div>
@@ -41,20 +41,20 @@
                 <div class="gauge gauge-khatima">
 
                     <p class="gauge-content">
-                        <span>قضيت</span>
+                        <span>{{$app.t("spent")}}</span>
                         <span>10</span>
-                        <span>ساعات</span>
+                        <span>{{$app.t("hours")}}</span>
                     </p>
                 </div>
                 <div class="row footer">
                     <div class="col-100">
-                        <p>40 ساعة متبقية تقربيأ</p>
+                        <p>40 {{$app.t('hours_left')}}</p>
                     </div>
                 </div>
 
             </div>
             <button class="btn-quran btn-send">
-                ارسل الثوب إلى صديق
+               {{$app.t('send_thawaab')}}
             </button>
         </div>
     </f7-page>

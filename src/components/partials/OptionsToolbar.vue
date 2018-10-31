@@ -62,7 +62,7 @@
                     // Nothing
                 }).catch(() => {
                     this.$f7.notification.create({
-                        subtitle: "خطأ"
+                        subtitle: this.$app.t("err")
                     }).open();
                 });
 
@@ -76,7 +76,7 @@
                 });
 
                 this.$f7.notification.create({
-                    subtitle: "تم الحفظ"
+                    subtitle: this.$app.t("saved")
                 }).open();
             },
 
@@ -98,7 +98,7 @@
                 window.getSelection().removeAllRanges();
 
                 this.$f7.notification.create({
-                    subtitle: "تم النسخ"
+                    subtitle: this.$app.t("copied")
                 }).open();
 
             },
