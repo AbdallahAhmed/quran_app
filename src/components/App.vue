@@ -1,6 +1,6 @@
 <template>
 
-    <f7-app :params="f7params">
+    <f7-app :params="f7params" :class="{ltr : $store.getters.locale == 'en'}">
 
         <f7-statusbar></f7-statusbar>
 
