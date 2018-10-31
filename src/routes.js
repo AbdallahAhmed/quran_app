@@ -52,6 +52,10 @@ export default [
     }, {
         path: '/allcontests',
         component: require("./components/AllContests.vue")
+    },
+    {
+        path: '/expiredcontests',
+        component: require("./components/ContestsExpired.vue")
     }
 
 ];

@@ -70,7 +70,7 @@
 
                 <p class="page-title">
                     <span class="row"><a class="left"> المسابقات</a>
-                        <a href="#" class="link right">الكل المسابقات</a>
+                        <a href="/expiredcontests" class="link right" >الكل المسابقات</a>
 
                     </span>
                 </p>
@@ -200,5 +200,7 @@ export default {
 <style scoped>
 .page-container {
   height: auto;
+  padding-bottom: 12vh;
+
 }
 </style>
