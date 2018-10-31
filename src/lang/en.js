@@ -2,17 +2,15 @@ export default {
     name: "Quran",
 
     close: "Close",
-
-    choose_app: "Choose App",
-
+    choose_app: "Choose Application to share",
     surah: "Surah",
 
     number_ayat: "Number of ayat",
 
     search_ayat: "Search for ayat",
 
-    no_result: "No result found",
-    alarms: "Alarms",
+    no_result: "No results found",
+    alarms: "Alarm",
     repetition: "Repetition",
     never: "Never",
     daily: "Daily",
@@ -22,17 +20,16 @@ export default {
     my_fav: "My bookmarks",
     fav: "Bookmarks",
     no_ayat: "No ayat exists",
-    delete_aya: "Do you want to delete the aya ?",
-    quran_share: "Quran share",
+    delete_aya: "Do you want to delete the aya?",
+    quran_share: "Share Quran",
 
-    setting: "Setting",
+    setting: "Settings",
     login: "Login",
     edit_profile: "Edit profile",
-    eval_app: "Evaluate app?",
+    eval_app: "Are you want to rate the app?",
     shared_done: "Shared successfully",
 
-    share_message:
-        "Please download the Quran app from the Google Play store of the link",
+    share_message: "Please download the Quran app from the Google Play store of the link",
 
     save: "Save",
 
@@ -68,11 +65,11 @@ export default {
     started_at: "Started at",
     enroll: "Enroll",
     enrolled: "Enrolled",
-    saved: "Saved",
-    copied: "Copied",
+    saved: "Saved successfully",
+    copied: "Copied successfully",
     err: "Error",
-    "exist": "Do you want to exit the program ?",
-    "quran": "Holly quran",
+    "exist": "Do you want to exit the program?",
+    "quran": "Holly Quran",
     "ok" : "OK",
     "cancel" : "Cancel",
     messages: {
