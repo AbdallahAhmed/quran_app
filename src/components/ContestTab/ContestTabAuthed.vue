@@ -20,17 +20,26 @@
                             <div class="swiper-slide contest-cards-item" v-for="contest  in contests.data" :key="contest.id">
                                 <div @click="openContestDetailes(contest.id)">
                                     <a class="title">{{contest.name}}</a>
-                                    <div class="contest-goal">
-                                        {{contest.goal}}
+                                    <div class="row">
+                                        <div class="col-50 flex-align-expired">
+                                            <img width="20" src="./../../assets/img/clock.png">
+                                            <span class="time">{{toTime(contest.expired_at)}}</span>
+                                        </div>
+                                        <div class="col-50 flex-align-expired">
+                                            <img width="20" src="./../../assets/img/noun_users_140450@2x.png">
+                                            <span class="time">عضو 11</span>
+                                        </div>
                                     </div>
-                                    <span class="time">{{toTime(contest.expired_at)}}</span>
-                                    <a class="share link">
-                                        <img src="./../../assets/img/share-black.png" alt="share">
-                                    </a>
                                 </div>
-                                <a class="contest-button link" @click="()=> contest.is_joined ? leave(contest.id): join(contest.id) ">
-                                    {{contest.is_joined?"الخروج من المسابقة":"دخول المسابقة"}}
-                                </a>
+                                <div class="row" style="justify-content: flex-start;">
+                                    <button class="col-50 btn btn-quran btn-margin flex-align" @click="join(contest.id)">
+                                        <div>مشاركة</div>
+                                        <div class="paddingtop10">
+                                            <img src="../../assets/img/share-black.png" alt="share">
+                                        </div>
+                                    </button>
+                                    <button @click="()=> contest.is_joined ? leave(contest.id): join(contest.id) " class="col-50 btn btn-quran btn-margin" >{{contest.is_joined?"خروج":"دخول"}}</button>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -45,19 +54,31 @@
                 <div class="contest-current">
                     <div class="contest-cards-item" v-if="current&&current.id">
                         <div class="row">
-                            <a class="title col-50">{{current.name}}</a>
-                            <span class="time col-30">{{toTime(current.expired_at)}}</span>
-                            <a class="share link col-20">
-                                <img src="./../../assets/img/share-black.png" alt="share">
-                            </a>
-                        </div>
-                        <div class="row">
-                            <div class="contest-goal col-50">
-                                {{current.goal}}
+                            <div class="col-60 time">
+                                <a class="title">{{current.name}}</a>
+                                <div> بحر مالح</div>
+                                <br>
                             </div>
-                            <a class="contest-button link col-50" @click="leave(current.id)">
-                                خروج
-                            </a>
+                            <div class="time col-40" style="display:flex; flex-direction: column; align-items:flex-end;">
+                                <div class="flex-align-expired">
+                                    <img width="20" src="./../../assets/img/clock.png">
+                                    <span class="time">{{toTime(current.expired_at)}}</span>
+                                </div>
+                                <div class="flex-align-expired">
+                                    <img width="20" src="./../../assets/img/noun_users_140450@2x.png">
+                                    <span class="time">عضو 11</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row" style="justify-content: flex-start;">
+                            <button class="col-33 btn btn-quran btn-margin flex-align" @click="join(contest.id)">
+                                <div>مشاركة</div>
+                                <div class="paddingtop10">
+                                    <img src="../../assets/img/share-black.png" alt="share">
+                                </div>
+                            </button>
+                            <button @click="leave(current.id)" class="col-33 btn btn-quran btn-margin" v-if="current.is_joined">خروج</button>
                         </div>
                     </div>
                     <div v-if="!(current&&current.id)" class="row contest-cards-item contest-current">
@@ -70,7 +91,7 @@
 
                 <p class="page-title">
                     <span class="row"><a class="left"> المسابقات</a>
-                        <a href="/expiredcontests" class="link right" >الكل المسابقات</a>
+                        <a href="/expiredcontests" class="link right">الكل المسابقات</a>
 
                     </span>
                 </p>
@@ -79,15 +100,16 @@
                     <div class="contest-cards-list swiper-old" v-for="contest in contests.expired" :key="contest.id">
                         <div class="swiper-wrapper">
                             <div class="swiper-slide contest-cards-item">
-                                <div class="kas">
-                                    <img class="kas-img" src="../../assets/img/Group 1034@2x.png" />
-
-                                </div>
                                 <a class="title">{{contest.name}}</a>
-                                <div class="contest-goal">{{contest.goal}}</div>
-
-                                <div class="member-number">
-                                    {{contest.member_counter}} عضو انضموا
+                                <div class="row">
+                                    <div class="col-50 flex-align-expired">
+                                        <img class="kas-img" src="../../assets/img/noun_calender_652711.png" />
+                                        <span style="font-size:0.9em;margin-top:5px;">{{moment(contest.expired_at)}}</span>
+                                    </div>
+                                    <div class="col-50 flex-align-expired">
+                                        <img class="kas-img" src="../../assets/img/Group 1034@2x.png" />
+                                        <span>بحر حسن</span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -132,7 +154,7 @@ export default {
         spaceBetween: 0,
         slidesPerView: "auto"
       });
-        var swiper = this.$f7.swiper.create(".swiper-old", {
+      var swiper = this.$f7.swiper.create(".swiper-old", {
         spaceBetween: 0,
         slidesPerView: "auto"
       });
@@ -140,6 +162,9 @@ export default {
     }
   },
   methods: {
+    moment(...args) {
+      return moment(...args).format("YYYY/MM/DD");
+    },
     toTime(time) {
       let s = moment.duration(moment(time).diff(moment(), "seconds"));
       return `${parseInt(s / 3600)}:${parseInt(s / 60) % 60}:${s % 60}`;
@@ -198,9 +223,44 @@ export default {
 </script>
 
 <style scoped>
+.contest-current {
+  margin: 22px 3px;
+}
+.time {
+  padding: 5px;
+}
+.swiper-old .swiper-wrapper .contest-cards-item {
+  padding: 20px;
+  margin-top: 20px;
+}
 .page-container {
   height: auto;
   padding-bottom: 12vh;
+}
+.kas-img {
+  max-width: 18px;
+  padding: 10px;
+}
+.flex-align-expired {
+  display: inline-flex;
+  justify-content: flex-start;
+  align-items: center;
+}
 
+.btn-margin {
+  margin-left: 8px;
+}
+
+.flex-align {
+  display: inline-flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.paddingtop10 {
+  padding-top: 10px;
+}
+.btn-quran.flex-align {
+  padding-bottom: 4px;
+  padding-top: 4px;
 }
 </style>

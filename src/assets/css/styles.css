@@ -1097,11 +1097,11 @@ a.forget-password {
 }
 
 .contest-cards-item {
-    height: 20vh;
+    min-height: 10vh;
     background-color: #ffffff;
-    width: 50%;
-    padding: 5px 8px 5px 8px;
-    margin: 0px 5px;
+    width: 62%;
+    padding: 10px;
+    margin: 10px;
 }
 
 .contest-wrapper .page-container {
