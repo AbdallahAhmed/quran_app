@@ -60,3 +60,20 @@
     direction: ltr;
     padding-left:  10px;
 }
+
+.ltr .page-title{
+    font-size: 20px;
+}
+
+.ltr .page-setting-nav p {
+    font-size: 20px;
+}
+
+.ltr .item-after::after{
+    float: right;
+}
+
+.ltr .page-setting .page-container p {
+    font-family: initial;
+    font-size: 17px;
+}
