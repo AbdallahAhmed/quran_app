@@ -2,9 +2,13 @@ export default {
 
     name: "Quran",
 
-    close: "إغلاق",
+    close: "Close",
 
-    choose_app : "إختر تطبيق",
+    choose_app: "Choose App",
+
+    surah: "Surah",
+
+    number_ayat: "Number of ayat",
 
     messages: {
         _default: function (e) {
@@ -93,7 +97,7 @@ export default {
         password: "Password",
         repassword: "Confirm Password",
         first_name: "First name",
-        last_name: "Last Name" ,
-        confirm_password:"Confirm password"
+        last_name: "Last Name",
+        confirm_password: "Confirm password"
     }
 }

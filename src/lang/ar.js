@@ -5,7 +5,8 @@ export default {
     close: "إغلاق",
 
     choose_app : "إختر تطبيق",
-
+    surah:"سورة",
+    number_ayat:"عدد الايات",
     messages: {
         _default: function (n) {
             return "قيمة الحقل " + n + " غير صحيحة."
