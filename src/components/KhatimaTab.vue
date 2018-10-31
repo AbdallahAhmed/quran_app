@@ -23,9 +23,9 @@
                      data-border-color="#f5be3a">
 
                     <p class="gauge-content">
-                        <span>قضيت</span>
+                        <span> {{$app.t('spent')}}</span>
                         <span>{{((len(khatemas.pending.pages)/60).toFixed(1))}}</span>
-                        <span>ساعات</span>
+                        <span>{{$app.t('hours')}}</span>
                     </p>
 
                 </div>

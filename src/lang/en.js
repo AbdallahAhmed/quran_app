@@ -53,77 +53,78 @@ export default {
     check_email: "Check your email",
     send: "Send",
     email: "Email",
-    confirm_pass:"Confirm password",
+    confirm_pass: "Confirm password",
     password: "Password",
-    v_code:"Verification Code",
-    curr_khatma:"Current Khatma",    
-    progress:"Progress",
-    completed_at:"Completed at",
-    hour:"Hour",
-    hours:"Hours",
-    spent:"spent",
-    hours_left:"Hours Left",
-    send_thawaab:"Send Thawaab to a friend",
-    last_khatma:"Last Khatma",
-    started_at:"Started at",
-    enroll:"Enroll",
-    enrolled:"Enrolled",
-    saved:"Saved",
-    copied:"Copied",
-    err:"Error",
+    v_code: "Verification Code",
+    curr_khatma: "Current Khatma",
+    progress: "Progress",
+    completed_at: "Completed at",
+    hour: "Hour",
+    hours: "Hours",
+    spent: "spent",
+    hours_left: "Hours Left",
+    send_thawaab: "Send Thawaab to a friend",
+    last_khatma: "Last Khatma",
+    started_at: "Started at",
+    enroll: "Enroll",
+    enrolled: "Enrolled",
+    saved: "Saved",
+    copied: "Copied",
+    err: "Error",
+    "exist": "Do you want to exit the program ?",
     messages: {
-        _default: function(e) {
+        _default: function (e) {
             return "The " + e + " value is not valid.";
         },
-        after: function(e, n) {
+        after: function (e, n) {
             var t = n[0];
             return "The " + e + " must be after " + t + ".";
         },
-        alpha_dash: function(e) {
+        alpha_dash: function (e) {
             return (
                 "The " +
                 e +
                 " may contain alpha-numeric characters as well as dashes and underscores."
             );
         },
-        alpha_num: function(e) {
+        alpha_num: function (e) {
             return "The " + e + " may only contain alpha-numeric characters.";
         },
-        alpha_spaces: function(e) {
+        alpha_spaces: function (e) {
             return (
                 "The " +
                 e +
                 " may only contain alphabetic characters as well as spaces."
             );
         },
-        alpha: function(e) {
+        alpha: function (e) {
             return "The " + e + " may only contain alphabetic characters.";
         },
-        before: function(e, n) {
+        before: function (e, n) {
             var t = n[0];
             return "The " + e + " must be before " + t + ".";
         },
-        between: function(e, n) {
+        between: function (e, n) {
             var t = n[0],
                 a = n[1];
             return "The " + e + " must be between " + t + " and " + a + ".";
         },
-        confirmed: function(e) {
+        confirmed: function (e) {
             return "The " + e + " confirmation does not match.";
         },
-        credit_card: function(e) {
+        credit_card: function (e) {
             return "The " + e + " is invalid.";
         },
-        date_between: function(e, n) {
+        date_between: function (e, n) {
             var t = n[0],
                 a = n[1];
             return "The " + e + " must be between " + t + " and " + a + ".";
         },
-        date_format: function(e, n) {
+        date_format: function (e, n) {
             var t = n[0];
             return "The " + e + " must be in the format " + t + ".";
         },
-        decimal: function(e, n) {
+        decimal: function (e, n) {
             void 0 === n && (n = ["*"]);
             var t = n[0];
             return (
@@ -134,7 +135,7 @@ export default {
                 " decimal points."
             );
         },
-        digits: function(e, n) {
+        digits: function (e, n) {
             var t = n[0];
             return (
                 "The " +
@@ -144,66 +145,66 @@ export default {
                 " digits."
             );
         },
-        dimensions: function(e, n) {
+        dimensions: function (e, n) {
             var t = n[0],
                 a = n[1];
             return (
                 "The " + e + " must be " + t + " pixels by " + a + " pixels."
             );
         },
-        email: function(e) {
+        email: function (e) {
             return "The " + e + " must be a valid email.";
         },
-        ext: function(e) {
+        ext: function (e) {
             return "The " + e + " must be a valid file.";
         },
-        image: function(e) {
+        image: function (e) {
             return "The " + e + " must be an image.";
         },
-        in: function(e) {
+        in: function (e) {
             return "The " + e + " must be a valid value.";
         },
-        ip: function(e) {
+        ip: function (e) {
             return "The " + e + " must be a valid ip address.";
         },
-        max: function(e, n) {
+        max: function (e, n) {
             var t = n[0];
             return (
                 "The " + e + " may not be greater than " + t + " characters."
             );
         },
-        max_value: function(e, n) {
+        max_value: function (e, n) {
             var t = n[0];
             return "The " + e + " must be " + t + " or less.";
         },
-        mimes: function(e) {
+        mimes: function (e) {
             return "The " + e + " must have a valid file type.";
         },
-        min: function(e, n) {
+        min: function (e, n) {
             var t = n[0];
             return "The " + e + " must be at least " + t + " characters.";
         },
-        min_value: function(e, n) {
+        min_value: function (e, n) {
             var t = n[0];
             return "The " + e + " must be " + t + " or more.";
         },
-        not_in: function(e) {
+        not_in: function (e) {
             return "The " + e + " must be a valid value.";
         },
-        numeric: function(e) {
+        numeric: function (e) {
             return "The " + e + " may only contain numeric characters.";
         },
-        regex: function(e) {
+        regex: function (e) {
             return "The " + e + " format is invalid.";
         },
-        required: function(e) {
+        required: function (e) {
             return "The " + e + " is required.";
         },
-        size: function(e, n) {
+        size: function (e, n) {
             var t = n[0];
             return "The " + e + " must be less than " + t + " KB.";
         },
-        url: function(e) {
+        url: function (e) {
             return "The " + e + " is not a valid URL.";
         }
     },

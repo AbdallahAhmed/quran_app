@@ -59,6 +59,7 @@ export default {
     saved:"تم الحفظ",
     copied:"تم النسخ",
     err:"خطأ",
+    "exist":"هل تريد الخروج من البرنامج ؟",
     messages: {
         _default: function(n) {
             return "قيمة الحقل " + n + " غير صحيحة.";
