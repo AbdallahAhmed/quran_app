@@ -37,6 +37,11 @@ export default {
     "save":"Save",
 
     "saving":"Saving",
+    "themes":"Theme",
+
+    "font_size":"Font size",
+    "lang":"Language",
+
 
     messages: {
         _default: function (e) {

@@ -30,6 +30,9 @@ export default {
     "share_message":"يرجي تحميل تطبيق القرآن الكريم من متجر جوجل بلاي من الرابط" ,
     "save":"حفظ",
     "saving":"جاري الحفظ",
+    "themes":"الشكل",
+    "font_size":"حجم الخط",
+    "lang":"اللغة",
     messages: {
         _default: function (n) {
             return "قيمة الحقل " + n + " غير صحيحة."
