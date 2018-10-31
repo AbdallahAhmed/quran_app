@@ -23,13 +23,13 @@
                 <form @submit.prevent="login">
                     <div class="input-border">
 
-                        <input type="text" name="email" :placeholder="$app.trans('email')" v-model="user.email"
+                        <input type="text" name="email" :placeholder="$app.trans('attributes.email')" v-model="user.email"
                                v-validate="'required|email'" autocomplete="false">
                     </div>
 
 
                     <div class="input-border">
-                        <input type="password" name="password" :placeholder="$app.trans('password')" v-model="user.password"
+                        <input type="password" name="password" :placeholder="$app.trans('attributes.password')" v-model="user.password"
                                v-validate="'required'" autocomplete="false"/>
                     </div>
 
@@ -67,6 +67,8 @@
 </template>
 
 <style>
+
+
 
 
 </style>
