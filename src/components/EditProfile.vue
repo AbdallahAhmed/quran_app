@@ -17,7 +17,7 @@
                          alt="user avater"
                          ref="image">
 
-                    <p>تعديل الصفحة الشخصية</p>
+                    <p>{{$app.trans('edit_profile')}}</p>
                 </div>
             </div>
 
@@ -27,27 +27,27 @@
 
                     <div class="input-border">
                         <input type="text" :class="{'errors':errors.has('password')&&submitted}" name="name"
-                               placeholder=" الأسم كامل " v-model="user.name"
+                               :placeholder="$app.trans('attributes.name')" v-model="user.name"
                                v-validate="'required|alpha_spaces'" autocomplete="false"/>
                     </div>
 
                     <div class="input-border">
                         <input type="password" :class="{'errors':errors.has('password')&&submitted}" name="password"
-                               placeholder="كلمة المرور" v-model="user.password" autocomplete="false"
+                               :placeholder="$app.trans('attributes.password')" v-model="user.password" autocomplete="false"
                                v-validate="passwordRules"
                         />
                     </div>
 
                     <div class="input-border">
                         <input type="password" :class="{'errors':errors.has('confirm_password')&&submitted}"
-                               name="confirm_password" placeholder="تاكيد كلمة المرور" v-model="user.confirm_password"
+                               name="confirm_password" :placeholder="$app.trans('attributes.confirm_password')" v-model="user.confirm_password"
                                v-validate="re_passwordRules" autocomplete="false"
 
                         />
                     </div>
 
                     <button type="submit" class="link" @click.prevent="updateProfile">
-                        حفظ
+                        {{$app.trans('save')}}
                     </button>
 
                 </form>
@@ -97,7 +97,7 @@
 
                     if (valid) {
 
-                        self.$f7.dialog.preloader('جاري الحفظ');
+                        self.$f7.dialog.preloader(self.$app.trans('saving'));
 
                         var userData = self.user;
 

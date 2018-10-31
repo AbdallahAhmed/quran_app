@@ -34,6 +34,9 @@ export default {
 
     "share_message":"Please download the Quran app from the Google Play store of the link" ,
 
+    "save":"Save",
+
+    "saving":"Saving",
 
     messages: {
         _default: function (e) {

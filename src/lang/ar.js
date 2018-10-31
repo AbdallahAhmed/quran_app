@@ -28,6 +28,8 @@ export default {
     "eval_app":"هل تريد تقييم التطبيق ؟",
     "shared_done":"تمت المشاركة",
     "share_message":"يرجي تحميل تطبيق القرآن الكريم من متجر جوجل بلاي من الرابط" ,
+    "save":"حفظ",
+    "saving":"جاري الحفظ",
     messages: {
         _default: function (n) {
             return "قيمة الحقل " + n + " غير صحيحة."
@@ -106,7 +108,7 @@ export default {
         name: "إسم المستخدم",
         email: "البريد الإلكتروني",
         password: "كلمة المرور",
-        repassword: "تأكيد كلمة المرور",
+        confirm_password: "تأكيد كلمة المرور",
         first_name: "الإسم الأول",
         last_name: "الإسم الأخير",
         form_subject: 'الموضوع',
