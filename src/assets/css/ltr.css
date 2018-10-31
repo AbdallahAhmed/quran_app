@@ -35,8 +35,28 @@
     text-align: center;
 }
 
-
-.page-setting-nav {
+.ltr .page-setting-nav {
     padding-left: 0;
     padding-left: 23px;
+}
+
+.ltr .gauge-content {
+    position: absolute;
+    z-index: 9999;
+    display: block;
+    margin: auto;
+    top: 15px;
+    left: 40%;
+    text-align: center;
+    width: calc(100% - 1px);
+    font-family: 'initial';
+}
+
+.ltr .page-khatima .page-title, .page-contest .page-title {
+    padding: 7px 22px 7px 22px;
+}
+
+.ltr .khatima-wrapper > .row {
+    direction: ltr;
+    padding-left:  10px;
 }
