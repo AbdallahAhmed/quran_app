@@ -16,7 +16,8 @@
         name: "Aya",
 
         props: [
-            'aya_row'
+            'aya_row',
+            'surah'
         ],
 
         computed: {
@@ -36,6 +37,8 @@
                 if (aya.id == this.aya.id) {
                     this.$store.commit("AYA", false);
                 } else {
+                    aya.surah = Object.assign({}, this.surah, {});
+                    delete aya.surah.pages;
                     this.$store.commit("AYA", aya);
                 }
 
