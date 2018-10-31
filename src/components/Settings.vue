@@ -14,20 +14,22 @@
 
             <div class="row page-setting-nav">
                 <div class="col-80">
-                    <p>الأعدادت</p>
+                    <p>{{$app.trans('setting')}}</p>
                 </div>
             </div>
 
             <div class="page-container">
-                <p>الشكل </p>
+                <p>{{$app.trans('themes')}} </p>
                 <div class="row ">
-                   <div class="col-50" >
-                       <a :style="{ 'font-size': font_size + 'px' }" class="button-themes button-themes-back" :class="{'active':color_theme=='black'}" @click="color_theme='black'">
-                           وَأَقِيمُوا الْوَزْنَ بِالْقِسْطِ وَلَا تُخْسِرُوا الْمِيزَانَ
-                       </a>
-                   </div>
                     <div class="col-50">
-                        <a :style="{ 'font-size': font_size + 'px' }" class="button-themes button-themes-white" :class="{'active':color_theme=='white'}" @click="color_theme='white'">
+                        <a :style="{ 'font-size': font_size + 'px' }" class="button-themes button-themes-back"
+                           :class="{'active':color_theme=='black'}" @click="color_theme='black'">
+                            وَأَقِيمُوا الْوَزْنَ بِالْقِسْطِ وَلَا تُخْسِرُوا الْمِيزَانَ
+                        </a>
+                    </div>
+                    <div class="col-50">
+                        <a :style="{ 'font-size': font_size + 'px' }" class="button-themes button-themes-white"
+                           :class="{'active':color_theme=='white'}" @click="color_theme='white'">
                             وَأَقِيمُوا الْوَزْنَ بِالْقِسْطِ وَلَا تُخْسِرُوا الْمِيزَانَ
                         </a>
                     </div>
@@ -35,7 +37,7 @@
                 <br>
                 <hr>
 
-                <p>حجم الخط</p>
+                <p>{{$app.trans('font_size')}}</p>
 
                 <div class="row">
                     <div class="col-100">
@@ -45,16 +47,16 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col font-lg">حجم الخط</div>
-                    <div class="col font-md">حجم الخط</div>
-                    <div class="col font-sm">حجم الخط</div>
+                    <div class="col font-lg">{{$app.trans('font_size')}}</div>
+                    <div class="col font-md">{{$app.trans('font_size')}}</div>
+                    <div class="col font-sm">{{$app.trans('font_size')}}</div>
                 </div>
                 <br>
                 <hr>
-                <p>اللغة</p>
+                <p>{{$app.trans('lang')}}</p>
                 <p class="row button-lang">
-                    <button class="col link" :class="{'active':locale=='ar'}" @click="locale='ar'">العربية </button>
-                    <button class="col link"  :class="{'active':locale=='en'}" @click="locale='en'">English</button>
+                    <button class="col link" :class="{'active':locale=='ar'}" @click="locale='ar'">العربية</button>
+                    <button class="col link" :class="{'active':locale=='en'}" @click="locale='en'">English</button>
                 </p>
                 <br>
             </div>
@@ -69,7 +71,7 @@
 
         computed: {
 
-            font_size(){
+            font_size() {
                 return this.$store.getters.font_size;
             },
 
@@ -110,19 +112,19 @@
         components: {
             navbar: require("./partials/Navbar.vue")
         },
-        mounted(){
+        mounted() {
             var range = this.$f7.range.create({
                 el: '.range-slider',
                 on: {
-                    change:  (val)=> {
-                        this.font_range=val.value;
+                    change: (val) => {
+                        this.font_range = val.value;
                     }
                 }
             })
         },
 
         methods: {
-            back(){
+            back() {
                 this.$store.commit("home_tab", "login");
                 this.$f7router.back();
             }

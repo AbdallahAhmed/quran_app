@@ -13,7 +13,7 @@
                     <p v-if="check"> {{user.first_name }} {{ user.last_name }}</p>
                     <p v-if="!check">
                         <a href="/login" class="link color-green">
-                            تسجيل الدخول
+                            {{$app.trans('login')}}
                         </a>
                     </p>
                 </div>
@@ -25,7 +25,7 @@
                     <div class="col-50 spaceInDown">
                         <a href="/fav" class="link btn-setting ">
 
-                            <p>المفضلة</p>
+                            <p>{{$app.trans('fav')}}</p>
 
                             <img src="./../assets/img/fav.png" alt="Fav">
 
@@ -33,9 +33,8 @@
                     </div>
                     <div class="col-50 spaceInDown">
                         <a href="/alerts" class="link btn-setting ">
-                            <p>التنبيهات</p>
-                            <img src="./../assets/img/alarm.png" alt="Fav">
-
+                            <p>{{$app.trans('alarms')}}</p>
+                            <img src="./../assets/img/alarm.png" alt="alarms">
                         </a>
                     </div>
                 </div>
@@ -43,25 +42,25 @@
                 <div class="row">
                     <div class="col-50 spaceInDown">
                         <a href="/settings" class="link btn-setting">
-                            <p>الإعدادات</p>
+                            <p>{{$app.trans('setting')}}</p>
 
                             <img src="./../assets/img/settings.png" alt="Fav">
                         </a>
                     </div>
                     <div class="col-50 spaceInDown">
                         <a href="#" @click="share_app" class="link btn-setting">
-                            <p> انشر القرأن</p>
+                            <p> {{$app.trans('quran_share')}}</p>
                             <img src="./../assets/img/_share.png" alt="Fav">
                         </a>
                     </div>
                 </div>
 
                 <button type="submit" @click="$f7router.navigate('/editProfile')" class="link" v-if="check">
-                    تعديل الملف الشخصى
+                    {{$app.trans('edit_profile')}}
                 </button>
 
                 <button type="submit" @click="$f7router.navigate('/login')" class="link" v-if="!check">
-                    تسجيل الدخول
+                    {{$app.trans('login')}}
                 </button>
             </div>
         </div>
@@ -99,8 +98,8 @@
                 new Promise((resolve, reject) => {
 
                     window.plugins.socialsharing.shareWithOptions({
-                        message: "https://goo.gl/JqCHK6 يرجي تحميل تطبيق القرآن الكريم من متجر جوجل بلاي من الرابط",
-                        subject: "https://goo.gl/JqCHK6 يرجي تحميل تطبيق القرآن الكريم من متجر جوجل بلاي من الرابط",
+                        message: "https://goo.gl/JqCHK6 " + this.$app.trans('share_message'),
+                        subject: "https://goo.gl/JqCHK6 " + this.$app.trans('share_message'),
                         chooserTitle: this.$app.trans("choose_app")
                     }, () => {
                         resolve();
@@ -109,16 +108,16 @@
                 }).then(() => {
 
                     this.$f7.notification.create({
-                        subtitle: "تمت المشاركة"
+                        subtitle: this.$app.trans('shared_done')
                     }).open();
 
-                    this.$f7.dialog.confirm('هل تريد تقييم التطبيق ؟', () => {
+                    this.$f7.dialog.confirm(this.$app.trans('eval_app'), () => {
                         window.open('https://play.google.com/store/apps/details?id=games.onebutton.golfbattle', '_system');
                     });
 
                 }).catch(() => {
                     this.$f7.notification.create({
-                        subtitle: "خطأ"
+                        subtitle: this.$app.trans('error')
                     }).open();
                 });
 

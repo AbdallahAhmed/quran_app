@@ -2,9 +2,55 @@ export default {
 
     name: "Quran",
 
-    close: "إغلاق",
+    close: "Close",
 
-    choose_app : "إختر تطبيق",
+    choose_app: "Choose App",
+
+    surah: "Surah",
+
+    number_ayat: "Number of ayat",
+
+    "search_ayat": "Search for ayat",
+
+    "no_result": "No result found",
+    "alarms": "Alarms",
+    "repetition": "Repetition",
+    "never": "Never",
+    "daily": "Daily",
+    "reminder_never": "A reminder to recite some verses of the Qur'an",
+    "reminder_daily": "A reminder to recite some of the Quran's daily verses",
+    "error":"error",
+    "my_fav":"My bookmarks",
+    "fav":"Bookmarks",
+    "no_ayat": "No ayat exists",
+    "delete_aya":"Do you want to delete the aya ?",
+    "quran_share":"Quran share",
+
+    "setting":"Setting",
+    "login":"Login",
+    "edit_profile":"Edit profile",
+    "eval_app":"Evaluate app?",
+    "shared_done":"Shared successfully",
+
+    "share_message":"Please download the Quran app from the Google Play store of the link" ,
+
+    "save":"Save",
+
+    "saving":"Saving",
+    "themes":"Theme",
+
+    "font_size":"Font size",
+    "lang":"Language",
+
+
+    "signup":"Sign up",
+    "forget_password":" Forgot your password?",
+    "login_loading":"Signing in",
+    "add_user":"Sign up",
+
+    "error_login":"Your email and password are incorrect",
+
+
 
     messages: {
         _default: function (e) {
@@ -93,7 +139,7 @@ export default {
         password: "Password",
         repassword: "Confirm Password",
         first_name: "First name",
-        last_name: "Last Name" ,
-        confirm_password:"Confirm password"
+        last_name: "Last Name",
+        confirm_password: "Confirm password"
     }
 }

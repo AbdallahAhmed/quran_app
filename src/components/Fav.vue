@@ -13,7 +13,7 @@
         <div class="page-content" style="direction: rtl">
             <div class="row page-setting-nav">
                 <div class="col-100">
-                    <p>آياتي المفضلة</p>
+                    <p>{{$app.trans('my_fav')}}</p>
                 </div>
             </div>
 
@@ -26,14 +26,14 @@
                                 <i class="f7-icons">close</i>
                             </a>
                             <a class="surah" v-if="aya.surah" :href="'/home/quran/'+aya.surat_id">
-                                {{aya.surah.name}}
+                                {{$store.getters.locale=="ar"?aya.surah.name:aya.surah.englishname}}
                             </a>
                         </div>
                         <div class="content">
                             <p>{{aya.text}}</p>
                         </div>
                     </div>
-                    <p class="no-found" v-if="saved_ayat.length==0">لا يوجد آيات </p>
+                    <p class="no-found" v-if="saved_ayat.length==0">{{$app.trans('no_ayat')}}</p>
                 </div>
             </div>
         </div>
@@ -69,7 +69,7 @@
 
         methods:{
             removeAya(id){
-                this.$f7.dialog.confirm('هل تريد حذف الآية ؟', () => {
+                this.$f7.dialog.confirm(this.$app.trans('delete_aya'), () => {
                     this.$store.dispatch('remove_saved_aya',id)
                 });
             }

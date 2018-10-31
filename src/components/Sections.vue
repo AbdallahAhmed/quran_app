@@ -23,8 +23,8 @@
                 </div>
                 <div class="col-85 juz-list " v-if="juz_sections">
 
-                    <div class="juz-wrapper" v-for="(juz,index) in juz_sections" :key="juz.name_ar">
-                        <h2 class="juz-title">{{juz.name_ar}}</h2>
+                    <div class="juz-wrapper" v-for="(juz,index) in juz_sections" :key="juz.name_en">
+                        <h2 class="juz-title">{{ lang=="ar"?juz.name_ar:juz.name_en}}</h2>
                         <div class="juz-content">
 
                             <div class="swiper-container-juz">
@@ -33,11 +33,12 @@
                                     <div class="swiper-slide" v-for="surah in juz.swar">
                                         <a class="surah-card">
                                             <a class="surah-title link" :href="'/home/quran/'+ surah.id + '/' + index">
-                                                {{surah.id}}.&nbsp;&nbsp; {{surah.name.split('سورة')[1]}}
+                                                {{surah.id}}.&nbsp;&nbsp; {{lang=="en"?
+                                                surah.englishname:surah.name.split('سورة')[1]}}
                                             </a>
 
                                             <div class="surah-info">
-                                                <span>عدد الايات {{surah.numberOfAyats}}</span>
+                                                <span>{{$app.trans('number_ayat')}} {{surah.numberOfAyats}}</span>
                                             </div>
                                         </a>
                                     </div>
@@ -79,13 +80,17 @@
                     1000
                 );
 
+    },
+  },
+  components: {
+    navbar: require("./partials/Navbar.vue"),
+    "main-toolbar": require("./partials/MainToolbar.vue")
+  },
+computed: {
+            lang() {
+                return this.$store.getters.locale;
             }
-        },
-        components: {
-            navbar: require("./partials/Navbar.vue"),
-            "main-toolbar": require("./partials/MainToolbar.vue")
-        },
-        mounted() {
+        },mounted() {
             this.$store.dispatch("get_juz_section").then(() => {
                 this.juz_sections = this.$store.getters.juz_sections;
                 this.loading = false;
@@ -94,7 +99,6 @@
                     spaceBetween: 0,
                     slidesPerView: 1.5
                 });
-                console.log(swiper);
             });
         }
     }

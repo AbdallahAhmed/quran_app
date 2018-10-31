@@ -10,7 +10,7 @@
                         <div class="searchbar-inner">
                             <div class="searchbar-input-wrap">
                                 <input type="search" id="input-search" class="search-input rollIn"
-                                       placeholder=" بحث عن الايات"
+                                       :placeholder="$app.trans('search_ayat')"
                                        v-model="searchQuery" maxlength="50" @input="search" @keydown="clear">
                                 <i class="searchbar-icon" @click="search"></i>
                                 <!--<span class="input-clear-button"></span>-->
@@ -21,15 +21,15 @@
                 </div>
             </div>
 
-            <div  class="row" >
+            <div class="row">
                 <div class="searchbar-backdrop"></div>
                 <!-- hide-on-search element -->
                 <div class="searchbar-hide-on-search" v-if="searchQuery.length==0">
-                    <p><label for="input-search">بحث عن الأيات</label></p>
+                    <p><label for="input-search">{{$app.trans('search_ayat')}}</label></p>
                 </div>
 
                 <div class="searchbar-hide-on-search" v-if="searchQuery.length!=0&&results.length==0&&!loading">
-                    <p>لا يوجد نتائج بحث</p>
+                    <p>{{$app.trans('no_result')}}</p>
                 </div>
 
                 <div class="searchbar-found" v-if="searchQuery.length!=0">
@@ -39,7 +39,7 @@
                                 <a :href="'/preview/' + ayat.page_id + '/' + ayat.id" class="col-80">
                                     {{ayat.text}}
                                 </a>
-                                <a :href="'/preview/' + ayat.page_id + '/' + ayat.id" class="col-20 tab-link">{{ayat.surah.name}}</a>
+                                <a :href="'/preview/' + ayat.page_id + '/' + ayat.id" class="col-20 tab-link">{{$store.getters.locale=="ar"?ayat.surah.name:ayat.surah.englishname}}</a>
                             </div>
                             <hr>
                         </li>
@@ -56,14 +56,15 @@
 </template>
 <style>
     .infinite-scroll-preloader {
-        margin-top:-15px;
+        margin-top: -15px;
         margin-bottom: 10px;
         text-align: center;
         display: none;
     }
+
     .infinite-scroll-preloader .preloader {
-        width:34px;
-        height:34px;
+        width: 34px;
+        height: 34px;
     }
 </style>
 <script>
@@ -74,7 +75,7 @@
         created() {
             $vm = this;
         },
-        mounted(){
+        mounted() {
             $vm.preloader = document.getElementsByClassName('infinite-scroll-preloader')[0];
         },
         data() {
@@ -103,7 +104,7 @@
                 }).then((res) => {
                     if (res.body.data.length >= 14)
                         $vm.offset += res.body.data.length;
-                    else{
+                    else {
                         $vm.preloader.style.display = 'none';
                         $vm.max = true;
                     }

@@ -38,7 +38,7 @@
 
             <div class="block quran-sura">
 
-                <page v-for="page in sura.pages" :page="page" :id="page[0].page_id" v-if="sura">
+                <page v-for="(page, i) in sura.pages" :page="page" :id="page[0].page_id" v-if="sura">
                     <aya v-for="aya in page" :aya_row="aya"></aya>
                 </page>
 
@@ -53,6 +53,7 @@
 <script>
 
     import inView from 'in-view';
+    import EventBus from "../../events";
 
     export default {
 
@@ -74,39 +75,17 @@
 
         mounted() {
 
-            inView("#sura-" + this.sura.id)
-                .on("enter", (el) => {
+            EventBus.$on("vscroll", () => {
+
+                console.log("Ddf");
+
+                if(inView("#sura-" + this.sura.id).check()){
                     this.$store.commit("LAST_SURA", this.sura.id);
-                });
+                }
+            });
 
         },
 
-
-        methods: {
-
-
-            isElementVisible(el) {
-                var rect = el.getBoundingClientRect(),
-                    vWidth = window.innerWidth || doc.documentElement.clientWidth,
-                    vHeight = window.innerHeight || doc.documentElement.clientHeight,
-                    efp = function (x, y) {
-                        return document.elementFromPoint(x, y)
-                    };
-
-                // Return false if it's not in the viewport
-                if (rect.right < 0 || rect.bottom < 0
-                    || rect.left > vWidth || rect.top > vHeight)
-                    return false;
-
-                // Return true if any of its four corners are visible
-                return (
-                    el.contains(efp(rect.left, rect.top))
-                    || el.contains(efp(rect.right, rect.top))
-                    || el.contains(efp(rect.right, rect.bottom))
-                    || el.contains(efp(rect.left, rect.bottom))
-                );
-            }
-        },
 
         components: {
             "page": require("../partials/Page.vue"),

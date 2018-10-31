@@ -4,7 +4,40 @@ export default {
 
     close: "إغلاق",
 
-    choose_app : "إختر تطبيق",
+    choose_app: "إختر تطبيق",
+    surah: "سورة",
+    number_ayat: "عدد الايات",
+    "search_ayat": "بحث عن الأيات",
+    "no_result": "لا يوجد نتائج بحث",
+    "alarms": "التنبيهات",
+    "repetition":"تكرار",
+    "never":"أبدا",
+    "daily":"يوميا",
+    "reminder_never":" اليوم تذكير بتلاوة بعض آيات القرآن",
+    "reminder_daily": "تذكير بتلاوة بعض آيات القرآن اليومية",
+    "error":"خطأ",
+    "my_fav":"آياتي المفضلة",
+    "fav":"المفضلة",
+    "no_ayat": "لا يوجد آيات",
+    "delete_aya":"هل تريد حذف الآية ؟",
+    "quran_share":"انشر القرأن",
+
+    "setting":"اﻷعدادات",
+    "login":"تسجيل الدخول",
+    "edit_profile":" تعديل الملف الشخصى",
+    "eval_app":"هل تريد تقييم التطبيق ؟",
+    "shared_done":"تمت المشاركة",
+    "share_message":"يرجي تحميل تطبيق القرآن الكريم من متجر جوجل بلاي من الرابط" ,
+    "save":"حفظ",
+    "saving":"جاري الحفظ",
+    "themes":"الشكل",
+    "font_size":"حجم الخط",
+    "lang":"اللغة",
+    "signup":"  مستخدم جديد",
+    "forget_password":"  نسيت كلمة المرور؟",
+    "login_loading":"جاري تسجيل الدخول",
+    "error_login":"البريد الكترونى وكلمة المرور غير صحيحين",
+    "add_user":"إنشاء حساب",
 
     messages: {
         _default: function (n) {
@@ -84,13 +117,13 @@ export default {
         name: "إسم المستخدم",
         email: "البريد الإلكتروني",
         password: "كلمة المرور",
-        repassword: "تأكيد كلمة المرور",
+        confirm_password: "تأكيد كلمة المرور",
         first_name: "الإسم الأول",
         last_name: "الإسم الأخير",
-        form_subject:'الموضوع',
-        form_messages:'الرسالة',
+        form_subject: 'الموضوع',
+        form_messages: 'الرسالة',
 
-        confirm_password:"كلمة المرور"
+        confirm_password: "كلمة المرور"
     }
 
 }

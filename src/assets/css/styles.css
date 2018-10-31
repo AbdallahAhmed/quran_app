@@ -1242,3 +1242,8 @@ a.forget-password {
     width: 100px;
     height: 100px;
 }
+
+
+.page-previous .form-container{
+    display: none;
+}
