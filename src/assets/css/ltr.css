@@ -10,7 +10,7 @@
     text-align: right;
 }
 
-.ltr .page-khatima .page-title,  .ltr .page-contest .page-title {
+.ltr .page-khatima .page-title, .ltr .page-contest .page-title {
     text-align: left;
 }
 
@@ -58,7 +58,27 @@
 
 .ltr .khatima-wrapper > .row {
     direction: ltr;
-    padding-left:  10px;
+    padding-left: 10px;
+}
+
+.ltr .fav-aya-item .title .surah {
+    width: 165px;
+    margin: auto;
+}
+
+.ltr .sura-name{
+    direction: rtl;
+}
+
+.ltr .sura-name-arrow {
+    margin-left: 15px;
+    margin-right: 0px;
+    width: 14px;
+}
+
+
+.ltr .sura-stats .sura-ayat-count {
+    direction: rtl;
 }
 
 .ltr .page-title{
@@ -78,6 +98,6 @@
     font-size: 16px;
 }
 
-
-
-
+.ltr .fonts-wrapper{
+    direction: rtl;
+}

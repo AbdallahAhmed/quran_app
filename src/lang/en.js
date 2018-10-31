@@ -72,6 +72,7 @@ export default {
     "quran": "Holly Quran",
     "ok" : "OK",
     "cancel" : "Cancel",
+    "his_aya":"Ayat",
     messages: {
         _default: function (e) {
             return "The " + e + " value is not valid.";
