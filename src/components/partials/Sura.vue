@@ -75,14 +75,6 @@
 
         mounted() {
 
-            EventBus.$on("vscroll", () => {
-
-                console.log("Ddf");
-
-                if(inView("#sura-" + this.sura.id).check()){
-                    this.$store.commit("LAST_SURA", this.sura.id);
-                }
-            });
 
         },
 

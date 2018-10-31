@@ -1,6 +1,6 @@
 <template>
 
-    <span ref="page" :id="'page-'+id">
+    <span ref="page" :id="'page-'+id" :class="{'bg-grey' : isViewed()}">
         <slot></slot>
     </span>
 
@@ -30,15 +30,24 @@
 
             let id = this.id;
 
-            // inView("#page-" + id)
-            //     .on("enter", () => {
-            //         this.$store.commit("LAST_PAGE", id);
-            //     });
 
+            // EventBus.$on("vscroll", () => {
+            //     if(inView("#page-" + id).check()){
+            //         this.$store.commit("LAST_SURA", this.sura.id);
+            //     }
+            // });
 
             inView("#page-" + id)
 
                 .on("enter", () => {
+
+                    // Saving last viewed page
+
+                    this.$store.commit("LAST_PAGE", id);
+
+                    // Saving last viewed page
+
+                    this.$store.commit("LAST_SURA", this.page[0].surat_id);
 
                     if (!this.isViewed()) {
 
@@ -53,10 +62,6 @@
 
                                 this.$store.dispatch("read_page", id);
 
-                                // Saving last viewed page
-
-                                this.$store.commit("PAGE", id);
-
                             }
 
                             if (inView("#page-" + id).check()) {
@@ -64,7 +69,6 @@
                                 this.seconds++;
 
                                 console.log(this.page);
-
 
                                 console.log(this.id + " - " + this.seconds + " - " + this.getPageReadTime());
                             }
@@ -105,7 +109,7 @@
 
 <style>
     .bg-grey {
-        /*text-shadow: 1px 1px 1px #248e11;*/
-        /*opacity: 0.4;*/
+        text-shadow: 1px 1px 1px #248e11;
+        opacity: 0.4;
     }
 </style>

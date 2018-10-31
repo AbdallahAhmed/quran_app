@@ -34,15 +34,16 @@
         computed: {
             last_sura() {
                 return this.$store.getters.last_sura;
-            }
+            },
+            last_page() {
+                return this.$store.getters.last_page;
+            },
         },
 
         mounted() {
 
-            let sura_id = parseInt(this.$f7route.params.sura_id || this.last_sura.id || 1);
+            let sura_id = parseInt(this.$f7route.params.sura_id || this.last_sura || 1);
             let part_id = this.$f7route.params.part_id;
-
-            this.$store.commit("LAST_SURA", sura_id);
 
             this.$store.dispatch("get_sura", {surah_id: sura_id}).then((response) => {
 
@@ -101,6 +102,13 @@
 
                     this.suras = [response.data.data].concat(this.suras);
 
+                    // Saving last viewed page
+
+                    this.$store.commit("LAST_SURA", response.data.data.id);
+
+                    // Saving last viewed page
+
+                    this.$store.commit("LAST_PAGE", response.data.data.page_id);
 
                     done();
 
