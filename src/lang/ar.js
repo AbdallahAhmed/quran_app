@@ -64,6 +64,9 @@ export default {
     "quran": "القرآن الكريم",
     "ok" : "موافق",
     "cancel" : "إلغاء",
+
+    "password_mismatched" : "كلمة المرور لا تماثل التأكيد",
+
     messages: {
         _default: function(n) {
             return "قيمة الحقل " + n + " غير صحيحة.";
