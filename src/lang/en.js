@@ -73,6 +73,9 @@ export default {
     "ok" : "OK",
     "cancel" : "Cancel",
     "his_aya":"Ayat",
+
+    "password_mismatched" : "The password confirmation does not match.",
+
     messages: {
         _default: function (e) {
             return "The " + e + " value is not valid.";

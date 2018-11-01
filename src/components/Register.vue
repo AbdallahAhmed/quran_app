@@ -46,7 +46,7 @@
                         <input type="password" name="confirm_password"
                                :placeholder="$app.trans('attributes.confirm_password')"
                                v-model="user.confirm_password"
-                               v-validate="'required|confirmed:password'" autocomplete="false"/>
+                               v-validate="'required'" autocomplete="false"/>
                     </div>
 
                     <button type="submit" class="link" @click.prevent="register">
@@ -97,6 +97,14 @@
                 this.submitted = true;
 
                 var self = this;
+
+                console.log(this.user);
+
+                if(this.user.password != this.user.confirm_password){
+                    return self.$f7.notification.create({
+                        subtitle: this.$app.trans('password_mismatched')
+                    }).open();
+                }
 
                 this.$validator.validateAll(this.user).then((valid) => {
 

@@ -178,7 +178,7 @@
 
 .quran-sura {
     text-align: justify;
-    direction: rtl;
+    direction: rtl !important;
     margin: 0 0 10px 0 !important;
 }
 
