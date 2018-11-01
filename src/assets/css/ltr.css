@@ -101,3 +101,8 @@
 .ltr .fonts-wrapper{
     direction: rtl;
 }
+
+.ltr .swiper-container-juz{
+    padding-left: 15px;
+    padding-right: 0px;
+}
