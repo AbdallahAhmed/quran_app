@@ -57,7 +57,7 @@ export default {
     confirm_pass: "Confirm password",
     password: "Password",
     v_code:"Verification Code",
-    curr_khatma:"Current Khatma",    
+    curr_khatma:"Current Khatma",
     progress:"Progress",
     completed_at:"Completed at",
     hour:"Hour",
@@ -119,7 +119,8 @@ export default {
     "ok" : "OK",
     "cancel" : "Cancel",
     "his_aya":"Ayat",
-
+    "remaining_page":" Remaining pages",
+    "read_page":"Read pages",
     "password_mismatched" : "The password confirmation does not match.",
 
     messages: {
