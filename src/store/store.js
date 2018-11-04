@@ -6,7 +6,7 @@ import contests from "./modules/contests";
 Vue.use(Vuex);
 
 const state = {
-    locale:  localStorage.getItem("locale") || "en",
+    locale: localStorage.getItem("locale") || "en",
     home_tab: "quran",
     color_theme: localStorage.getItem("color_theme") || "white",
     font_range: localStorage.getItem("font_range") || "50",
@@ -15,13 +15,13 @@ const state = {
     khatema: JSON.parse(localStorage.getItem("user"))
         ? JSON.parse(localStorage.getItem("user")).current_khatema
         : JSON.parse(localStorage.getItem("local_khatema")) || {
-              pages: [],
-              created_at: new Date().toISOString()
-          },
+        pages: [],
+        created_at: new Date().toISOString()
+    },
     // khatema: undefined,
-    current_khatema: { pages: [] },
+    current_khatema: {pages: []},
     completed_khatema:
-        JSON.parse(localStorage.getItem("completed_khatema")) || [],
+    JSON.parse(localStorage.getItem("completed_khatema")) || [],
     alert_at: {
         hour: null,
         min: null,
@@ -219,7 +219,7 @@ const mutations = {
 
 const actions = {
     login(store, user) {
-        return Vue.http.post("auth", user).then(function(response) {
+        return Vue.http.post("auth", user).then(function (response) {
             if (response.body.status) {
                 store.commit("token", response.body.data.token);
                 store.commit("user", response.body.data.user);
@@ -232,7 +232,7 @@ const actions = {
     },
 
     register(store, user) {
-        return Vue.http.post("auth/add_user", user).then(function(response) {
+        return Vue.http.post("auth/add_user", user).then(function (response) {
             if (response.body.status) {
                 store.commit("token", response.body.data.token);
                 store.commit("user", response.body.data.user);
@@ -240,7 +240,7 @@ const actions = {
         });
     },
     profileUpdate(store, user) {
-        return Vue.http.post("profile/update", user).then(function(response) {
+        return Vue.http.post("profile/update", user).then(function (response) {
             if (response.body.status) {
                 store.commit("user", response.body.data);
             }
@@ -251,7 +251,7 @@ const actions = {
         return Vue.http.post("auth/forget-password", email);
     },
 
-    read_page({ state, commit }, page_id) {
+    read_page({state, commit}, page_id) {
         commit("READ_PAGE", page_id);
 
         var promise = new Promise((resolve, reject) => {
@@ -282,22 +282,32 @@ const actions = {
 
                             commit("FILL_CURRENT_KHATEMA", data);
                         },
-                        response => {}
+                        response => {
+                        }
                     );
             }
+        }
+
+        if (state.auth) {
+            Vue.http.post("contests/updates", {
+                page_id: page_id
+            });
         }
 
         return promise;
     },
 
-    upload_local_data({ state, commit, rootState }) {
+    upload_local_data({state, commit, rootState}) {
         Vue.http.post("khatemas/update", {
             pages: state.khatema.pages
         });
 
+        Vue.http.post("contests/updates", {
+            pages: state.khatema.pages
+        });
         Vue.http.post("bookmarks/create", {
             ayah_id: (JSON.parse(localStorage.getItem("saved_ayat")) || []).map(
-                function(item) {
+                function (item) {
                     return item.id;
                 }
             )
