@@ -15,9 +15,6 @@ import {i18n} from "./i18n";
 import debounce from "./helpers/debounce";
 import {isElementInView} from "./helpers/helpers";
 
-let FastClick = require('fastclick');
-
-
 import vuescroll from 'vuescroll';
 import 'vuescroll/dist/vuescroll.css';
 
@@ -80,6 +77,7 @@ import Application from './components/App.vue';
 
 require('framework7-icons/css/framework7-icons.css');
 require('./assets/css/styles.css');
+require('./assets/css/ltr.css');
 require('./assets/css/animations.css');
 
 Vue.use(VueResource);
@@ -87,6 +85,7 @@ Vue.use(VueResource);
 Vue.use(VueScroller);
 
 import infiniteScroll from 'vue-infinite-scroll'
+
 Vue.use(infiniteScroll)
 
 // Init F7 Vue Plugin
@@ -99,8 +98,8 @@ Vue.prototype.$config = Vue.conf;
 
 
 //English to Arabic digits.
-String.prototype.toAr= function() {
-    return this.replace(/\d/g, d =>  '٠١٢٣٤٥٦٧٨٩'[d])
+String.prototype.toAr = function () {
+    return this.replace(/\d/g, d => '٠١٢٣٤٥٦٧٨٩'[d])
 }
 
 
@@ -132,6 +131,7 @@ Vue.app = {
          * @type {string}
          */
         Vue.http.options.root = Vue.app.config.get("url");
+
 
         /**
          * append access token to every request
@@ -441,8 +441,8 @@ document.addEventListener('deviceready', () => {
 
         if (Vue.app.vue.$f7.view.main.history.length > 1) {
             return Vue.app.vue.$f7.view.main.router.back();
-        }else{
-            Vue.app.vue.$f7.dialog.confirm('هل تريد الخروج من البرنامج ؟', () => {
+        } else {
+            Vue.app.vue.$f7.dialog.confirm(Vue.app.trans('exist'), () => {
                 window.navigator.app.exitApp();
             });
         }
@@ -453,7 +453,7 @@ document.addEventListener('deviceready', () => {
 document.addEventListener('deviceready', function () {
 
     cordova.plugins.notification.local.hasPermission(function (granted) {
-        if(!granted){
+        if (!granted) {
             cordova.plugins.notification.local.requestPermission();
         }
     });
@@ -475,11 +475,11 @@ Object.defineProperty(Array.prototype, 'unique', {
     enumerable: false,
     configurable: false,
     writable: false,
-    value: function() {
+    value: function () {
         var a = this.concat();
-        for(var i=0; i<a.length; ++i) {
-            for(var j=i+1; j<a.length; ++j) {
-                if(a[i] === a[j])
+        for (var i = 0; i < a.length; ++i) {
+            for (var j = i + 1; j < a.length; ++j) {
+                if (a[i] === a[j])
                     a.splice(j--, 1);
             }
         }

@@ -8,7 +8,7 @@
 
                 <a href="/sections" class="sura-name link bounceIn">
                     <img src="../../assets/img/arrow-down.png" class="sura-name-arrow">
-                    {{ sura.juz_name }}
+                    {{ $store.getters.locale=="ar"? sura.juz_name:sura.juz_name_en }}
                 </a>
 
             </div>
@@ -17,11 +17,11 @@
 
                 <a class="col-50 sura-ayat-count link">
                     <span> {{ sura.numberOfAyats }} </span>
-                    أياتها
+                    {{$app.trans('his_aya')}}
                 </a>
 
                 <a href="/sections" class="col-50 sura-part-num link">
-                    {{ sura.name }}
+                    {{ $store.getters.locale=="ar"? sura.name : sura.englishname}}
                 </a>
 
             </div>
@@ -38,8 +38,8 @@
 
             <div class="block quran-sura">
 
-                <page v-for="(page, i) in sura.pages" :page="page" :id="page[0].page_id" v-if="sura">
-                    <aya v-for="aya in page" :aya_row="aya"></aya>
+                <page v-for="(page, i) in sura.pages" :page="page"  :key="page[0].page_id" :id="page[0].page_id" v-if="sura">
+                    <aya v-for="aya in page" :aya_row="aya" :key="aya.id" :surah="sura"></aya>
                 </page>
 
             </div>

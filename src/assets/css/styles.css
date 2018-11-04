@@ -178,7 +178,7 @@
 
 .quran-sura {
     text-align: justify;
-    direction: rtl;
+    direction: rtl !important;
     margin: 0 0 10px 0 !important;
 }
 
@@ -319,10 +319,6 @@
     color: #207249;
 }
 
-.juz-wrapper .swiper-slide .surah-card {
-    margin-right: 20px ;
-    margin-left: 20px ;
-}
 
 .juz-wrapper .swiper-slide {
     width: 55%;
@@ -1242,12 +1238,27 @@ a.forget-password {
     height: 100px;
 }
 
-
-.page-previous .form-container{
+.page-previous .form-container {
     display: none;
 }
 
-
 /** {*/
-    /*direction: ltr;*/
+/*direction: ltr;*/
 /*}*/
+.khatima-list:last-child .footer {
+    margin-bottom: 75px;
+}
+
+.juz-wrapper .swiper-slide .surah-card {
+    margin-right: 0px;
+    margin-left: 0px;
+}
+
+.juz-wrapper .swiper-slide {
+    width: 55%;
+    margin-left: 0px;
+}
+
+.swiper-container-juz{
+    padding-right: 15px;
+}

@@ -134,7 +134,7 @@ export default {
                 (res) => {
                     store.commit('SAVED_AYAT', res.body.data);
                 }, () => {
-                    store.commit('SAVED_AYAT', JSON.parse(localStorage.getItem("saved_ayat")));
+                    store.commit('SAVED_AYAT', (JSON.parse(localStorage.getItem("saved_ayat")) || []));
                 });
         },
 
@@ -149,7 +149,7 @@ export default {
 
         get_juz_section({commit}) {
             return new Promise((resolve, reject) => {
-                var sections=require('./../../assets/quran/juz_surat');
+                var sections = require('./../../assets/quran/juz_surat');
                 commit('JUZ_SECTION', sections);
                 resolve(sections);
 

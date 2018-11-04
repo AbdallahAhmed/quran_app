@@ -67,10 +67,10 @@
                             if (inView("#page-" + id).check()) {
 
                                 this.seconds++;
-
-                                console.log(this.page);
-
-                                console.log(this.id + " - " + this.seconds + " - " + this.getPageReadTime());
+                                //
+                                // console.log(this.page);
+                                //
+                                // console.log(this.id + " - " + this.seconds + " - " + this.getPageReadTime());
                             }
 
 

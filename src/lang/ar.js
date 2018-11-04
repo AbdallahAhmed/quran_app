@@ -33,7 +33,7 @@ export default {
     font_size: "حجم الخط",
     lang: "اللغة",
     signup: "  مستخدم جديد",
-    forget_password: "  نسيت كلمة المرور؟",
+    forget_password: "نسيت كلمة المرور؟",
     login_loading: "جاري تسجيل الدخول",
     error_login: "البريد الكترونى وكلمة المرور غير صحيحين",
     add_user: "إنشاء حساب",
@@ -85,6 +85,14 @@ export default {
     joining_contest:"جاري الإنضمام إلى المسابقة",
     comfirm_join_quit:"هل تريد الأنضمام في هذه المسابقة و الخروج من المسابقة الأخرى ؟",
     creator:"المنشيء",
+    "exist":"هل تريد الخروج من البرنامج ؟",
+    "his_aya":"أياتها",
+    "quran": "القرآن الكريم",
+    "ok" : "موافق",
+    "cancel" : "إلغاء",
+
+    "password_mismatched" : "كلمة المرور لا تماثل التأكيد",
+
     messages: {
         _default: function(n) {
             return "قيمة الحقل " + n + " غير صحيحة.";
