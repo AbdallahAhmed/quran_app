@@ -1,19 +1,19 @@
 <template>
-    <div>
+    <div class="page-container" :style="$app.t('dir')">
 
         <div class="loader-wrapper" :hidden="!loading">
             <div class="preloader color-green" :hidden="!loading"></div>
         </div>
 
-        <div :hidden="loading" style="direction: rtl" class="contest-wrapper">
+        <div :hidden="loading" class="contest-wrapper">
             <p class="page-title">
-                <span class="row"><a class="left"> المسابقات</a>
-                    <a href="/allcontests" class="link right">الكل المسابقات</a>
+                <span class="row"><a class="left"> {{$app.t("contests")}}</a>
+                    <a href="/allcontests" class="link right">{{$app.t("all_contests")}}</a>
 
                 </span>
             </p>
 
-            <div class="page-container">
+            <div>
                 <div class="contest-cards-comming" v-if="showed">
                     <div class="contest-cards-list swiper-comming">
                         <div class="swiper-wrapper">
@@ -27,18 +27,18 @@
                                         </div>
                                         <div class="col-50 flex-align-expired">
                                             <img width="20" src="./../../assets/img/noun_users_140450@2x.png">
-                                            <span class="time">عضو 11</span>
+                                            <span class="time">{{$app.t('member')}} 11</span>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row" style="justify-content: flex-start;">
                                     <button class="col-50 btn btn-quran btn-margin flex-align" @click="join(contest.id)">
-                                        <div>مشاركة</div>
+                                        <div>{{$app.t("share")}}</div>
                                         <div class="paddingtop10">
                                             <img src="../../assets/img/share-black.png" alt="share">
                                         </div>
                                     </button>
-                                    <button @click="()=> contest.is_joined ? leave(contest.id): join(contest.id) " class="col-50 btn btn-quran btn-margin" >{{contest.is_joined?"خروج":"دخول"}}</button>
+                                    <button @click="()=> contest.is_joined ? leave(contest.id): join(contest.id) " class="col-50 btn btn-quran btn-margin">{{contest.is_joined? $app.t('quit'):$app.t('enroll')}}</button>
                                 </div>
                             </div>
                         </div>
@@ -47,7 +47,7 @@
 
                 <p class="page-title">
                     <span class="row">
-                        <a class="col-70"> المسابقة المنضم ليها</a>
+                        <a> {{$app.t("current_contest")}}</a>
                     </span>
                 </p>
 
@@ -56,7 +56,7 @@
                         <div class="row">
                             <div class="col-60 time">
                                 <a class="title">{{current.name}}</a>
-                                <div> بحر مالح</div>
+                                <div>{{current.creator?current.creator.first_name:null}}</div>
                                 <br>
                             </div>
                             <div class="time col-40" style="display:flex; flex-direction: column; align-items:flex-end;">
@@ -66,33 +66,33 @@
                                 </div>
                                 <div class="flex-align-expired">
                                     <img width="20" src="./../../assets/img/noun_users_140450@2x.png">
-                                    <span class="time">عضو 11</span>
+                                    <span class="time">{{$app.t('member')}} 11</span>
                                 </div>
                             </div>
                         </div>
 
                         <div class="row" style="justify-content: flex-start;">
                             <button class="col-33 btn btn-quran btn-margin flex-align" @click="join(contest.id)">
-                                <div>مشاركة</div>
+                                <div>{{$app.t("share")}}</div>
                                 <div class="paddingtop10">
                                     <img src="../../assets/img/share-black.png" alt="share">
                                 </div>
                             </button>
-                            <button @click="leave(current.id)" class="col-33 btn btn-quran btn-margin" v-if="current.is_joined">خروج</button>
+                            <button @click="leave(current.id)" class="col-33 btn btn-quran btn-margin" v-if="current.is_joined">{{$app.t('quit')}}</button>
                         </div>
                     </div>
-                    <div v-if="!(current&&current.id)" class="row contest-cards-item contest-current">
-                        <p>أبدأ فى ثواب جديد وقم بإنشاء مسابقة مع أصدقائك و عائلتك</p>
-                        <a class="contest-button link col-1col-50">
-                            أنشاء مسابقة جديد
+                    <div v-if="!(current&&current.id)" class="row contest-cards-item">
+                        <p>{{$app.t("before_create_contest")}}</p>
+                        <a class="contest-button link col-1col-50" href="/newcontest">
+                            {{$app.t('create_contest')}}
                         </a>
                     </div>
                 </div>
-
+            </div>
+            <div>
                 <p class="page-title">
-                    <span class="row"><a class="left"> المسابقات</a>
-                        <a href="/expiredcontests" class="link right">الكل المسابقات</a>
-
+                    <span class="row"><a class="left"> {{$app.t("contests")}}</a>
+                        <a href="/expiredcontests" class="link right">{{$app.t("all_contests")}}</a>
                     </span>
                 </p>
 
@@ -173,8 +173,8 @@ export default {
       this.$f7router.navigate(`/contest/${id}`);
     },
     leave(id) {
-      this.$f7.dialog.confirm("هل تريد الخروج من المسابقة ؟", () => {
-        this.$f7.dialog.preloader("جاري الخروج من المسابقة");
+      this.$f7.dialog.confirm(this.$app.t('comfirm_quit'), () => {
+        this.$f7.dialog.preloader(this.$app.t('leaving_contest'));
         this.$store
           .dispatch("leaveContest", id)
           .then(() => {
@@ -185,7 +185,7 @@ export default {
               this.$f7router.navigate("/login");
               this.$f7.dialog.close();
             } else {
-              this.$f7.dialog.alert("حاول مرة أخرى في وقت لاحق!", "خطأ !");
+              this.$f7.dialog.alert(this.$app.t('error'));
               setTimeout(() => {
                 this.$f7.dialog.close();
               }, 2000);
@@ -196,10 +196,10 @@ export default {
     join(id) {
       this.$f7.dialog.confirm(
         this.$store.getters.currentContest.id
-          ? "هل تريد الأنضمام في هذه المسابقة و الخروج من المسابقة الأخرى ؟"
-          : "هل تريد الأنضمام في هذه المسابقة ؟",
+          ? this.$app.t('comfirm_join_quit')
+          : this.$app.t('comfirm_join'),
         () => {
-          this.$f7.dialog.preloader("جاري الإنضمام إلى المسابقة");
+          this.$f7.dialog.preloader(this.$app.t('joining_contest'));
           this.$store
             .dispatch("joinContest", id)
             .then(() => {
@@ -209,7 +209,7 @@ export default {
               console.log(err);
               if (err.status == 401) this.$f7router.navigate("/login");
               else {
-                this.$f7.dialog.alert("حاول مرة أخرى في وقت لاحق!", "خطأ !");
+                this.$f7.dialog.alert(this.$app.t('error'));
                 setTimeout(() => {
                   this.$f7.dialog.close();
                 }, 2000);
@@ -262,5 +262,18 @@ export default {
 .btn-quran.flex-align {
   padding-bottom: 4px;
   padding-top: 4px;
+}
+
+.contest-current,
+.contest-wrapper .page-container .page-title {
+  width: 100%;
+  margin: 0 auto;
+}
+.contest-current .contest-cards-item {
+  width: 90%;
+}
+
+.page-container {
+  width: 100%;
 }
 </style>

@@ -685,7 +685,7 @@ a.forget-password {
     font-family: initial;
     text-align: right;
     display: block;
-    padding: 7px 22px 7px 0px;
+    padding: 7px 10px 7px 10px;
     margin-top: 0;
     margin-bottom: 0;
     font-size: 25px;
@@ -822,7 +822,6 @@ a.forget-password {
 
 .page-container {
     width: calc(100% - 30px);
-    margin: auto;
     height: 100vh;
 }
 

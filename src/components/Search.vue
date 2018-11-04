@@ -34,7 +34,7 @@
 
                 <div class="searchbar-found" v-if="searchQuery.length!=0">
                     <ul>
-                        <li v-for="ayat of results">
+                        <li v-for="ayat of results" :key="ayat.id">
                             <div class="row">
                                 <a :href="'/preview/' + ayat.page_id + '/' + ayat.id" class="col-80">
                                     {{ayat.text}}

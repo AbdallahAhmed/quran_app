@@ -19,13 +19,13 @@
         <div class="col-55">
           <div class="title sm"> {{contest.name}} </div>
           <div class="user-and-goal">
-            <div>المنشيء : {{contest.creator&& contest.creator.first_name}}</div>
+            <div> {{$app.t('creator')}} : {{contest.creator&& contest.creator.first_name}}</div>
             <div>{{contest.goal}}</div>
           </div>
         </div>
         <div class=" col-42 is-150px">
-          <button class="btn green-btn" @click="()=>contest.is_joined?leave():join()"> {{contest.is_joined?"خروج":"أنضم"}}</button>
-          <button class="btn yellow-btn"> تجاهل</button>
+          <button class="btn green-btn" @click="()=>contest.is_joined?leave():join()"> {{contest.is_joined?$app.t('quit'):$app.t('enroll')}}</button>
+          <button class="btn yellow-btn"> {{$app.t('ignore')}}</button>
         </div>
       </div>
       <div class="row rtl padding10">
@@ -35,7 +35,7 @@
           </div>
           <div class="col-70">
 
-            <div class="title sm"> تاريخ الإنتهاء </div>
+            <div class="title sm"> {{$app.t('end_date')}} </div>
             <div class="date"> {{moment(contest.expired_at)}}</div>
           </div>
 
@@ -46,7 +46,7 @@
             <img class="img" src="./../assets/img/noun_calender_652711.png" />
           </div>
           <div class="col-70">
-            <div class="title sm"> تاريخ البدأ </div>
+            <div class="title sm"> {{$app.t('start_date')}}</div>
             <div class="date"> {{moment(contest.start_at)}}</div>
           </div>
 
@@ -58,7 +58,7 @@
           </div>
           <div class="col-70">
             <div class="title sm"> عدد الأعضاء </div>
-            <div class="date"> {{contest.member_counter}} عضو</div>
+            <div class="date"> {{contest.member_counter}} {{$app.t('member')}}</div>
           </div>
 
         </div>
@@ -151,8 +151,8 @@ export default {
     },
     leave() {
       let { id } = this.contest;
-      this.$f7.dialog.confirm("هل تريد الخروج من المسابقة ؟", () => {
-        this.$f7.dialog.preloader("جاري الخروج من المسابقة");
+      this.$f7.dialog.confirm(this.$app.t('comfirm_quit'), () => {
+        this.$f7.dialog.preloader(this.$app.t('leaving_contest'));
         this.$store
           .dispatch("leaveContest", id)
           .then(() => {
@@ -160,7 +160,7 @@ export default {
             this.$f7.dialog.close();
           })
           .catch(err => {
-            this.$f7.dialog.alert("حاول مرة أخرى في وقت لاحق!", "خطأ !");
+            this.$f7.dialog.alert(this.$app.t("error"));            
             setTimeout(() => {
               this.$f7.dialog.close();
             }, 2000);
@@ -171,10 +171,10 @@ export default {
       let { id } = this.contest;
       this.$f7.dialog.confirm(
         this.$store.getters.currentContest.id
-          ? "هل تريد الأنضمام في هذه المسابقة و الخروج من المسابقة الأخرى ؟"
-          : "هل تريد الأنضمام في هذه المسابقة ؟",
+         ? this.$app.t("comfirm_join_quit")
+          : this.$app.t("comfirm_join"),
         () => {
-          this.$f7.dialog.preloader("جاري الإنضمام إلى المسابقة");
+          this.$f7.dialog.preloader(this.$app.t("joining_contest"));          
           this.$store
             .dispatch("joinContest", id)
             .then(() => {
@@ -186,7 +186,7 @@ export default {
                 this.$f7router.navigate("/login");
                 this.$f7.dialog.close();
               } else {
-                this.$f7.dialog.alert("حاول مرة أخرى في وقت لاحق!", "خطأ !");
+                this.$f7.dialog.alert(this.$app.t("error"));                
                 setTimeout(() => {
                   this.$f7.dialog.close();
                 }, 2000);

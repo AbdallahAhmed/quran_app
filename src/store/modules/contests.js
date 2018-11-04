@@ -96,6 +96,12 @@ const actions = {
             .then(() => {
                 commit("JOIN_CONTEST", payload);
             });
+    },
+    createContest({commit},payload){
+        return Vue.http
+                .post("contests/create",payload).then(res =>{
+                    commit("CREATE_CONTEST",res.body.data);
+                })
     }
 };
 
@@ -138,6 +144,11 @@ const mutations = {
                 (contests[i].is_joined = false) || (state.currentContest = {});
         state.contests.data = contests;
         state.currentContest = {};
+    },
+    CREATE_CONTEST(state,payload){
+        state.currentContest = payload;
+        state.contests.data = state.contests.data.concat([payload]);
+        state.contests.offset++;
     }
 };
 

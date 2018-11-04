@@ -1,6 +1,6 @@
 <template>
   <div>
-    <p class="page-title"> <span>المسابقات</span>  </p>
+    <p class="page-title"> <span>{{$app.t('contests')}}</span>  </p>
 
     <div v-if="!loading">
       <div class="contest-card-unauthed row" v-for="contest in contests" :key="contest.id" @click="openDetails(contest.id)">
@@ -8,7 +8,7 @@
           <div style="direction:rtl">
             <img class="kas-img" src="../../assets/img/noun_users_140450@2x.png" />
             <span style="font-size:14px; margin-top:3px; margin-left: 3px;">{{contest.member_counter}}</span>
-            <span> عضو </span>
+            <span> {{$app.t('member')}} </span>
           </div>
         </div>
         <div class="col-50">
@@ -27,7 +27,7 @@
       <div class="preloader color-green"></div>
     </div>
     <div v-if="!loading&&contests.length===0" class="searchbar-hide-on-search">
-      <p><label for="input-search">لا يوجد مسابقات</label></p>
+      <p><label for="input-search">{{$app.t('no_contests')}}</label></p>
     </div>
   </div>
 </template>

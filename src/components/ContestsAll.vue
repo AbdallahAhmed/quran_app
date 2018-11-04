@@ -12,8 +12,8 @@
         <div class="loader-wrapper" v-if="!contests.length">
             <div class="preloader color-green"></div>
         </div>
-        <div v-else>
-            <p class="page-title">كل المسابقات</p>
+        <div v-else :style="$app.t('dir')">
+            <p class="page-title">{{$app.t('all_contests')}}</p>
             <div class="scroll-area">
                 <vue-scroll @load-start="loadmore">
                     <div class="infinite-scroll-content infinite-scroll-bottom" style="padding-bottom: 50px">
@@ -47,25 +47,25 @@
                                             <span>
                                                 <img src="./../assets/img/share-black.png" alt="share">
                                             </span>
-                                            <label>{{contest.member_counter}} عضو</label>
+                                            <label>{{contest.member_counter}} {{$app.t('member')}}</label>
                                         </div>
                                     </div>
                                 </div>
 
-                                    <div class=" margin-bottom">
-                                        <button class="col-33 btn btn-quran btn-margin flex-align" @click="join(contest.id)">
-                                            <div>مشاركة</div>
-                                            <div class="paddingtop10">
-                                                <img src="./../assets/img/share-black.png" alt="share">
-                                            </div>
-                                        </button>
-                                        <button @click="leave(contest.id)" class="col-33 btn btn-quran btn-margin" v-if="contest.is_joined">خروج</button>
-                                        <button class="col-33 btn btn-quran btn-margin" @click="join(contest.id)" v-if="!contest.is_joined">أنضم</button>
-                                        <button class="col-33 btn btn-quran btn-margin" style="background-color: #F5D42F" v-if="!contest.is_joined">
-                                            تجاهل
-                                        </button>
+                                <div class=" margin-bottom">
+                                    <button class="col-33 btn btn-quran btn-margin flex-align" @click="join(contest.id)">
+                                        <div>{{$app.t('share')}}</div>
+                                        <div class="paddingtop10">
+                                            <img src="./../assets/img/share-black.png" alt="share">
+                                        </div>
+                                    </button>
+                                    <button @click="leave(contest.id)" class="col-33 btn btn-quran btn-margin" v-if="contest.is_joined">{{$app.t('quit')}}</button>
+                                    <button class="col-33 btn btn-quran btn-margin" @click="join(contest.id)" v-if="!contest.is_joined">{{$app.t('enroll')}}</button>
+                                    <button class="col-33 btn btn-quran btn-margin" style="background-color: #F5D42F" v-if="!contest.is_joined">
+                                        {{$app.t('ignore')}}
+                                    </button>
 
-                                    </div>
+                                </div>
 
                             </div>
                         </div>
@@ -79,111 +79,111 @@
 </template>
 
 <script>
-    export default {
-        computed: {
-            contests() {
-                return this.$store.getters.allContests;
-            }
-        },
-        created() {
-            this.$store.getters.allContests.length ? null : this.loadContests();
-        },
-        methods: {
-            loadmore(_, __, done) {
-                this.loadContests().then(data => {
-                    if (!data.length) done();
-                });
-            },
-            loadContests() {
-                return this.$store.dispatch("loadAllContests");
-            },
-            leave(id) {
-                this.$f7.dialog.confirm("هل تريد الخروج من المسابقة ؟", () => {
-                    this.$f7.dialog.preloader("جاري الخروج من المسابقة");
-                    this.$store
-                        .dispatch("leaveContest", id)
-                        .then(() => {
-                            this.$f7.dialog.close();
-                        })
-                        .catch(err => {
-                            this.$f7.dialog.alert("حاول مرة أخرى في وقت لاحق!", "خطأ !");
-                            setTimeout(() => {
-                                this.$f7.dialog.close();
-                            }, 2000);
-                        });
-                });
-            },
-            join(id) {
-                this.$f7.dialog.confirm(
-                    this.$store.getters.currentContest.id
-                        ? "هل تريد الأنضمام في هذه المسابقة و الخروج من المسابقة الأخرى ؟"
-                        : "هل تريد الأنضمام في هذه المسابقة ؟",
-                    () => {
-                        this.$f7.dialog.preloader("جاري الإنضمام إلى المسابقة");
-                        this.$store
-                            .dispatch("joinContest", id)
-                            .then(() => {
-                                this.$f7.dialog.close();
-                            })
-                            .catch(err => {
-                                if (err.status == 401) {
-                                    this.$f7router.navigate("/login");
-                                    this.$f7.dialog.close();
-                                } else {
-                                    this.$f7.dialog.alert("حاول مرة أخرى في وقت لاحق!", "خطأ !");
-                                    setTimeout(() => {
-                                        this.$f7.dialog.close();
-                                    }, 2000);
-                                }
-                            });
-                    }
-                );
-            }
-        },
-        components: {
-            navbar: require("./partials/Navbar.vue"),
-            "main-toolbar": require("./partials/MainToolbar.vue")
+export default {
+  computed: {
+    contests() {
+      return this.$store.getters.allContests;
+    }
+  },
+  created() {
+    this.$store.getters.allContests.length ? null : this.loadContests();
+  },
+  methods: {
+    loadmore(_, __, done) {
+      this.loadContests().then(data => {
+        if (!data.length) done();
+      });
+    },
+    loadContests() {
+      return this.$store.dispatch("loadAllContests");
+    },
+    leave(id) {
+      this.$f7.dialog.confirm(this.$app.t("comfirm_quit"), () => {
+        this.$f7.dialog.preloader(this.$app.t("leaving_contest"));
+        this.$store
+          .dispatch("leaveContest", id)
+          .then(() => {
+            this.$f7.dialog.close();
+          })
+          .catch(err => {
+            this.$f7.dialog.alert(this.$app.t("error"));
+            setTimeout(() => {
+              this.$f7.dialog.close();
+            }, 2000);
+          });
+      });
+    },
+    join(id) {
+      this.$f7.dialog.confirm(
+        this.$store.getters.currentContest.id
+          ? this.$app.t("comfirm_join_quit")
+          : this.$app.t("comfirm_join"),
+        () => {
+          this.$f7.dialog.preloader(this.$app.t("joining_contest"));
+          this.$store
+            .dispatch("joinContest", id)
+            .then(() => {
+              this.$f7.dialog.close();
+            })
+            .catch(err => {
+              if (err.status == 401) {
+                this.$f7router.navigate("/login");
+                this.$f7.dialog.close();
+              } else {
+                this.$f7.dialog.alert(this.$app.t("error"));
+                setTimeout(() => {
+                  this.$f7.dialog.close();
+                }, 2000);
+              }
+            });
         }
-    };
+      );
+    }
+  },
+  components: {
+    navbar: require("./partials/Navbar.vue"),
+    "main-toolbar": require("./partials/MainToolbar.vue")
+  }
+};
 </script>
 
 <style scoped>
-    .contest-card {
-        background-color: white;
-        padding: 10px;
-    }
+.contest-card {
+  background-color: white;
+  padding: 10px;
+}
 
-    .contest-wrapper {
-        direction: rtl;
-        padding: 10px;
-    }
+.contest-wrapper {
+  direction: rtl;
+  padding: 10px;
+}
 
-    .contest-wrapper .contest-card .contest {
-        margin: 0 auto;
-    }
+.contest-wrapper .contest-card .contest {
+  margin: 0 auto;
+}
 
-    .contest a {
-        color: inherit;
-    }
+.contest a {
+  color: inherit;
+}
 
-    .btn-margin{
-        margin-left: 8px;
-    }
+.btn-margin {
+  margin-left: 8px;
+}
 
-    .scroll-area {
-        height: 36rem;
-        overflow: auto;
-    }
-    .flex-align{
-        display: inline-flex;
-        justify-content: space-around;
-        align-items: center;
-    }
-    .paddingtop10{
-        padding-top: 10px;
-    }
-    .btn-quran.flex-align{
-        padding-bottom: 4px;
-        padding-top: 4px;
-    }
+.scroll-area {
+  height: 36rem;
+  overflow: auto;
+}
+.flex-align {
+  display: inline-flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.paddingtop10 {
+  padding-top: 10px;
+}
+.btn-quran.flex-align {
+  padding-bottom: 4px;
+  padding-top: 4px;
+}
 </style>
