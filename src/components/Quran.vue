@@ -9,8 +9,9 @@
         </div>
 
         <div class="scroll-area">
-            <vue-scroll ref="quran" @handle-scroll-complete="handeScroll" @refresh-start="getPrevSura" @load-start="getNextSura">
-                <sura v-for="sura in suras" :sura="sura"></sura>
+            <vue-scroll ref="quran" @handle-scroll-complete="handeScroll" @refresh-start="getPrevSura"
+                        @load-start="getNextSura">
+                <sura v-for="sura in suras" :sura="sura" :key="sura.id"></sura>
             </vue-scroll>
         </div>
 
@@ -27,7 +28,8 @@
         data() {
             return {
                 suras: [],
-                sura_id: 0
+                sura_id: 0,
+                blocking: false,
             }
         },
 
@@ -71,48 +73,54 @@
 
             getNextSura(x, y, done) {
 
-                let next_id = this.getNextId();
+                if (!this.blocking) {
+                    let next_id = this.getNextId();
+                    if (next_id > 114) {
+                        return done();
+                    }
 
-                if (next_id > 114) {
-                    return done();
+                    if (this.suras.length) {
+
+                        this.blocking = true;
+                        this.$store.dispatch("get_sura", {surah_id: next_id}).then((response) => {
+
+                            this.suras.push(response.data.data);
+                            done();
+                            this.blocking = false;
+                        });
+
+                    }
                 }
-
-                if (this.suras.length) {
-
-                    this.$store.dispatch("get_sura", {surah_id: this.getNextId()}).then((response) => {
-
-                        this.suras.push(response.data.data);
-
-                        done();
-
-                    });
-
-                }
+                done()
             },
 
             getPrevSura(x, y, done) {
 
-                let prev_id = this.getPrevId();
+                if (!this.blocking) {
+                    let prev_id = this.getPrevId();
 
-                if (prev_id <= 0) {
-                    return done();
+                    if (prev_id <= 0) {
+                        return done();
+                    }
+
+                    this.blocking=true;
+                    this.$store.dispatch("get_sura", {surah_id: prev_id}).then((response) => {
+
+                        this.suras = [response.data.data].concat(this.suras);
+
+                        // Saving last viewed page
+
+                        this.$store.commit("LAST_SURA", response.data.data.id);
+
+                        // Saving last viewed page
+
+                        this.$store.commit("LAST_PAGE", response.data.data.page_id);
+
+                        done();
+                        this.blocking=false;
+
+                    });
                 }
-
-                this.$store.dispatch("get_sura", {surah_id: prev_id}).then((response) => {
-
-                    this.suras = [response.data.data].concat(this.suras);
-
-                    // Saving last viewed page
-
-                    this.$store.commit("LAST_SURA", response.data.data.id);
-
-                    // Saving last viewed page
-
-                    this.$store.commit("LAST_PAGE", response.data.data.page_id);
-
-                    done();
-
-                });
             },
 
 
@@ -124,7 +132,7 @@
                 return this.suras[0].id - 1;
             },
 
-            handeScroll(){
+            handeScroll() {
                 EventBus.$emit("vscroll");
             }
         },
@@ -152,7 +160,7 @@
         margin: 50px 0;
     }
 
-    .__refresh, .__load{
+    .__refresh, .__load {
         margin: 30px 0;
     }
 

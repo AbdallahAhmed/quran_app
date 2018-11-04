@@ -38,8 +38,8 @@
 
             <div class="block quran-sura">
 
-                <page v-for="(page, i) in sura.pages" :page="page" :id="page[0].page_id" v-if="sura">
-                    <aya v-for="aya in page" :aya_row="aya" :surah="sura"></aya>
+                <page v-for="(page, i) in sura.pages" :page="page"  :key="page[0].page_id" :id="page[0].page_id" v-if="sura">
+                    <aya v-for="aya in page" :aya_row="aya" :key="aya.id" :surah="sura"></aya>
                 </page>
 
             </div>
