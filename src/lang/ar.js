@@ -92,7 +92,8 @@ export default {
     "quran": "القرآن الكريم",
     "ok" : "موافق",
     "cancel" : "إلغاء",
-
+    "remaining_page":"صفحة متبقية",
+    "read_page":"صفحة مقروئة",
     "password_mismatched" : "كلمة المرور لا تماثل التأكيد",
 
     messages: {

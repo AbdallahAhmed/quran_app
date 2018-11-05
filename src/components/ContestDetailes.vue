@@ -1,136 +1,140 @@
 <template>
-  <div class="page" :class="'page-login'">
+    <div class="page" :class="'page-login'">
 
-    <navbar>
-      <template slot="left">
-        <a href="" class="link back navbar-back">
-          <i class="f7-icons">arrow_left</i>
-        </a>
-      </template>
-    </navbar>
+        <navbar>
+            <template slot="left">
+                <a href="" class="link back navbar-back">
+                    <i class="f7-icons">arrow_left</i>
+                </a>
+            </template>
+        </navbar>
 
-    <div class="loader-wrapper" v-if="!contest">
-      <div class="preloader color-green" v-if="!contest"></div>
+        <div class="loader-wrapper" v-if="!contest">
+            <div class="preloader color-green" v-if="!contest"></div>
+        </div>
+
+        <div v-else class="contest-detailes">
+            <div class="row rtl padding10">
+
+                <div class="col-55">
+                    <div class="title sm"> {{contest.name}}</div>
+                    <div class="user-and-goal">
+                        <div> {{$app.t('creator')}} : {{contest.creator&& contest.creator.first_name}}</div>
+                        <div>{{contest.goal}}</div>
+                    </div>
+                </div>
+                <div class=" col-42 is-150px">
+                    <button class="btn green-btn" v-if="contest.is_opened" @click="()=>contest.is_joined?leave():join()">
+                        {{contest.is_joined?$app.t('quit'):$app.t('enroll')}}
+                    </button>
+                    <button class="btn yellow-btn"  v-if="contest.is_opened"> {{$app.t('ignore')}}</button>
+                </div>
+            </div>
+            <div class="row rtl padding10">
+                <div class="col-45 row">
+                    <div class="col-30">
+                        <img class="img" src="./../assets/img/noun_calender_652711.png"/>
+                    </div>
+                    <div class="col-70">
+
+                        <div class="title sm"> {{$app.t('end_date')}}</div>
+                        <div class="date"> {{moment(contest.expired_at)}}</div>
+                    </div>
+
+                </div>
+
+                <div class="col-45 row">
+                    <div class="col-30">
+                        <img class="img" src="./../assets/img/noun_calender_652711.png"/>
+                    </div>
+                    <div class="col-70">
+                        <div class="title sm"> {{$app.t('start_date')}}</div>
+                        <div class="date"> {{moment(contest.start_at)}}</div>
+                    </div>
+
+                </div>
+
+                <div class="col-45 row">
+                    <div class="col-30">
+                        <img class="img" src="../assets/img/noun_users_140450@2x.png"/>
+                    </div>
+                    <div class="col-70">
+                        <div class="title sm"> عدد الأعضاء</div>
+                        <div class="date"> {{contest.member_counter}} {{$app.t('member')}}</div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- ~~~~~~~~~ users list ~~~~~~~~~~ -->
+            <div v-for="user of contest.members" :key="user.id">
+                <div class="row" style="margin-top:30px;">
+                    <div class="img-div"
+                         :style="{backgroundImage: 'url(http://misharialafasy.net/wp-content/uploads/2014/09/5.jpg)'}"/>
+                    <strong class="p-text">{{user.first_name}}</strong>
+                </div>
+
+                <div class="row" style="direction: rtl;">
+
+                    <div class="col-25 ds-flex flex-col">
+                        <div class="flex1 ds-flex">
+                            <img class="sm-img" src="./../assets/img/noun_calender_652711.png"/>
+                        </div>
+                        <div class="flex1 ds-flex">
+                            تاريخ البدأ
+                        </div>
+                        <div class="flex1 ds-flex">
+                            <div class="date">{{moment(user.pivot.join_at)}}</div>
+                        </div>
+                    </div>
+
+                    <div class="col-25 ds-flex flex-col">
+                        <div class="flex1 ds-flex">
+                            <img class="sm-img" src="../assets/img/clock.png"/>
+                        </div>
+                        <div class="flex1 ds-flex">
+                            {{((len(user.pivot.pages)/60).toFixed(1))}}
+                        </div>
+                        <div class="flex1 ds-flex">
+                            {{$app.t('hour')}}
+                        </div>
+                    </div>
+
+                    <div class="col-25 ds-flex flex-col">
+                        <div class="flex1 ds-flex">
+                            <img class="sm-img" src="./../assets/img/noun_calender_652711.png"/>
+                        </div>
+                        <div class="flex1 ds-flex">
+                            {{604-len(user.pivot.pages)}}
+                        </div>
+                        <div class="flex1 ds-flex">
+                            {{$app.t('remaining_page')}}
+                        </div>
+                    </div>
+
+                    <div class="col-25 ds-flex flex-col">
+                        <div class="flex1 ds-flex">
+                            <img class="sm-img" src="./../assets/img/noun_calender_652711.png"/>
+                        </div>
+                        <div class="flex1 ds-flex">
+                            {{len(user.pivot.pages)}}
+                        </div>
+                        <div class="flex1 ds-flex">
+                            {{$app.t('read_page')}}
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~` -->
+
+        </div>
     </div>
-
-    <div v-else class="contest-detailes">
-      <div class="row rtl padding10">
-
-        <div class="col-55">
-          <div class="title sm"> {{contest.name}} </div>
-          <div class="user-and-goal">
-            <div> {{$app.t('creator')}} : {{contest.creator&& contest.creator.first_name}}</div>
-            <div>{{contest.goal}}</div>
-          </div>
-        </div>
-        <div class=" col-42 is-150px">
-          <button class="btn green-btn" @click="()=>contest.is_joined?leave():join()"> {{contest.is_joined?$app.t('quit'):$app.t('enroll')}}</button>
-          <button class="btn yellow-btn"> {{$app.t('ignore')}}</button>
-        </div>
-      </div>
-      <div class="row rtl padding10">
-        <div class="col-45 row">
-          <div class="col-30">
-            <img class="img" src="./../assets/img/noun_calender_652711.png" />
-          </div>
-          <div class="col-70">
-
-            <div class="title sm"> {{$app.t('end_date')}} </div>
-            <div class="date"> {{moment(contest.expired_at)}}</div>
-          </div>
-
-        </div>
-
-        <div class="col-45 row">
-          <div class="col-30">
-            <img class="img" src="./../assets/img/noun_calender_652711.png" />
-          </div>
-          <div class="col-70">
-            <div class="title sm"> {{$app.t('start_date')}}</div>
-            <div class="date"> {{moment(contest.start_at)}}</div>
-          </div>
-
-        </div>
-
-        <div class="col-45 row">
-          <div class="col-30">
-            <img class="img" src="../assets/img/noun_users_140450@2x.png" />
-          </div>
-          <div class="col-70">
-            <div class="title sm"> عدد الأعضاء </div>
-            <div class="date"> {{contest.member_counter}} {{$app.t('member')}}</div>
-          </div>
-
-        </div>
-      </div>
-
-      <!-- ~~~~~~~~~ users list ~~~~~~~~~~ -->
-      <div v-for="user of contest.members" :key="user.id">
-        <div class="row" style="margin-top:30px;">
-          <div class="img-div" :style="{backgroundImage: 'url(http://misharialafasy.net/wp-content/uploads/2014/09/5.jpg)'}" />
-          <strong class="p-text">{{user.first_name}}</strong>
-        </div>
-
-        <div class="row" style="direction: rtl;">
-
-          <div class="col-25 ds-flex flex-col">
-            <div class="flex1 ds-flex">
-              <img class="sm-img" src="./../assets/img/noun_calender_652711.png" />
-            </div>
-            <div class="flex1 ds-flex">
-              تاريخ البدأ
-            </div>
-            <div class="flex1 ds-flex">
-              <div class="date">{{moment(user.pivot.join_at)}}</div>
-            </div>
-          </div>
-
-          <div class="col-25 ds-flex flex-col">
-            <div class="flex1 ds-flex">
-              <img class="sm-img" src="../assets/img/clock.png" />
-            </div>
-            <div class="flex1 ds-flex">
-              20
-            </div>
-            <div class="flex1 ds-flex">
-              ساعة
-            </div>
-          </div>
-
-          <div class="col-25 ds-flex flex-col">
-            <div class="flex1 ds-flex">
-              <img class="sm-img" src="./../assets/img/noun_calender_652711.png" />
-            </div>
-            <div class="flex1 ds-flex">
-              20
-            </div>
-            <div class="flex1 ds-flex">
-              صفحة متبقية
-            </div>
-          </div>
-
-          <div class="col-25 ds-flex flex-col">
-            <div class="flex1 ds-flex">
-              <img class="sm-img" src="./../assets/img/noun_calender_652711.png" />
-            </div>
-            <div class="flex1 ds-flex">
-              20
-            </div>
-            <div class="flex1 ds-flex">
-              صفحة مقروئة
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~` -->
-
-    </div>
-  </div>
 </template>
 
 <script>
-import moment from "moment";
+    import moment from "moment";
 
 export default {
   data() {
@@ -217,129 +221,208 @@ export default {
                 }, 2000);
               }
             });
+        },
+        methods: {
+            moment(...args) {
+                return moment(...args).format("YYYY/MM/DD");
+            },
+            percentage(pages) {
+
+                return this.parse(pages).length / 604
+
+            },
+            parse(pages) {
+                if(!pages){
+                    return [];
+                }
+                return (typeof pages) == "string" ? JSON.parse(pages) : pages;
+
+            },
+
+            len(pages) {
+                return this.parse(pages).length
+            },
+            leave() {
+                let {id} = this.contest;
+                this.$f7.dialog.confirm(this.$app.t('comfirm_quit'), () => {
+                    this.$f7.dialog.preloader(this.$app.t('leaving_contest'));
+                    this.$store
+                        .dispatch("leaveContest", id)
+                        .then(() => {
+                            this.contest.is_joined = false;
+                            this.$f7.dialog.close();
+                        })
+                        .catch(err => {
+                            this.$f7.dialog.alert(this.$app.t("error"));
+                            setTimeout(() => {
+                                this.$f7.dialog.close();
+                            }, 2000);
+                        });
+                });
+            },
+            join() {
+                let {id} = this.contest;
+                this.$f7.dialog.confirm(
+                    this.$store.getters.currentContest.id
+                        ? this.$app.t("comfirm_join_quit")
+                        : this.$app.t("comfirm_join"),
+                    () => {
+                        this.$f7.dialog.preloader(this.$app.t("joining_contest"));
+                        this.$store
+                            .dispatch("joinContest", id)
+                            .then(() => {
+                                this.contest.is_joined = true;
+                                this.$f7.dialog.close();
+                            })
+                            .catch(err => {
+                                if (err.status == 401) {
+                                    this.$f7router.navigate("/login");
+                                    this.$f7.dialog.close();
+                                } else {
+                                    this.$f7.dialog.alert(this.$app.t("error"));
+                                    setTimeout(() => {
+                                        this.$f7.dialog.close();
+                                    }, 2000);
+                                }
+                            });
+                    }
+                );
+            }
+        },
+        components: {
+            navbar: require("./partials/Navbar.vue")
         }
-      );
-    }
-  },
-  components: {
-    navbar: require("./partials/Navbar.vue")
-  }
-};
+    };
 </script>
 
 <style scoped>
-.page {
-  overflow: scroll;
-  padding-bottom: 30px;
-}
-.contest-detailes {
-  background-color: white;
-}
-.p-text {
-  position: relative;
-  display: block;
-  width: 100%;
-  text-align: center;
-  margin-top: 15px;
-  margin-bottom: 20px;
-}
-.p-text::before {
-  content: "";
-  width: 100%;
-  height: 1px;
-  background-color: lightgray;
-  position: absolute;
-  top: -39px;
-  left: 0;
-}
+    .page {
+        overflow: scroll;
+        padding-bottom: 30px;
+    }
 
-.img-div {
-  border: solid #37734a 2px;
-  width: 40px;
-  height: 40px;
-  border-radius: 50px;
-  margin: 0 auto;
-  z-index: 1;
-  background-position: center;
-  background-size: cover;
-}
-.rtl {
-  direction: rtl;
-}
+    .contest-detailes {
+        background-color: white;
+    }
 
-.padding10 {
-  padding: 20px;
-}
-.title {
-  text-align: right;
-  font-size: 1.6em;
-  font-weight: bold;
-  color: #37734a;
-}
-.user-and-goal {
-  color: gray;
-  font-size: 1.1em;
-  text-align: right;
-}
-.btn {
-  border: none;
-  height: 45px;
-  width: 140px;
-  color: white;
-  margin-top: 5px;
-  font-weight: bold;
-}
-.yellow-btn {
-  background: #f6c624;
-}
-.green-btn {
-  background-color: #37734a;
-}
+    .p-text {
+        position: relative;
+        display: block;
+        width: 100%;
+        text-align: center;
+        margin-top: 15px;
+        margin-bottom: 20px;
+    }
 
-.is-150px {
-  width: 150px;
-}
+    .p-text::before {
+        content: "";
+        width: 100%;
+        height: 1px;
+        background-color: lightgray;
+        position: absolute;
+        top: -39px;
+        left: 0;
+    }
 
-.date {
-  font-size: 0.8em;
-  color: gray;
-  margin: 3px;
-}
+    .img-div {
+        border: solid #37734a 2px;
+        width: 40px;
+        height: 40px;
+        border-radius: 50px;
+        margin: 0 auto;
+        z-index: 1;
+        background-position: center;
+        background-size: cover;
+    }
 
-.sm {
-  font-size: 1em;
-}
-.sm-img {
-  width: 20px;
-  height: 20px;
-}
-.ds-flex {
-  display: flex;
-  justify-content: center;
-}
-.flex-col {
-  flex-direction: column;
-  border: 1px solid #eaeaea;
-  border-right: none;
-  padding: 10px;
-  height: 120px;
-}
-.md .row .col-25 {
-  width: calc((100% - 0px * 3) / 4);
-}
-.col-45 {
-  margin-top: 15px;
-}
-.flex1 {
-  flex: 1;
-}
+    .rtl {
+        direction: rtl;
+    }
+
+    .padding10 {
+        padding: 20px;
+    }
+
+    .title {
+        text-align: right;
+        font-size: 1.6em;
+        font-weight: bold;
+        color: #37734a;
+    }
+
+    .user-and-goal {
+        color: gray;
+        font-size: 1.1em;
+        text-align: right;
+    }
+
+    .btn {
+        border: none;
+        height: 45px;
+        width: 140px;
+        color: white;
+        margin-top: 5px;
+        font-weight: bold;
+    }
+
+    .yellow-btn {
+        background: #f6c624;
+    }
+
+    .green-btn {
+        background-color: #37734a;
+    }
+
+    .is-150px {
+        width: 150px;
+    }
+
+    .date {
+        font-size: 0.8em;
+        color: gray;
+        margin: 3px;
+    }
+
+    .sm {
+        font-size: 1em;
+    }
+
+    .sm-img {
+        width: 20px;
+        height: 20px;
+    }
+
+    .ds-flex {
+        display: flex;
+        justify-content: center;
+    }
+
+    .flex-col {
+        flex-direction: column;
+        border: 1px solid #eaeaea;
+        border-right: none;
+        padding: 10px;
+        height: 120px;
+    }
+
+    .md .row .col-25 {
+        width: calc((100% - 0px * 3) / 4);
+    }
+
+    .col-45 {
+        margin-top: 15px;
+    }
+
+    .flex1 {
+        flex: 1;
+    }
 </style>
 
 <style>
-.preloader-inner-gap {
-  display: none !important;
-  width: 0px !important;
-}
+    .preloader-inner-gap {
+        display: none !important;
+        width: 0px !important;
+    }
 </style>
 
 <style>

@@ -49,6 +49,10 @@ export default [
     }, {
         path: "/contest/:contest_id",
         component: require("./components/ContestDetailes.vue")
+    },
+      {
+        path: "/khatimas/:khatima_id",
+        component: require("./components/Khatima.vue")
     }, {
         path: '/allcontests',
         component: require("./components/ContestsAll.vue")

@@ -65,6 +65,11 @@
 
 </template>
 
+<style scoped>
+    .page-container {
+        margin: auto;
+    }
+</style>
 <script>
 
     export default {
