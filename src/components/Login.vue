@@ -77,6 +77,8 @@
 
     import {mapState} from 'vuex';
 
+    import eventBus from './../events';
+
     export default {
 
         data: function () {
@@ -105,6 +107,7 @@
 
                         self.$store.dispatch('login', self.user).then((response) => {
                             setTimeout(()=> self.$f7router.back() , 500);
+                            eventBus.$emit('khatema_update')
                         }, (res) => {
                             self.$f7.notification.create({
                                 subtitle: self.$app.trans('error_login')

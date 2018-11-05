@@ -17,7 +17,8 @@
                 <div class="contest-cards-comming" v-if="showed">
                     <div class="contest-cards-list swiper-comming">
                         <div class="swiper-wrapper">
-                            <div class="swiper-slide contest-cards-item" v-for="contest  in contests.data" :key="contest.id">
+                            <div class="swiper-slide contest-cards-item" v-for="contest  in contests.data"
+                                 :key="contest.id">
                                 <div @click="openContestDetailes(contest.id)">
                                     <a class="title">{{contest.name}}</a>
                                     <div class="row">
@@ -32,13 +33,17 @@
                                     </div>
                                 </div>
                                 <div class="row" style="justify-content: flex-start;">
-                                    <button class="col-50 btn btn-quran btn-margin flex-align" @click="join(contest.id)">
+                                    <button class="col-50 btn btn-quran btn-margin flex-align"
+                                            @click="join(contest.id)">
                                         <div>{{$app.t("share")}}</div>
                                         <div class="paddingtop10">
                                             <img src="../../assets/img/share-black.png" alt="share">
                                         </div>
                                     </button>
-                                    <button @click="()=> contest.is_joined ? leave(contest.id): join(contest.id) " class="col-50 btn btn-quran btn-margin">{{contest.is_joined? $app.t('quit'):$app.t('enroll')}}</button>
+                                    <button @click="()=> contest.is_joined ? leave(contest.id): join(contest.id) "
+                                            class="col-50 btn btn-quran btn-margin">{{contest.is_joined?
+                                        $app.t('quit'):$app.t('enroll')}}
+                                    </button>
                                 </div>
                             </div>
                         </div>
@@ -59,7 +64,8 @@
                                 <div>{{current.creator?current.creator.first_name:null}}</div>
                                 <br>
                             </div>
-                            <div class="time col-40" style="display:flex; flex-direction: column; align-items:flex-end;">
+                            <div class="time col-40"
+                                 style="display:flex; flex-direction: column; align-items:flex-end;">
                                 <div class="flex-align-expired">
                                     <img width="20" src="./../../assets/img/clock.png">
                                     <span class="time">{{toTime(current.expired_at)}}</span>
@@ -78,7 +84,9 @@
                                     <img src="../../assets/img/share-black.png" alt="share">
                                 </div>
                             </button>
-                            <button @click="leave(current.id)" class="col-33 btn btn-quran btn-margin" v-if="current.is_joined">{{$app.t('quit')}}</button>
+                            <button @click="leave(current.id)" class="col-33 btn btn-quran btn-margin"
+                                    v-if="current.is_joined">{{$app.t('quit')}}
+                            </button>
                         </div>
                     </div>
                     <div v-if="!(current&&current.id)" class="row contest-cards-item">
@@ -103,11 +111,12 @@
                                 <a class="title">{{contest.name}}</a>
                                 <div class="row">
                                     <div class="col-50 flex-align-expired">
-                                        <img class="kas-img" src="../../assets/img/noun_calender_652711.png" />
-                                        <span style="font-size:0.9em;margin-top:5px;">{{moment(contest.expired_at)}}</span>
+                                        <img class="kas-img" src="../../assets/img/noun_calender_652711.png"/>
+                                        <span
+                                            style="font-size:0.9em;margin-top:5px;">{{moment(contest.expired_at)}}</span>
                                     </div>
                                     <div class="col-50 flex-align-expired">
-                                        <img class="kas-img" src="../../assets/img/Group 1034@2x.png" />
+                                        <img class="kas-img" src="../../assets/img/Group 1034@2x.png"/>
                                         <span>بحر حسن</span>
                                     </div>
                                 </div>
@@ -120,160 +129,179 @@
     </div>
 </template>
 
-<script>
-import moment from "moment";
+<style scoped>
+    .contest-cards-comming {
+        margin-bottom: 10px;
+        margin-right: 10px;
+    }
 
-export default {
-  data() {
-    return {
-      first_time: true,
-      loading: true
-    };
-  },
-  computed: {
-    showed() {
-      return this.first_time
-        ? this.$store.getters.home_tab == "competition"
-        : true;
-    },
-    contests() {
-      return this.$store.getters.contests_authed_tab;
-    },
-    current() {
-      return this.$store.getters.currentContest;
+    .contest-cards-old {
+        margin-right: 10px;
     }
-  },
-  mounted() {
-    this.$store.dispatch("getAuthedContests").then(() => {
-      this.loading = false;
-    });
-  },
-  updated() {
-    if (this.first_time && this.showed && !this.loading) {
-      var swiper = this.$f7.swiper.create(".swiper-comming", {
-        spaceBetween: 0,
-        slidesPerView: "auto"
-      });
-      var swiper = this.$f7.swiper.create(".swiper-old", {
-        spaceBetween: 0,
-        slidesPerView: "auto"
-      });
-      this.first_time = false;
-    }
-  },
-  methods: {
-    moment(...args) {
-      return moment(...args).format("YYYY/MM/DD");
-    },
-    toTime(time) {
-      let s = moment.duration(moment(time).diff(moment(), "seconds"));
-      return `${parseInt(s / 3600)}:${parseInt(s / 60) % 60}:${s % 60}`;
-    },
-    openContestDetailes(id) {
-      this.$f7router.navigate(`/contest/${id}`);
-    },
-    leave(id) {
-      this.$f7.dialog.confirm(this.$app.t('comfirm_quit'), () => {
-        this.$f7.dialog.preloader(this.$app.t('leaving_contest'));
-        this.$store
-          .dispatch("leaveContest", id)
-          .then(() => {
-            this.$f7.dialog.close();
-          })
-          .catch(err => {
-            if (err.status == 401) {
-              this.$f7router.navigate("/login");
-              this.$f7.dialog.close();
-            } else {
-              this.$f7.dialog.alert(this.$app.t('error'));
-              setTimeout(() => {
-                this.$f7.dialog.close();
-              }, 2000);
+
+</style>
+<script>
+    import moment from "moment";
+
+    export default {
+        data() {
+            return {
+                first_time: true,
+                loading: true
+            };
+        },
+        computed: {
+            showed() {
+                return this.first_time
+                    ? this.$store.getters.home_tab == "competition"
+                    : true;
+            },
+            contests() {
+                return this.$store.getters.contests_authed_tab;
+            },
+            current() {
+                return this.$store.getters.currentContest;
             }
-          });
-      });
-    },
-    join(id) {
-      this.$f7.dialog.confirm(
-        this.$store.getters.currentContest.id
-          ? this.$app.t('comfirm_join_quit')
-          : this.$app.t('comfirm_join'),
-        () => {
-          this.$f7.dialog.preloader(this.$app.t('joining_contest'));
-          this.$store
-            .dispatch("joinContest", id)
-            .then(() => {
-              this.$f7.dialog.close();
-            })
-            .catch(err => {
-              console.log(err);
-              if (err.status == 401) this.$f7router.navigate("/login");
-              else {
-                this.$f7.dialog.alert(this.$app.t('error'));
-                setTimeout(() => {
-                  this.$f7.dialog.close();
-                }, 2000);
-              }
+        },
+        mounted() {
+            this.$store.dispatch("getAuthedContests").then(() => {
+                this.loading = false;
             });
+        },
+        updated() {
+            if (this.first_time && this.showed && !this.loading) {
+                var swiper = this.$f7.swiper.create(".swiper-comming", {
+                    spaceBetween: 0,
+                    slidesPerView: "auto"
+                });
+                var swiper = this.$f7.swiper.create(".swiper-old", {
+                    spaceBetween: 0,
+                    slidesPerView: "auto"
+                });
+                this.first_time = false;
+            }
+        },
+        methods: {
+            moment(...args) {
+                return moment(...args).format("YYYY/MM/DD");
+            },
+            toTime(time) {
+                let s = moment.duration(moment(time).diff(moment(), "seconds"));
+                return `${parseInt(s / 3600)}:${parseInt(s / 60) % 60}:${s % 60}`;
+            },
+            openContestDetailes(id) {
+                this.$f7router.navigate(`/contest/${id}`);
+            },
+            leave(id) {
+                this.$f7.dialog.confirm(this.$app.t('comfirm_quit'), () => {
+                    this.$f7.dialog.preloader(this.$app.t('leaving_contest'));
+                    this.$store
+                        .dispatch("leaveContest", id)
+                        .then(() => {
+                            this.$f7.dialog.close();
+                        })
+                        .catch(err => {
+                            if (err.status == 401) {
+                                this.$f7router.navigate("/login");
+                                this.$f7.dialog.close();
+                            } else {
+                                this.$f7.dialog.alert(this.$app.t('error'));
+                                setTimeout(() => {
+                                    this.$f7.dialog.close();
+                                }, 2000);
+                            }
+                        });
+                });
+            },
+            join(id) {
+                this.$f7.dialog.confirm(
+                    this.$store.getters.currentContest.id
+                        ? this.$app.t('comfirm_join_quit')
+                        : this.$app.t('comfirm_join'),
+                    () => {
+                        this.$f7.dialog.preloader(this.$app.t('joining_contest'));
+                        this.$store
+                            .dispatch("joinContest", id)
+                            .then(() => {
+                                this.$f7.dialog.close();
+                            })
+                            .catch(err => {
+                                console.log(err);
+                                if (err.status == 401) this.$f7router.navigate("/login");
+                                else {
+                                    this.$f7.dialog.alert(this.$app.t('error'));
+                                    setTimeout(() => {
+                                        this.$f7.dialog.close();
+                                    }, 2000);
+                                }
+                            });
+                    }
+                );
+            }
         }
-      );
-    }
-  }
-};
+    };
 </script>
 
 <style scoped>
-.contest-current {
-  margin: 22px 3px;
-}
-.time {
-  padding: 5px;
-}
-.swiper-old .swiper-wrapper .contest-cards-item {
-  padding: 20px;
-  margin-top: 20px;
-}
-.page-container {
-  height: auto;
-  padding-bottom: 12vh;
-}
-.kas-img {
-  max-width: 18px;
-  padding: 10px;
-}
-.flex-align-expired {
-  display: inline-flex;
-  justify-content: flex-start;
-  align-items: center;
-}
+    .contest-current {
+        margin: 22px 3px;
+    }
 
-.btn-margin {
-  margin-left: 8px;
-}
+    .time {
+        padding: 5px;
+    }
 
-.flex-align {
-  display: inline-flex;
-  justify-content: space-around;
-  align-items: center;
-}
-.paddingtop10 {
-  padding-top: 10px;
-}
-.btn-quran.flex-align {
-  padding-bottom: 4px;
-  padding-top: 4px;
-}
+    .swiper-old .swiper-wrapper .contest-cards-item {
+        padding: 20px;
+        margin-top: 20px;
+    }
 
-.contest-current,
-.contest-wrapper .page-container .page-title {
-  width: 100%;
-  margin: 0 auto;
-}
-.contest-current .contest-cards-item {
-  width: 90%;
-}
+    .page-container {
+        height: auto;
+        padding-bottom: 12vh;
+    }
 
-.page-container {
-  width: 100%;
-}
+    .kas-img {
+        max-width: 18px;
+        padding: 10px;
+    }
+
+    .flex-align-expired {
+        display: inline-flex;
+        justify-content: flex-start;
+        align-items: center;
+    }
+
+    .btn-margin {
+        margin-left: 8px;
+    }
+
+    .flex-align {
+        display: inline-flex;
+        justify-content: space-around;
+        align-items: center;
+    }
+
+    .paddingtop10 {
+        padding-top: 10px;
+    }
+
+    .btn-quran.flex-align {
+        padding-bottom: 4px;
+        padding-top: 4px;
+    }
+
+    .contest-current,
+    .contest-wrapper .page-container .page-title {
+        width: 100%;
+        margin: 0 auto;
+    }
+
+    .contest-current .contest-cards-item {
+        width: 90%;
+    }
+
+    .page-container {
+        width: 100%;
+    }
 </style>
