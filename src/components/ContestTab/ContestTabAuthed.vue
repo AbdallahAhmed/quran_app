@@ -117,7 +117,7 @@
                                     </div>
                                     <div class="col-50 flex-align-expired">
                                         <img class="kas-img" src="../../assets/img/Group 1034@2x.png"/>
-                                        <span>بحر حسن</span>
+                                        <span>{{contest.creator.first_name +' '+contest.creator.last_name}}</span>
                                     </div>
                                 </div>
                             </div>
