@@ -114,6 +114,7 @@ export default {
     saved: "Saved successfully",
     copied: "Copied successfully",
     err: "Error",
+    login_or_register:"To enroll in this competition you need to Login / Register ",
     "exist": "Do you want to exit the program?",
     "quran": "Holly Quran",
     "ok" : "OK",

@@ -24,11 +24,11 @@ const state = {
 
 const actions = {
     getContests({ commit, state }) {
-        Vue.http
+        return Vue.http
             .get(`contests`, {
                 params: {
                     offset: state.unauthedContests.offset,
-                    limit: 10,
+                    limit: 5,
                     status: "all"
                 }
             })
@@ -107,10 +107,8 @@ const actions = {
 
 const mutations = {
     CONTESTS(state, payload) {
-        state.unauthedContests = {
-            offset: state.unauthedContests.offset + 10,
-            data: state.unauthedContests.data.concat(payload)
-        };
+        state.unauthedContests.offset = state.unauthedContests.offset + 5;
+        state.unauthedContests.data = state.unauthedContests.data.concat(payload);
     },
     CONTESTS_AUTHED_TAB(state, payload) {
         state.currentContest = payload.current[0] ? payload.current[0] : {};

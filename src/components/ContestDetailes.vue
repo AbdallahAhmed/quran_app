@@ -151,8 +151,8 @@ export default {
     },
     leave() {
       let { id } = this.contest;
-      this.$f7.dialog.confirm(this.$app.t('comfirm_quit'), () => {
-        this.$f7.dialog.preloader(this.$app.t('leaving_contest'));
+      this.$f7.dialog.confirm(this.$app.t("comfirm_quit"), () => {
+        this.$f7.dialog.preloader(this.$app.t("leaving_contest"));
         this.$store
           .dispatch("leaveContest", id)
           .then(() => {
@@ -160,7 +160,7 @@ export default {
             this.$f7.dialog.close();
           })
           .catch(err => {
-            this.$f7.dialog.alert(this.$app.t("error"));            
+            this.$f7.dialog.alert(this.$app.t("error"));
             setTimeout(() => {
               this.$f7.dialog.close();
             }, 2000);
@@ -171,10 +171,10 @@ export default {
       let { id } = this.contest;
       this.$f7.dialog.confirm(
         this.$store.getters.currentContest.id
-         ? this.$app.t("comfirm_join_quit")
+          ? this.$app.t("comfirm_join_quit")
           : this.$app.t("comfirm_join"),
         () => {
-          this.$f7.dialog.preloader(this.$app.t("joining_contest"));          
+          this.$f7.dialog.preloader(this.$app.t("joining_contest"));
           this.$store
             .dispatch("joinContest", id)
             .then(() => {
@@ -183,10 +183,35 @@ export default {
             })
             .catch(err => {
               if (err.status == 401) {
-                this.$f7router.navigate("/login");
+                this.$f7.dialog
+                  .create({
+                    title: this.$app.t('login_or_register'),
+                    // text: this.$app.t(''),
+                    buttons: [
+                      {
+                        text: this.$app.t('login'),
+                        onClick: () => {
+                          this.$f7router.navigate("/login");
+                        }
+                      },
+                      {
+                        text: this.$app.t('signup'),
+                        onClick: () => {
+                          this.$f7router.navigate("/register");
+                        }
+                      },
+                      {
+                        text: this.$app.t('cancel'),
+                        onClick: () => {
+                          this.$f7.dialog.close();
+                        }
+                      }
+                    ]
+                  })
+                  .open();
                 this.$f7.dialog.close();
               } else {
-                this.$f7.dialog.alert(this.$app.t("error"));                
+                this.$f7.dialog.alert(this.$app.t("error"));
                 setTimeout(() => {
                   this.$f7.dialog.close();
                 }, 2000);
@@ -314,5 +339,35 @@ export default {
 .preloader-inner-gap {
   display: none !important;
   width: 0px !important;
+}
+</style>
+
+<style>
+.md .dialog-button {
+  text-align: center;
+  color: white;
+  background-color: #207249;
+  font-size: 16px;
+  border: 0;
+  margin-top: 5px;
+  display: inline-block;
+}
+.md .dialog-buttons span:nth-child(-n + 2) {
+  width: 49%;
+}
+.md .dialog-buttons span:nth-child(3) {
+  width: 100%;
+}
+.md .dialog-buttons {
+  display: block;
+  height: auto;
+}
+
+.md .dialog-button ,.md .dialog-button + .dialog-button {
+  margin: 5px auto;
+}
+
+.dialog-backdrop{
+  background-color:rgba(255, 248, 248, 0.82);
 }
 </style>
