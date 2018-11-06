@@ -1,6 +1,6 @@
 <template>
 
-    <span ref="page" :id="'page-'+id" :class="{'bg-grey' : isViewed()}">
+    <span ref="page" :id="'page-'+id">
         <slot></slot>
     </span>
 
