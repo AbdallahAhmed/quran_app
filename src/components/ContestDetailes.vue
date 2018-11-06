@@ -40,16 +40,15 @@
                 </div>
             </div>
             <div class="row padding10">
-                <button class="col-33 btn btn-quran btn-margin flex-align" @click="join(contest.id)">
+                <button class="col btn btn-quran btn-margin flex-align" @click="join(contest.id)">
                     <div>{{$app.t("share")}}</div>
                     <div class="paddingtop10">
                         <img src="./../assets/img/share_y.png" alt="share">
                     </div>
                 </button>
-                <button class="col-33 btn green-btn" v-if="contest.is_opened" @click="()=>contest.is_joined?leave():join()">
+                <button class="col btn green-btn" v-if="contest.is_opened" @click="()=>contest.is_joined?leave():join()">
                     {{contest.is_joined?$app.t('quit'):$app.t('enroll')}}
                 </button>
-                <button class="col-33 btn yellow-btn" v-if="contest.is_opened"> {{$app.t('ignore')}}</button>
             </div>
             <div class="row rtl padding10">
                 <div class="col-50 row block">
