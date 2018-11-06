@@ -23,6 +23,7 @@
 
     import EventBus from "../events";
 
+
     export default {
 
         data() {

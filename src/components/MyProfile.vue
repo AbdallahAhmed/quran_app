@@ -107,10 +107,6 @@
 
                 }).then(() => {
 
-                    this.$f7.notification.create({
-                        subtitle: this.$app.trans('shared_done')
-                    }).open();
-
                     this.$f7.dialog.confirm(this.$app.trans('eval_app'), () => {
                         window.open('https://play.google.com/store/apps/details?id=games.onebutton.golfbattle', '_system');
                     });

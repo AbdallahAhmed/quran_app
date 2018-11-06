@@ -40,20 +40,21 @@
                 </div>
             </div>
             <div class="row padding10">
-                <button class="col btn btn-quran btn-margin flex-align" @click="join(contest.id)">
+                <button class="col btn btn-quran btn-margin flex-align" @click="_share(contest.name)">
                     <div>{{$app.t("share")}}</div>
                     <div class="paddingtop10">
                         <img src="./../assets/img/share_y.png" alt="share">
                     </div>
                 </button>
-                <button class="col btn green-btn" v-if="contest.is_opened" @click="()=>contest.is_joined?leave():join()">
+                <button class="col btn green-btn" v-if="contest.is_opened"
+                        @click="()=>contest.is_joined?leave():join()">
                     {{contest.is_joined?$app.t('quit'):$app.t('enroll')}}
                 </button>
             </div>
             <div class="row rtl padding10">
                 <div class="col-50 row block">
                     <div>
-                        <img class="img" src="./../assets/img/noun_calender_652711.png" />
+                        <img class="img" src="./../assets/img/noun_calender_652711.png"/>
                     </div>
                     <div>
 
@@ -65,7 +66,7 @@
 
                 <div class="col-50 row block">
                     <div>
-                        <img class="img" src="./../assets/img/noun_calender_652711.png" />
+                        <img class="img" src="./../assets/img/noun_calender_652711.png"/>
                     </div>
                     <div>
                         <div class="title sm"> {{$app.t('start_date')}}</div>
@@ -75,18 +76,18 @@
                 </div>
                 <div class="col-50 row block">
                     <div>
-                        <img class="img" src="../assets/img/goz2.png" />
+                        <img class="img" src="../assets/img/goz2.png"/>
                     </div>
                     <div>
                         <div class="title sm"> {{$app.t('from_juz')}}</div>
-                        <div class="date"> {{contest.juz_from || 1}} </div>
+                        <div class="date"> {{contest.juz_from || 1}}</div>
                     </div>
 
                 </div>
 
                 <div class="col-50 row block">
                     <div>
-                        <img class="img" src="../assets/img/goz2.png" />
+                        <img class="img" src="../assets/img/goz2.png"/>
                     </div>
                     <div>
                         <div class="title sm"> {{$app.t('to_juz')}}</div>
@@ -98,17 +99,18 @@
             </div>
             <div class="block2">
                 <div>
-                    <img class="img" style="opacity:0.5" src="../assets/img/noun_users_140450@2x.png" />
+                    <img class="img" style="opacity:0.5" src="../assets/img/noun_users_140450@2x.png"/>
                 </div>
                 <div>
                     <div class="title sm"> {{$app.t('num_members')}}</div>
-                    <div class="date"> {{contest.member_counter}} </div>
+                    <div class="date"> {{contest.member_counter}}</div>
                 </div>
             </div>
             <!-- ~~~~~~~~~ users list ~~~~~~~~~~ -->
             <div v-for="user of contest.members" :key="user.id">
                 <div class="row" style="margin-top:30px;">
-                    <div class="img-div" :style="{backgroundImage: `url(${user.photo||'http://www.jdevoto.cl/web/wp-content/uploads/2018/04/default-user-img.jpg'})`}" />
+                    <div class="img-div"
+                         :style="{backgroundImage: `url(${user.photo||'http://www.jdevoto.cl/web/wp-content/uploads/2018/04/default-user-img.jpg'})`}"/>
                     <strong class="p-text">{{user.first_name}}</strong>
                 </div>
 
@@ -116,7 +118,7 @@
 
                     <div class="col-25 ds-flex flex-col">
                         <div class="flex1 ds-flex">
-                            <img class="sm-img" src="./../assets/img/noun_calender_652711.png" />
+                            <img class="sm-img" src="./../assets/img/noun_calender_652711.png"/>
                         </div>
                         <div class="flex1 ds-flex">
                             تاريخ البدأ
@@ -128,7 +130,7 @@
 
                     <div class="col-25 ds-flex flex-col">
                         <div class="flex1 ds-flex">
-                            <img class="sm-img" src="../assets/img/clock.png" />
+                            <img class="sm-img" src="../assets/img/clock.png"/>
                         </div>
                         <div class="flex1 ds-flex">
                             {{((len(user.pivot.pages)/60).toFixed(1))}}
@@ -140,7 +142,7 @@
 
                     <div class="col-25 ds-flex flex-col">
                         <div class="flex1 ds-flex">
-                            <img class="sm-img" src="./../assets/img/noun_calender_652711.png" />
+                            <img class="sm-img" src="./../assets/img/noun_calender_652711.png"/>
                         </div>
                         <div class="flex1 ds-flex">
                             {{604-len(user.pivot.pages)}}
@@ -152,7 +154,7 @@
 
                     <div class="col-25 ds-flex flex-col">
                         <div class="flex1 ds-flex">
-                            <img class="sm-img" src="./../assets/img/noun_calender_652711.png" />
+                            <img class="sm-img" src="./../assets/img/noun_calender_652711.png"/>
                         </div>
                         <div class="flex1 ds-flex">
                             {{len(user.pivot.pages)}}
@@ -172,317 +174,334 @@
 </template>
 
 <script>
-import moment from "moment";
+    import moment from "moment";
+    import mixin from "../mixin";
 
-export default {
-  data() {
-    return {
-      loading: true,
-      contest: null
-    };
-  },
-  created() {
-    let { contest_id } = this.$f7route.params;
-    this.$http.get("contests/details", { params: { contest_id } }).then(res => {
-      this.contest = res.body.data;
-    });
-  },
-  methods: {
-    toTime(time) {
-      let s = moment.duration(moment(time).diff(moment(), "seconds"));
-      return `${parseInt(s / 3600)}:${parseInt(s / 60) % 60}:${s % 60}`;
-    },
-    moment(...args) {
-      return moment(...args).format("YYYY/MM/DD");
-    },
-    leave() {
-      let { id } = this.contest;
-      this.$f7.dialog.confirm(this.$app.t("comfirm_quit"), () => {
-        this.$f7.dialog.preloader(this.$app.t("leaving_contest"));
-        this.$store
-          .dispatch("leaveContest", id)
-          .then(() => {
-            this.contest.is_joined = false;
-            this.$f7.dialog.close();
-          })
-          .catch(err => {
-            this.$f7.dialog.alert(this.$app.t("error"));
-            setTimeout(() => {
-              this.$f7.dialog.close();
-            }, 2000);
-          });
-      });
-    },
-    join() {
-      let { id } = this.contest;
-      this.$f7.dialog.confirm(
-        this.$store.getters.currentContest.id
-          ? this.$app.t("comfirm_join_quit")
-          : this.$app.t("comfirm_join"),
-        () => {
-          this.$f7.dialog.preloader(this.$app.t("joining_contest"));
-          this.$store
-            .dispatch("joinContest", id)
-            .then(() => {
-              this.contest.is_joined = true;
-              this.$f7.dialog.close();
-            })
-            .catch(err => {
-              if (err.status == 401) {
-                this.$f7.dialog
-                  .create({
-                    title: this.$app.t("login_or_register"),
-                    // text: this.$app.t(''),
-                    buttons: [
-                      {
-                        text: this.$app.t("login"),
-                        onClick: () => {
-                          this.$f7router.navigate("/login");
-                        }
-                      },
-                      {
-                        text: this.$app.t("signup"),
-                        onClick: () => {
-                          this.$f7router.navigate("/register");
-                        }
-                      },
-                      {
-                        text: this.$app.t("cancel"),
-                        onClick: () => {
-                          this.$f7.dialog.close();
-                        }
-                      }
-                    ]
-                  })
-                  .open();
-                this.$f7.dialog.close();
-              } else {
-                this.$f7.dialog.alert(this.$app.t("error"));
-                setTimeout(() => {
-                  this.$f7.dialog.close();
-                }, 2000);
-              }
+    export default {
+
+        mixins: [mixin],
+
+        data() {
+            return {
+                loading: true,
+                contest: null
+            };
+        },
+        created() {
+            let {contest_id} = this.$f7route.params;
+            this.$http.get("contests/details", {params: {contest_id}}).then(res => {
+                this.contest = res.body.data;
             });
-        }
-      );
-    },
-    percentage(pages) {
-      return this.parse(pages).length / 604;
-    },
-    parse(pages) {
-      if (!pages) {
-        return [];
-      }
-      return typeof pages == "string" ? JSON.parse(pages) : pages;
-    },
+        },
+        methods: {
+            toTime(time) {
+                let s = moment.duration(moment(time).diff(moment(), "seconds"));
+                return `${parseInt(s / 3600)}:${parseInt(s / 60) % 60}:${s % 60}`;
+            },
+            moment(...args) {
+                return moment(...args).format("YYYY/MM/DD");
+            },
+            leave() {
+                let {id} = this.contest;
+                this.$f7.dialog.confirm(this.$app.t("comfirm_quit"), () => {
+                    this.$f7.dialog.preloader(this.$app.t("leaving_contest"));
+                    this.$store
+                        .dispatch("leaveContest", id)
+                        .then(() => {
+                            this.contest.is_joined = false;
+                            this.$f7.dialog.close();
+                        })
+                        .catch(err => {
+                            this.$f7.dialog.alert(this.$app.t("error"));
+                            setTimeout(() => {
+                                this.$f7.dialog.close();
+                            }, 2000);
+                        });
+                });
+            },
+            join() {
+                let {id} = this.contest;
+                this.$f7.dialog.confirm(
+                    this.$store.getters.currentContest.id
+                        ? this.$app.t("comfirm_join_quit")
+                        : this.$app.t("comfirm_join"),
+                    () => {
+                        this.$f7.dialog.preloader(this.$app.t("joining_contest"));
+                        this.$store
+                            .dispatch("joinContest", id)
+                            .then(() => {
+                                this.contest.is_joined = true;
+                                this.$f7.dialog.close();
+                            })
+                            .catch(err => {
+                                if (err.status == 401) {
+                                    this.$f7.dialog
+                                        .create({
+                                            title: this.$app.t("login_or_register"),
+                                            // text: this.$app.t(''),
+                                            buttons: [
+                                                {
+                                                    text: this.$app.t("login"),
+                                                    onClick: () => {
+                                                        this.$f7router.navigate("/login");
+                                                    }
+                                                },
+                                                {
+                                                    text: this.$app.t("signup"),
+                                                    onClick: () => {
+                                                        this.$f7router.navigate("/register");
+                                                    }
+                                                },
+                                                {
+                                                    text: this.$app.t("cancel"),
+                                                    onClick: () => {
+                                                        this.$f7.dialog.close();
+                                                    }
+                                                }
+                                            ]
+                                        })
+                                        .open();
+                                    this.$f7.dialog.close();
+                                } else {
+                                    this.$f7.dialog.alert(this.$app.t("error"));
+                                    setTimeout(() => {
+                                        this.$f7.dialog.close();
+                                    }, 2000);
+                                }
+                            });
+                    }
+                );
+            },
+            percentage(pages) {
+                return this.parse(pages).length / 604;
+            },
+            parse(pages) {
+                if (!pages) {
+                    return [];
+                }
+                return typeof pages == "string" ? JSON.parse(pages) : pages;
+            },
 
-    len(pages) {
-      return this.parse(pages).length;
-    }
-  },
-  components: {
-    navbar: require("./partials/Navbar.vue")
-  }
-};
+            len(pages) {
+                return this.parse(pages).length;
+            }
+        },
+        components: {
+            navbar: require("./partials/Navbar.vue")
+        }
+    };
 </script>
 
 <style scoped>
-.block2{
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    text-align: center;
-}
-.md .block , .ios .block {
-  margin: 0px;
-  padding: 20px 5px;
-}
-.row .col-50 {
-  width: 50%;
-}
-.block {
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  border-bottom: rgb(226, 226, 226) 1px solid;
-}
-.block:nth-child(odd) {
-  border-left: rgb(226, 226, 226) 1px solid;
-}
-.page {
-  overflow: scroll;
-  padding-bottom: 30px;
-}
+    .block2 {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        text-align: center;
+    }
 
-.contest-detailes {
-  background-color: white;
-}
+    .md .block, .ios .block {
+        margin: 0px;
+        padding: 20px 5px;
+    }
 
-.p-text {
-  position: relative;
-  display: block;
-  width: 100%;
-  text-align: center;
-  margin-top: 15px;
-  margin-bottom: 20px;
-}
+    .row .col-50 {
+        width: 50%;
+    }
 
-.p-text::before {
-  content: "";
-  width: 100%;
-  height: 1px;
-  background-color: lightgray;
-  position: absolute;
-  top: -39px;
-  left: 0;
-}
-.img {
-  min-width: 33px;
-}
+    .block {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        border-bottom: rgb(226, 226, 226) 1px solid;
+    }
 
-.img-div {
-  border: solid #37734a 2px;
-  width: 40px;
-  height: 40px;
-  border-radius: 50px;
-  margin: 0 auto;
-  z-index: 1;
-  background-position: center;
-  background-size: cover;
-}
+    .block:nth-child(odd) {
+        border-left: rgb(226, 226, 226) 1px solid;
+    }
 
-.rtl {
-  direction: rtl;
-}
+    .page {
+        overflow: scroll;
+        padding-bottom: 30px;
+    }
 
-.padding10 {
-  padding: 20px;
-}
+    .contest-detailes {
+        background-color: white;
+    }
 
-.title {
-  text-align: right;
-  font-size: 1.6em;
-  font-weight: bold;
-  color: #37734a;
-}
+    .p-text {
+        position: relative;
+        display: block;
+        width: 100%;
+        text-align: center;
+        margin-top: 15px;
+        margin-bottom: 20px;
+    }
 
-.user-and-goal {
-  color: rgb(27, 27, 27);
-  font-size: 1.4em;
-  text-align: right;
-}
+    .p-text::before {
+        content: "";
+        width: 100%;
+        height: 1px;
+        background-color: lightgray;
+        position: absolute;
+        top: -39px;
+        left: 0;
+    }
 
-.btn {
-  border: none;
-  height: 45px;
-  width: 140px;
-  color: white;
-  margin-top: 5px;
-  font-weight: bold;
-}
+    .img {
+        min-width: 33px;
+    }
 
-.yellow-btn {
-  background: #f6c624;
-}
+    .img-div {
+        border: solid #37734a 2px;
+        width: 40px;
+        height: 40px;
+        border-radius: 50px;
+        margin: 0 auto;
+        z-index: 1;
+        background-position: center;
+        background-size: cover;
+    }
 
-.green-btn {
-  background-color: #37734a;
-}
+    .rtl {
+        direction: rtl;
+    }
 
-.is-150px {
-  width: 150px;
-}
+    .padding10 {
+        padding: 20px;
+    }
 
-.date {
-  font-size: 1em;
-  color: gray;
-  margin: 3px;
-}
-.time {
-  padding: 5px;
-}
+    .title {
+        text-align: right;
+        font-size: 1.6em;
+        font-weight: bold;
+        color: #37734a;
+    }
 
-.sm {
-  font-size: 1.2em;
-  text-align: center;
-}
+    .user-and-goal {
+        color: rgb(27, 27, 27);
+        font-size: 1.4em;
+        text-align: right;
+    }
 
-.sm-img {
-  width: 20px;
-  height: 20px;
-}
+    .btn {
+        border: none;
+        height: 45px;
+        width: 140px;
+        color: white;
+        margin-top: 5px;
+        font-weight: bold;
+    }
 
-.ds-flex {
-  display: flex;
-  justify-content: center;
-}
+    .yellow-btn {
+        background: #f6c624;
+    }
 
-.flex-col {
-  flex-direction: column;
-  border: 1px solid #eaeaea;
-  border-right: none;
-  padding: 10px;
-  min-height: 120px;
-  text-align: center;
-}
+    .green-btn {
+        background-color: #37734a;
+    }
 
-.row .col-25 {
-  width: calc((100%) / 4);
-}
-.flex-align {
-  display: inline-flex;
-  justify-content: space-around;
-  align-items: center;
-}
-.flex-align-expired {
-  display: inline-flex;
-  justify-content: flex-start;
-  align-items: center;
-}
-.col-45 {
-  margin-top: 15px;
-}
+    .is-150px {
+        width: 150px;
+    }
 
-.flex1 {
-  flex: 1;
-}
+    .date {
+        font-size: 1em;
+        color: gray;
+        margin: 3px;
+    }
+
+    .time {
+        padding: 5px;
+    }
+
+    .sm {
+        font-size: 1.2em;
+        text-align: center;
+    }
+
+    .sm-img {
+        width: 20px;
+        height: 20px;
+    }
+
+    .ds-flex {
+        display: flex;
+        justify-content: center;
+    }
+
+    .flex-col {
+        flex-direction: column;
+        border: 1px solid #eaeaea;
+        border-right: none;
+        padding: 10px;
+        min-height: 120px;
+        text-align: center;
+    }
+
+    .row .col-25 {
+        width: calc((100%) / 4);
+    }
+
+    .flex-align {
+        display: inline-flex;
+        justify-content: space-around;
+        align-items: center;
+    }
+
+    .flex-align-expired {
+        display: inline-flex;
+        justify-content: flex-start;
+        align-items: center;
+    }
+
+    .col-45 {
+        margin-top: 15px;
+    }
+
+    .flex1 {
+        flex: 1;
+    }
 </style>
 
 <style>
-.preloader-inner-gap {
-  display: none !important;
-  width: 0px !important;
-}
+    .preloader-inner-gap {
+        display: none !important;
+        width: 0px !important;
+    }
 </style>
 
 <style>
-.md .dialog-button ,.ios .dialog-button {
-  text-align: center;
-  color: white;
-  background-color: #207249;
-  font-size: 16px;
-  border: 0;
-  margin-top: 5px;
-  display: inline-block;
-}
-.md .dialog-buttons span:nth-child(-n + 2) , .ios .dialog-buttons span:nth-child(-n + 2) {
-  width: 49%;
-}
-.md .dialog-buttons span:nth-child(3) , .ios .dialog-buttons span:nth-child(3) {
-  width: 100%;
-}
-.md .dialog-buttons ,.ios .dialog-buttons {
-  display: block;
-  height: auto;
-}
+    .md .dialog-button, .ios .dialog-button {
+        text-align: center;
+        color: white;
+        background-color: #207249;
+        font-size: 16px;
+        border: 0;
+        margin-top: 5px;
+        display: inline-block;
+    }
 
-.md .dialog-button,
-.md .dialog-button + .dialog-button ,.ios .dialog-button,
-.ios .dialog-button + .dialog-button {
-  margin: 5px auto;
-}
+    .md .dialog-buttons span:nth-child(-n + 2), .ios .dialog-buttons span:nth-child(-n + 2) {
+        width: 49%;
+    }
 
-.dialog-backdrop {
-  background-color: rgba(255, 248, 248, 0.82);
-}
+    .md .dialog-buttons span:nth-child(3), .ios .dialog-buttons span:nth-child(3) {
+        width: 100%;
+    }
+
+    .md .dialog-buttons, .ios .dialog-buttons {
+        display: block;
+        height: auto;
+    }
+
+    .md .dialog-button,
+    .md .dialog-button + .dialog-button, .ios .dialog-button,
+    .ios .dialog-button + .dialog-button {
+        margin: 5px auto;
+    }
+
+    .dialog-backdrop {
+        background-color: rgba(255, 248, 248, 0.82);
+    }
 </style>
