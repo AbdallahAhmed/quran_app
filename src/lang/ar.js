@@ -89,6 +89,7 @@ export default {
     from_juz:"من الجزء",
     to_juz:"إلى الجزء",
     num_members:"عدد الأعضاء",
+    old_contests:"المسابقات المنتهية",
     creator:"المنشيء",
     "exist":"هل تريد الخروج من البرنامج ؟",
     "his_aya":"أياتها",

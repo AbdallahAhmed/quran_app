@@ -22,7 +22,8 @@ export default {
     no_ayat: "No ayat exists",
     delete_aya: "Do you want to delete the aya ?",
     quran_share: "Quran share",
-    share:"share",
+    share:"Share",
+    old_contests:"Expired competitions",
     setting: "Setting",
     delete_aya: "Do you want to delete the aya?",
     quran_share: "Share Quran",
@@ -123,7 +124,7 @@ export default {
     "ok" : "OK",
     "cancel" : "Cancel",
     "his_aya":"Ayat",
-    "remaining_page":" Remaining pages",
+    "remaining_page":" Remaining",
     "read_page":"Read pages",
     "password_mismatched" : "The password confirmation does not match.",
 

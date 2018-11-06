@@ -100,7 +100,7 @@
             </div>
             <div>
                 <p class="page-title">
-                    <span class="row"><a class="left"> {{$app.t("contests")}}</a>
+                    <span class="row"><a class="left"> {{$app.t("old_contests")}}</a>
                         <a href="/expiredcontests" class="link right">{{$app.t("all_contests")}}</a>
                     </span>
                 </p>
@@ -109,7 +109,7 @@
                     <div class="contest-cards-list swiper-old" v-for="contest in contests.expired" :key="contest.id">
                         <div class="swiper-wrapper">
                             <div class="swiper-slide contest-cards-item">
-                                <a class="title link" @click="openContestDetailes(contest.id)">{{contest.name}}</a>
+                                <a class="title link">{{contest.name}}</a>
                                 <div class="row">
                                     <div class="col-50 flex-align-expired">
                                         <img class="kas-img" src="../../assets/img/noun_calender_652711.png"/>
