@@ -40,7 +40,6 @@
         </div>
 
         <div class="khatima-list" v-for="khtma in this.khatemas.completed" :key="khtma.id">
-
             <div class="khatima-wrapper">
                 <h1 class="khatima-title" @click="openPopup(khtma.id)">
                     {{$app.t("last_khatma")}}</h1>
@@ -92,6 +91,9 @@
             </div>
         </div>
 
+        <div class="empty-gap">
+
+        </div>
         <div class="popup popup-khatima">
             <div class="page" :class="'page-khatima'">
                 <navbar>
@@ -169,7 +171,7 @@
 </template>
 
 
-<style>
+<style scoped>
     .page-title {
         margin-bottom: 18px;
     }
@@ -180,6 +182,10 @@
 
     .mg-top {
         margin-top: 21px;
+    }
+    .empty-gap{
+        width: 100%;
+        height: 70px;
     }
 </style>
 
