@@ -81,3 +81,9 @@
     }
 
 </script>
+
+<style scoped>
+.page-container{
+    margin: 0 auto;
+}
+</style>

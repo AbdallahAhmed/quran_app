@@ -45,7 +45,7 @@
                                         </div>
                                         <div>
                                             <span>
-                                                <img src="./../assets/img/share-black.png" alt="share">
+                                                <img src="./../assets/img/share_y.png" alt="share">
                                             </span>
                                             <label>{{contest.member_counter}} {{$app.t('member')}}</label>
                                         </div>

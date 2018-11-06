@@ -111,6 +111,7 @@ export default {
 .contest-text {
   font-weight: 100;
   margin-top: 0px;
+  word-break: break-all;
 }
 .page-content {
   height: auto;
