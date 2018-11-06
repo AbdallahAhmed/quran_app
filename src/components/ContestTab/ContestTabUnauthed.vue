@@ -3,15 +3,15 @@
         <p class="page-title"><span>{{$app.t('contests')}}</span></p>
 
         <div style="padding-bottom:50px">
-            <div class="contest-card-unauthed row" v-for="contest in contests" :key="contest.id"
+            <div class="contest-card-unauthed row link" v-for="contest in contests" :key="contest.id"
                  @click="openDetails(contest.id)">
-                <div class="jastfy-img col-30">
-                    <div style="direction:rtl">
+                <div class="jastfy-img col-20">
+
                         <img class="kas-img" src="../../assets/img/noun_users_140450@2x.png"/>
                         <span
                             style="font-size:14px; margin-top:3px; margin-left: 3px;">{{contest.member_counter}}</span>
-                        <span> {{$app.t('member')}} </span>
-                    </div>
+                        <span> {{$app.t('members')}} </span>
+
                 </div>
                 <div class="col-50">
                     <strong>
@@ -36,7 +36,7 @@
 
 <script>
 
-    import mixin from "../mixin";
+    import mixin from "../../mixin";
 
     export default {
 

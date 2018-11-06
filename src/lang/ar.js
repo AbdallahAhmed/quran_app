@@ -65,7 +65,7 @@ export default {
     from_juz:"من الجزء",
     to_juz:"إلى الجزء",
     member:"",
-    members:"أعضاء",
+    members:"",
     goal:"الهدف",
     contest_goal:"هدف المسابقة",
     contest_name:"اسم المسابقة",
