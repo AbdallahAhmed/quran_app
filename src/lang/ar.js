@@ -64,7 +64,7 @@ export default {
     dir:"direction:rtl;",
     from_juz:"من الجزء",
     to_juz:"إلى الجزء",
-    member:"عضوا",
+    member:"",
     members:"أعضاء",
     goal:"الهدف",
     contest_goal:"هدف المسابقة",
