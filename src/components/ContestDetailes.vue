@@ -293,11 +293,11 @@ export default {
     flex-direction: column;
     text-align: center;
 }
-.md .block {
+.md .block , .ios .block {
   margin: 0px;
   padding: 20px 5px;
 }
-.md .row .col-50 {
+.row .col-50 {
   width: 50%;
 }
 .block {
@@ -422,11 +422,12 @@ export default {
   border: 1px solid #eaeaea;
   border-right: none;
   padding: 10px;
-  height: 120px;
+  min-height: 120px;
+  text-align: center;
 }
 
-.md .row .col-25 {
-  width: calc((100% - 0px * 3) / 4);
+.row .col-25 {
+  width: calc((100%) / 4);
 }
 .flex-align {
   display: inline-flex;
@@ -455,7 +456,7 @@ export default {
 </style>
 
 <style>
-.md .dialog-button {
+.md .dialog-button ,.ios .dialog-button {
   text-align: center;
   color: white;
   background-color: #207249;
@@ -464,19 +465,20 @@ export default {
   margin-top: 5px;
   display: inline-block;
 }
-.md .dialog-buttons span:nth-child(-n + 2) {
+.md .dialog-buttons span:nth-child(-n + 2) , .ios .dialog-buttons span:nth-child(-n + 2) {
   width: 49%;
 }
-.md .dialog-buttons span:nth-child(3) {
+.md .dialog-buttons span:nth-child(3) , .ios .dialog-buttons span:nth-child(3) {
   width: 100%;
 }
-.md .dialog-buttons {
+.md .dialog-buttons ,.ios .dialog-buttons {
   display: block;
   height: auto;
 }
 
 .md .dialog-button,
-.md .dialog-button + .dialog-button {
+.md .dialog-button + .dialog-button ,.ios .dialog-button,
+.ios .dialog-button + .dialog-button {
   margin: 5px auto;
 }
 
