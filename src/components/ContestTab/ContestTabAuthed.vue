@@ -1,4 +1,5 @@
 <template>
+
     <div class="page-container" :style="$app.t('dir')">
 
         <div class="loader-wrapper" :hidden="!loading">
@@ -6,10 +7,10 @@
         </div>
 
         <div :hidden="loading" class="contest-wrapper">
+
             <p class="page-title">
                 <span class="row"><a class="left"> {{$app.t("contests")}}</a>
                     <a href="/allcontests" class="link right">{{$app.t("all_contests")}}</a>
-
                 </span>
             </p>
 
@@ -19,16 +20,16 @@
                         <div class="swiper-wrapper">
                             <div class="swiper-slide contest-cards-item" v-for="contest  in contests.data"
                                  :key="contest.id">
-                                <div @click="openContestDetailes(contest.id)">
-                                    <a class="title">{{contest.name}}</a>
+                                <div>
+                                    <a class="title link" @click="openContestDetailes(contest.id)">{{contest.name}}</a>
                                     <div class="row">
                                         <div class="col-50 flex-align-expired">
-                                            <img width="20" src="./../../assets/img/clock.png">
+                                            <img width="20" src="./../../assets/img/clock2.png">
                                             <span class="time">{{toTime(contest.expired_at)}}</span>
                                         </div>
                                         <div class="col-50 flex-align-expired">
-                                            <img width="20" src="./../../assets/img/noun_users_140450@2x.png">
-                                            <span class="time">{{$app.t('member')}} 11</span>
+                                            <img width="20" src="./../../assets/img/person.png">
+                                            <span class="time">{{$app.t('member')}} {{contest.member_counter}}</span>
                                         </div>
                                     </div>
                                 </div>
@@ -37,7 +38,7 @@
                                             @click="join(contest.id)">
                                         <div>{{$app.t("share")}}</div>
                                         <div class="paddingtop10">
-                                            <img src="../../assets/img/share-black.png" alt="share">
+                                            <img src="../../assets/img/share_y.png" alt="share">
                                         </div>
                                     </button>
                                     <button @click="()=> contest.is_joined ? leave(contest.id): join(contest.id) "
@@ -60,19 +61,19 @@
                     <div class="contest-cards-item" v-if="current&&current.id">
                         <div class="row">
                             <div class="col-60 time">
-                                <a class="title">{{current.name}}</a>
+                                <a class="title link" @click="openContestDetailes(current.id)" >{{current.name}}</a>
                                 <div>{{current.creator?current.creator.first_name:null}}</div>
                                 <br>
                             </div>
                             <div class="time col-40"
-                                 style="display:flex; flex-direction: column; align-items:flex-end;">
+                                 style="display:flex; flex-direction: column; align-items:flex-start;">
                                 <div class="flex-align-expired">
-                                    <img width="20" src="./../../assets/img/clock.png">
+                                    <img width="20" src="./../../assets/img/clock2.png">
                                     <span class="time">{{toTime(current.expired_at)}}</span>
                                 </div>
                                 <div class="flex-align-expired">
-                                    <img width="20" src="./../../assets/img/noun_users_140450@2x.png">
-                                    <span class="time">{{$app.t('member')}} 11</span>
+                                    <img width="20" src="./../../assets/img/person.png">
+                                    <span class="time">{{$app.t('member')}} {{current.member_counter}}</span>
                                 </div>
                             </div>
                         </div>
@@ -81,7 +82,7 @@
                             <button class="col-33 btn btn-quran btn-margin flex-align" @click="join(contest.id)">
                                 <div>{{$app.t("share")}}</div>
                                 <div class="paddingtop10">
-                                    <img src="../../assets/img/share-black.png" alt="share">
+                                    <img src="../../assets/img/share_y.png" alt="share">
                                 </div>
                             </button>
                             <button @click="leave(current.id)" class="col-33 btn btn-quran btn-margin"
@@ -99,7 +100,7 @@
             </div>
             <div>
                 <p class="page-title">
-                    <span class="row"><a class="left"> {{$app.t("contests")}}</a>
+                    <span class="row"><a class="left"> {{$app.t("old_contests")}}</a>
                         <a href="/expiredcontests" class="link right">{{$app.t("all_contests")}}</a>
                     </span>
                 </p>
@@ -108,7 +109,7 @@
                     <div class="contest-cards-list swiper-old" v-for="contest in contests.expired" :key="contest.id">
                         <div class="swiper-wrapper">
                             <div class="swiper-slide contest-cards-item">
-                                <a class="title">{{contest.name}}</a>
+                                <a class="title link">{{contest.name}}</a>
                                 <div class="row">
                                     <div class="col-50 flex-align-expired">
                                         <img class="kas-img" src="../../assets/img/noun_calender_652711.png"/>

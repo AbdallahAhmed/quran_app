@@ -13,7 +13,7 @@
             <div class="preloader color-green"></div>
         </div>
         <div v-else>
-            <p class="page-title">كل المسابقات</p>
+            <p class="page-title">{{$app.t('old_contests')}}</p>
             <div class="scroll-area">
                 <vue-scroll @load-start="loadmore">
                     <div class="infinite-scroll-content infinite-scroll-bottom" style="padding-bottom: 50px">

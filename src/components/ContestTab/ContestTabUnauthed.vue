@@ -2,7 +2,7 @@
   <div>
     <p class="page-title"> <span>{{$app.t('contests')}}</span>  </p>
 
-    <div v-if="!loading">
+    <div style="padding-bottom:50px">
       <div class="contest-card-unauthed row" v-for="contest in contests" :key="contest.id" @click="openDetails(contest.id)">
         <div class="jastfy-img col-30">
           <div style="direction:rtl">
@@ -23,7 +23,7 @@
       </div>
 
     </div>
-    <div class="loader-wrapper" v-else>
+    <div class="loader-wrapper" v-if="loading">
       <div class="preloader color-green"></div>
     </div>
     <div v-if="!loading&&contests.length===0" class="searchbar-hide-on-search">
@@ -36,7 +36,8 @@
 export default {
   data() {
     return {
-      loading: true
+      loading: true,
+      last:false
     };
   },
   computed: {
@@ -50,13 +51,15 @@ export default {
     },
     loadmore() {
       this.loading = true;
-      this.$store.dispatch("getContests").then(() => {
+      this.$store.dispatch("getContests").then( data => {
         this.loading = false;
+        if(data.length == 0){
+          this.last = true;
+        }
       });
     }
   },
   created() {
-    console.log(this.$store.getters.contests.length === 0);
     if (this.$store.getters.contests.length === 0) {
       this.$store.dispatch("getContests").then(() => {
         this.loading = false;
@@ -69,7 +72,7 @@ export default {
     this.Dom7(".page-content").on("scroll", e => {
       var elem = this.Dom7(e.currentTarget);
 
-      if (elem[0].scrollHeight - elem.scrollTop() == elem.outerHeight()) {
+      if (elem[0].scrollHeight - elem.scrollTop() == elem.outerHeight() && !this.loading && !this.last) {
         // loadmore
         this.loadmore();
       }
@@ -108,6 +111,7 @@ export default {
 .contest-text {
   font-weight: 100;
   margin-top: 0px;
+  word-break: break-all;
 }
 .page-content {
   height: auto;
