@@ -27,7 +27,7 @@
       <div class="preloader color-green"></div>
     </div>
     <div v-if="!loading&&contests.length===0" class="searchbar-hide-on-search">
-      <p><label for="input-search">{{$app.t('no_contests')}}</label></p>
+      <p><label>{{$app.t('no_contests')}}</label></p>
     </div>
   </div>
 </template>

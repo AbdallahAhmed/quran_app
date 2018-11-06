@@ -33,18 +33,22 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="row" style="justify-content: flex-start;">
-                                    <button class="col-50 btn btn-quran btn-margin flex-align"
-                                            @click="join(contest.id)">
-                                        <div>{{$app.t("share")}}</div>
-                                        <div class="paddingtop10">
-                                            <img src="../../assets/img/share_y.png" alt="share">
-                                        </div>
-                                    </button>
-                                    <button @click="()=> contest.is_joined ? leave(contest.id): join(contest.id) "
-                                            class="col-50 btn btn-quran btn-margin">{{contest.is_joined?
-                                        $app.t('quit'):$app.t('enroll')}}
-                                    </button>
+                                <div class="row button-list">
+                                    <div class="col">
+                                        <button class=" btn btn-quran btn-margin flex-align" @click="join(contest.id)">
+                                            <div>{{$app.t("share")}}</div>
+                                            <div class="paddingtop10">
+                                                <img src="../../assets/img/share_y.png" alt="share">
+                                            </div>
+                                        </button>
+                                    </div>
+                                   <div class="col">
+                                       <button @click="()=> contest.is_joined ? leave(contest.id): join(contest.id) "
+                                               class="col btn btn-quran btn-margin">{{contest.is_joined?
+                                           $app.t('quit'):$app.t('enroll')}}
+                                       </button>
+                                   </div>
+
                                 </div>
                             </div>
                         </div>
@@ -139,6 +143,7 @@
     .contest-cards-old {
         margin-right: 10px;
     }
+
 
 </style>
 <script>
