@@ -1,4 +1,5 @@
 <template>
+
     <div class="page-container" :style="$app.t('dir')">
 
         <div class="loader-wrapper" :hidden="!loading">
@@ -6,10 +7,10 @@
         </div>
 
         <div :hidden="loading" class="contest-wrapper">
+
             <p class="page-title">
                 <span class="row"><a class="left"> {{$app.t("contests")}}</a>
                     <a href="/allcontests" class="link right">{{$app.t("all_contests")}}</a>
-
                 </span>
             </p>
 
@@ -19,8 +20,8 @@
                         <div class="swiper-wrapper">
                             <div class="swiper-slide contest-cards-item" v-for="contest  in contests.data"
                                  :key="contest.id">
-                                <div @click="openContestDetailes(contest.id)">
-                                    <a class="title">{{contest.name}}</a>
+                                <div>
+                                    <a class="title link" @click="openContestDetailes(contest.id)">{{contest.name}}</a>
                                     <div class="row">
                                         <div class="col-50 flex-align-expired">
                                             <img width="20" src="./../../assets/img/clock.png">
@@ -60,7 +61,7 @@
                     <div class="contest-cards-item" v-if="current&&current.id">
                         <div class="row">
                             <div class="col-60 time">
-                                <a class="title">{{current.name}}</a>
+                                <a class="title link" @click="openContestDetailes(current.id)" >{{current.name}}</a>
                                 <div>{{current.creator?current.creator.first_name:null}}</div>
                                 <br>
                             </div>
@@ -108,7 +109,7 @@
                     <div class="contest-cards-list swiper-old" v-for="contest in contests.expired" :key="contest.id">
                         <div class="swiper-wrapper">
                             <div class="swiper-slide contest-cards-item">
-                                <a class="title">{{contest.name}}</a>
+                                <a class="title link" @click="openContestDetailes(contest.id)">{{contest.name}}</a>
                                 <div class="row">
                                     <div class="col-50 flex-align-expired">
                                         <img class="kas-img" src="../../assets/img/noun_calender_652711.png"/>
