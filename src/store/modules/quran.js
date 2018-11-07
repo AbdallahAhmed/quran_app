@@ -10,7 +10,8 @@ export default {
         "sura": JSON.parse(localStorage.getItem("sura")) || false,
         "last_sura": parseInt(localStorage.getItem("last_sura")) || 0,
         "last_page": parseInt(localStorage.getItem("last_page")) || 0,
-        "loader": true
+        "loader": true,
+        "scroll": parseInt(localStorage.getItem("scroll")) || 0,
     },
 
     getters: {
@@ -42,8 +43,12 @@ export default {
             return state.page
         },
 
-        saved_ayat: (state, ayat) => {
+        saved_ayat: (state) => {
             return state.saved_ayat;
+        },
+
+        scroll: (state) => {
+            return state.scroll;
         },
     },
 
@@ -74,6 +79,11 @@ export default {
         LAST_PAGE(state, page) {
             state.last_page = page;
             localStorage.setItem("last_page", parseInt(state.last_page));
+        },
+
+        SCROLL(state, scroll) {
+            state.scroll = scroll;
+            localStorage.setItem("scroll", parseInt(state.scroll));
         },
 
         SURA(state, sura) {

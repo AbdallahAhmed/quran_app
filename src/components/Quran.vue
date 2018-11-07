@@ -23,6 +23,7 @@
 
     import EventBus from "../events";
 
+
     export default {
 
         data() {
@@ -44,6 +45,8 @@
 
         mounted() {
 
+            let page = this.$store.getters.last_page;
+            let scroll = this.$store.getters.scroll;
             let sura_id = parseInt(this.$f7route.params.sura_id || this.last_sura || 1);
             let part_id = this.$f7route.params.part_id;
 
@@ -51,20 +54,25 @@
 
                 this.suras = [response.data.data];
 
-                if (part_id) {
+                setTimeout(() => {
 
-                    setTimeout(() => {
+                    if (part_id && response.data.data.juz_id != part_id) {
 
-                        if (response.data.data.juz_id != part_id) {
-                            this.$refs['quran'].scrollTo({
-                                x: 0,
-                                y: this.Dom7("[part='" + part_id + "']").eq(0).offset().top
-                            });
-                        }
+                        this.$refs['quran'].scrollTo({
+                            x: 0,
+                            y: this.Dom7("[part='" + part_id + "']").eq(0).offset().top
+                        });
+                    } else {
 
-                    });
+                        this.$refs['quran'].scrollTo({
+                            x: 0,
+                            y: scroll
+                        });
+                    }
 
-                }
+                }, 2000);
+
+
             });
 
         },
@@ -132,7 +140,8 @@
                 return this.suras[0].id - 1;
             },
 
-            handeScroll() {
+            handeScroll(v) {
+                this.$store.commit("SCROLL", v.scrollTop);
                 EventBus.$emit("vscroll");
             }
         },

@@ -1,180 +1,182 @@
 <template>
-    <div class="page" :class="'page-login'">
+  <div class="page" :class="'page-login'">
 
-        <navbar>
-            <template slot="left">
-                <a href="" class="link back navbar-back">
-                    <i class="f7-icons">arrow_left</i>
-                </a>
-            </template>
-        </navbar>
+    <navbar>
+      <template slot="left">
+        <a href="" class="link back navbar-back">
+          <i class="f7-icons">arrow_left</i>
+        </a>
+      </template>
+    </navbar>
 
-        <div class="loader-wrapper" v-if="loading">
-            <div class="preloader color-green" v-if="loading"></div>
-        </div>
-
-        <div v-else class="contest-detailes" :style="$app.t('dir')">
-            <div class="row rtl padding10">
-
-                <div class="col-50">
-                    <div class="title"> {{contest.name}}</div>
-                    <div class="user-and-goal">
-                        <div>
-                            <!-- {{$app.t('creator')}} :  -->
-                            {{contest.creator&& contest.creator.first_name}}
-                        </div>
-                        <!-- <div>{{contest.goal}}</div> -->
-                    </div>
-                </div>
-                <div class="col-50">
-                    <div class="time" style="display:flex; flex-direction: column; align-items:flex-start;">
-                        <div class="flex-align-expired">
-                            <img width="20" src="./../assets/img/clock2.png">
-                            <span class="time">{{toTime(contest.expired_at)}}</span>
-                        </div>
-                        <div class="flex-align-expired">
-                            <img width="20" src="./../assets/img/person.png">
-                            <span class="time">{{$app.t('member')}} {{contest.member_counter}}</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row padding10">
-                <button class="col btn btn-quran btn-margin flex-align" @click="join(contest.id)">
-                    <div>{{$app.t("share")}}</div>
-                    <div class="paddingtop10">
-                        <img src="./../assets/img/share_y.png" alt="share">
-                    </div>
-                </button>
-                <button class="col btn green-btn" v-if="contest.is_opened" @click="()=>contest.is_joined?leave():join()">
-                    {{contest.is_joined?$app.t('quit'):$app.t('enroll')}}
-                </button>
-            </div>
-            <div class="row rtl padding10">
-                <div class="col-50 row block">
-                    <div>
-                        <img class="img" src="./../assets/img/noun_calender_652711.png" />
-                    </div>
-                    <div>
-
-                        <div class="title sm"> {{$app.t('end_date')}}</div>
-                        <div class="date"> {{moment(contest.expired_at)}}</div>
-                    </div>
-
-                </div>
-
-                <div class="col-50 row block">
-                    <div>
-                        <img class="img" src="./../assets/img/noun_calender_652711.png" />
-                    </div>
-                    <div>
-                        <div class="title sm"> {{$app.t('start_date')}}</div>
-                        <div class="date"> {{moment(contest.start_at)}}</div>
-                    </div>
-
-                </div>
-                <div class="col-50 row block">
-                    <div>
-                        <img class="img" src="../assets/img/goz2.png" />
-                    </div>
-                    <div>
-                        <div class="title sm"> {{$app.t('from_juz')}}</div>
-                        <div class="date"> {{contest.juz_from || 1}} </div>
-                    </div>
-
-                </div>
-
-                <div class="col-50 row block">
-                    <div>
-                        <img class="img" src="../assets/img/goz2.png" />
-                    </div>
-                    <div>
-                        <div class="title sm"> {{$app.t('to_juz')}}</div>
-                        <div class="date"> {{contest.juz_to || 30}}</div>
-                    </div>
-
-                </div>
-
-            </div>
-            <div class="block2">
-                <div>
-                    <img class="img" style="opacity:0.5" src="../assets/img/noun_users_140450@2x.png" />
-                </div>
-                <div>
-                    <div class="title sm"> {{$app.t('num_members')}}</div>
-                    <div class="date"> {{contest.member_counter}} </div>
-                </div>
-            </div>
-            <!-- ~~~~~~~~~ users list ~~~~~~~~~~ -->
-            <div v-for="user of contest.members" :key="user.id">
-                <div class="row" style="margin-top:30px;">
-                    <div class="img-div" :style="{backgroundImage: `url(${user.photo||'http://www.jdevoto.cl/web/wp-content/uploads/2018/04/default-user-img.jpg'})`}" />
-                    <strong class="p-text">{{user.first_name}}</strong>
-                </div>
-
-                <div class="row" style="direction: rtl;">
-
-                    <div class="col-25 ds-flex flex-col">
-                        <div class="flex1 ds-flex">
-                            <img class="sm-img" src="./../assets/img/noun_calender_652711.png" />
-                        </div>
-                        <div class="flex1 ds-flex">
-                            تاريخ البدأ
-                        </div>
-                        <div class="flex1 ds-flex">
-                            <div class="date">{{moment(user.pivot.join_at)}}</div>
-                        </div>
-                    </div>
-
-                    <div class="col-25 ds-flex flex-col">
-                        <div class="flex1 ds-flex">
-                            <img class="sm-img" src="../assets/img/clock.png" />
-                        </div>
-                        <div class="flex1 ds-flex">
-                            {{((len(user.pivot.pages)/60).toFixed(1))}}
-                        </div>
-                        <div class="flex1 ds-flex">
-                            {{$app.t('hour')}}
-                        </div>
-                    </div>
-
-                    <div class="col-25 ds-flex flex-col">
-                        <div class="flex1 ds-flex">
-                            <img class="sm-img" src="./../assets/img/noun_calender_652711.png" />
-                        </div>
-                        <div class="flex1 ds-flex">
-                            {{604-len(user.pivot.pages)}}
-                        </div>
-                        <div class="flex1 ds-flex">
-                            {{$app.t('remaining_page')}}
-                        </div>
-                    </div>
-
-                    <div class="col-25 ds-flex flex-col">
-                        <div class="flex1 ds-flex">
-                            <img class="sm-img" src="./../assets/img/noun_calender_652711.png" />
-                        </div>
-                        <div class="flex1 ds-flex">
-                            {{len(user.pivot.pages)}}
-                        </div>
-                        <div class="flex1 ds-flex">
-                            {{$app.t('read_page')}}
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~` -->
-
-        </div>
+    <div class="loader-wrapper" v-if="loading">
+      <div class="preloader color-green" v-if="loading"></div>
     </div>
+
+    <div v-else class="contest-detailes" :style="$app.t('dir')">
+      <div class="row rtl padding10">
+
+        <div class="col-50">
+          <div class="title"> {{contest.name}}</div>
+          <div class="user-and-goal">
+            <div>
+              <!-- {{$app.t('creator')}} :  -->
+              {{contest.creator&& contest.creator.first_name}}
+            </div>
+            <!-- <div>{{contest.goal}}</div> -->
+          </div>
+        </div>
+        <div class="col-50">
+          <div class="time" style="display:flex; flex-direction: column; align-items:flex-start;">
+            <div class="flex-align-expired">
+              <img width="20" src="./../assets/img/clock2.png">
+              <span class="time">{{toTime(contest.expired_at)}}</span>
+            </div>
+            <div class="flex-align-expired">
+              <img width="20" src="./../assets/img/person.png">
+              <span class="time">{{$app.t('member')}} {{contest.member_counter}}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row padding10">
+        <button class="col btn btn-quran btn-margin flex-align" @click="_share(contest.name)">
+          <div>{{$app.t("share")}}</div>
+          <div class="paddingtop10">
+            <img src="./../assets/img/share_y.png" alt="share">
+          </div>
+        </button>
+        <button class="col btn green-btn" v-if="contest.is_opened" @click="()=>contest.is_joined?leave():join()">
+          {{contest.is_joined?$app.t('quit'):$app.t('enroll')}}
+        </button>
+      </div>
+      <div class="row rtl padding10">
+        <div class="col-50 row block">
+          <div>
+            <img class="img" src="./../assets/img/noun_calender_652711.png" />
+          </div>
+          <div>
+
+            <div class="title sm"> {{$app.t('end_date')}}</div>
+            <div class="date"> {{moment(contest.expired_at)}}</div>
+          </div>
+
+        </div>
+
+        <div class="col-50 row block">
+          <div>
+            <img class="img" src="./../assets/img/noun_calender_652711.png" />
+          </div>
+          <div>
+            <div class="title sm"> {{$app.t('start_date')}}</div>
+            <div class="date"> {{moment(contest.start_at)}}</div>
+          </div>
+
+        </div>
+        <div class="col-50 row block">
+          <div>
+            <img class="img" src="../assets/img/goz2.png" />
+          </div>
+          <div>
+            <div class="title sm"> {{$app.t('from_juz')}}</div>
+            <div class="date"> {{contest.juz_from || 1}}</div>
+          </div>
+
+        </div>
+
+        <div class="col-50 row block">
+          <div>
+            <img class="img" src="../assets/img/goz2.png" />
+          </div>
+          <div>
+            <div class="title sm"> {{$app.t('to_juz')}}</div>
+            <div class="date"> {{contest.juz_to || 30}}</div>
+          </div>
+
+        </div>
+
+      </div>
+      <div class="block2">
+        <div>
+          <img class="img" style="opacity:0.5" src="../assets/img/noun_users_140450@2x.png" />
+        </div>
+        <div>
+          <div class="title sm"> {{$app.t('num_members')}}</div>
+          <div class="date"> {{contest.member_counter}}</div>
+        </div>
+      </div>
+      <!-- ~~~~~~~~~ users list ~~~~~~~~~~ -->
+      <div v-for="user of contest.members" :key="user.id">
+        <div class="row" style="margin-top:30px;">
+          <div class="img-div" :style="{backgroundImage: `url(${user.photo||'http://www.jdevoto.cl/web/wp-content/uploads/2018/04/default-user-img.jpg'})`}" />
+          <strong class="p-text">{{user.first_name}}</strong>
+        </div>
+
+        <div class="row" style="direction: rtl;">
+
+          <div class="col-25 ds-flex flex-col">
+            <div class="flex1 ds-flex">
+              <img class="sm-img" src="./../assets/img/noun_calender_652711.png" />
+            </div>
+            <div class="flex1 ds-flex">
+              تاريخ البدأ
+            </div>
+            <div class="flex1 ds-flex">
+              <div class="date">{{moment(user.pivot.join_at)}}</div>
+            </div>
+          </div>
+
+          <div class="col-25 ds-flex flex-col">
+            <div class="flex1 ds-flex">
+              <img class="sm-img" src="../assets/img/clock.png" />
+            </div>
+            <div class="flex1 ds-flex">
+              {{((len(user.pivot.pages)/60).toFixed(1))}}
+            </div>
+            <div class="flex1 ds-flex">
+              {{$app.t('hour')}}
+            </div>
+          </div>
+
+          <div class="col-25 ds-flex flex-col">
+            <div class="flex1 ds-flex">
+              <img class="sm-img" src="./../assets/img/noun_calender_652711.png" />
+            </div>
+            <div class="flex1 ds-flex">
+              {{604-len(user.pivot.pages)}}
+            </div>
+            <div class="flex1 ds-flex">
+              {{$app.t('remaining_page')}}
+            </div>
+          </div>
+
+          <div class="col-25 ds-flex flex-col">
+            <div class="flex1 ds-flex">
+              <img class="sm-img" src="./../assets/img/noun_calender_652711.png" />
+            </div>
+            <div class="flex1 ds-flex">
+              {{len(user.pivot.pages)}}
+            </div>
+            <div class="flex1 ds-flex">
+              {{$app.t('read_page')}}
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~` -->
+
+    </div>
+  </div>
 </template>
 
 <script>
 import moment from "moment";
+import mixin from "../mixin";
 
 export default {
+  mixins: [mixin],
   data() {
     return {
       loading: true,
@@ -192,12 +194,14 @@ export default {
     moment(...args) {
       return moment(...args).format("YYYY/MM/DD");
     },
-    loadContest(){
+    loadContest() {
       let { contest_id } = this.$f7route.params;
-      return this.$http.get("contests/details", { params: { contest_id } }).then(res => {
-         this.contest = res.body.data;
-         this.loading = false;
-      });
+      return this.$http
+        .get("contests/details", { params: { contest_id } })
+        .then(res => {
+          this.contest = res.body.data;
+          this.loading = false;
+        });
     },
     leave() {
       let { id } = this.contest;
@@ -231,7 +235,7 @@ export default {
             .dispatch("joinContest", id)
             .then(() => {
               this.contest = {};
-              this.loading= true;
+              this.loading = true;
               this.loadContest();
               this.$f7.dialog.close();
             })
@@ -295,28 +299,34 @@ export default {
 </script>
 
 <style scoped>
-.block2{
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    text-align: center;
+.block2 {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
 }
-.md .block , .ios .block {
+
+.md .block,
+.ios .block {
   margin: 0px;
   padding: 20px 5px;
 }
+
 .row .col-50 {
   width: 50%;
 }
+
 .block {
   flex-direction: column;
   align-items: center;
   text-align: center;
   border-bottom: rgb(226, 226, 226) 1px solid;
 }
+
 .block:nth-child(odd) {
   border-left: rgb(226, 226, 226) 1px solid;
 }
+
 .page {
   overflow: scroll;
   padding-bottom: 30px;
@@ -344,6 +354,7 @@ export default {
   top: -39px;
   left: 0;
 }
+
 .img {
   min-width: 33px;
 }
@@ -406,6 +417,7 @@ export default {
   color: gray;
   margin: 3px;
 }
+
 .time {
   padding: 5px;
 }
@@ -437,16 +449,19 @@ export default {
 .row .col-25 {
   width: calc((100%) / 4);
 }
+
 .flex-align {
   display: inline-flex;
   justify-content: space-around;
   align-items: center;
 }
+
 .flex-align-expired {
   display: inline-flex;
   justify-content: flex-start;
   align-items: center;
 }
+
 .col-45 {
   margin-top: 15px;
 }

@@ -35,7 +35,7 @@
                                 </div>
                                 <div class="row button-list">
                                     <div class="col">
-                                        <button class=" btn btn-quran btn-margin flex-align" @click="join(contest.id)">
+                                        <button class=" btn btn-quran btn-margin flex-align" @click="_share(contest.name)">
                                             <div>{{$app.t("share")}}</div>
                                             <div class="paddingtop10">
                                                 <img src="../../assets/img/share_y.png" alt="share">
@@ -83,7 +83,7 @@
                         </div>
 
                         <div class="row" style="justify-content: flex-start;">
-                            <button class="col-33 btn btn-quran btn-margin flex-align" @click="join(contest.id)">
+                            <button class="col-33 btn btn-quran btn-margin flex-align" @click="_share(current.name)">
                                 <div>{{$app.t("share")}}</div>
                                 <div class="paddingtop10">
                                     <img src="../../assets/img/share_y.png" alt="share">
@@ -148,8 +148,12 @@
 </style>
 <script>
     import moment from "moment";
+    import mixin from "../../mixin";
 
     export default {
+
+        mixins: [mixin],
+
         data() {
             return {
                 first_time: true,
