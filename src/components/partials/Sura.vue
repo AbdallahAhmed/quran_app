@@ -38,7 +38,8 @@
 
             <div class="block quran-sura">
 
-                <page v-for="(page, i) in sura.pages" :page="page"  :key="page[0].page_id" :id="page[0].page_id" v-if="sura">
+                <page v-for="(page, i) in sura.pages" :page="page" :key="page[0].page_id" :id="page[0].page_id"
+                      v-if="sura">
                     <aya v-for="aya in page" :aya_row="aya" :key="aya.id" :surah="sura"></aya>
                 </page>
 
@@ -46,9 +47,20 @@
 
         </div>
 
+        <div class="empty-gab" v-if="sura.id==114">
+
+        </div>
+
     </div>
 
 </template>
+
+<style>
+    .empty-gab{
+        height: 72px;
+        width: 100%;
+    }
+</style>
 
 <script>
 

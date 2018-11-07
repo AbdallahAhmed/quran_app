@@ -70,8 +70,7 @@
                             <div class="input-border">
                                 <input type="password" :class="{'errors':errors.has('confirm_password')&&submitted}"
                                        name="confirm_password" :placeholder="$app.t('confirm_pass')"
-                                       v-model="user.confirm_password"
-                                       v-validate="'confirmed:password'" autocomplete="false"/>
+                                       v-model="user.confirm_password" autocomplete="false"/>
                             </div>
 
                             <button type="submit">
@@ -129,11 +128,16 @@
 
                 var self = this;
 
+                if (this.user.password != this.user.confirm_password) {
+                    return self.$f7.notification.create({
+                        subtitle: this.$app.trans('password_mismatched')
+                    }).open();
+                }
                 this.$validator.validateAll(this.user.email).then((valid) => {
 
                     if (valid) {
 
-                        self.$f7.dialog.preloader('جاري الفحص');
+                        self.$f7.dialog.preloader(self.$app.t('checking'));
 
                         self.$store.dispatch('forgetPassword', self.user).then((response) => {
 
@@ -142,7 +146,7 @@
                         }, (res) => {
 
                             self.$f7.notification.create({
-                                subtitle: 'البريد الكترونى غير مسجل مسبقاً'
+                                subtitle: self.$app.t('email_exist')
                             }).open();
 
                         }).then(() => {
@@ -172,7 +176,7 @@
 
                     if (valid) {
 
-                        self.$f7.dialog.preloader('جاري الفحص');
+                        self.$f7.dialog.preloader(self.$app.t('checking'));
 
                         self.$http.post('auth/reset-password', self.user).then((response) => {
 
@@ -180,7 +184,7 @@
 
                             self.$store.commit('user', response.body.data.user);
                             self.$store.commit('token', response.body.data.token);
-                            self.$f7router.navigate('home/quran/1');
+                            self.$f7router.navigate('/home/quran/1');
 
                         }, (res) => {
 
