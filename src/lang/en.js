@@ -132,6 +132,7 @@ export default {
     welcome_message:"Welcome",
     checking:"Checking",
     "email_exist":"Your email does't  exist",
+    error_check_red:"Check the red fields",
     messages: {
         _default: function (e) {
             return "The " + e + " value is not valid.";

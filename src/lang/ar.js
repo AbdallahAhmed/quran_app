@@ -104,6 +104,7 @@ export default {
     welcome_message:"أهلا بك معنا",
     "checking":"جاري الفحص",
     "email_exist":"البريد الكترونى غير مسجل مسبقاً",
+    error_check_red:"أعد التحقق من الحقول الحمراء",
 
     messages: {
         _default: function(n) {

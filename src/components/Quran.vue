@@ -161,7 +161,8 @@
 <style>
 
     .scroll-area {
-        height: 36rem;
+        height: 100vh;
+        padding-bottom: 80px;
         overflow: auto;
     }
 

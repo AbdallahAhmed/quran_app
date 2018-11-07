@@ -186,8 +186,9 @@ export default {
 }
 
 .scroll-area {
-  height: 36rem;
-  overflow: auto;
+  height: 100vh;
+  padding-bottom: 0px;
+  overflow: scroll;
 }
 .flex-align {
   display: inline-flex;
