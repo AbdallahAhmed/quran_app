@@ -45,7 +45,7 @@
                                         </div>
                                         <div>
                                             <span>
-                                                <img src="./../assets/img/share_y.png" alt="share">
+                                                <img src="./../assets/img/person.png" alt="share">
                                             </span>
                                             <label>{{contest.member_counter}} {{$app.t('member')}}</label>
                                         </div>
@@ -56,15 +56,11 @@
                                     <button class="col-33 btn btn-quran btn-margin flex-align" @click="join(contest.id)">
                                         <div>{{$app.t('share')}}</div>
                                         <div class="paddingtop10">
-                                            <img src="./../assets/img/share-black.png" alt="share">
+                                            <img src="./../assets/img/share_y.png" alt="share">
                                         </div>
                                     </button>
-                                    <button @click="leave(contest.id)" class="col-33 btn btn-quran btn-margin" v-if="contest.is_joined">{{$app.t('quit')}}</button>
-                                    <button class="col-33 btn btn-quran btn-margin" @click="join(contest.id)" v-if="!contest.is_joined">{{$app.t('enroll')}}</button>
-                                    <button class="col-33 btn btn-quran btn-margin" style="background-color: #F5D42F" v-if="!contest.is_joined">
-                                        {{$app.t('ignore')}}
-                                    </button>
-
+                                    <button @click="leave(contest.id)" class="col-50 btn btn-quran btn-margin" v-if="contest.is_joined">{{$app.t('quit')}}</button>
+                                    <button class="col-50 btn btn-quran btn-margin" @click="join(contest.id)" v-if="!contest.is_joined">{{$app.t('enroll')}}</button>
                                 </div>
 
                             </div>

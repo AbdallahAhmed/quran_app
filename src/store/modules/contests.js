@@ -50,7 +50,7 @@ const actions = {
                 commit("CONTESTS_AUTHED_TAB", res.body.data);
             });
     },
-    
+
     loadAllContests({ commit, state }) {
         return Vue.http
             .get("contests", {
@@ -97,18 +97,19 @@ const actions = {
                 commit("JOIN_CONTEST", payload);
             });
     },
-    createContest({commit},payload){
-        return Vue.http
-                .post("contests/create",payload).then(res =>{
-                    commit("CREATE_CONTEST",res.body.data);
-                })
+    createContest({ commit }, payload) {
+        return Vue.http.post("contests/create", payload).then(res => {
+            commit("CREATE_CONTEST", res.body.data);
+        });
     }
 };
 
 const mutations = {
     CONTESTS(state, payload) {
         state.unauthedContests.offset = state.unauthedContests.offset + 5;
-        state.unauthedContests.data = state.unauthedContests.data.concat(payload);
+        state.unauthedContests.data = state.unauthedContests.data.concat(
+            payload
+        );
     },
     CONTESTS_AUTHED_TAB(state, payload) {
         state.currentContest = payload.current[0] ? payload.current[0] : {};
@@ -130,6 +131,7 @@ const mutations = {
         for (let i = 0; i < contests.length; i++) {
             if (contests[i].id == payload) {
                 contests[i].is_joined = true;
+                contests[i].member_counter++;
                 state.currentContest = contests[i];
             } else contests[i].is_joined = false;
         }
@@ -138,12 +140,15 @@ const mutations = {
     LEAVE_CONTEST(state, payload) {
         var contests = state.contests.data;
         for (let i = 0; i < contests.length; i++)
-            if (contests[i].id == payload)
-                (contests[i].is_joined = false) || (state.currentContest = {});
+            if (contests[i].id == payload) {
+                contests[i].is_joined = false;
+                state.currentContest = {};
+                contests[i].member_counter--;
+            }
         state.contests.data = contests;
         state.currentContest = {};
     },
-    CREATE_CONTEST(state,payload){
+    CREATE_CONTEST(state, payload) {
         state.currentContest = payload;
         state.contests.data = state.contests.data.concat([payload]);
         state.contests.offset++;

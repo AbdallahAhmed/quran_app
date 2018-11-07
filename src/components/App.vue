@@ -43,3 +43,41 @@
         }
     };
 </script>
+
+
+<style>
+.preloader-inner-gap {
+  display: none !important;
+  width: 0px !important;
+}
+.md .dialog-button ,.ios .dialog-button {
+  text-align: center;
+  color: white;
+  background-color: #207249;
+  font-size: 16px;
+  border: 0;
+  margin-top: 5px;
+  display: inline-block;
+}
+.md .dialog-buttons span:nth-child(-n + 2) , .ios .dialog-buttons span:nth-child(-n + 2) {
+  width: 49%;
+}
+.md .dialog-buttons span:nth-child(3) , .ios .dialog-buttons span:nth-child(3) {
+  width: 100%;
+}
+.md .dialog-buttons ,.ios .dialog-buttons {
+  display: block;
+  height: auto;
+}
+
+.md .dialog-button,
+.md .dialog-button + .dialog-button ,.ios .dialog-button,
+.ios .dialog-button + .dialog-button {
+  margin: 5px auto;
+}
+
+.dialog-backdrop {
+  background-color: rgba(255, 248, 248, 0.82);
+}
+</style>
+

@@ -9,8 +9,8 @@
             </template>
         </navbar>
 
-        <div class="loader-wrapper" v-if="!contest">
-            <div class="preloader color-green" v-if="!contest"></div>
+        <div class="loader-wrapper" v-if="loading">
+            <div class="preloader color-green" v-if="loading"></div>
         </div>
 
         <div v-else class="contest-detailes" :style="$app.t('dir')">
@@ -182,10 +182,7 @@ export default {
     };
   },
   created() {
-    let { contest_id } = this.$f7route.params;
-    this.$http.get("contests/details", { params: { contest_id } }).then(res => {
-      this.contest = res.body.data;
-    });
+    this.loadContest();
   },
   methods: {
     toTime(time) {
@@ -195,6 +192,13 @@ export default {
     moment(...args) {
       return moment(...args).format("YYYY/MM/DD");
     },
+    loadContest(){
+      let { contest_id } = this.$f7route.params;
+      return this.$http.get("contests/details", { params: { contest_id } }).then(res => {
+         this.contest = res.body.data;
+         this.loading = false;
+      });
+    },
     leave() {
       let { id } = this.contest;
       this.$f7.dialog.confirm(this.$app.t("comfirm_quit"), () => {
@@ -202,7 +206,9 @@ export default {
         this.$store
           .dispatch("leaveContest", id)
           .then(() => {
-            this.contest.is_joined = false;
+            this.contest = {};
+            this.loading = true;
+            this.loadContest();
             this.$f7.dialog.close();
           })
           .catch(err => {
@@ -224,7 +230,9 @@ export default {
           this.$store
             .dispatch("joinContest", id)
             .then(() => {
-              this.contest.is_joined = true;
+              this.contest = {};
+              this.loading= true;
+              this.loadContest();
               this.$f7.dialog.close();
             })
             .catch(err => {
@@ -448,41 +456,3 @@ export default {
 }
 </style>
 
-<style>
-.preloader-inner-gap {
-  display: none !important;
-  width: 0px !important;
-}
-</style>
-
-<style>
-.md .dialog-button ,.ios .dialog-button {
-  text-align: center;
-  color: white;
-  background-color: #207249;
-  font-size: 16px;
-  border: 0;
-  margin-top: 5px;
-  display: inline-block;
-}
-.md .dialog-buttons span:nth-child(-n + 2) , .ios .dialog-buttons span:nth-child(-n + 2) {
-  width: 49%;
-}
-.md .dialog-buttons span:nth-child(3) , .ios .dialog-buttons span:nth-child(3) {
-  width: 100%;
-}
-.md .dialog-buttons ,.ios .dialog-buttons {
-  display: block;
-  height: auto;
-}
-
-.md .dialog-button,
-.md .dialog-button + .dialog-button ,.ios .dialog-button,
-.ios .dialog-button + .dialog-button {
-  margin: 5px auto;
-}
-
-.dialog-backdrop {
-  background-color: rgba(255, 248, 248, 0.82);
-}
-</style>

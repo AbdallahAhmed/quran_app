@@ -10,7 +10,7 @@ export default {
     search_ayat: "Search for ayat",
 
     no_result: "No results found",
-    alarms: "Alarm",
+    alarms: "Reminders",
     repetition: "Repetition",
     never: "Never",
     daily: "Daily",
