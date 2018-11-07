@@ -100,6 +100,15 @@ export default {
           .dispatch("leaveContest", id)
           .then(() => {
             this.$f7.dialog.close();
+            let done= this.$f7.dialog
+                  .create({
+                    title: this.$app.t("you_quit_the_contest_succsesfuly"),
+                    buttons: []
+                  })
+                  .open();
+                setTimeout(() => {
+                  done.close();
+                }, 1700);
           })
           .catch(err => {
             this.$f7.dialog.alert(this.$app.t("error"));
@@ -120,11 +129,21 @@ export default {
             .dispatch("joinContest", id)
             .then(() => {
               this.$f7.dialog.close();
+              let done= this.$f7.dialog
+                  .create({
+                    title: this.$app.t("you_joined_the_contest_succsesfuly"),
+                    buttons: []
+                  })
+                  .open();
+                setTimeout(() => {
+                  done.close();
+                }, 1700);
             })
             .catch(err => {
               if (err.status == 401) {
                 this.$f7router.navigate("/login");
                 this.$f7.dialog.close();
+                
               } else {
                 this.$f7.dialog.alert(this.$app.t("error"));
                 setTimeout(() => {

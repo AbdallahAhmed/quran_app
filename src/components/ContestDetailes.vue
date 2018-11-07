@@ -8,165 +8,165 @@
         </a>
       </template>
     </navbar>
+    <div style="background-color:#f5f5f5; padding:20px;">
+      <div class="loader-wrapper" v-if="loading">
+        <div class="preloader color-green" v-if="loading"></div>
+      </div>
 
-    <div class="loader-wrapper" v-if="loading">
-      <div class="preloader color-green" v-if="loading"></div>
-    </div>
+      <div v-else class="contest-detailes" :style="$app.t('dir')">
+        <div class="row rtl padding10">
 
-    <div v-else class="contest-detailes" :style="$app.t('dir')">
-      <div class="row rtl padding10">
-
-        <div class="col-50">
-          <div class="title"> {{contest.name}}</div>
-          <div class="user-and-goal">
+          <div class="col-50">
+            <div class="title"> {{contest.name}}</div>
+            <div class="user-and-goal">
+              <div>
+                <!-- {{$app.t('creator')}} :  -->
+                {{contest.creator&& contest.creator.first_name}}
+              </div>
+              <!-- <div>{{contest.goal}}</div> -->
+            </div>
+          </div>
+          <div class="col-50">
+            <div class="time" style="display:flex; flex-direction: column; align-items:flex-start;">
+              <div class="flex-align-expired">
+                <img width="20" src="./../assets/img/clock2.png">
+                <span class="time">{{toTime(contest.expired_at)}}</span>
+              </div>
+              <div class="flex-align-expired">
+                <img width="20" src="./../assets/img/person.png">
+                <span class="time">{{$app.t('member')}} {{contest.member_counter}}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row padding10">
+          <button class="col btn btn-quran btn-margin flex-align" @click="_share(contest.name)">
+            <div>{{$app.t("share")}}</div>
+            <div class="paddingtop10">
+              <img src="./../assets/img/share_y.png" alt="share">
+            </div>
+          </button>
+          <button class="col btn green-btn" v-if="contest.is_opened" @click="()=>contest.is_joined?leave():join()">
+            {{contest.is_joined?$app.t('quit'):$app.t('enroll')}}
+          </button>
+        </div>
+        <div class="row rtl padding10">
+          <div class="col-50 row block">
             <div>
-              <!-- {{$app.t('creator')}} :  -->
-              {{contest.creator&& contest.creator.first_name}}
+              <img class="img" src="./../assets/img/noun_calender_652711.png" />
             </div>
-            <!-- <div>{{contest.goal}}</div> -->
+            <div>
+
+              <div class="title sm"> {{$app.t('end_date')}}</div>
+              <div class="date"> {{moment(contest.expired_at)}}</div>
+            </div>
+
+          </div>
+
+          <div class="col-50 row block">
+            <div>
+              <img class="img" src="./../assets/img/noun_calender_652711.png" />
+            </div>
+            <div>
+              <div class="title sm"> {{$app.t('start_date')}}</div>
+              <div class="date"> {{moment(contest.start_at)}}</div>
+            </div>
+
+          </div>
+          <div class="col-50 row block">
+            <div>
+              <img class="img" src="../assets/img/goz2.png" />
+            </div>
+            <div>
+              <div class="title sm"> {{$app.t('from_juz')}}</div>
+              <div class="date"> {{contest.juz_from || 1}}</div>
+            </div>
+
+          </div>
+
+          <div class="col-50 row block">
+            <div>
+              <img class="img" src="../assets/img/goz2.png" />
+            </div>
+            <div>
+              <div class="title sm"> {{$app.t('to_juz')}}</div>
+              <div class="date"> {{contest.juz_to || 30}}</div>
+            </div>
+
+          </div>
+
+        </div>
+        <div class="block2">
+          <div>
+            <img class="img" style="opacity:0.5" src="../assets/img/noun_users_140450@2x.png" />
+          </div>
+          <div>
+            <div class="title sm"> {{$app.t('num_members')}}</div>
+            <div class="date"> {{contest.member_counter}}</div>
           </div>
         </div>
-        <div class="col-50">
-          <div class="time" style="display:flex; flex-direction: column; align-items:flex-start;">
-            <div class="flex-align-expired">
-              <img width="20" src="./../assets/img/clock2.png">
-              <span class="time">{{toTime(contest.expired_at)}}</span>
+        <!-- ~~~~~~~~~ users list ~~~~~~~~~~ -->
+        <div v-for="user of contest.members" :key="user.id">
+          <div class="row" style="margin-top:30px;">
+            <div class="img-div" :style="{backgroundImage: `url(${user.photo||'http://www.jdevoto.cl/web/wp-content/uploads/2018/04/default-user-img.jpg'})`}" />
+            <strong class="p-text">{{user.first_name}}</strong>
+          </div>
+
+          <div class="row" style="direction: rtl;">
+
+            <div class="col-25 ds-flex flex-col">
+              <div class="flex1 ds-flex">
+                <img class="sm-img" src="./../assets/img/noun_calender_652711.png" />
+              </div>
+              <div class="flex1 ds-flex">
+                تاريخ البدأ
+              </div>
+              <div class="flex1 ds-flex">
+                <div class="date">{{moment(user.pivot.join_at)}}</div>
+              </div>
             </div>
-            <div class="flex-align-expired">
-              <img width="20" src="./../assets/img/person.png">
-              <span class="time">{{$app.t('member')}} {{contest.member_counter}}</span>
+
+            <div class="col-25 ds-flex flex-col">
+              <div class="flex1 ds-flex">
+                <img class="sm-img" src="../assets/img/clock.png" />
+              </div>
+              <div class="flex1 ds-flex">
+                {{((len(user.pivot.pages)/60).toFixed(1))}}
+              </div>
+              <div class="flex1 ds-flex">
+                {{$app.t('hour')}}
+              </div>
+            </div>
+
+            <div class="col-25 ds-flex flex-col">
+              <div class="flex1 ds-flex">
+                <img class="sm-img" src="./../assets/img/noun_calender_652711.png" />
+              </div>
+              <div class="flex1 ds-flex">
+                {{604-len(user.pivot.pages)}}
+              </div>
+              <div class="flex1 ds-flex">
+                {{$app.t('remaining_page')}}
+              </div>
+            </div>
+
+            <div class="col-25 ds-flex flex-col">
+              <div class="flex1 ds-flex">
+                <img class="sm-img" src="./../assets/img/noun_calender_652711.png" />
+              </div>
+              <div class="flex1 ds-flex">
+                {{len(user.pivot.pages)}}
+              </div>
+              <div class="flex1 ds-flex">
+                {{$app.t('read_page')}}
+
+              </div>
             </div>
           </div>
         </div>
+
+        <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~` -->
       </div>
-      <div class="row padding10">
-        <button class="col btn btn-quran btn-margin flex-align" @click="_share(contest.name)">
-          <div>{{$app.t("share")}}</div>
-          <div class="paddingtop10">
-            <img src="./../assets/img/share_y.png" alt="share">
-          </div>
-        </button>
-        <button class="col btn green-btn" v-if="contest.is_opened" @click="()=>contest.is_joined?leave():join()">
-          {{contest.is_joined?$app.t('quit'):$app.t('enroll')}}
-        </button>
-      </div>
-      <div class="row rtl padding10">
-        <div class="col-50 row block">
-          <div>
-            <img class="img" src="./../assets/img/noun_calender_652711.png" />
-          </div>
-          <div>
-
-            <div class="title sm"> {{$app.t('end_date')}}</div>
-            <div class="date"> {{moment(contest.expired_at)}}</div>
-          </div>
-
-        </div>
-
-        <div class="col-50 row block">
-          <div>
-            <img class="img" src="./../assets/img/noun_calender_652711.png" />
-          </div>
-          <div>
-            <div class="title sm"> {{$app.t('start_date')}}</div>
-            <div class="date"> {{moment(contest.start_at)}}</div>
-          </div>
-
-        </div>
-        <div class="col-50 row block">
-          <div>
-            <img class="img" src="../assets/img/goz2.png" />
-          </div>
-          <div>
-            <div class="title sm"> {{$app.t('from_juz')}}</div>
-            <div class="date"> {{contest.juz_from || 1}}</div>
-          </div>
-
-        </div>
-
-        <div class="col-50 row block">
-          <div>
-            <img class="img" src="../assets/img/goz2.png" />
-          </div>
-          <div>
-            <div class="title sm"> {{$app.t('to_juz')}}</div>
-            <div class="date"> {{contest.juz_to || 30}}</div>
-          </div>
-
-        </div>
-
-      </div>
-      <div class="block2">
-        <div>
-          <img class="img" style="opacity:0.5" src="../assets/img/noun_users_140450@2x.png" />
-        </div>
-        <div>
-          <div class="title sm"> {{$app.t('num_members')}}</div>
-          <div class="date"> {{contest.member_counter}}</div>
-        </div>
-      </div>
-      <!-- ~~~~~~~~~ users list ~~~~~~~~~~ -->
-      <div v-for="user of contest.members" :key="user.id">
-        <div class="row" style="margin-top:30px;">
-          <div class="img-div" :style="{backgroundImage: `url(${user.photo||'http://www.jdevoto.cl/web/wp-content/uploads/2018/04/default-user-img.jpg'})`}" />
-          <strong class="p-text">{{user.first_name}}</strong>
-        </div>
-
-        <div class="row" style="direction: rtl;">
-
-          <div class="col-25 ds-flex flex-col">
-            <div class="flex1 ds-flex">
-              <img class="sm-img" src="./../assets/img/noun_calender_652711.png" />
-            </div>
-            <div class="flex1 ds-flex">
-              تاريخ البدأ
-            </div>
-            <div class="flex1 ds-flex">
-              <div class="date">{{moment(user.pivot.join_at)}}</div>
-            </div>
-          </div>
-
-          <div class="col-25 ds-flex flex-col">
-            <div class="flex1 ds-flex">
-              <img class="sm-img" src="../assets/img/clock.png" />
-            </div>
-            <div class="flex1 ds-flex">
-              {{((len(user.pivot.pages)/60).toFixed(1))}}
-            </div>
-            <div class="flex1 ds-flex">
-              {{$app.t('hour')}}
-            </div>
-          </div>
-
-          <div class="col-25 ds-flex flex-col">
-            <div class="flex1 ds-flex">
-              <img class="sm-img" src="./../assets/img/noun_calender_652711.png" />
-            </div>
-            <div class="flex1 ds-flex">
-              {{604-len(user.pivot.pages)}}
-            </div>
-            <div class="flex1 ds-flex">
-              {{$app.t('remaining_page')}}
-            </div>
-          </div>
-
-          <div class="col-25 ds-flex flex-col">
-            <div class="flex1 ds-flex">
-              <img class="sm-img" src="./../assets/img/noun_calender_652711.png" />
-            </div>
-            <div class="flex1 ds-flex">
-              {{len(user.pivot.pages)}}
-            </div>
-            <div class="flex1 ds-flex">
-              {{$app.t('read_page')}}
-
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~` -->
-
     </div>
   </div>
 </template>
@@ -212,8 +212,19 @@ export default {
           .then(() => {
             this.contest = {};
             this.loading = true;
-            this.loadContest();
             this.$f7.dialog.close();
+            this.loadContest().then(() => {
+                let done= this.$f7.dialog
+                  .create({
+                    title: this.$app.t("you_quit_the_contest_succsesfuly"),
+                    buttons: []
+                  })
+                  .open();
+                setTimeout(() => {
+                  done.close();
+                }, 1700);
+              });
+
           })
           .catch(err => {
             this.$f7.dialog.alert(this.$app.t("error"));
@@ -236,8 +247,18 @@ export default {
             .then(() => {
               this.contest = {};
               this.loading = true;
-              this.loadContest();
               this.$f7.dialog.close();
+              this.loadContest().then(() => {
+                let done= this.$f7.dialog
+                  .create({
+                    title: this.$app.t("you_joined_the_contest_succsesfuly"),
+                    buttons: []
+                  })
+                  .open();
+                setTimeout(() => {
+                  done.close();
+                }, 1700);
+              });
             })
             .catch(err => {
               if (err.status == 401) {

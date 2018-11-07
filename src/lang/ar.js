@@ -99,6 +99,8 @@ export default {
     "remaining_page":"صفحة متبقية",
     "read_page":"صفحة مقروئة",
     "password_mismatched" : "كلمة المرور لا تماثل التأكيد",
+    you_joined_the_contest_succsesfuly :"لقد أشتركت في المسابقة بنجاح",
+    you_quit_the_contest_succsesfuly :"لقد خرجت من المسابقة بنجاح",
 
     messages: {
         _default: function(n) {
