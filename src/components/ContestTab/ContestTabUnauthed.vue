@@ -1,141 +1,201 @@
 <template>
-    <div>
-        <p class="page-title"><span>{{$app.t('contests')}}</span></p>
+    <f7-page :class="'page-khatima'">
 
-        <div style="padding-bottom:50px">
-            <div class="contest-card-unauthed row link" v-for="contest in contests" :key="contest.id"
-                 @click="openDetails(contest.id)">
-                <div class="jastfy-img col-20">
+        <navbar>
+            <template slot="left">
+                <a href="" class="link back navbar-back">
+                    <i class="f7-icons">arrow_left</i>
+                </a>
+            </template>
+        </navbar>
 
-                        <img class="kas-img" src="../../assets/img/noun_users_140450@2x.png"/>
-                        <span
-                            style="font-size:14px; margin-top:3px; margin-left: 3px;">{{contest.member_counter}}</span>
-                        <span> {{$app.t('members')}} </span>
+        <div class="loader-wrapper" v-if="!contests.length">
+            <div class="preloader color-green"></div>
+        </div>
+        <div v-else :style="$app.t('dir')">
+            <p class="page-title">{{$app.t('all_contests')}}</p>
+            <div class="scroll-area">
+                <vue-scroll @load-start="loadmore">
+                    <div class="infinite-scroll-content infinite-scroll-bottom" style="padding-bottom: 50px">
+                        <div class="row contest-wrapper " v-for="contest in contests" :key="contest.id">
+                            <div class="col-100 contest-card">
+                                <div class="col-100 margin-bottom contest">
+                                    <div class="col-40 display-inline-block">
+                                        <div class="col-100">
+                                            <a :href="'/contest/'+contest.id">
+                                                <h1>{{contest.name}}</h1>
+                                            </a>
+                                        </div>
+                                        <div class="col-100">{{contest.creator.first_name}}
+                                            {{contest.creator.last_name}}
+                                        </div>
+                                    </div>
+                                    <div class="col-20 text-align-center display-inline-block">
+                                        <div style="opacity: 0;">
+                                            <label>1</label>
+                                        </div>
 
-                </div>
-                <div class="col-50">
-                    <strong>
-                        <h1 class="contest-title">{{contest.name}}</h1>
-                    </strong>
-                    <h2 class="contest-text"> {{contest.goal}}</h2>
-                </div>
-                <div class="col-20 jastfy-img">
-                    <img class="kas-img" src="../../assets/img/Group 1034@2x.png"/>
-                </div>
+                                    </div>
+                                    <div class="col-40 text-align-left	display-inline-block">
+                                        <div>
+                                            <i class="f7-icons" style="font-size: 18px">
+                                                time
+                                            </i>
+                                            <label>{{contest.remaining_time}}</label>
+                                        </div>
+                                        <div>
+                                            <span>
+                                                <img src="../../assets/img/person.png" alt="share">
+                                            </span>
+                                            <label>{{contest.member_counter}} {{$app.t('member')}}</label>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class=" margin-bottom">
+                                    <button class="col-33 btn btn-quran btn-margin flex-align" @click="join(contest.id)">
+                                        <div>{{$app.t('share')}}</div>
+                                        <div class="paddingtop10">
+                                            <img src="../../assets/img/share_y.png" alt="share">
+                                        </div>
+                                    </button>
+                                    <!-- <button @click="leave(contest.id)" class="col-50 btn btn-quran btn-margin" v-if="contest.is_joined">{{$app.t('quit')}}</button> -->
+                                    <button class="col-50 btn btn-quran btn-margin" @click="join(contest.id)" v-if="!contest.is_joined">{{$app.t('enroll')}}</button>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </vue-scroll>
             </div>
 
         </div>
-        <div class="loader-wrapper" v-if="loading">
-            <div class="preloader color-green"></div>
-        </div>
-        <div v-if="!loading&&contests.length===0" class="searchbar-hide-on-search">
-            <p><label>{{$app.t('no_contests')}}</label></p>
-        </div>
-    </div>
+
+    </f7-page>
 </template>
 
 <script>
+import mixin from "../../mixin";
 
-    import mixin from "../../mixin";
+export default {
+  mixins: [mixin],
 
-    export default {
-
-        mixins: [mixin],
-
-        data() {
-            return {
-                loading: true,
-                last: false
-            };
-        },
-        computed: {
-            contests() {
-                return this.$store.getters.contests;
-            }
-        },
-        methods: {
-            openDetails(id) {
-                this.$f7router.navigate(`/contest/${id}`);
-            },
-            loadmore() {
-                this.loading = true;
-                this.$store.dispatch("getContests").then(data => {
-                    this.loading = false;
-                    if (data.length == 0) {
-                        this.last = true;
-                    }
-                });
-            }
-        },
-        created() {
-            if (this.$store.getters.contests.length === 0) {
-                this.$store.dispatch("getContests").then(() => {
-                    this.loading = false;
-                });
-            } else {
-                this.loading = false;
-            }
-        },
-        mounted() {
-            this.Dom7(".page-content").on("scroll", e => {
-                var elem = this.Dom7(e.currentTarget);
-
-                if (elem[0].scrollHeight - elem.scrollTop() == elem.outerHeight() && !this.loading && !this.last) {
-                    // loadmore
-                    this.loadmore();
-                }
-            });
-        }
+  data() {
+    return {
+      loading: true,
+      last: false
     };
+  },
+  computed: {
+    contests() {
+      return this.$store.getters.contests;
+    }
+  },
+  methods: {
+    openDetails(id) {
+      this.$f7router.navigate(`/contest/${id}`);
+    },
+    loadmore() {
+      this.loading = true;
+      this.$store.dispatch("getContests").then(data => {
+        this.loading = false;
+        if (data.length == 0) {
+          this.last = true;
+        }
+      });
+    },
+    join() {
+      this.$f7.dialog
+        .create({
+          title: this.$app.t("login_or_register"),
+          // text: this.$app.t(''),
+          buttons: [
+            {
+              text: this.$app.t("login"),
+              onClick: () => {
+                this.$f7router.navigate("/login");
+              }
+            },
+            {
+              text: this.$app.t("signup"),
+              onClick: () => {
+                this.$f7router.navigate("/register");
+              }
+            },
+            {
+              text: this.$app.t("cancel"),
+              onClick: () => {
+                this.$f7.dialog.close();
+              }
+            }
+          ]
+        })
+        .open();
+    }
+  },
+  created() {
+    if (this.$store.getters.contests.length === 0) {
+      this.$store.dispatch("getContests").then(() => {
+        this.loading = false;
+      });
+    } else {
+      this.loading = false;
+    }
+  },
+  mounted() {
+    this.Dom7(".page-content").on("scroll", e => {
+      var elem = this.Dom7(e.currentTarget);
+
+      if (
+        elem[0].scrollHeight - elem.scrollTop() == elem.outerHeight() &&
+        !this.loading &&
+        !this.last
+      ) {
+        // loadmore
+        this.loadmore();
+      }
+    });
+  }
+};
 </script>
 
 <style scoped>
-    .contest-card-unauthed {
-        height: 100px;
-        background-color: white;
-        width: 90%;
-        margin: 20px auto;
-        text-align: justify;
-    }
+.contest-card {
+  background-color: white;
+  padding: 10px;
+}
 
-    .jastfy-img {
-        display: flex;
-        justify-content: space-around;
-        align-items: center;
-        height: 100%;
-    }
+.contest-wrapper {
+  direction: rtl;
+  padding: 10px;
+}
 
-    .kas-img {
-        max-height: 25px;
-        margin: 0 auto;
-        display: block;
-    }
+.contest-wrapper .contest-card .contest {
+  margin: 0 auto;
+}
 
-    .contest-text,
-    .contest-title {
-        text-align: right;
-    }
+.contest a {
+  color: inherit;
+}
 
-    .contest-title {
-        font-size: 20px;
-        margin-bottom: 0px;
-    }
+.btn-margin {
+  margin-left: 8px;
+}
 
-    .contest-text {
-        font-weight: 100;
-        margin-top: 0px;
-        word-break: break-all;
-    }
-
-    .page-content {
-        height: auto;
-        padding-bottom: 50px;
-    }
-
-    .page-title a {
-        float: left;
-        color: #fff;
-        margin-left: 20px;
-        margin-top: 7px;
-    }
+.scroll-area {
+  height: 36rem;
+  overflow: auto;
+}
+.flex-align {
+  display: inline-flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.paddingtop10 {
+  padding-top: 10px;
+}
+.btn-quran.flex-align {
+  padding-bottom: 4px;
+  padding-top: 4px;
+}
 </style>

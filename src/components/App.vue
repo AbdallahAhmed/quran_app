@@ -68,8 +68,12 @@
 .md .dialog-buttons ,.ios .dialog-buttons {
   display: block;
   height: auto;
+  background-color: white;
+  padding: 5px;
 }
-
+.ios .dialog-button:first-child , .ios .dialog-button:last-child{
+    border-radius: 0px;
+}
 .md .dialog-button,
 .md .dialog-button + .dialog-button ,.ios .dialog-button,
 .ios .dialog-button + .dialog-button {
