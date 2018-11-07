@@ -101,6 +101,7 @@ export default {
     "password_mismatched" : "كلمة المرور لا تماثل التأكيد",
     you_joined_the_contest_succsesfuly :"لقد أشتركت في المسابقة بنجاح",
     you_quit_the_contest_succsesfuly :"لقد خرجت من المسابقة بنجاح",
+    error_check_red:"أعد التحقق من الحقول الحمراء",
 
     messages: {
         _default: function(n) {

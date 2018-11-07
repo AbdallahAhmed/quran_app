@@ -9,14 +9,14 @@
             </template>
         </navbar>
 
-        <div class="loader-wrapper" v-if="!contests.length">
-            <div class="preloader color-green"></div>
+        <div class="loader-wrapper" :hidden="contests.length">
+            <div class="preloader color-green" :hidden="contests.length"></div>
         </div>
-        <div v-else :style="$app.t('dir')">
+        <div  v-if="contests.length" :style="$app.t('dir')">
             <p class="page-title">{{$app.t('all_contests')}}</p>
             <div class="scroll-area">
                 <vue-scroll @load-start="loadmore">
-                    <div class="infinite-scroll-content infinite-scroll-bottom" style="padding-bottom: 50px">
+                    <div class="infinite-scrv-elseoll-content infinite-scroll-bottom" style="padding-bottom: 50px">
                         <div class="row contest-wrapper " v-for="contest in contests" :key="contest.id">
                             <div class="col-100 contest-card">
                                 <div class="col-100 margin-bottom contest">
@@ -95,12 +95,12 @@ export default {
     openDetails(id) {
       this.$f7router.navigate(`/contest/${id}`);
     },
-    loadmore() {
+    loadmore(_,__,done) {
       this.loading = true;
       this.$store.dispatch("getContests").then(data => {
         this.loading = false;
         if (data.length == 0) {
-          this.last = true;
+          done();
         }
       });
     },
@@ -155,6 +155,9 @@ export default {
         this.loadmore();
       }
     });
+  },
+  components: {
+    navbar: require("../partials/Navbar.vue"),
   }
 };
 </script>
@@ -183,7 +186,8 @@ export default {
 }
 
 .scroll-area {
-  height: 36rem;
+  height: 100vh;
+  padding-bottom: 55px;
   overflow: auto;
 }
 .flex-align {

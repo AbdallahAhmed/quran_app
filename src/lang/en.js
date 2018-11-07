@@ -129,6 +129,7 @@ export default {
     "password_mismatched" : "The password confirmation does not match.",
     you_joined_the_contest_succsesfuly :"You joined the competition successfully",
     you_quit_the_contest_succsesfuly :"You quit the competition successfully",
+    error_check_red:"Check the red fields",
     messages: {
         _default: function (e) {
             return "The " + e + " value is not valid.";
