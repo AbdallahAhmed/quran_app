@@ -63,8 +63,10 @@
 
 </template>
 
-<style scoped>
-
+<style >
+.green-title .dialog-title{
+    color: #36734a;
+}
 
 </style>
 
@@ -98,9 +100,8 @@
 
                 var self = this;
 
-                console.log(this.user);
 
-                if(this.user.password != this.user.confirm_password){
+                if (this.user.password != this.user.confirm_password) {
                     return self.$f7.notification.create({
                         subtitle: this.$app.trans('password_mismatched')
                     }).open();
@@ -117,7 +118,18 @@
                         userData.lang = "ar";
 
                         self.$store.dispatch('register', userData).then((response) => {
-                            self.$f7router.navigate('/home/quran/1');
+                           let dialog = this.$f7.dialog
+                                .create({
+                                    title: this.$app.t("welcome_message"),
+                                    buttons: [],
+                                    cssClass:"green-title"
+                                })
+                                .open();
+
+                           setTimeout(()=>{
+                               dialog.close(true)
+                               self.$f7router.navigate('/home/quran/1');
+                           },2000);
                         }, (res) => {
                             self.$f7.notification.create({
                                 subtitle: res.data.errors[0]
