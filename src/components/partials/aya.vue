@@ -2,12 +2,22 @@
 
     <span class="quran-aya" @click="activate(aya_row)" :part="aya_row.juz_id"
           :class="{active: isActivated(aya_row)}" :style="{ 'font-size': font_size + 'px' }">
+        <slot></slot>
         {{ aya_row.text }}
         <span class="aya-num">  ﴿ {{ aya_row.numberinsurat }} ﴾ </span>
+        <div class="emty-gap" v-if="aya_row.number==6236">
+
+        </div>
     </span>
 
 </template>
 
+<style>
+    .emty-gap{
+        width: 100%;
+        height: 250px;
+    }
+</style>
 
 <script>
 
