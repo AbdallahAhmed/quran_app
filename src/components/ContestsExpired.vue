@@ -69,7 +69,6 @@ export default {
   },
   components: {
     navbar: require("./partials/Navbar.vue"),
-    "main-toolbar": require("./partials/MainToolbar.vue")
   }
 };
 </script>

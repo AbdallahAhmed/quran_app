@@ -70,7 +70,7 @@
             </div>
 
         </div>
-
+        <div class="gap"></div>
     </f7-page>
 </template>
 
