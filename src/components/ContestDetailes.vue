@@ -50,7 +50,18 @@
             {{contest.is_joined?$app.t('quit'):$app.t('enroll')}}
           </button>
         </div>
+        
         <div class="row rtl padding10">
+          <div class="col-50 row block">
+            <div>
+              <img class="img" src="./../assets/img/noun_calender_652711.png" />
+            </div>
+            <div>
+              <div class="title sm"> {{$app.t('start_date')}}</div>
+              <div class="date"> {{moment(contest.start_at)}}</div>
+            </div>
+
+          </div>
           <div class="col-50 row block">
             <div>
               <img class="img" src="./../assets/img/noun_calender_652711.png" />
@@ -63,16 +74,7 @@
 
           </div>
 
-          <div class="col-50 row block">
-            <div>
-              <img class="img" src="./../assets/img/noun_calender_652711.png" />
-            </div>
-            <div>
-              <div class="title sm"> {{$app.t('start_date')}}</div>
-              <div class="date"> {{moment(contest.start_at)}}</div>
-            </div>
-
-          </div>
+          
           <div class="col-50 row block">
             <div>
               <img class="img" src="../assets/img/goz2.png" />
@@ -437,6 +439,7 @@ export default {
   font-size: 1em;
   color: gray;
   margin: 3px;
+  font-size: 80%;
 }
 
 .time {
