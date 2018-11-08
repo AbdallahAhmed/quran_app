@@ -1,13 +1,7 @@
 <template>
     <f7-page :class="'page-khatima'">
 
-        <navbar>
-            <template slot="left">
-                <a href="" class="link back navbar-back">
-                    <i class="f7-icons">arrow_left</i>
-                </a>
-            </template>
-        </navbar>
+        <navbar/>
 
         <div class="loader-wrapper" :hidden="contests.length">
             <div class="preloader color-green" :hidden="contests.length"></div>
@@ -66,11 +60,11 @@
                             </div>
                         </div>
                     </div>
+          <div class="gap"></div>
                 </vue-scroll>
             </div>
 
         </div>
-
     </f7-page>
 </template>
 
@@ -187,7 +181,7 @@ export default {
 
 .scroll-area {
   height: 100vh;
-  padding-bottom: 55px;
+  padding-bottom: 0px;
   overflow: auto;
 }
 .flex-align {

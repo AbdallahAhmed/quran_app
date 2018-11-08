@@ -46,6 +46,10 @@
 
 
 <style>
+.gap{
+  height: 60px;
+  width: 100%;
+}
 .preloader-inner-gap {
   display: none !important;
   width: 0px !important;
