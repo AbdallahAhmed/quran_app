@@ -58,7 +58,8 @@
 
                         <page v-for="(page, i) in pages" :page="page" :key="page[0].page_id" :id="page[0].page_id">
                             <aya v-for="aya in page" :aya_row="aya" :key="aya.id" :surah="get_surah(aya.surat_id)">
-                                <div class="quran-basmla" v-if="aya.numberinsurat==1||(aya.surat_id==1&&aya.numberinsurat==2)">
+                                <div class="quran-basmla"
+                                     v-if="aya.numberinsurat==1||(aya.surat_id==1&&aya.numberinsurat==2)">
                                     <a>
                                         بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ
                                     </a>
@@ -127,25 +128,23 @@
 
                         this.$refs['quran'].scrollTo({
                             x: 0,
-                            y: this.Dom7("[part='" + part_id + "']").eq(0).offset().top-160
+                            y: this.Dom7("[part='" + part_id + "']").eq(0).offset().top - 160
                         });
                     } else {
 
+                        let page = this.$store.getters.last_page;
                         this.$refs['quran'].scrollTo({
                             x: 0,
-                            y: scroll
+                            y: this.Dom7("#page-" + page).eq(0).offset().top - 50
                         });
+                        console.log(this.Dom7("#page-" + page),page);
                     }
 
                 }, 2000);
 
-            }).then(()=>{
+            }).then(() => {
 
-                let page = this.$store.getters.last_page;
-                this.$refs['quran'].scrollTo({
-                    x: 0,
-                    y: this.Dom7("#page-"+page).offset().top-160
-                });
+
             });
 
         },
@@ -191,7 +190,7 @@
                     this.$store.dispatch("get_sura", {surah_id: prev_id}).then((response) => {
 
                         this.suras = [response.data.data].concat(this.suras);
-                        var temp_pages=Object.values(response.data.data.pages).reverse();
+                        var temp_pages = Object.values(response.data.data.pages).reverse();
 
                         for (let page of temp_pages) {
                             this.pages.unshift(page)
@@ -268,7 +267,8 @@
         display: block;
         direction: rtl;
     }
-    .empty-gap{
+
+    .empty-gap {
         width: 100%;
         height: 70px;
     }
