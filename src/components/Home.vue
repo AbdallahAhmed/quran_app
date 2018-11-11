@@ -15,7 +15,7 @@
             </div>
 
             <div id="competition-tab" class="page-content tab"
-                 :class="{'tab-active' : $store.getters.home_tab == 'competition'}">
+                 :class="{'tab-active' : $store.getters.home_tab == 'competition', 'unathed': !$app.auth.check() }">
                 <competition/>
             </div>
 

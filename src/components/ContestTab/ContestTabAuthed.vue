@@ -106,9 +106,9 @@
                 </p>
 
                 <div class="contest-cards-old" v-if="showed">
-                    <div class="contest-cards-list swiper-old" v-for="contest in contests.expired" :key="contest.id">
+                    <div class="contest-cards-list swiper-old" >
                         <div class="swiper-wrapper">
-                            <div class="swiper-slide contest-cards-item">
+                            <div class="swiper-slide contest-cards-item" v-for="contest in contests.expired" :key="contest.id">
                                 <a class="title link">{{contest.name}}</a>
                                 <div class="row">
                                     <div class="col-50 flex-align-expired">

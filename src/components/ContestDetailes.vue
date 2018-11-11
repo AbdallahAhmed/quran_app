@@ -8,7 +8,7 @@
         </a>
       </template>
     </navbar>
-    <div style="background-color:#f5f5f5; padding:20px;">
+    <div style="background-color:#f5f5f5; padding:20px; min-height: calc(100% - 90px);">
       <div class="loader-wrapper" v-if="loading">
         <div class="preloader color-green" v-if="loading"></div>
       </div>
@@ -352,7 +352,6 @@ export default {
 
 .page {
   overflow: scroll;
-  padding-bottom: 30px;
 }
 
 .contest-detailes {
