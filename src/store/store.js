@@ -105,10 +105,14 @@ const mutations = {
             console.log("merge khatema");
             var pages = JSON.parse(state.user.current_khatema.pages) || [];
             state.khatema.pages = pages.concat(state.khatema.pages).unique();
+            state.khatema.remaining_pages = 604 - state.khatema.pages.length;
             localStorage.setItem(
                 "local_khatema",
                 JSON.stringify(state.khatema)
             );
+        }
+        if (state.user.last_khatema) {
+            state.completed_khatema = state.user.last_khatema;
         }
     },
 
@@ -203,6 +207,7 @@ const mutations = {
             })
         ) {
             state.khatema.pages.push(page_id);
+            state.khatema.remaining_pages = 604 - state.khatema.pages.length;
         }
 
         if (state.user.id) {

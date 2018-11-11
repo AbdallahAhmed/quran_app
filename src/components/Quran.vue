@@ -31,6 +31,8 @@
                 suras: [],
                 sura_id: 0,
                 blocking: false,
+                last_saved_sura:null,
+                last_saved_page:null
             }
         },
 
@@ -41,13 +43,18 @@
             last_page() {
                 return this.$store.getters.last_page;
             },
+        },created(){
+            console.log("DDDDDDDDDDDDDDDd");
+            this.last_saved_sura = this.last_sura;
+            this.last_saved_page = this.last_page;
+            this.last_saved_scroll = this.$store.getters.scroll;
+            console.log("last >>",this.last_saved_page);
         },
-
         mounted() {
 
-            let page = this.$store.getters.last_page;
-            let scroll = this.$store.getters.scroll;
-            let sura_id = parseInt(this.$f7route.params.sura_id || this.last_sura || 1);
+            let page = this.last_saved_page;
+            let scroll = this.last_saved_scroll;
+            let sura_id = parseInt(this.$f7route.params.sura_id || this.last_saved_sura || 1);
             let part_id = this.$f7route.params.part_id;
 
             this.$store.dispatch("get_sura", {surah_id: sura_id}).then((response) => {

@@ -133,6 +133,10 @@ export default {
     checking:"Checking",
     "email_exist":"Your email does't  exist",
     error_check_red:"Check the red fields",
+    remaining: "remaining",
+    read: "read",
+    page: "page",
+    notifications: "notifications",
     messages: {
         _default: function (e) {
             return "The " + e + " value is not valid.";
