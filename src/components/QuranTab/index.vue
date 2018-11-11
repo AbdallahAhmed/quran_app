@@ -22,7 +22,7 @@
     <div class="center quran-loader" v-if="!suras.length">
       <f7-preloader class="color-green"></f7-preloader>
     </div>
-    <div class="sura-stats row rollIn">
+    <div v-if="suras.length" class="sura-stats row rollIn">
 
       <a class="sura-ayat-count link">
         <span> {{ sura&&sura.numberOfAyats }} </span>
