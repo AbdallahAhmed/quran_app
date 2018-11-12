@@ -37,7 +37,7 @@
             <button class="contest-button green" href="/newcontest">
                 {{$app.t("create_contest")}}
             </button>
-            <button class="contest-button yellow " href="/newcontest">
+            <button @click.prevent="submit(true)" class="contest-button yellow " href="/newcontest">
                 {{$app.t('create_contest_and_share')}}
             </button>
         </div>    
@@ -47,8 +47,9 @@
 
 <script>
 import moment from "moment";
-
+import mixin from "../mixin.js";
 export default {
+  mixins:[mixin],
   data() {
     return {
       loading: false,
@@ -76,7 +77,7 @@ export default {
     updateStartDate({ target: { value } }) {
       this.contest.start_at = value;
     },
-    submit() {
+    submit(withSahre) {
       this.loading = true;
       this.validate().then(valid => {
         if (valid) {
@@ -88,6 +89,9 @@ export default {
             .dispatch("createContest", this.contest)
             .then(response => {
               setTimeout(() => this.$f7router.back(), 500);
+              if(withSahre){
+                this._share(this.contest.name);
+              }
             })
             .catch(err => {
               this.$f7.notification
