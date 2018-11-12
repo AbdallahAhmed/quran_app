@@ -159,7 +159,10 @@ export default {
         : true;
     },
     contests() {
-      return this.$store.getters.contests_authed_tab;
+      let sliced = {};
+      sliced.data = this.$store.getters.contests_authed_tab.data.slice(0,5);
+      sliced.expired = this.$store.getters.contests_authed_tab.expired.slice(0,5);
+      return sliced;
     },
     current() {
       return this.$store.getters.currentContest;

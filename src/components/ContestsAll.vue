@@ -99,16 +99,23 @@ export default {
   },
   created() {
     this.$store.getters.allContests.length
-      ? null
+      ? null || (this.loading = false)
       : this.loadContests().then(() => (this.loading = false));
   },
   methods: {
     loadmore(_, __, done) {
-      this.loading = true;
-      return this.loadContests().then(data => {
-        this.loading = false;
-        if (!data.length) done();
-      });
+      if(!this.loading){
+        this.loading = true;
+        return this.loadContests().then(data => {
+          this.loading = false;
+          console.log("SSSSSs")
+          if (!data.length) done();
+        });
+      }else{
+        console.log("Else")
+        return Promise.resolve();
+
+      } 
     },
     loadContests() {
       return this.$store.dispatch("loadAllContests");
