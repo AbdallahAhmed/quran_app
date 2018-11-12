@@ -12,9 +12,9 @@
 
         <div class="khatima-list">
             <div class="khatima-wrapper">
-                <h1 class="khatima-title" v-if="completed" @click="openPopup(completed.id)">
+                <h1 class="khatima-title" v-if="completed.length" @click="openPopup(completed.id)">
                     {{$app.t("last_khatma")}}</h1>
-                <div class="row info" v-if="completed">
+                <div class="row info" v-if="completed.length">
                     <div class="col-50">
                         <div class="row">
                             <!--UI update , col-100 instead og the other -->
@@ -96,7 +96,7 @@
                 </div>
 
             </div>
-            <button class="btn-quran btn-send" v-if="completed" @click="share">
+            <button class="btn-quran btn-send" v-if="completed.length" @click="share">
                 {{$app.t('send_thawaab')}}
             </button>
         </div>
