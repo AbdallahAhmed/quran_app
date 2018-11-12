@@ -75,7 +75,6 @@ const getters = {
             return size;
         } else {
             let size = 19 + (range / 100) * 10;
-            console.log(size);
             return size;
         }
     },

@@ -96,7 +96,7 @@
                 </div>
 
             </div>
-            <button class="btn-quran btn-send" v-if="completed">
+            <button class="btn-quran btn-send" v-if="completed" @click="share">
                 {{$app.t('send_thawaab')}}
             </button>
         </div>
@@ -254,6 +254,23 @@
 
             moment(...arg) {
                 return moment(...arg);
+            },
+            share() {
+                new Promise((resolve, reject) => {
+
+                    window.plugins.socialsharing.shareWithOptions({
+                        message: this.$app.trans("share_thawab"),
+                        subject: this.$app.trans("share_thawab"),
+                        chooserTitle: this.$app.trans("choose_app")
+                    });
+
+                }).then(() => {
+                    // Nothing
+                }).catch(() => {
+                    this.$f7.notification.create({
+                        subtitle: this.$app.t("err")
+                    }).open();
+                });
             },
             /*openPopup(id) {
                 this.khatema_popup = this.khatemas.completed.find((item) => {

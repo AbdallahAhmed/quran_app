@@ -47,6 +47,7 @@
 
                     // Saving last viewed page
 
+                    this.$store.commit("LAST_PART", this.$$('#page-' + id).children()[0].getAttribute('part'));
                     this.$store.commit("LAST_SURA", this.page[0].surat_id);
 
                     if (!this.isViewed()) {

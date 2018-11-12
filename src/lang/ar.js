@@ -111,6 +111,7 @@ export default {
     read: "مقروئة",
     page: "صفحة",
     notifications: "التنبيهات",
+    share_thawab: "لقد ختمت القران و اهدى اليك ثواب هذه الخاتمه",
     messages: {
         _default: function(n) {
             return "قيمة الحقل " + n + " غير صحيحة.";

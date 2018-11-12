@@ -10,6 +10,7 @@ export default {
         "sura": JSON.parse(localStorage.getItem("sura")) || false,
         "last_sura": parseInt(localStorage.getItem("last_sura")) || 0,
         "last_page": parseInt(localStorage.getItem("last_page")) || 0,
+        "last_part": parseInt(localStorage.getItem("last_part")) || 1,
         "loader": true,
         "scroll": parseInt(localStorage.getItem("scroll")) || 0,
     },
@@ -33,6 +34,10 @@ export default {
 
         last_sura: (state) => {
             return state.last_sura;
+        },
+
+        last_part: (state) => {
+            return state.juz_sections[state.last_part];
         },
 
         last_page: (state) => {
@@ -74,6 +79,11 @@ export default {
         LAST_SURA(state, sura) {
             state.last_sura = sura;
             localStorage.setItem("last_sura", parseInt(state.last_sura));
+        },
+
+        LAST_PART(state, part) {
+            state.last_part = part;
+            localStorage.setItem("last_part", parseInt(state.last_part));
         },
 
         LAST_PAGE(state, page) {
