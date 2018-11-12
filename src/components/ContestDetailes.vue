@@ -110,7 +110,7 @@
         <!-- ~~~~~~~~~ users list ~~~~~~~~~~ -->
         <div v-for="user of contest.members" :key="user.id">
           <div class="row" style="margin-top:30px;">
-            <div class="img-div" :style="{backgroundImage: `url(${user.photo||'http://www.jdevoto.cl/web/wp-content/uploads/2018/04/default-user-img.jpg'})`}" />
+            <div class="img-div" :style="{backgroundImage: `url(${(user.photo&&user.photo.thumbnail)||'http://www.jdevoto.cl/web/wp-content/uploads/2018/04/default-user-img.jpg'})`}" />
             <strong class="p-text">{{user.first_name}}</strong>
           </div>
 
