@@ -1,3 +1,4 @@
+
 <template>
 
     <f7-page :class="'page-sections no-toolbar'">
@@ -91,15 +92,25 @@
                 return this.$store.getters.locale;
             }
         }, mounted() {
-            this.$store.dispatch("get_juz_section").then(() => {
+            if(this.$store.getters.juz_sections.length){
                 this.juz_sections = this.$store.getters.juz_sections;
                 this.loading = false;
-            }).then(() => {
                 var swiper = this.$f7.swiper.create(".swiper-container-juz", {
                     spaceBetween: 10,
                     slidesPerView: 1.5
                 });
-            });
+            }else{
+                this.$store.dispatch("get_juz_section").then(() => {
+                    this.juz_sections = this.$store.getters.juz_sections;
+                    this.loading = false;
+                }).then(() => {
+                    var swiper = this.$f7.swiper.create(".swiper-container-juz", {
+                        spaceBetween: 10,
+                        slidesPerView: 1.5
+                    });
+                });
+            }
+
         }
     }
 </script>
