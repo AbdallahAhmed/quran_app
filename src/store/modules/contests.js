@@ -133,7 +133,10 @@ const mutations = {
                 contests[i].is_joined = true;
                 contests[i].member_counter++;
                 state.currentContest = contests[i];
-            } else contests[i].is_joined = false;
+            } else if(contests[i].is_joined === true){
+             contests[i].is_joined = false;
+             contests[i].member_counter--;
+            }    
         }
         state.contests.data = contests;
     },
