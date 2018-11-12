@@ -172,6 +172,13 @@
 
                 var self = this;
 
+
+                if (this.user.password != this.user.confirm_password) {
+                    return self.$f7.notification.create({
+                        subtitle: this.$app.trans('password_mismatched')
+                    }).open();
+                }
+
                 this.$validator.validateAll(this.user).then((valid) => {
 
                     if (valid) {

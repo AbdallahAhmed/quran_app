@@ -129,7 +129,7 @@
                            setTimeout(()=>{
                                dialog.close(true)
                                self.$f7router.navigate('/home/quran/1');
-                               window.location.reload(true);
+                               /*window.location.reload(true);*/
                            },2000);
                         }, (res) => {
                             self.$f7.notification.create({

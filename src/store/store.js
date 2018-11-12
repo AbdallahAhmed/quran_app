@@ -98,18 +98,22 @@ const mutations = {
 
     user(state, user) {
         state.user = user;
+        var local_pages = state.khatema.pages;
         localStorage.setItem("user", JSON.stringify(user));
 
         // first after login
         if (state.user.current_khatema) {
             console.log("merge khatema");
             var pages = JSON.parse(state.user.current_khatema.pages) || [];
-            state.khatema.pages = pages.concat(state.khatema.pages).unique();
+            state.khatema.pages = pages.concat(local_pages).unique();
             state.khatema.remaining_pages = 604 - state.khatema.pages.length;
             localStorage.setItem(
                 "local_khatema",
                 JSON.stringify(state.khatema)
             );
+            state.user.current_khatema.pages = state.khatema.pages;
+            state.user.current_khatema.remaining_pages = state.khatema.remaining_pages;
+            localStorage.setItem("user", JSON.stringify(state.user));
         }
         if (state.user.last_khatema) {
             state.completed_khatema = state.user.last_khatema;
@@ -241,6 +245,8 @@ const actions = {
             if (response.body.status) {
                 store.commit("token", response.body.data.token);
                 store.commit("user", response.body.data.user);
+
+                store.dispatch("upload_local_data");
             }
         });
     },

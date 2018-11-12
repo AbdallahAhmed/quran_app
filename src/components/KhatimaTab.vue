@@ -75,7 +75,7 @@
                 <div class="gauge  gauge-khatima gauge-khatima-current"
                      v-if="pending"
                      data-type="circle"
-                     :data-value="percentage(pending.pages)"
+                     data-value="0.0016556291390728477"
                      data-value-text=""
                      data-size="120"
                      data-border-width="4"
@@ -96,12 +96,17 @@
                 </div>
 
             </div>
+            <button class="btn-quran btn-send" v-if="completed">
+                {{$app.t('send_thawaab')}}
+            </button>
         </div>
+
 
         <div class="empty-gap">
 
         </div>
-        <div v-if="khatema_popup" class="popup popup-khatima">
+
+        <!--<div v-if="khatema_popup" class="popup popup-khatima">
             <div class="page" :class="'page-khatima'">
                 <navbar>
                     <template slot="left">
@@ -173,7 +178,7 @@
 
 
             </div>
-        </div>
+        </div>-->
     </div>
 </template>
 
@@ -195,6 +200,7 @@
         width: 100%;
         height: 70px;
     }
+
 </style>
 
 <script>
@@ -216,12 +222,6 @@
                 "khatema_popup": {},
             };
         },
-
-        created() {
-            this.$$('.gauge-khatima').each((index, item) => {
-                this.$f7.gauge.create(Object.assign({}, item.dataset, {el: item}))
-            });
-        },
         computed: {
             completed() {
                 return this.$store.state.completed_khatema
@@ -240,7 +240,6 @@
         methods: {
 
             percentage(pages) {
-                console.log(this.parse(pages).length / 604);
                 return this.parse(pages).length / 604
 
             },
@@ -256,7 +255,7 @@
             moment(...arg) {
                 return moment(...arg);
             },
-            openPopup(id) {
+            /*openPopup(id) {
                 this.khatema_popup = this.khatemas.completed.find((item) => {
                     return item.id == id;
                 });
@@ -291,14 +290,20 @@
 
                 });
 
-            }
+            }*/
         },
         components: {
             "navbar": require("./partials/Navbar.vue"),
         },
         mounted() {
-            this.popup = this.$f7.popup.create({
-                el: '.popup-khatima'
+            /*
+                        this.popup = this.$f7.popup.create({
+                            el: '.popup-khatima'
+                        });
+            */
+
+            this.$$('.gauge-khatima').each((index, item) => {
+                this.$f7.gauge.create(Object.assign({}, item.dataset, {el: item}))
             });
         }
     }

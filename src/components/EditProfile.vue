@@ -93,6 +93,12 @@
 
                 var self = this;
 
+                if (this.user.password != this.user.confirm_password) {
+                    return self.$f7.notification.create({
+                        subtitle: this.$app.trans('password_mismatched')
+                    }).open();
+                }
+
                 this.$validator.validateAll(this.user).then((valid) => {
 
                     if (valid) {
@@ -152,7 +158,7 @@
                 return this.user.password.length > 0 || this.user.confirm_password.length > 0 ? 'required' : '';
             },
             re_passwordRules() {
-                return this.user.password.length > 0 || this.user.confirm_password.length > 0 ? 'required|confirmed:password' : '';
+                return this.user.password.length > 0 || this.user.confirm_password.length > 0 ? 'required' : '';
             }
         },
         mounted() {

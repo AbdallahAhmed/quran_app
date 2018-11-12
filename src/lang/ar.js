@@ -51,7 +51,7 @@ export default {
     hours: "ساعات",
     spent: "قضيت",
     hours_left: "ساعة متبقية تقربيأ",
-    send_thawaab: " ارسل الثوب إلى صديق",
+    send_thawaab: " ارسل الثواب إلى صديق",
     last_khatma: "الخاتمة السابقة ",
     started_at: "بدأ فى",
     enroll: "إشتراك",
