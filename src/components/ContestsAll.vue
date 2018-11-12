@@ -105,7 +105,7 @@ export default {
   methods: {
     loadmore(_, __, done) {
       this.loading = true;
-      this.loadContests().then(data => {
+      return this.loadContests().then(data => {
         this.loading = false;
         if (!data.length) done();
       });
