@@ -14,7 +14,7 @@
       <label class="mar-10-h">{{$app.t('contest_name')}}</label>
       <input class="new-contest-input" name="name" v-model="contest.name" :class="{'err':errors.name}" />
       <label class="mar-10-h">{{$app.t('contest_goal')}}</label>
-      <textarea class="new-contest-input new-contest-textarea"  name="gaol" v-model="contest.goal" :class="{'err':errors.goal}" />
+      <textarea class="new-contest-input new-contest-textarea" name="gaol" v-model="contest.goal" :class="{'err':errors.goal}" />
       <div class="row d2" :style="$app.t('dir')">           
             <div class="col-50" >
               <label>{{$app.t('start_date')}}</label>
@@ -53,7 +53,7 @@ export default {
     return {
       loading: false,
       contest: {},
-      errors:{}
+      errors: {}
     };
   },
   mounted() {
@@ -80,7 +80,6 @@ export default {
       this.loading = true;
       this.validate().then(valid => {
         if (valid) {
-
           this.contest.start_at += " 00:00:00";
           this.contest.expired_at += " 23:59:59";
           this.$f7.dialog.preloader(this.$app.t("creating_contest"));
@@ -113,35 +112,51 @@ export default {
 
       return false;
     },
-    validate(){
+    validate() {
       this.errors = {};
-      return new Promise((resolve,reject)=>{
-        
-        if(!(this.contest.name && this.contest.name.length > 0) ){
+      return new Promise((resolve, reject) => {
+        if (!(this.contest.name && this.contest.name.length > 0)) {
           this.errors.name = true;
         }
-        if(!(this.contest.start_at && this.contest.start_at.length > 0) ){
+        if (!(this.contest.start_at && this.contest.start_at.length > 0)) {
           this.errors.start_date = true;
         }
-        if(!(this.contest.expired_at && this.contest.expired_at.length > 0) ){
+        if (!(this.contest.expired_at && this.contest.expired_at.length > 0)) {
           this.errors.end_date = true;
         }
-        if(!(this.contest.juz_from && this.contest.juz_from > 0) ){
-          this.errors.juz_from = true;
+        if (
+          !(
+            this.contest.expired_at &&
+            this.contest.start_at &&
+            (moment(this.contest.expired_at).isAfter(this.contest.start_at) ||
+              this.contest.expired_at === this.contest.start_at)
+          )
+        ){
+          this.errors.start_date = true;
+          this.errors.end_date = true;
         }
-        if(!(this.contest.juz_to && this.contest.juz_to > 0) ){
+          if (!(this.contest.juz_from && this.contest.juz_from > 0)) {
+            this.errors.juz_from = true;
+          }
+        if (!(this.contest.juz_to && this.contest.juz_to > 0)) {
           this.errors.juz_to = true;
         }
-        if(!(this.contest.juz_from  && this.contest.juz_to &&  this.contest.juz_from < this.contest.juz_to) ){
+        if (
+          !(
+            this.contest.juz_from &&
+            this.contest.juz_to &&
+            parseInt(this.contest.juz_from) < parseInt(this.contest.juz_to)
+          )
+        ) {
           this.errors.juz_from = true;
           this.errors.juz_to = true;
         }
-        if(Object.keys(this.errors).length > 0){
+
+        if (Object.keys(this.errors).length > 0) {
           resolve(false);
-        }else{
+        } else {
           resolve(true);
         }
-        
       });
     }
   },
@@ -153,7 +168,7 @@ export default {
 
 <style scoped>
 .from-container {
-  padding-bottom: 70px !important; 
+  padding-bottom: 70px !important;
 }
 .new-contest-input {
   width: 80%;
