@@ -82,6 +82,26 @@
                 })
 
                 .on("exit", () => {
+                    /*console.log(document.querySelector('#page-' + (id + 1 )));*/
+                    let last_page_id = id;
+                    if (inView.is(document.querySelector('#page-' + (id - 1 )))) {
+                        console.log('prev');
+                        last_page_id--;
+
+                    } else {
+                        console.log('next');
+                        last_page_id++;
+                    };
+
+                    // Saving last viewed page
+
+                    this.$store.commit("LAST_PAGE", last_page_id);
+
+                    // Saving last viewed page
+
+                    this.$store.commit("LAST_PART", this.$$('#page-' + last_page_id).children()[0].getAttribute('part'));
+                    this.$store.commit("LAST_SURA", this.page[0].surat_id);
+
                     clearInterval(this.timer);
                     this.timer = false;
                 });
