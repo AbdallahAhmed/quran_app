@@ -12,9 +12,9 @@
 
         <div class="khatima-list">
             <div class="khatima-wrapper">
-                <h1 class="khatima-title" v-if="completed.length" @click="openPopup(completed.id)">
+                <h1 class="khatima-title" v-if="completed" @click="openPopup(completed.id)">
                     {{$app.t("last_khatma")}}</h1>
-                <div class="row info" v-if="completed.length">
+                <div class="row info" v-if="completed">
                     <div class="col-50">
                         <div class="row">
                             <!--UI update , col-100 instead og the other -->
@@ -75,7 +75,7 @@
                 <div class="gauge  gauge-khatima gauge-khatima-current"
                      v-if="pending"
                      data-type="circle"
-                     data-value="0.0016556291390728477"
+                     :data-value="percentage(pending.pages)"
                      data-value-text=""
                      data-size="120"
                      data-border-width="4"
@@ -96,7 +96,7 @@
                 </div>
 
             </div>
-            <button class="btn-quran btn-send" v-if="completed.length" @click="share">
+            <button class="btn-quran btn-send" v-if="completed" @click="share">
                 {{$app.t('send_thawaab')}}
             </button>
         </div>

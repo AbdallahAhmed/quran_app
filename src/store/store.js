@@ -21,7 +21,7 @@ const state = {
     // khatema: undefined,
     current_khatema: {pages: []},
     completed_khatema:
-    JSON.parse(localStorage.getItem("completed_khatema")) || [],
+    JSON.parse(localStorage.getItem("completed_khatema")) || null,
     alert_at: {
         hour: null,
         min: null,
@@ -116,6 +116,7 @@ const mutations = {
         }
         if (state.user.last_khatema) {
             state.completed_khatema = state.user.last_khatema;
+            localStorage.setItem("completed_khatema", JSON.stringify(state.completed_khatema));
         }
     },
 
