@@ -120,6 +120,8 @@
             this.last_saved_sura = this.last_sura;
             this.last_saved_page = this.last_page;
             this.last_saved_scroll = this.$store.getters.scroll;
+            this.last_saved_part = this.part;
+
         },
         mounted() {
             let page = this.last_saved_page;
@@ -127,7 +129,7 @@
             let sura_id = parseInt(
                 this.$f7route.params.sura_id || this.last_saved_sura || 1
             );
-            let part_id = this.$f7route.params.part_id;
+            let part_id = this.$f7route.params.part_id || this.last_saved_part || 1;
             Promise.all([this.$store.dispatch("get_juz_section"),
 
                 this.$store
