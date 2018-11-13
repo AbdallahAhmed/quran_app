@@ -70,7 +70,7 @@
                       <div class="preloader color-green" :hidden="!loading"></div>
                   </div>
                 </div>
-                
+
                 <div class="gap"></div>
                 <div class="gap"></div>
               </div>
