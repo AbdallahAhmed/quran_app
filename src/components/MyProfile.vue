@@ -21,7 +21,16 @@
 
             <div class="form-container">
 
+                <!-- UI updates -->
+
                 <div class="row">
+                    <div class="col-50 spaceInDown">
+                        <a href="/notifications" class="link btn-setting ">
+                            <p>{{$app.trans('notifications')}}</p>
+                            <img src="./../assets/img/alarm.png" alt="notifications">
+                        </a>
+                    </div>
+
                     <div class="col-50 spaceInDown">
                         <a href="/fav" class="link btn-setting ">
 
@@ -31,15 +40,17 @@
 
                         </a>
                     </div>
+                </div>
+
+
+                <div class="row">
                     <div class="col-50 spaceInDown">
                         <a href="/alerts" class="link btn-setting ">
                             <p>{{$app.trans('alarms')}}</p>
-                            <img src="./../assets/img/alarm.png" alt="alarms">
+                            <img src="./../assets/img/stopwatch-1.png" alt="alarms">
                         </a>
                     </div>
-                </div>
 
-                <div class="row">
                     <div class="col-50 spaceInDown">
                         <a href="/settings" class="link btn-setting">
                             <p>{{$app.trans('setting')}}</p>
@@ -47,7 +58,11 @@
                             <img src="./../assets/img/settings.png" alt="Fav">
                         </a>
                     </div>
-                    <div class="col-50 spaceInDown">
+                </div>
+
+
+                <div class="row">
+                    <div class="col-100 spaceInDown">
                         <a href="#" @click="share_app" class="link btn-setting">
                             <p> {{$app.trans('quran_share')}}</p>
                             <img src="./../assets/img/_share.png" alt="Fav">
