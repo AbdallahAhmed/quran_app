@@ -51,7 +51,7 @@
           </button>
         </div>
         
-        <div class="row rtl padding10">
+        <div class="row  padding10">
           <div class="col-50 row block">
             <div>
               <img class="img" src="./../assets/img/noun_calender_652711.png" />
@@ -114,7 +114,7 @@
             <strong class="p-text">{{user.first_name}}</strong>
           </div>
 
-          <div class="row" style="direction: rtl;">
+          <div class="row" :style="$app.t('dir')">
 
             <div class="col-25 ds-flex flex-col">
               <div class="flex1 ds-flex">
@@ -339,14 +339,26 @@ export default {
   width: 50%;
 }
 
-.block {
+.ltr .block {
   flex-direction: column;
   align-items: center;
   text-align: center;
   border-bottom: rgb(226, 226, 226) 1px solid;
 }
 
-.block:nth-child(odd) {
+.ltr .block:nth-child(odd) {
+  border-right: rgb(226, 226, 226) 1px solid;
+  border-left: 0px;
+}
+
+ .block {
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  border-bottom: rgb(226, 226, 226) 1px solid;
+}
+
+ .block:nth-child(odd) {
   border-left: rgb(226, 226, 226) 1px solid;
 }
 
