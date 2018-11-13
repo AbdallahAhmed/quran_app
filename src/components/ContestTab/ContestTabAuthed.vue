@@ -1,132 +1,132 @@
 <template>
 
-    <div class="page-container" :style="$app.t('dir')">
+  <div class="page-container" :style="$app.t('dir')">
 
-        <div class="loader-wrapper" :hidden="!loading">
-            <div class="preloader color-green" :hidden="!loading"></div>
-        </div>
-
-        <div :hidden="loading" class="contest-wrapper">
-
-            <p class="page-title">
-                <span class="row"><a class="left"> {{$app.t("contests")}}</a>
-                    <a href="/allcontests" class="link right">{{$app.t("all_contests")}}</a>
-                </span>
-            </p>
-
-            <div>
-                <div class="contest-cards-comming" v-if="showed">
-                    <div class="contest-cards-list swiper-comming">
-                        <div class="swiper-wrapper">
-                            <div class="swiper-slide contest-cards-item" v-for="contest  in contests.data" :key="contest.id">
-                                <div>
-                                    <a class="title link" @click="openContestDetailes(contest.id)">{{contest.name}}</a>
-                                    <div class="row">
-                                        <div class="col-50 flex-align-expired">
-                                            <img width="20" src="./../../assets/img/clock2.png">
-                                            <span class="time">{{toTime(contest.expired_at)}}</span>
-                                        </div>
-                                        <div class="col-50 flex-align-expired">
-                                            <img width="20" src="./../../assets/img/person.png">
-                                            <span class="time">{{$app.t('member')}} {{contest.member_counter}}</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row button-list">
-                                    <div class="col">
-                                        <button class=" btn btn-quran btn-margin flex-align" @click="_share(contest.name)">
-                                            <div>{{$app.t("share")}}</div>
-                                            <div class="paddingtop10">
-                                                <img src="../../assets/img/share_y.png" alt="share">
-                                            </div>
-                                        </button>
-                                    </div>
-                                    <div class="col">
-                                        <button @click="()=> contest.is_joined ? leave(contest.id): join(contest.id) " class="col btn btn-quran btn-margin">{{contest.is_joined?
-                                            $app.t('quit'):$app.t('enroll')}}
-                                        </button>
-                                    </div>
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <p class="page-title">
-                    <span class="row">
-                        <a> {{$app.t("current_contest")}}</a>
-                    </span>
-                </p>
-
-                <div class="contest-current">
-                    <div class="contest-cards-item" v-if="current&&current.id">
-                        <div class="row">
-                            <div class="col-60 time">
-                                <a class="title link" @click="openContestDetailes(current.id)">{{current.name}}</a>
-                                <div>{{current.creator?current.creator.first_name:null}}</div>
-                                <br>
-                            </div>
-                            <div class="time col-40" style="display:flex; flex-direction: column; align-items:flex-start;">
-                                <div class="flex-align-expired">
-                                    <img width="20" src="./../../assets/img/clock2.png">
-                                    <span class="time">{{toTime(current.expired_at)}}</span>
-                                </div>
-                                <div class="flex-align-expired">
-                                    <img width="20" src="./../../assets/img/person.png">
-                                    <span class="time">{{$app.t('member')}} {{current.member_counter}}</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="row" style="justify-content: flex-start;">
-                            <button class="col-33 btn btn-quran btn-margin flex-align" @click="_share(current.name)">
-                                <div>{{$app.t("share")}}</div>
-                                <div class="paddingtop10">
-                                    <img src="../../assets/img/share_y.png" alt="share">
-                                </div>
-                            </button>
-                            <button @click="leave(current.id)" class="col-33 btn btn-quran btn-margin" v-if="current.is_joined">{{$app.t('quit')}}
-                            </button>
-                        </div>
-                    </div>
-                    <div v-if="!(current&&current.id)" class="row contest-cards-item">
-                        <p>{{$app.t("before_create_contest")}}</p>
-                        <a class="contest-button link col-1col-50" href="/newcontest">
-                            {{$app.t('create_contest')}}
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div>
-                <p class="page-title">
-                    <span class="row"><a class="left"> {{$app.t("old_contests")}}</a>
-                        <a href="/expiredcontests" class="link right">{{$app.t("all_contests")}}</a>
-                    </span>
-                </p>
-
-                <div class="contest-cards-old" v-if="showed">
-                    <div class="contest-cards-list swiper-old" >
-                        <div class="swiper-wrapper">
-                            <div class="swiper-slide contest-cards-item" v-for="contest in contests.expired" :key="contest.id">
-                                <a class="title link">{{contest.name}}</a>
-                                <div class="row">
-                                    <div class="col-50 flex-align-expired">
-                                        <img class="kas-img" src="../../assets/img/noun_calender_652711.png" />
-                                        <span style="font-size:0.9em;margin-top:5px;">{{moment(contest.expired_at)}}</span>
-                                    </div>
-                                    <div class="col-50 flex-align-expired">
-                                        <img class="kas-img" src="../../assets/img/Group 1034@2x.png" />
-                                        <span>{{contest.creator.first_name +' '+contest.creator.last_name}}</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+    <div class="loader-wrapper" :hidden="!loading">
+      <div class="preloader color-green" :hidden="!loading"></div>
     </div>
+
+    <div :hidden="loading" class="contest-wrapper">
+
+      <p class="page-title">
+        <span class="row"><a class="left"> {{$app.t("contests")}}</a>
+          <a href="/allcontests" class="link right">{{$app.t("all_contests")}}</a>
+        </span>
+      </p>
+
+      <div>
+        <div class="contest-cards-comming" v-if="showed">
+          <div class="contest-cards-list swiper-comming">
+            <div class="swiper-wrapper">
+              <div class="swiper-slide contest-cards-item" v-for="contest  in contests.data" :key="contest.id">
+                <div>
+                  <a class="title link" @click="openContestDetailes(contest.id)">{{contest.name}}</a>
+                  <div class="row">
+                    <div class="col-50 flex-align-expired">
+                      <img width="20" src="./../../assets/img/clock2.png">
+                      <span class="time">{{toTime(contest.expired_at)}}</span>
+                    </div>
+                    <div class="col-50 flex-align-expired">
+                      <img width="20" src="./../../assets/img/person.png">
+                      <span class="time">{{$app.t('member')}} {{contest.member_counter}}</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="row button-list">
+                  <div class="col">
+                    <button class=" btn btn-quran flex-align" @click="_share(contest.name)">
+                      <div>{{$app.t("share")}}</div>
+                      <div class="paddingtop10">
+                        <img src="../../assets/img/share_y.png" alt="share">
+                      </div>
+                    </button>
+                  </div>
+                  <div class="col">
+                    <button @click="()=> contest.is_joined ? leave(contest.id): join(contest.id) " class="col btn btn-quran">{{contest.is_joined?
+                      $app.t('quit'):$app.t('enroll')}}
+                    </button>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <p class="page-title">
+          <span class="row">
+            <a> {{$app.t("current_contest")}}</a>
+          </span>
+        </p>
+
+        <div class="contest-current">
+          <div class="contest-cards-item" v-if="current&&current.id">
+            <div class="row">
+              <div class="col-60 time">
+                <a class="title link" @click="openContestDetailes(current.id)">{{current.name}}</a>
+                <div>{{current.creator?current.creator.first_name:null}}</div>
+                <br>
+              </div>
+              <div class="time col-40" style="display:flex; flex-direction: column; align-items:flex-start;">
+                <div class="flex-align-expired">
+                  <img width="20" src="./../../assets/img/clock2.png">
+                  <span class="time">{{toTime(current.expired_at)}}</span>
+                </div>
+                <div class="flex-align-expired">
+                  <img width="20" src="./../../assets/img/person.png">
+                  <span class="time">{{$app.t('member')}} {{current.member_counter}}</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="row" style="justify-content: flex-start;">
+              <button class="col-33 btn btn-quran btn-margin flex-align" @click="_share(current.name)">
+                <div>{{$app.t("share")}}</div>
+                <div class="paddingtop10">
+                  <img src="../../assets/img/share_y.png" alt="share">
+                </div>
+              </button>
+              <button @click="leave(current.id)" class="col-33 btn btn-quran btn-margin" v-if="current.is_joined">{{$app.t('quit')}}
+              </button>
+            </div>
+          </div>
+          <div v-if="!(current&&current.id)" class="row contest-cards-item">
+            <p>{{$app.t("before_create_contest")}}</p>
+            <a class="contest-button link col-1col-50" href="/newcontest">
+              {{$app.t('create_contest')}}
+            </a>
+          </div>
+        </div>
+      </div>
+      <div>
+        <p class="page-title">
+          <span class="row"><a class="left"> {{$app.t("old_contests")}}</a>
+            <a href="/expiredcontests" class="link right">{{$app.t("all_contests")}}</a>
+          </span>
+        </p>
+
+        <div class="contest-cards-old" v-if="showed">
+          <div class="contest-cards-list swiper-old">
+            <div class="swiper-wrapper">
+              <div class="swiper-slide contest-cards-item" v-for="contest in contests.expired" :key="contest.id">
+                <a class="title link">{{contest.name}}</a>
+                <div class="row">
+                  <div class="col-50 flex-align-expired">
+                    <img class="kas-img" src="../../assets/img/noun_calender_652711.png" />
+                    <span style="font-size:0.9em;margin-top:5px;">{{moment(contest.expired_at)}}</span>
+                  </div>
+                  <div class="col-50 flex-align-expired">
+                    <img class="kas-img" src="../../assets/img/Group 1034@2x.png" />
+                    <span>{{contest.creator.first_name +' '+contest.creator.last_name}}</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </template>
 
 <style scoped>
@@ -160,8 +160,11 @@ export default {
     },
     contests() {
       let sliced = {};
-      sliced.data = this.$store.getters.contests_authed_tab.data.slice(0,5);
-      sliced.expired = this.$store.getters.contests_authed_tab.expired.slice(0,5);
+      sliced.data = this.$store.getters.contests_authed_tab.data.slice(0, 5);
+      sliced.expired = this.$store.getters.contests_authed_tab.expired.slice(
+        0,
+        5
+      );
       return sliced;
     },
     current() {
