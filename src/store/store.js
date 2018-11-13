@@ -313,9 +313,9 @@ const actions = {
             pages: state.khatema.pages
         });
 
-        Vue.http.post("contests/updates", {
-            pages: state.khatema.pages
-        });
+        // Vue.http.post("contests/updates", {
+        //     pages: state.khatema.pages
+        // });
         Vue.http.post("bookmarks/create", {
             ayah_id: (JSON.parse(localStorage.getItem("saved_ayat")) || []).map(
                 function (item) {
