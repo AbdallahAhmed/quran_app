@@ -175,6 +175,7 @@ export default {
     this.$store.dispatch("getAuthedContests").then(() => {
       this.loading = false;
     });
+    setInterval(()=> this.$forceUpdate(),500)
   },
   updated() {
     if (this.first_time && this.showed && !this.loading) {
