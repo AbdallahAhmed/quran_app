@@ -174,7 +174,7 @@
 
                     if (this.suras.length) {
                         this.blocking = true;
-                        this.$store
+                        return this.$store
                             .dispatch("get_sura", {surah_id: next_id})
                             .then(response => {
                                 this.suras.push(response.data.data);
@@ -198,7 +198,7 @@
                     }
 
                     this.blocking = true;
-                    this.$store
+                    return this.$store
                         .dispatch("get_sura", {surah_id: prev_id})
                         .then(response => {
                             this.suras = [response.data.data].concat(this.suras);

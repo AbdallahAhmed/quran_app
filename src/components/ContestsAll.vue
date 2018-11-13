@@ -108,13 +108,10 @@ export default {
         this.loading = true;
         return this.loadContests().then(data => {
           this.loading = false;
-          console.log("SSSSSs")
           if (!data.length) done();
         });
       }else{
-        console.log("Else")
         return Promise.resolve();
-
       } 
     },
     loadContests() {

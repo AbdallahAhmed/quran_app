@@ -153,7 +153,7 @@ const mutations = {
     },
     CREATE_CONTEST(state, payload) {
         state.currentContest = payload;
-        state.contests.data = state.contests.data.concat([payload]);
+        state.contests.data = [payload].concat(state.contests.data);
         state.contests.offset++;
     }
 };

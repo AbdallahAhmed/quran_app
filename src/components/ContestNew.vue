@@ -37,7 +37,7 @@
             <button class="contest-button green" href="/newcontest">
                 {{$app.t("create_contest")}}
             </button>
-            <button @click.prevent="submit(true)" class="contest-button yellow " href="/newcontest">
+            <button @click.prevent="submit('share')" class="contest-button yellow " href="/newcontest">
                 {{$app.t('create_contest_and_share')}}
             </button>
         </div>    
@@ -89,7 +89,7 @@ export default {
             .dispatch("createContest", this.contest)
             .then(response => {
               setTimeout(() => this.$f7router.back(), 500);
-              if(withSahre){
+              if(withSahre==="share"){
                 this._share(this.contest.name);
               }
             })
@@ -206,10 +206,10 @@ label {
 }
 
 .contest-button {
-  height: 50px;
+  height: 55px;
   border: none;
   color: white;
-  font-size: 1.2em;
+  font-size: 100%;
   margin-bottom: 20px;
 }
 .yellow {

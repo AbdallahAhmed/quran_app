@@ -1124,7 +1124,7 @@ a.forget-password {
     margin-bottom: 4px;
     font-size: 26px;
     font-weight: bold;
-    word-break: break-all;
+    word-break: break-word;
 }
 
 .contest-cards-comming .contest-cards-item .title {
