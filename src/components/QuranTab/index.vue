@@ -109,6 +109,9 @@
             },
             part() {
                 return this.$store.getters.last_part;
+            },
+            partId() {
+                return this.$store.getters.last_part_id;
             }
         },
         watch: {
@@ -120,7 +123,7 @@
             this.last_saved_sura = this.last_sura;
             this.last_saved_page = this.last_page;
             this.last_saved_scroll = this.$store.getters.scroll;
-            this.last_saved_part = this.part;
+            this.last_saved_part = this.partId;
 
         },
         mounted() {
@@ -142,6 +145,7 @@
                         }
 
                         setTimeout(() => {
+                            console.log(part_id, response.data.data.juz_id);
                             if (part_id && response.data.data.juz_id != part_id) {
                                 this.$refs["quran"].scrollTo({
                                     x: 0,
