@@ -133,6 +133,7 @@
 .contest-cards-comming {
   margin-bottom: 10px;
   margin-right: 10px;
+  min-height: 17vh;
 }
 
 .contest-cards-old {
