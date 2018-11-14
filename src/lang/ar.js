@@ -111,6 +111,8 @@ export default {
     read: "مقروئة",
     page: "صفحة",
     notifications: "التنبيهات",
+    no_notifications: "لا مزيد من الإشعارات",
+    from: "منذ",
     share_thawab: "لقد ختمت القران و اهدى اليك ثواب هذه الخاتمه",
     messages: {
         _default: function(n) {

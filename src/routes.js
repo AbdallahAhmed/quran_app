@@ -29,6 +29,9 @@ export default [
     }, {
         path: '/fav',
         component: require("./components/Fav.vue")
+    }, {
+        path: '/notifications',
+        component: require("./components/Notification.vue")
     },
     {
         path: '/login',

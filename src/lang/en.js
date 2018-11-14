@@ -115,6 +115,8 @@ export default {
     read: "read",
     page: "page",
     notifications: "notifications",
+    no_notifications: "No Notifications",
+    from: "from",
     share_thawab: "I have completed this khatema and I would love to share its thawab with you",
     messages: {
         _default: function (e) {
