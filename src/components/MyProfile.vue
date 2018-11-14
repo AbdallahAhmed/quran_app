@@ -77,6 +77,8 @@
                 <button type="submit" @click="$f7router.navigate('/login')" class="link" v-if="!check">
                     {{$app.trans('login')}}
                 </button>
+
+                <div class="empty-gap"></div>
             </div>
         </div>
 
@@ -84,6 +86,18 @@
 
 </template>
 
+<style>
+    .profile-page {
+        overflow: hidden;
+    }
+</style>
+
+<style scoped>
+    .empty-gap {
+        width: 100%;
+        height: 150px;
+    }
+</style>
 
 <script>
 

@@ -109,9 +109,6 @@
             },
             part() {
                 return this.$store.getters.last_part;
-            },
-            partId() {
-                return this.$store.getters.last_part_id;
             }
         },
         watch: {
@@ -123,8 +120,6 @@
             this.last_saved_sura = this.last_sura;
             this.last_saved_page = this.last_page;
             this.last_saved_scroll = this.$store.getters.scroll;
-            this.last_saved_part = this.partId;
-
         },
         mounted() {
             let page = this.last_saved_page;
@@ -132,7 +127,7 @@
             let sura_id = parseInt(
                 this.$f7route.params.sura_id || this.last_saved_sura || 1
             );
-            let part_id = this.$f7route.params.part_id || this.last_saved_part || 1;
+            let part_id = this.$f7route.params.part_id;
             Promise.all([this.$store.dispatch("get_juz_section"),
 
                 this.$store
@@ -145,7 +140,7 @@
                         }
 
                         setTimeout(() => {
-                            console.log(part_id, response.data.data.juz_id);
+                            console.log(part_id, page, response.data.data.juz_id);
                             if (part_id && response.data.data.juz_id != part_id) {
                                 this.$refs["quran"].scrollTo({
                                     x: 0,
@@ -160,7 +155,7 @@
                                     y:
                                         this.Dom7("#page-" + page)
                                             .eq(0)
-                                            .offset().top - 50
+                                            .offset().top - 160
                                 });
                             }
                         }, 2000);

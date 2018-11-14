@@ -138,6 +138,11 @@
 .contest-cards-old {
   margin-right: 10px;
 }
+  .contest-cards-item {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+  }
 </style>
 <script>
 import moment from "moment";
