@@ -30,7 +30,7 @@
                             </div>
                             <div class="col-45 kas-col" :style="'border-right: gray 1px solid; padding-right:20px;'">
                                 <img class="kas-img" src="../assets/img/Group 1034@2x.png" />
-                                <h4 class="winer-name">{{contest.winer? contest.winer.first_name : null }}</h4>                            
+                                <h4 class="winer-name">{{contest.winner? contest.winner.first_name : null }}</h4>                            
                             </div>
                         </div>
                     </div>
