@@ -414,7 +414,7 @@ export default {
 
 .title {
   text-align: right;
-  font-size: 1.6em;
+  font-size: 1.3em;
   font-weight: bold;
   color: #37734a;
 }
@@ -455,6 +455,7 @@ export default {
 
 .time {
   padding: 5px;
+  font-weight: 100;
 }
 
 .sm {
@@ -470,6 +471,7 @@ export default {
 .ds-flex {
   display: flex;
   justify-content: center;
+  font-weight: 100;
 }
 
 .flex-col {

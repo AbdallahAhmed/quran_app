@@ -74,6 +74,7 @@
 *:not(i) {
     font-family: cairo !important;
     font-size: 17px;
+    font-weight: 300;
 }
 
 .quran-aya, .aya-num {
@@ -766,7 +767,6 @@ a.forget-password {
 
 .page-profile .form-container .row > div p, .page-profile .form-container .row > div > a {
     font-family: initial;
-    font-weight: initial;
     margin: 0;
     color: black;
 }
@@ -1143,11 +1143,11 @@ a.forget-password {
     margin-top: 15px;
 }
 
-.contest-cards-item .title {
+.contest-cards-item .title, h1 {
     color: #36734a;
     margin-top: 2px;
     margin-bottom: 4px;
-    font-size: 26px;
+    font-size: 1.4em;
     font-weight: bold;
     word-break: break-word;
 }
