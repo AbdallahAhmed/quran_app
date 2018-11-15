@@ -118,6 +118,8 @@ export default {
     no_notifications: "No Notifications",
     from: "from",
     share_thawab: "I have completed this khatema and I would love to share its thawab with you",
+    khatma: "Khatema",
+
     messages: {
         _default: function (e) {
             return "The " + e + " value is not valid.";

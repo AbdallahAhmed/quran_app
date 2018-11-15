@@ -1,5 +1,4 @@
 <template>
-
     <div>
 
         <div class="quran-navbar row">
@@ -54,7 +53,6 @@
                         @load-start="getNextSura">
 
                 <div class="page-content">
-
                     <div class="block quran-sura">
 
                         <page v-for="(page, i) in pages" :page="page" :key="page[0].page_id" :id="page[0].page_id">
@@ -72,7 +70,6 @@
                     </div>
 
                 </div>
-
             </vue-scroll>
         </div>
 
@@ -139,6 +136,7 @@
 
                         for (let page in response.data.data.pages) {
                             this.pages.push(response.data.data.pages[page]);
+                            console.log(response.data.data.pages[page])
                         }
 
                         setTimeout(() => {
@@ -235,6 +233,7 @@
                 this.$store.commit("SCROLL", v.scrollTop);
                 EventBus.$emit("vscroll");
             },
+
             get_surah(id) {
                 return this.suras.find(surh => {
                     return surh.id == id;

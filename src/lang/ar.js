@@ -114,6 +114,8 @@ export default {
     no_notifications: "لا مزيد من الإشعارات",
     from: "منذ",
     share_thawab: "لقد ختمت القران و اهدى اليك ثواب هذه الخاتمه",
+    khatma: "خاتمه",
+
     messages: {
         _default: function(n) {
             return "قيمة الحقل " + n + " غير صحيحة.";

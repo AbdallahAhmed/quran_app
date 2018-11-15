@@ -14,6 +14,7 @@
             <div class="khatima-wrapper">
                 <h1 class="khatima-title" v-if="completed" @click="openPopup(completed.id)">
                     {{$app.t("last_khatma")}}</h1>
+
                 <div class="row info" v-if="completed">
                     <div class="col-50">
                         <div class="row">
@@ -39,6 +40,10 @@
                             </div>
                         </div>
                     </div>
+                </div>
+
+                <div class="row info no-khatma">
+                    <span>0 {{$app.trans('khatma')}}</span>
                 </div>
 
 
@@ -199,6 +204,12 @@
     .empty-gap {
         width: 100%;
         height: 70px;
+    }
+
+    .no-khatma {
+        padding: 15px;
+        font-weight: bold;
+        justify-content: center;
     }
 
 </style>
