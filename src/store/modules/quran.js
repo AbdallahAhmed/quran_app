@@ -37,7 +37,7 @@ export default {
         },
 
         last_part_id: (state) => {
-          return state.last_part
+            return state.last_part
         },
 
         last_part: (state) => {
@@ -136,7 +136,22 @@ export default {
 
         get_sura(store, options = {}) {
             options.lang = "ar";
-            return Vue.http.get("surah", {params: options});
+
+            if (window.getFileAsJson) {
+                if (options.surah_id == 2) {
+                    return Promise.all([
+                        window.getFileAsJson(`suras/${options.surah_id}-1.json`),
+                        window.getFileAsJson(`suras/${options.surah_id}-2.json`),
+                        window.getFileAsJson(`suras/${options.surah_id}-3.json`),
+                    ]).then((res) => {
+                        var first = res[0];
+                        first.data.data.pages = Object.assign({}, res[1].data.data.pages, first.data.data.pages, res[2].data.data.pages)
+                        return first;
+                    });
+                }
+                return getFileAsJson(`suras/${options.surah_id}.json`);
+            }
+            return Vue.http.get("surah", {params: options})
         },
 
         get_page(store, page_id) {
