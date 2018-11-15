@@ -24,7 +24,7 @@
         <div v-if="!loading" class="sura-stats row rollIn">
 
             <a class="sura-ayat-count link">
-                <span> {{ sura&&sura.numberOfAyats }} </span>
+                <span> ( {{ sura&&sura.numberOfAyats }} ) </span>
                 {{$app.trans('his_aya')}}
             </a>
 
@@ -42,14 +42,6 @@
         <div class="scroll-area">
             <div class="quran-head" v-if="sura">
 
-                <!-- <div class="sura-header">
-
-                            <a href="/sections" class="sura-name link bounceIn">
-                                <img src="../../assets/img/arrow-down.png" class="sura-name-arrow">
-                                {{ $store.getters.locale=="ar"? sura.juz_name:sura.juz_name_en }}
-                            </a>
-
-                        </div> -->
 
             </div>
             <vue-scroll ref="quran" @handle-scroll-complete="handeScroll" @refresh-start="getPrevSura"
@@ -90,7 +82,7 @@
                 sura_id: 0,
                 blocking: false,
                 pages: [],
-                loading: true
+                loading: true,
             };
         },
 
@@ -120,8 +112,10 @@
             this.last_saved_sura = this.last_sura;
             this.last_saved_page = this.last_page;
             this.last_saved_scroll = this.$store.getters.scroll;
+
         },
         mounted() {
+
             let page = this.last_saved_page;
             let scroll = this.last_saved_scroll;
             let sura_id = parseInt(
@@ -141,32 +135,31 @@
                         }
 
                         setTimeout(() => {
-                            console.log(part_id, page, response.data.data.juz_id);
                             if (part_id && response.data.data.juz_id != part_id) {
-                                this.$f7.notification.create({text:`Juz ${part_id} `,closeTimeout:4000}).open();
                                 this.$refs["quran"].scrollTo({
                                     x: 0,
                                     y:
-                                        this.Dom7("[part='" + part_id + "']")
-                                            .eq(0)
-                                            .offset().top - 160
+                                    this.Dom7("[part='" + part_id + "']")
+                                        .eq(0)
+                                        .offset().top - 160
                                 });
                             } else {
-                                this.$f7.notification.create({text:`page ${page}`,closeTimeout:4000}).open();
 
                                 this.$refs["quran"].scrollTo({
                                     x: 0,
                                     y:
-                                        this.Dom7("#page-" + page)
-                                            .eq(0)
-                                            .offset().top - 160
+                                    this.Dom7("#page-" + page)
+                                        .eq(0)
+                                        .offset().top - 160
                                 });
                             }
                         }, 2000);
                     })]
-            ).then(()=>{
+            ).then(() => {
                 this.loading = false;
-            }).catch(err=> console.log(err));
+            }).catch(err => {
+                this.$f7.dialog.alert("errors "+JSON.stringify(err));
+            });
         },
 
         methods: {
@@ -271,10 +264,6 @@
         margin: 30px 0;
     }
 
-    #page-1 {
-        height: 100vh;
-    }
-
     .quran-sura > span {
         display: block;
         direction: rtl;
@@ -292,27 +281,29 @@
     }
 
     .sura-name-arrow {
-        margin-right: 8px!important;
+        margin-right: 8px !important;
     }
 
     .ltr .sura-name-arrow {
-        margin-right: 0!important;
-        margin-left: 8px!important;
+        margin-right: 0 !important;
+        margin-left: 8px !important;
     }
 
     .sura-ayat-count, .sura-part-num {
-        font-weight: 200!important;
+        font-weight: 200 !important;
         font-size: 14px;
     }
 
     .ltr .sura-part-num {
         direction: rtl;
     }
+
     @media screen and (max-width: 500px) {
         .sura-stats a:not(:last-of-type) {
             flex: initial;
             padding: 0 8px;
         }
+
         .sura-ayat-count span {
             margin: 0 5px;
         }
