@@ -85,11 +85,11 @@
                     /*console.log(document.querySelector('#page-' + (id + 1 )));*/
                     let last_page_id = id;
                     if (inView.is(document.querySelector('#page-' + (id - 1 )))) {
-                        console.log('prev');
+                        // console.log('prev');
                         last_page_id--;
 
                     } else {
-                        console.log('next');
+                        // console.log('next');
                         last_page_id++;
                     };
 
