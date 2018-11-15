@@ -271,9 +271,9 @@
         margin: 30px 0;
     }
 
-    #page-1 {
-        height: 100vh;
-    }
+    /*#page-1 {*/
+        /*height: 100vh;*/
+    /*}*/
 
     .quran-sura > span {
         display: block;
