@@ -32,7 +32,10 @@
                 {{ sura&& ($store.getters.locale=="ar") ? sura.name : sura.englishname}}
             </a>
             <a href="/sections" class="sura-part-num">
+                <img src="../../assets/img/angle-down-white.png" class="sura-name-arrow">
+
                 {{ part&& ($store.getters.locale=="ar") ? part.name_ar:part.name_en}}
+
             </a>
 
         </div>
@@ -124,6 +127,7 @@
             let sura_id = parseInt(
                 this.$f7route.params.sura_id || this.last_saved_sura || 1
             );
+
             let part_id = this.$f7route.params.part_id;
             Promise.all([this.$store.dispatch("get_juz_section"),
 
@@ -134,7 +138,6 @@
 
                         for (let page in response.data.data.pages) {
                             this.pages.push(response.data.data.pages[page]);
-                            console.log(sura_id)
                         }
 
                         setTimeout(() => {
@@ -288,10 +291,30 @@
         flex: 1;
     }
 
+    .sura-name-arrow {
+        margin-right: 8px!important;
+    }
+
+    .ltr .sura-name-arrow {
+        margin-right: 0!important;
+        margin-left: 8px!important;
+    }
+
+    .sura-ayat-count, .sura-part-num {
+        font-weight: 200!important;
+        font-size: 14px;
+    }
+
+    .ltr .sura-part-num {
+        direction: rtl;
+    }
     @media screen and (max-width: 500px) {
         .sura-stats a:not(:last-of-type) {
             flex: initial;
-            padding: 0 15px;
+            padding: 0 8px;
+        }
+        .sura-ayat-count span {
+            margin: 0 5px;
         }
     }
 </style>

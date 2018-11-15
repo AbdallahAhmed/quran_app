@@ -1,0 +1,7 @@
+
+@font-face {
+  font-family: 'CairoFont';
+  src: url('CairoFont.eot?#iefix') format('embedded-opentype'),  url('CairoFont.woff') format('woff'), url('CairoFont.ttf')  format('truetype'), url('CairoFont.svg#CairoFont') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}

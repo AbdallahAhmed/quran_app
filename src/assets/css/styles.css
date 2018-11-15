@@ -26,6 +26,32 @@
     url("../fonts/me_quran-webfont.woff") format("woff");
 }
 
+@font-face {
+    font-family: 'cairo';
+    src: url("../fonts/CairoFont/CairoFont.eot") format("embedded-opentype"),
+    url("../fonts/CairoFont/CairoFont.svg") format("svg"),
+    url("../fonts/CairoFont/CairoFont.ttf") format("truetype"),
+    url("../fonts/CairoFont/CairoFont.woff") format("woff");
+}
+
+@font-face {
+    font-family: 'cairo';
+    src: url("../fonts/Cairo-Bold/Cairo-Bold.eot") format("embedded-opentype"),
+    url("../fonts/Cairo-Bold/Cairo-Bold.svg") format("svg"),
+    url("../fonts/Cairo-Bold/Cairo-Bold.ttf") format("truetype"),
+    url("../fonts/Cairo-Bold/Cairo-Bold.woff") format("woff");
+    font-weight: bold;
+}
+
+@font-face {
+    font-family: 'cairo';
+    src: url("../fonts/Cairo-SemiBold/Cairo-SemiBold.eot") format("embedded-opentype"),
+    url("../fonts/Cairo-SemiBold/Cairo-SemiBold.svg") format("svg"),
+    url("../fonts/Cairo-SemiBold/Cairo-SemiBold.ttf") format("truetype"),
+    url("../fonts/Cairo-SemiBold/Cairo-SemiBold.woff") format("woff");
+    font-weight: 200;
+}
+
 .spaceInDown {
     animation-name: spaceInDown;
     animation-duration: 0.3s;
@@ -46,7 +72,7 @@
 }
 
 *:not(i) {
-    font-family: kfc !important;
+    font-family: cairo !important;
     font-size: 17px;
 }
 
@@ -318,7 +344,6 @@
     width: 75%;
     color: #207249;
 }
-
 
 .juz-wrapper .swiper-slide {
     width: 55%;
@@ -662,9 +687,9 @@ a.forget-password {
     direction: rtl;
     margin: 0 10px;
     border-bottom: solid 1px rgba(112, 112, 112, 0.1);
- }
- 
- .khatima-wrapper .khatima-title {
+}
+
+.khatima-wrapper .khatima-title {
     color: #207249;
     font-family: initial;
     margin: 0 10px;
@@ -672,7 +697,7 @@ a.forget-password {
     padding: 15px;
     text-align: center;
     border-bottom: solid 1px rgba(112, 112, 112, 0.1);
- }
+}
 
 .page-khatima .page-content {
     background-color: #f5f5f5;
@@ -714,12 +739,12 @@ a.forget-password {
 .khatima-wrapper .info > div {
     text-align: center;
     padding: 15px;
- }
- 
- .khatima-wrapper .info > div:nth-child(odd) {
+}
+
+.khatima-wrapper .info > div:nth-child(odd) {
     border-left: solid 1px rgba(112, 112, 112, 0.1);
- 
- }
+
+}
 
 .page-profile .header-islamic {
 
@@ -1273,14 +1298,30 @@ a.forget-password {
     margin-left: 0px;
 }
 
-.swiper-container-juz{
+.swiper-container-juz {
     padding-right: 15px;
 }
 
-.ios .notification , .md .notification{
-    top:30px;
+.ios .notification, .md .notification {
+    top: 30px;
 }
 
 .unathed {
     overflow: hidden;
-  }
+}
+
+.md .dialog-title, .dialog-text {
+    text-align: right;
+}
+
+.dialog-buttons {
+    text-align: center;
+}
+
+.dialog-buttons .dialog-button {
+    font-weight: 600;
+}
+
+.ltr .dialog-title, .ltr .dialog-text {
+    text-align: left;
+}
