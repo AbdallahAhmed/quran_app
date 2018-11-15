@@ -64,7 +64,7 @@
   display: inline-block;
 }
 .md .dialog-buttons span:nth-child(-n + 2) , .ios .dialog-buttons span:nth-child(-n + 2) {
-  width: 49%;
+  width: 48%;
 }
 .md .dialog-buttons span:nth-child(3) , .ios .dialog-buttons span:nth-child(3) {
   width: 100%;

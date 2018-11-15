@@ -20,7 +20,7 @@
             <div class="row contest-wrapper " v-for="contest in contests" :key="contest.id || 'gap'">
               <div v-if="contest.id" class="col-100 contest-card">
                 <div class="col-100 margin-bottom contest">
-                  <div class="col-40 display-inline-block">
+                  <div class="col-60 display-inline-block">
                     <div class="col-100">
                       <a :href="'/contest/'+contest.id">
                         <h1>{{contest.name}}</h1>
@@ -30,12 +30,12 @@
                       {{contest.creator.last_name}}
                     </div>
                   </div>
-                  <div class="col-20 text-align-center display-inline-block">
+                  <!-- <div class="col-20 text-align-center display-inline-block">
                     <div style="opacity: 0;">
                       <label>1</label>
                     </div>
 
-                  </div>
+                  </div> -->
                   <div class="col-40 text-align-left	display-inline-block">
                     <div>
                       <i class="f7-icons" style="font-size: 18px">

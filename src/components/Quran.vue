@@ -44,11 +44,9 @@
                 return this.$store.getters.last_page;
             },
         },created(){
-            console.log("DDDDDDDDDDDDDDDd");
             this.last_saved_sura = this.last_sura;
             this.last_saved_page = this.last_page;
             this.last_saved_scroll = this.$store.getters.scroll;
-            console.log("last >>",this.last_saved_page);
         },
         mounted() {
 

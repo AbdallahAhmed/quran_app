@@ -103,7 +103,7 @@ export default {
     "cancel" : "Cancel",
     "his_aya":"Ayat",
     "remaining_page":" Remaining",
-    "read_page":"Read pages",
+    "read_page":"Read",
     "password_mismatched" : "The password confirmation does not match.",
     you_joined_the_contest_succsesfuly :"You joined the competition successfully",
     you_quit_the_contest_succsesfuly :"You quit the competition successfully",
@@ -114,12 +114,12 @@ export default {
     remaining: "remaining",
     read: "read",
     page: "page",
-    notifications: "notifications",
+    notifications: "Notifications",
     no_notifications: "No Notifications",
     from: "from",
     share_thawab: "I have completed this khatema and I would love to share its thawab with you",
     khatma: "Khatema",
-
+    av_khatma:"Average Khatma takes 10 hours",
     messages: {
         _default: function (e) {
             return "The " + e + " value is not valid.";

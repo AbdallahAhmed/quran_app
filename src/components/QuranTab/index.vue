@@ -24,7 +24,7 @@
         <div v-if="!loading" class="sura-stats row rollIn">
 
             <a class="sura-ayat-count link">
-                <span> ( {{ sura&&sura.numberOfAyats }} ) </span>
+                <span> ( {{ sura&&sura.id&&sura.numberOfAyats }} ) </span>
                 {{$app.trans('his_aya')}}
             </a>
 
@@ -82,7 +82,7 @@
                 sura_id: 0,
                 blocking: false,
                 pages: [],
-                loading: true,
+                loading: true
             };
         },
 
@@ -135,6 +135,7 @@
                         }
 
                         setTimeout(() => {
+                            // console.log(part_id, page, response.data.data.juz_id);
                             if (part_id && response.data.data.juz_id != part_id) {
                                 this.$refs["quran"].scrollTo({
                                     x: 0,

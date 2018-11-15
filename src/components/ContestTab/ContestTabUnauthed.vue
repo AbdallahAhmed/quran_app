@@ -138,9 +138,9 @@ export default {
   mounted() {
     this.Dom7(".scroll-area").on("scroll", e => {
           var elem = this.Dom7(e.currentTarget);
-          console.log(
-            elem.scrollTop() + elem.outerHeight() >= elem[0].scrollHeight
-          );
+          // console.log(
+          //   elem.scrollTop() + elem.outerHeight() >= elem[0].scrollHeight
+          // );
           if (
             elem.scrollTop() + elem.outerHeight() >= elem[0].scrollHeight &&
             !this.loading &&
