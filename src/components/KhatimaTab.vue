@@ -9,7 +9,6 @@
             <div class="preloader color-green" v-if="loading"></div>
         </div>
 
-
         <div class="khatima-list">
             <div class="khatima-wrapper">
                 <h1 class="khatima-title" @click="openPopup(completed.id)">
@@ -20,7 +19,7 @@
                         <div class="row">
                             <!--UI update , col-100 instead og the other -->
                             <div class="col-100">
-                                <img src="./../assets/img/noun_calender_652711.png"/>
+                                <img src="./../assets/img/noun_calender_652711.png" />
                             </div>
                             <div class="col-100">
                                 <span>{{$app.t('started_at')}}</span>
@@ -32,7 +31,7 @@
                     <div class="col-50">
                         <div class="row">
                             <div class="col-100">
-                                <img src="./../assets/img/clock.png"/>
+                                <img src="./../assets/img/clock.png" />
                             </div>
                             <div class="col-100">
                                 <span>{{$app.t('completed_at')}}</span>
@@ -46,7 +45,6 @@
                     <span>0 {{$app.trans('khatma')}}</span>
                 </div>
 
-
                 <h1 class="khatima-title" v-if="pending" @click="openPopup(pending)">
                     {{$app.t("curr_khatma")}}</h1>
 
@@ -55,7 +53,7 @@
                         <div class="row">
                             <!--UI update , col-100 instead og the other -->
                             <div class="col-100">
-                                <img src="./../assets/img/doc.png"/>
+                                <img src="./../assets/img/doc.png" />
                             </div>
                             <div class="col-100">
                                 <span>{{$app.t('page')}} {{len(pending.pages)}}</span>
@@ -67,7 +65,7 @@
                     <div class="col-50">
                         <div class="row">
                             <div class="col-100">
-                                <img src="./../assets/img/doc.png"/>
+                                <img src="./../assets/img/doc.png" />
                             </div>
                             <div class="col-100">
                                 <span>{{$app.t('page')}} {{pending.remaining_pages}}</span>
@@ -77,14 +75,7 @@
                     </div>
                 </div>
 
-                <div class="gauge  gauge-khatima gauge-khatima-current"
-                     v-if="pending"
-                     data-type="circle"
-                     :data-value="percentage(pending.pages)"
-                     data-value-text=""
-                     data-size="120"
-                     data-border-width="4"
-                     data-border-color="#f5be3a">
+                <div class="gauge  gauge-khatima gauge-khatima-current" v-if="pending" data-type="circle" :data-value="percentage(pending.pages)" data-value-text="" data-size="120" data-border-width="4" data-border-color="#f5be3a">
 
                     <p class="gauge-content">
                         <span> {{$app.t('spent')}}</span>
@@ -98,14 +89,13 @@
                     <div class="col-100">
                         <p>{{$app.t('hours_left')}} {{(10-(len(pending.pages)/60)).toFixed(1)}}</p>
                     </div>
+                    <span class="khatma-av"> {{$app.t('av_khatma')}} </span>
                 </div>
-
             </div>
             <button class="btn-quran btn-send" v-if="completed" @click="share">
                 {{$app.t('send_thawaab')}}
             </button>
         </div>
-
 
         <div class="empty-gap">
 
@@ -189,101 +179,104 @@
 
 
 <style scoped>
-    .page-title {
-        margin-bottom: 18px;
-    }
+.page-title {
+  margin-bottom: 18px;
+}
 
-    .mg-clear {
-        margin-bottom: 15px !important;
-    }
+.mg-clear {
+  margin-bottom: 15px !important;
+}
 
-    .mg-top {
-        margin-top: 21px;
-    }
+.mg-top {
+  margin-top: 21px;
+}
 
-    .empty-gap {
-        width: 100%;
-        height: 70px;
-    }
+.empty-gap {
+  width: 100%;
+  height: 70px;
+}
 
-    .no-khatma {
-        padding: 15px;
-        font-weight: bold;
-        justify-content: center;
-    }
-
+.no-khatma {
+  padding: 15px;
+  font-weight: bold;
+  justify-content: center;
+}
+.khatma-av {
+  font-size: 0.9em;
+  opacity: 0.4;
+  padding: 20px;
+  display: block;
+  margin: 0 auto;
+}
 </style>
 
 <script>
+import moment from "moment";
+import eventBus from "./../events";
 
-    import moment from 'moment';
-    import eventBus from './../events';
-
-    export default {
-
-        data() {
-            return {
-                /*khatemas: {
+export default {
+  data() {
+    return {
+      /*khatemas: {
                     completed: [],
                     pending: null,
                 },
                 last_khatema: {},*/
-                popup: null,
-                loading: false,
-                "khatema_popup": {},
-            };
-        },
-        computed: {
-            completed() {
-                return this.$store.state.completed_khatema
-            },
-            pending() {
-                return this.$store.getters.current_khatema
-            }
-        },
-        watch: {
-            pending() {
-                this.$$('.gauge-khatima').each((index, item) => {
-                    this.$f7.gauge.create(Object.assign({}, item.dataset, {el: item}))
-                });
-            }
-        },
-        methods: {
+      popup: null,
+      loading: false,
+      khatema_popup: {}
+    };
+  },
+  computed: {
+    completed() {
+      return this.$store.state.completed_khatema;
+    },
+    pending() {
+      return this.$store.getters.current_khatema;
+    }
+  },
+  watch: {
+    pending() {
+      this.$$(".gauge-khatima").each((index, item) => {
+        this.$f7.gauge.create(Object.assign({}, item.dataset, { el: item }));
+      });
+    }
+  },
+  methods: {
+    percentage(pages) {
+      return this.parse(pages).length / 604;
+    },
+    parse(pages) {
+      return typeof pages == "string" ? JSON.parse(pages) : pages;
+    },
 
-            percentage(pages) {
-                return this.parse(pages).length / 604
+    len(pages) {
+      return this.parse(pages).length;
+    },
 
-            },
-            parse(pages) {
-                return (typeof pages) == "string" ? JSON.parse(pages) : pages;
-
-            },
-
-            len(pages) {
-                return this.parse(pages).length
-            },
-
-            moment(...arg) {
-                return moment(...arg);
-            },
-            share() {
-                new Promise((resolve, reject) => {
-
-                    window.plugins.socialsharing.shareWithOptions({
-                        message: this.$app.trans("share_thawab"),
-                        subject: this.$app.trans("share_thawab"),
-                        chooserTitle: this.$app.trans("choose_app")
-                    });
-
-                }).then(() => {
-                    // Nothing
-                }).catch(() => {
-                    this.$f7.notification.create({
-                        subtitle: this.$app.t("err")
-                    }).open();
-                });
-            },
-            /*openPopup(id) {
+    moment(...arg) {
+      return moment(...arg);
+    },
+    share() {
+      new Promise((resolve, reject) => {
+        window.plugins.socialsharing.shareWithOptions({
+          message: this.$app.trans("share_thawab"),
+          subject: this.$app.trans("share_thawab"),
+          chooserTitle: this.$app.trans("choose_app")
+        });
+      })
+        .then(() => {
+          // Nothing
+        })
+        .catch(() => {
+          this.$f7.notification
+            .create({
+              subtitle: this.$app.t("err")
+            })
+            .open();
+        });
+    }
+    /*openPopup(id) {
                 this.khatema_popup = this.khatemas.completed.find((item) => {
                     return item.id == id;
                 });
@@ -319,20 +312,20 @@
                 });
 
             }*/
-        },
-        components: {
-            "navbar": require("./partials/Navbar.vue"),
-        },
-        mounted() {
-            /*
+  },
+  components: {
+    navbar: require("./partials/Navbar.vue")
+  },
+  mounted() {
+    /*
                         this.popup = this.$f7.popup.create({
                             el: '.popup-khatima'
                         });
             */
 
-            this.$$('.gauge-khatima').each((index, item) => {
-                this.$f7.gauge.create(Object.assign({}, item.dataset, {el: item}))
-            });
-        }
-    }
+    this.$$(".gauge-khatima").each((index, item) => {
+      this.$f7.gauge.create(Object.assign({}, item.dataset, { el: item }));
+    });
+  }
+};
 </script>

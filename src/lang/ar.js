@@ -115,7 +115,7 @@ export default {
     from: "منذ",
     share_thawab: "لقد ختمت القران و اهدى اليك ثواب هذه الخاتمه",
     khatma: "خاتمه",
-
+    av_khatma:"متوسط الخاتمة 10 ساعات",
     messages: {
         _default: function(n) {
             return "قيمة الحقل " + n + " غير صحيحة.";
