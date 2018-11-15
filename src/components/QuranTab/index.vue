@@ -134,7 +134,7 @@
 
                         for (let page in response.data.data.pages) {
                             this.pages.push(response.data.data.pages[page]);
-                            console.log(response.data.data.pages[page])
+                            console.log(sura_id)
                         }
 
                         setTimeout(() => {

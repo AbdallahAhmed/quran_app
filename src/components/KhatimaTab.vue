@@ -12,7 +12,7 @@
 
         <div class="khatima-list">
             <div class="khatima-wrapper">
-                <h1 class="khatima-title" v-if="completed" @click="openPopup(completed.id)">
+                <h1 class="khatima-title" @click="openPopup(completed.id)">
                     {{$app.t("last_khatma")}}</h1>
 
                 <div class="row info" v-if="completed">
@@ -42,7 +42,7 @@
                     </div>
                 </div>
 
-                <div class="row info no-khatma">
+                <div class="row info no-khatma" v-else>
                     <span>0 {{$app.trans('khatma')}}</span>
                 </div>
 
