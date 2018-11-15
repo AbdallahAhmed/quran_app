@@ -141,7 +141,7 @@
                         }
 
                         setTimeout(() => {
-                            console.log(part_id, page, response.data.data.juz_id);
+                            // console.log(part_id, page, response.data.data.juz_id);
                             if (part_id && response.data.data.juz_id != part_id) {
                                 this.$refs["quran"].scrollTo({
                                     x: 0,
@@ -164,7 +164,7 @@
                     })]
             ).then(()=>{
                 this.loading = false;
-            }).catch(err=> console.log(err));
+            }).catch(err=> {});
         },
 
         methods: {

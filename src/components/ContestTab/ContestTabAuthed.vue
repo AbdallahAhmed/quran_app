@@ -259,7 +259,7 @@ export default {
               }, 1700);
             })
             .catch(err => {
-              console.log(err);
+              // console.log(err);
               if (err.status == 401) this.$f7router.navigate("/login");
               else {
                 this.$f7.dialog.alert(this.$app.t("error"));

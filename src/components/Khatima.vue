@@ -83,7 +83,6 @@
                 borderWidth: 4,
                 valueText: '',
             });
-            console.log(gauge);
         }
     }
 </script>
