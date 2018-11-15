@@ -28,7 +28,7 @@
                 <search></search>
             </div>
 
-            <div id="profile-tab" class="page-content tab"
+            <div id="profile-tab" class="page-content tab profile-page"
                  :class="{'tab-active' :  $store.getters.home_tab == 'profile'}">
                 <profile></profile>
             </div>

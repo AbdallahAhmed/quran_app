@@ -36,6 +36,10 @@ export default {
             return state.last_sura;
         },
 
+        last_part_id: (state) => {
+          return state.last_part
+        },
+
         last_part: (state) => {
             return state.juz_sections[state.last_part];
         },

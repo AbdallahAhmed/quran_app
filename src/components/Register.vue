@@ -39,14 +39,14 @@
                     <div class="input-border">
                         <input type="password" name="password"
                                :placeholder="$app.trans('attributes.password')" v-model="user.password"
-                               v-validate="'required'" autocomplete="false"/>
+                               v-validate="'required', 'max:255'" autocomplete="false"/>
                     </div>
 
                     <div class="input-border">
                         <input type="password" name="confirm_password"
                                :placeholder="$app.trans('attributes.confirm_password')"
                                v-model="user.confirm_password"
-                               v-validate="'required'" autocomplete="false"/>
+                               v-validate="'required', 'max:255'" autocomplete="false"/>
                     </div>
 
                     <button type="submit" class="link" @click.prevent="register">

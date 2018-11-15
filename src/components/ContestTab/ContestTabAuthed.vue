@@ -117,7 +117,7 @@
                   </div>
                   <div class="col-50 flex-align-expired">
                     <img class="kas-img" src="../../assets/img/Group 1034@2x.png" />
-                    <span>{{contest.creator.first_name +' '+contest.creator.last_name}}</span>
+                    <span>{{contest.winner?contest.winner.first_name +' '+contest.winner.last_name:null}}</span>
                   </div>
                 </div>
               </div>
@@ -133,11 +133,17 @@
 .contest-cards-comming {
   margin-bottom: 10px;
   margin-right: 10px;
+  min-height: 17vh;
 }
 
 .contest-cards-old {
   margin-right: 10px;
 }
+  .contest-cards-item {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+  }
 </style>
 <script>
 import moment from "moment";

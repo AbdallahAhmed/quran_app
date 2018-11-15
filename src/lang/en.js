@@ -82,7 +82,7 @@ export default {
     create_contest:"Create new competition",
     create_contest_and_share:"Create new competition and share it",
     creating_contest:"Creating competition..",
-    all_contests:"All competitions",
+    all_contests:"All",
     contests:"Competitions",
     quit:"Quit",
     current_contest:"Current competition",

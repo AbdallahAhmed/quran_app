@@ -58,7 +58,7 @@
                     <button class="col link" :class="{'active':locale=='ar'}" @click="locale='ar'">العربية</button>
                     <button class="col link" :class="{'active':locale=='en'}" @click="locale='en'">English</button>
                 </p>
-                <br>
+                <div class="empty-gap"></div>
             </div>
         </div>
     </div>
