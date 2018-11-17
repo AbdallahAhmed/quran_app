@@ -358,6 +358,14 @@ module.exports = [
     "clobbers": [
       "window.Media"
     ]
+  },
+  {
+    "id": "cordova-clipboard.Clipboard",
+    "file": "plugins/cordova-clipboard/www/clipboard.js",
+    "pluginId": "cordova-clipboard",
+    "clobbers": [
+      "cordova.plugins.clipboard"
+    ]
   }
 ];
 module.exports.metadata = 
@@ -379,7 +387,8 @@ module.exports.metadata =
   "cordova-plugin-ionic-keyboard": "2.1.3",
   "cordova-plugin-inappbrowser": "3.0.0",
   "cordova-plugin-file": "6.0.1",
-  "cordova-plugin-media": "5.0.2"
+  "cordova-plugin-media": "5.0.2",
+  "cordova-clipboard": "1.2.1"
 };
 // BOTTOM OF METADATA
 });

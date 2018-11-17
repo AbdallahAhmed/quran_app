@@ -49,6 +49,9 @@
     "cordova-plugin-media": {
       "KEEP_AVAUDIOSESSION_ALWAYS_ACTIVE": "NO",
       "PACKAGE_NAME": "com.dotdev.quran"
+    },
+    "cordova-clipboard": {
+      "PACKAGE_NAME": "com.dotdev.quran"
     }
   },
   "dependent_plugins": {

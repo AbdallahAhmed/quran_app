@@ -1325,3 +1325,9 @@ a.forget-password {
 .ltr .dialog-title, .ltr .dialog-text {
     text-align: left;
 }
+
+.md .page-content .searchbar, 
+.ios .page-content .searchbar{
+    border: none;
+    box-shadow: none !important;
+}

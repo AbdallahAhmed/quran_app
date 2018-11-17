@@ -88,7 +88,8 @@
                     password: "",
                     confirm_password: "",
                     name: "",
-                    image_data: ""
+                    image_data: "",
+                    device_token: ""
                 },
                 submitted: false
             }
@@ -100,7 +101,11 @@
 
                 var self = this;
 
-
+                if (window.FirebasePlugin) {
+                    window.FirebasePlugin.getToken(function (token) {
+                        self.user.device_token = token;
+                    });
+                }
                 if (this.user.password != this.user.confirm_password) {
                     return self.$f7.notification.create({
                         subtitle: this.$app.trans('password_mismatched')

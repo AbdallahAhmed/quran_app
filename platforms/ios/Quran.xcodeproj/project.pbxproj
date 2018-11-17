@@ -82,6 +82,7 @@
 		12373DD674C64FB3827D1F7B /* CDVLocalFilesystem.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BC0299FDF16481BB50FCB98 /* CDVLocalFilesystem.m */; };
 		EAE0E9223E3743ABB48C1EA3 /* CDVAssetLibraryFilesystem.m in Sources */ = {isa = PBXBuildFile; fileRef = E035A0B518094631A414D2CC /* CDVAssetLibraryFilesystem.m */; };
 		F12CE1CE1B87408D81C77885 /* CDVSound.m in Sources */ = {isa = PBXBuildFile; fileRef = F2AB68707A144BA68FF28248 /* CDVSound.m */; };
+		7A1BEB641ED240DC868BDBDF /* CDVClipboard.m in Sources */ = {isa = PBXBuildFile; fileRef = A129FA7390DB43B682302001 /* CDVClipboard.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -234,6 +235,8 @@
 		39BD53748554419284B93E08 /* CDVAssetLibraryFilesystem.h */ = {isa = PBXFileReference; name = "CDVAssetLibraryFilesystem.h"; path = "cordova-plugin-file/CDVAssetLibraryFilesystem.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
 		F2AB68707A144BA68FF28248 /* CDVSound.m */ = {isa = PBXFileReference; name = "CDVSound.m"; path = "cordova-plugin-media/CDVSound.m"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; explicitFileType = undefined; includeInIndex = 0; };
 		4DBE3434D7D44B27822D30E8 /* CDVSound.h */ = {isa = PBXFileReference; name = "CDVSound.h"; path = "cordova-plugin-media/CDVSound.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
+		A129FA7390DB43B682302001 /* CDVClipboard.m */ = {isa = PBXFileReference; name = "CDVClipboard.m"; path = "cordova-clipboard/CDVClipboard.m"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; explicitFileType = undefined; includeInIndex = 0; };
+		A2FB71FD43834D2988797AF5 /* CDVClipboard.h */ = {isa = PBXFileReference; name = "CDVClipboard.h"; path = "cordova-clipboard/CDVClipboard.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -472,6 +475,8 @@
 				39BD53748554419284B93E08 /* CDVAssetLibraryFilesystem.h */,
 				F2AB68707A144BA68FF28248 /* CDVSound.m */,
 				4DBE3434D7D44B27822D30E8 /* CDVSound.h */,
+				A129FA7390DB43B682302001 /* CDVClipboard.m */,
+				A2FB71FD43834D2988797AF5 /* CDVClipboard.h */,
 			);
 			name = Plugins;
 			path = "Quran/Plugins";
@@ -627,6 +632,7 @@
 				12373DD674C64FB3827D1F7B /* CDVLocalFilesystem.m in Sources */,
 				EAE0E9223E3743ABB48C1EA3 /* CDVAssetLibraryFilesystem.m in Sources */,
 				F12CE1CE1B87408D81C77885 /* CDVSound.m in Sources */,
+				7A1BEB641ED240DC868BDBDF /* CDVClipboard.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

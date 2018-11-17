@@ -18,4 +18,6 @@
     <preference name="ShowSplashScreenSpinner" value="false" />
     <preference name="StatusBarBackgroundColor" value="#ffffff" />
     <preference name="AndroidLaunchMode" value="singleTop" />
+    <preference name="AndroidPersistentFileLocation" value="Internal" />
+    <preference name="iosPersistentFileLocation" value="Library" />
 </widget>

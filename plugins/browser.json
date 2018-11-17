@@ -48,6 +48,9 @@
     },
     "cordova-plugin-media": {
       "PACKAGE_NAME": "com.dotdev.quran"
+    },
+    "cordova-clipboard": {
+      "PACKAGE_NAME": "com.dotdev.quran"
     }
   },
   "dependent_plugins": {
