@@ -26,6 +26,8 @@ export default {
     old_contests:"Expired competitions",
     setting: "Settings",
     login: "Login",
+    logout: "Logout",
+    sure_logout: "Are you want to logout?",
     edit_profile: "Edit profile",
     eval_app: "Are you want to rate the app?",
     shared_done: "Shared successfully",

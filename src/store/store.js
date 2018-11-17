@@ -240,6 +240,9 @@ const actions = {
         });
     },
 
+    logout(store){
+        return store.commit("logout");
+    },
     register(store, user) {
         return Vue.http.post("auth/add_user", user).then(function (response) {
             if (response.body.status) {

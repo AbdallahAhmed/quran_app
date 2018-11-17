@@ -23,6 +23,8 @@ export default {
 
     setting: "اﻷعدادات",
     login: "تسجيل الدخول",
+    logout: "تسجيل الخروج",
+    sure_logout: "هل تريد تسجيل الخروج؟",
     edit_profile: " تعديل الملف الشخصى",
     eval_app: "هل تريد تقييم التطبيق ؟",
     shared_done: "تمت المشاركة",

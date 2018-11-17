@@ -73,6 +73,9 @@
                 <button type="submit" @click="$f7router.navigate('/editProfile')" class="link" v-if="check">
                     {{$app.trans('edit_profile')}}
                 </button>
+                <button type="submit" @click="logout" class="link" v-if="check">
+                    {{$app.trans('logout')}}
+                </button>
 
                 <button type="submit" @click="$f7router.navigate('/login')" class="link" v-if="!check">
                     {{$app.trans('login')}}
@@ -122,6 +125,31 @@
         },
 
         methods: {
+
+            logout(){
+                this.$f7.dialog
+                    .create({
+                        title: this.$app.t("sure_logout"),
+                        // text: this.$app.t(''),
+                        buttons: [
+                            {
+                                text: this.$app.t("logout"),
+                                onClick: () => {
+                                    this.$store.dispatch('logout');
+
+                                }
+                            },
+                            {
+                                text: this.$app.t("cancel"),
+                                onClick: () => {
+                                    this.$f7.dialog.close();
+                                }
+                            }
+                        ]
+                    })
+                    .open();
+            },
+
             share_app() {
 
                 new Promise((resolve, reject) => {
