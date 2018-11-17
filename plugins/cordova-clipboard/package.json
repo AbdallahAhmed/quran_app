@@ -1,0 +1,90 @@
+{
+  "_args": [
+    [
+      "cordova-clipboard",
+      "/var/www/quran_app"
+    ]
+  ],
+  "_from": "cordova-clipboard@latest",
+  "_id": "cordova-clipboard@1.2.1",
+  "_inCache": true,
+  "_installable": true,
+  "_location": "/cordova-clipboard",
+  "_nodeVersion": "8.10.0",
+  "_npmOperationalInternal": {
+    "host": "s3://npm-registry-packages",
+    "tmp": "tmp/cordova-clipboard_1.2.1_1525066101004_0.6144049462855807"
+  },
+  "_npmUser": {
+    "email": "ibby@zyra.ca",
+    "name": "ihadeed"
+  },
+  "_npmVersion": "5.6.0",
+  "_phantomChildren": {},
+  "_requested": {
+    "name": "cordova-clipboard",
+    "raw": "cordova-clipboard",
+    "rawSpec": "",
+    "scope": null,
+    "spec": "latest",
+    "type": "tag"
+  },
+  "_requiredBy": [
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/cordova-clipboard/-/cordova-clipboard-1.2.1.tgz",
+  "_shasum": "130624356583f749abed23b380724e1d273051c8",
+  "_shrinkwrap": null,
+  "_spec": "cordova-clipboard",
+  "_where": "/var/www/quran_app",
+  "author": {
+    "name": "Ibrahim Hadeed"
+  },
+  "bugs": {
+    "url": "https://github.com/ihadeed/cordova-clipboard/issues"
+  },
+  "cordova": {
+    "id": "cordova-clipboard",
+    "platforms": [
+      "android",
+      "ios",
+      "wp8"
+    ]
+  },
+  "dependencies": {},
+  "description": "Clipboard management plugin for Cordova/PhoneGap that supports iOS, Android, and WP8",
+  "devDependencies": {},
+  "directories": {},
+  "dist": {
+    "fileCount": 10,
+    "integrity": "sha512-WTGxyQJYsgmll8wDEo0u4XevZDUH1ZH1VPoOwwNkQ8YOtCNQS8gRIIVtZ70Kan+Vo+CiUMV0oJXdNAdARb8JwQ==",
+    "npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJa5ql1CRA9TVsSAnZWagAAyjQP/1ZsHnupiAu1+Hjt/hB+\nvwafxG3NtsR4ybCtBzcMENhv49UGU59OAfJy/E+Aci/N3JASWRFj30nkdSn/\nDo8enASG2YQkm+k5gQBYKMzfeB+j/k2BeqW5u399v2urPaiBXC12YPU1/SGQ\nZCWuoEUqiQMNlEpzwwb679XDG04vzPhk9V+xuBSjQEVW3xDLdEEb3hH+ho8T\nugMxloXcfb57juWuXOBw5rIn6drLuRXz9y73T49e3D0IXbcnL/kyEmSBvoiK\njck8LCqZbVDEpcKPIEGD2aXRlz2GGchMI0gn+IzzU98CRvXjT66QpOcYC2WA\ngkhmplp9aSN9rea3p7aosmAxpR+Ej0WMgJvrlilQDGsQk+tijPDRpDCwqZck\nt6/7F8ZB1g+q38+GkfNEOSTnDmVS19hgo1OvpF7QXSBh8EgXyaANAkUaaENM\na/z7CbxFEuJFkCUGwOg4aYPaciI3RMDQnAparkxjxTEIeLYefKmq1XLcQQ87\n7plS8857sppqGbQeFcpvuq1uOptcpdZ6tzNvkr/FANtk7/oS80KOAWehfC8V\nGkebdUSu18BfmCRG0Wo9dVXF6RMI4hZkY3C2Y/gC7XijtHbrkt2l27PjaVMP\nNhHX17SByMXnUBI4WVtbE4FEu10XAsIM1S92g5ol7RlDV7Hx4MX4GfJf4taQ\nMol8\r\n=qj46\r\n-----END PGP SIGNATURE-----\r\n",
+    "shasum": "130624356583f749abed23b380724e1d273051c8",
+    "tarball": "https://registry.npmjs.org/cordova-clipboard/-/cordova-clipboard-1.2.1.tgz",
+    "unpackedSize": 16031
+  },
+  "gitHead": "5a5f3ee0e0e095e46b3cc1c41fb1bbee51edbc84",
+  "homepage": "https://github.com/ihadeed/cordova-clipboard#readme",
+  "keywords": [
+    "clipboard",
+    "cordova",
+    "ionic",
+    "phonegap",
+    "plugin"
+  ],
+  "license": "MIT",
+  "maintainers": [
+    {
+      "name": "ihadeed",
+      "email": "ibby@zyra.ca"
+    }
+  ],
+  "name": "cordova-clipboard",
+  "optionalDependencies": {},
+  "readme": "ERROR: No README data found!",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ihadeed/cordova-clipboard.git"
+  },
+  "version": "1.2.1"
+}

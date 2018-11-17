@@ -85,7 +85,8 @@
             return {
                 user: {
                     email: "",
-                    password: ""
+                    password: "",
+                    device_toke: ""
                 },
                 submitted: false
             }
@@ -98,6 +99,11 @@
                 this.submitted = true;
 
                 var self = this;
+                if (window.FirebasePlugin) {
+                    window.FirebasePlugin.getToken(function (token) {
+                        self.user.device_token = token;
+                    });
+                }
 
                 this.$validator.validateAll(this.user).then((valid) => {
 

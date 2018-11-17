@@ -71,6 +71,9 @@
     <feature name="Media">
         <param name="ios-package" value="CDVSound" />
     </feature>
+    <feature name="Clipboard">
+        <param name="ios-package" value="CDVClipboard" />
+    </feature>
     <name>Quran</name>
     <description>
         Quran contests for everyone
@@ -106,6 +109,8 @@
     <preference name="ShowSplashScreenSpinner" value="false" />
     <preference name="StatusBarBackgroundColor" value="#ffffff" />
     <preference name="AndroidLaunchMode" value="singleTop" />
+    <preference name="AndroidPersistentFileLocation" value="Internal" />
+    <preference name="iosPersistentFileLocation" value="Library" />
     <preference name="KeychainAccessibility" value="WhenUnlocked" />
     <preference name="UIWebViewDecelerationSpeed" value="fast" />
     <preference name="MediaPlaybackRequiresUserAction" value="false" />

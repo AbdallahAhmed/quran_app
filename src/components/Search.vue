@@ -12,6 +12,7 @@
                                 <input type="search" id="input-search" class="search-input rollIn"
                                        :placeholder="$app.trans('search_ayat')"
                                        v-model="searchQuery" maxlength="50" @input="search" @keydown="clear">
+                                <input type="hidden" id="clipboard"/>
                                 <i class="searchbar-icon" @click="search"></i>
                                 <!--<span class="input-clear-button"></span>-->
                             </div>
@@ -61,6 +62,7 @@
         height: 100vh;
         overflow: hidden;
     }
+
     .infinite-scroll-preloader {
         margin-top: -15px;
         margin-bottom: 10px;
