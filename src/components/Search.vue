@@ -2,7 +2,7 @@
 
     <div :class="'page-section'">
         <navbar></navbar>
-        <div class="section-wrapper infinite-scroll-content infinite-scroll-bottom" @infinite="search">
+        <div class="section-wrapper" >
             <div class="row no-gap">
                 <div class="col-100 search-wrapper ">
                     <!-- Searchbar with auto init -->
@@ -20,7 +20,7 @@
                     </form>
                 </div>
             </div>
-            <div class="scroll-area">
+            <div class="scroll-area infinite-scroll-content infinite-scroll-bottom" @infinite="search">
 
                 <div class="row">
                     <div class="searchbar-backdrop"></div>
@@ -71,6 +71,14 @@
     .infinite-scroll-preloader .preloader {
         width: 34px;
         height: 34px;
+    }
+</style>
+<style scoped>
+    .infinite-scroll-preloader {
+        margin-bottom: 110px!important;
+    }
+    .searchbar-found {
+        padding-bottom: 30px;
     }
 </style>
 <script>
