@@ -40,13 +40,15 @@
         color: #F6C625 !important;
         background: #207249;
         border-radius: 60px;
-        display: block;
+        /*display: block;*/
         width: 60px;
         height: 60px;
         position: relative;
         top: -32px;
         text-align: center;
-        line-height: 90px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
 
     .btn-main img {

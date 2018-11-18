@@ -17,16 +17,17 @@
                 </div>
             </div>
 
-            <div class="page-container">
+            <div class="scroll-area">
+                <div class="page-container">
 
-                <!-- when there is no notifications -->
+                    <!-- when there is no notifications -->
 
 
-                <!--
+                    <!--
 
-                <div class="empty">
-                    <p>{{$app.trans('no_notifications')}}</p>
-                </div>
+                    <div class="empty">
+                        <p>{{$app.trans('no_notifications')}}</p>
+                    </div>
 
                 -->
                 <div class="white-container" v-for="notification in notifications">
@@ -39,6 +40,46 @@
                     <div class="time">
                         <img src="../assets/img/not-clock.png" alt="">
                         <span>{{$app.trans('from')}} ساعة</span>
+                    <div class="white-container">
+                        <div class="user-data">
+                            <img src="../assets/img/user-photo.png" alt="">
+                            <div>
+                                <p>دااااليا سلاااااامه</p>
+                                <p>أنضم الى مسابقتك</p>
+                            </div>
+                        </div>
+                        <div class="time">
+                            <img src="../assets/img/not-clock.png" alt="">
+                            <span>{{$app.trans('from')}} ساعة</span>
+                        </div>
+                    </div>
+
+                    <div class="white-container">
+                        <div class="user-data">
+                            <img src="../assets/img/user-photo.png" alt="">
+                            <div>
+                                <p>دااااليا سلاااااامه</p>
+                                <p>أنضم الى مسابقتك</p>
+                            </div>
+                        </div>
+                        <div class="time">
+                            <img src="../assets/img/not-clock.png" alt="">
+                            <span>{{$app.trans('from')}} ساعة</span>
+                        </div>
+                    </div>
+
+                    <div class="white-container">
+                        <div class="user-data">
+                            <img src="../assets/img/user-photo.png" alt="">
+                            <div>
+                                <p>دااااليا سلاااااامه</p>
+                                <p>أنضم الى مسابقتك</p>
+                            </div>
+                        </div>
+                        <div class="time">
+                            <img src="../assets/img/not-clock.png" alt="">
+                            <span>{{$app.trans('from')}} ساعة</span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -80,6 +121,7 @@
     .page-container {
         margin: 0 auto;
         padding: 10px 0;
+        height: auto;
     }
 
     .white-container {
