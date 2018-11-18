@@ -94,7 +94,7 @@
         },
         created(){
             if (window.FirebasePlugin) {
-                window.FirebasePlugin.onTokenRefresh(function (token) {
+                window.FirebasePlugin.getToken(function (token) {
                     device_token = token;
                 });
             }
