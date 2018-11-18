@@ -191,7 +191,7 @@ export default {
   methods: {
     toTime(time) {
       let s = moment.duration(moment(time).diff(moment(), "seconds"));
-      return `${parseInt(s / 3600)}:${parseInt(s / 60) % 60}:${s % 60}`;
+      return `${parseInt(s / 3600)} ${this.$app.t('H')} : ${parseInt(s / 60) % 60} ${this.$app.t('M')} : ${s % 60} ${this.$app.t('S')}`;
     },
     moment(...args) {
       return moment(...args).format("YYYY/MM/DD");

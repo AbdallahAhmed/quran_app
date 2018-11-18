@@ -122,6 +122,9 @@ export default {
     share_thawab: "I have completed this khatema and I would love to share its thawab with you",
     khatma: "Khatema",
     av_khatma:"Average Khatma takes 10 hours",
+    H:"H",
+    M:"M",
+    S:"S",
     messages: {
         _default: function (e) {
             return "The " + e + " value is not valid.";
