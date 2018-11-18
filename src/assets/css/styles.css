@@ -1170,10 +1170,6 @@ a.forget-password {
     float: left;
 }
 
-.contest-cards-item .time {
-    font-size: 15px !important;
-    font-family: initial !important;
-}
 
 .contest-cards-item a.contest-button {
     border: 0;

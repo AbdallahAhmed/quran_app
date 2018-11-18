@@ -191,7 +191,7 @@ export default {
   methods: {
     toTime(time) {
       let s = moment.duration(moment(time).diff(moment(), "seconds"));
-      return `${parseInt(s / 3600)} ${this.$app.t('H')} : ${parseInt(s / 60) % 60} ${this.$app.t('M')} : ${s % 60} ${this.$app.t('S')}`;
+      return `${parseInt(s / 3600)}${this.$app.t('H')}: ${parseInt(s / 60) % 60}${this.$app.t('M')}: ${s % 60} ${this.$app.t('S')}`;
     },
     moment(...args) {
       return moment(...args).format("YYYY/MM/DD");
@@ -456,10 +456,11 @@ export default {
 .time {
   padding: 5px;
   font-weight: 100;
+  font-size: 85%;
 }
 
 .sm {
-  font-size: 1.2em;
+  font-size: 1.1em;
   text-align: center;
 }
 

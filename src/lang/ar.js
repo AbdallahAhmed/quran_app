@@ -121,6 +121,7 @@ export default {
     H:"س",
     M:"د",
     S:"ث",
+    text_align:"right",
     messages: {
         _default: function(n) {
             return "قيمة الحقل " + n + " غير صحيحة.";

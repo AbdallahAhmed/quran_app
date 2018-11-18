@@ -125,6 +125,7 @@ export default {
     H:"H",
     M:"M",
     S:"S",
+    text_align:"left",
     messages: {
         _default: function (e) {
             return "The " + e + " value is not valid.";

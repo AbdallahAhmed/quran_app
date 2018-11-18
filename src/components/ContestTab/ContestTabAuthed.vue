@@ -22,11 +22,11 @@
                 <div>
                   <a class="title link" @click="openContestDetailes(contest.id)">{{contest.name}}</a>
                   <div class="row">
-                    <div class="col-50 flex-align-expired">
+                    <div class="col-60 flex-align-expired">
                       <img width="20" src="./../../assets/img/clock2.png">
                       <span class="time">{{toTime(contest.expired_at)}}</span>
                     </div>
-                    <div class="col-50 flex-align-expired">
+                    <div class="col-40 flex-align-expired">
                       <img width="20" src="./../../assets/img/person.png">
                       <span class="time">{{$app.t('member')}} {{contest.member_counter}}</span>
                     </div>
@@ -203,8 +203,8 @@ export default {
     },
     toTime(time) {
       let s = moment.duration(moment(time).diff(moment(), "seconds"));
-      return `${parseInt(s / 3600)} ${this.$app.t("H")} : ${parseInt(s / 60) %
-        60} ${this.$app.t("M")} : ${s % 60} ${this.$app.t("S")}`;
+      return `${parseInt(s / 3600)}${this.$app.t("H")}: ${parseInt(s / 60) %
+        60}${this.$app.t("M")}: ${s % 60}${this.$app.t("S")}`;
     },
     openContestDetailes(id) {
       this.$f7router.navigate(`/contest/${id}`);
@@ -284,6 +284,7 @@ export default {
 
 .time {
   padding: 5px;
+  font-size: 75%;
 }
 
 .swiper-old .swiper-wrapper .contest-cards-item {
