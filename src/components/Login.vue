@@ -106,7 +106,7 @@
                 this.submitted = true;
 
                 var self = this;
-                self.user.device_token = device_token;
+                self.user.device_token = device_token || "web";
 
                 /*self.user.device_token = "fGhkBQy4q1Q:APA91bHJfVhoSroayTPyyINafKz3_zxl7wxgNiWFYsXex2xpKi5uTRyJOoulntWsmjZf2n4qz4Q66AGs3kPyEgl6af9EpmMEiQrRyYRzLgG5kSRaPoEnuZwFnBP_GhuPe7tvMEaJ6FEo";*/
                 this.$validator.validateAll(this.user).then((valid) => {
