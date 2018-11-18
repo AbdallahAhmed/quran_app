@@ -4,7 +4,7 @@
 
         <navbar></navbar>
 
-        <div class="login-page">
+        <!--<div class="login-page">-->
 
             <div class="header-islamic row">
                 <div class="header-islamic-content">
@@ -19,73 +19,76 @@
                 </div>
             </div>
 
-            <div class="form-container">
+            <div class="scroll-area">
+                <div class="form-container">
 
-                <!-- UI updates -->
+                    <!-- UI updates -->
 
-                <div class="row">
-                    <div class="col-50 spaceInDown">
-                        <a href="/notifications" class="link btn-setting ">
-                            <p>{{$app.trans('notifications')}}</p>
-                            <img src="./../assets/img/alarm.png" alt="notifications">
-                        </a>
+                    <div class="row">
+                        <div class="col-50 spaceInDown">
+                            <a href="/notifications" class="link btn-setting ">
+                                <p>{{$app.trans('notifications')}}</p>
+                                <img src="./../assets/img/alarm.png" alt="notifications">
+                            </a>
+                        </div>
+
+                        <div class="col-50 spaceInDown">
+                            <a href="/fav" class="link btn-setting ">
+
+                                <p>{{$app.trans('fav')}}</p>
+
+                                <img src="./../assets/img/fav.png" alt="Fav">
+
+                            </a>
+                        </div>
                     </div>
 
-                    <div class="col-50 spaceInDown">
-                        <a href="/fav" class="link btn-setting ">
 
-                            <p>{{$app.trans('fav')}}</p>
+                    <div class="row">
+                        <div class="col-50 spaceInDown">
+                            <a href="/alerts" class="link btn-setting ">
+                                <p>{{$app.trans('alarms')}}</p>
+                                <img src="./../assets/img/stopwatch-1.png" alt="alarms">
+                            </a>
+                        </div>
 
-                            <img src="./../assets/img/fav.png" alt="Fav">
+                        <div class="col-50 spaceInDown">
+                            <a href="/settings" class="link btn-setting">
+                                <p>{{$app.trans('setting')}}</p>
 
-                        </a>
+                                <img src="./../assets/img/settings.png" alt="Fav">
+                            </a>
+                        </div>
                     </div>
+
+
+                    <div class="row">
+                        <div class="col-100 spaceInDown">
+                            <a href="#" @click="share_app" class="link btn-setting">
+                                <p> {{$app.trans('quran_share')}}</p>
+                                <img src="./../assets/img/_share.png" alt="Fav">
+                            </a>
+                        </div>
+                    </div>
+
+                    <button type="submit" @click="$f7router.navigate('/editProfile')" class="link" v-if="check">
+                        {{$app.trans('edit_profile')}}
+                    </button>
+                    <button type="submit" @click="logout" class="link" v-if="check">
+                        {{$app.trans('logout')}}
+                    </button>
+
+                    <button type="submit" @click="$f7router.navigate('/login')" class="link" v-if="!check">
+                        {{$app.trans('login')}}
+                    </button>
+
+                    <div class="empty-gap"></div>
                 </div>
-
-
-                <div class="row">
-                    <div class="col-50 spaceInDown">
-                        <a href="/alerts" class="link btn-setting ">
-                            <p>{{$app.trans('alarms')}}</p>
-                            <img src="./../assets/img/stopwatch-1.png" alt="alarms">
-                        </a>
-                    </div>
-
-                    <div class="col-50 spaceInDown">
-                        <a href="/settings" class="link btn-setting">
-                            <p>{{$app.trans('setting')}}</p>
-
-                            <img src="./../assets/img/settings.png" alt="Fav">
-                        </a>
-                    </div>
-                </div>
-
-
-                <div class="row">
-                    <div class="col-100 spaceInDown">
-                        <a href="#" @click="share_app" class="link btn-setting">
-                            <p> {{$app.trans('quran_share')}}</p>
-                            <img src="./../assets/img/_share.png" alt="Fav">
-                        </a>
-                    </div>
-                </div>
-
-                <button type="submit" @click="$f7router.navigate('/editProfile')" class="link" v-if="check">
-                    {{$app.trans('edit_profile')}}
-                </button>
-                <button type="submit" @click="logout" class="link" v-if="check">
-                    {{$app.trans('logout')}}
-                </button>
-
-                <button type="submit" @click="$f7router.navigate('/login')" class="link" v-if="!check">
-                    {{$app.trans('login')}}
-                </button>
-
                 <div class="empty-gap"></div>
             </div>
         </div>
 
-    </div>
+    <!--</div>-->
 
 </template>
 
@@ -98,7 +101,7 @@
 <style scoped>
     .empty-gap {
         width: 100%;
-        height: 150px;
+        height: 120px;
     }
 </style>
 
@@ -126,7 +129,7 @@
 
         methods: {
 
-            logout(){
+            logout() {
                 this.$f7.dialog
                     .create({
                         title: this.$app.t("sure_logout"),

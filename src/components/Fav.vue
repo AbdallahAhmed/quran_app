@@ -17,23 +17,25 @@
                 </div>
             </div>
 
-            <div class="page-container">
-                <div class="fav-aya-list">
+            <div class="scroll-area">
+                <div class="page-container">
+                    <div class="fav-aya-list">
 
-                    <div class="fav-aya-item" v-for="aya in saved_ayat" :key="aya.id">
-                        <div class="title">
-                            <a  class="delete-aya" @click="removeAya(aya.id)">
-                                <i class="f7-icons">close</i>
-                            </a>
-                            <a class="surah" v-if="aya.surah" :href="'/home/quran/'+aya.surat_id">
-                                {{$store.getters.locale=="ar"?aya.surah.name:aya.surah.englishname}}
-                            </a>
+                        <div class="fav-aya-item" v-for="aya in saved_ayat" :key="aya.id">
+                            <div class="title">
+                                <a class="delete-aya" @click="removeAya(aya.id)">
+                                    <i class="f7-icons">close</i>
+                                </a>
+                                <a class="surah" v-if="aya.surah" :href="'/home/quran/'+aya.surat_id">
+                                    {{$store.getters.locale=="ar"?aya.surah.name:aya.surah.englishname}}
+                                </a>
+                            </div>
+                            <div class="content">
+                                <p>{{aya.text}}</p>
+                            </div>
                         </div>
-                        <div class="content">
-                            <p>{{aya.text}}</p>
-                        </div>
+                        <p class="no-found" v-if="saved_ayat.length==0">{{$app.trans('no_ayat')}}</p>
                     </div>
-                    <p class="no-found" v-if="saved_ayat.length==0">{{$app.trans('no_ayat')}}</p>
                 </div>
             </div>
         </div>
@@ -67,10 +69,10 @@
 
         },
 
-        methods:{
-            removeAya(id){
+        methods: {
+            removeAya(id) {
                 this.$f7.dialog.confirm(this.$app.trans('delete_aya'), () => {
-                    this.$store.dispatch('remove_saved_aya',id)
+                    this.$store.dispatch('remove_saved_aya', id)
                 });
             }
         },
@@ -83,7 +85,9 @@
 </script>
 
 <style scoped>
-.page-container{
-    margin: 0 auto;
-}
+    .page-container {
+        width: calc(100% - 30px);
+        height: auto;
+        margin: auto;
+    }
 </style>

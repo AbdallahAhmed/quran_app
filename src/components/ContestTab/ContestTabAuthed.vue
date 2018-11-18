@@ -139,11 +139,12 @@
 .contest-cards-old {
   margin-right: 10px;
 }
-  .contest-cards-item {
-    display: flex;
-    justify-content: space-between;
-    flex-direction: column;
-  }
+
+.contest-cards-item {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+}
 </style>
 <script>
 import moment from "moment";
@@ -181,7 +182,7 @@ export default {
     this.$store.dispatch("getAuthedContests").then(() => {
       this.loading = false;
     });
-    setInterval(()=> this.$forceUpdate(),500)
+    setInterval(() => this.$forceUpdate(), 500);
   },
   updated() {
     if (this.first_time && this.showed && !this.loading) {
@@ -202,7 +203,8 @@ export default {
     },
     toTime(time) {
       let s = moment.duration(moment(time).diff(moment(), "seconds"));
-      return `${parseInt(s / 3600)} ${this.$app.t('H')} : ${parseInt(s / 60) % 60} ${this.$app.t('M')} : ${s % 60} ${this.$app.t('S')}`;
+      return `${parseInt(s / 3600)} ${this.$app.t("H")} : ${parseInt(s / 60) %
+        60} ${this.$app.t("M")} : ${s % 60} ${this.$app.t("S")}`;
     },
     openContestDetailes(id) {
       this.$f7router.navigate(`/contest/${id}`);
