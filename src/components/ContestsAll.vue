@@ -20,7 +20,7 @@
             <div class="row contest-wrapper " v-for="contest in contests" :key="contest.id || 'gap'">
               <div v-if="contest.id" class="col-100 contest-card">
                 <div class="col-100 margin-bottom contest">
-                  <div class="col-60 display-inline-block">
+                  <div class="col-50 display-inline-block">
                     <div class="col-100">
                       <a :href="'/contest/'+contest.id">
                         <h1>{{contest.name}}</h1>
@@ -36,12 +36,12 @@
                     </div>
 
                   </div> -->
-                  <div class="col-40 text-align-left	display-inline-block">
+                  <div class="col-50 text-align-left	display-inline-block">
                     <div>
                       <i class="f7-icons" style="font-size: 18px">
                         time
                       </i>
-                      <label>{{contest.remaining_time}}</label>
+                      <label class="time-remaning">{{toTime(contest.expired_at)}}</label>
                     </div>
                     <div>
                       <span>
@@ -86,6 +86,7 @@
 </template>
 
 <script>
+import moment from "moment";
 export default {
   data() {
     return {
@@ -103,6 +104,10 @@ export default {
       : this.loadContests().then(() => (this.loading = false));
   },
   methods: {
+    toTime(time) {
+      let s = moment.duration(moment(time).diff(moment(), "seconds"));
+      return `${parseInt(s / 3600)}${this.$app.t('H')}: ${parseInt(s / 60) % 60}${this.$app.t('M')}: ${s % 60} ${this.$app.t('S')}`;
+    },
     loadmore(_, __, done) {
       if(!this.loading){
         this.loading = true;
@@ -224,6 +229,9 @@ export default {
 .btn-quran.flex-align {
   padding-bottom: 4px;
   padding-top: 4px;
+}
+.time-remaning{
+  font-size: 90%;
 }
 </style>
 

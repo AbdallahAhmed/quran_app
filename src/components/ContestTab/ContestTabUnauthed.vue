@@ -10,7 +10,7 @@
           <div class="row contest-wrapper " v-for="contest in contests" :key="contest.id">
             <div class="col-100 contest-card">
               <div class="col-100 margin-bottom contest">
-                <div class="col-40 display-inline-block">
+                <div class="col-55 display-inline-block">
                   <div class="col-100">
                     <a :href="'/contest/'+contest.id">
                       <h1>{{contest.name}}</h1>
@@ -20,18 +20,18 @@
                     {{contest.creator.last_name}}
                   </div>
                 </div>
-                <div class="col-20 text-align-center display-inline-block">
+                <!-- <div class="col-20 text-align-center display-inline-block">
                   <div style="opacity: 0;">
                     <label>1</label>
                   </div>
 
-                </div>
-                <div class="col-40 text-align-left	display-inline-block">
+                </div> -->
+                <div :class="`col-45 text-align-${$app.t('text_align')}	display-inline-block`">
                   <div>
                     <i class="f7-icons" style="font-size: 18px">
                       time
                     </i>
-                    <label>{{contest.remaining_time}}</label>
+                    <label class="time-remaning" >{{toTime(contest.expired_at)}}</label>
                   </div>
                   <div>
                     <span>
@@ -67,6 +67,7 @@
 
 <script>
 import mixin from "../../mixin";
+import moment from "moment";
 
 export default {
   mixins: [mixin],
@@ -84,6 +85,11 @@ export default {
     }
   },
   methods: {
+    toTime(time) {
+      let s = moment.duration(moment(time).diff(moment(), "seconds"));
+      return `${parseInt(s / 3600)}${this.$app.t("H")}: ${parseInt(s / 60) %
+        60}${this.$app.t("M")}: ${s % 60}${this.$app.t("S")}`;
+    },
     openDetails(id) {
       this.$f7router.navigate(`/contest/${id}`);
     },
@@ -202,5 +208,8 @@ export default {
 .btn-quran.flex-align {
   padding-bottom: 4px;
   padding-top: 4px;
+}
+.time-remaning{
+  font-size: 90%;
 }
 </style>
