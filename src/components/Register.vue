@@ -85,10 +85,18 @@
 
     import {mapState} from 'vuex';
 
+    var device_token = "";
     export default {
         beforeCreate() {
             if (this.$app.auth.check()) {
                 this.$f7router.back();
+            }
+        },
+        created(){
+            if (window.FirebasePlugin) {
+                window.FirebasePlugin.getToken(function (token) {
+                    device_token = token;
+                });
             }
         },
         data: function () {
@@ -111,12 +119,8 @@
                 this.submitted = true;
 
                 var self = this;
-
-                if (window.FirebasePlugin) {
-                    window.FirebasePlugin.getToken(function (token) {
-                        self.user.device_token = token;
-                    });
-                }
+                self.user.device_token = device_token;
+                /*self.user.device_token = "fGhkBQy4q1Q:APA91bHJfVhoSroayTPyyINafKz3_zxl7wxgNiWFYsXex2xpKi5uTRyJOoulntWsmjZf2n4qz4Q66AGs3kPyEgl6af9EpmMEiQrRyYRzLgG5kSRaPoEnuZwFnBP_GhuPe7tvMEaJ6FEo";*/
                 if (this.user.password != this.user.confirm_password) {
                     return self.$f7.notification.create({
                         subtitle: this.$app.trans('password_mismatched')

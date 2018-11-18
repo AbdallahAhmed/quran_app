@@ -29,7 +29,17 @@
                         <p>{{$app.trans('no_notifications')}}</p>
                     </div>
 
-                    -->
+                -->
+                <div class="white-container" v-for="notification in notifications">
+                    <div class="user-data">
+                        <img src="../assets/img/user-photo.png" alt="">
+                        <div>
+                            <p>{{notification.message}}</p>
+                        </div>
+                    </div>
+                    <div class="time">
+                        <img src="../assets/img/not-clock.png" alt="">
+                        <span>{{$app.trans('from')}} ساعة</span>
                     <div class="white-container">
                         <div class="user-data">
                             <img src="../assets/img/user-photo.png" alt="">
@@ -80,12 +90,29 @@
 
 <script>
 
+    var $vm = null;
     export default {
-
-
-        components: {
-            navbar: require("./partials/Navbar.vue")
-        }
+        data() {
+            return {
+                notifications: []
+            }
+        },
+        created() {
+            $vm = this;
+        },
+        mounted() {
+            $vm.$http.get('notifications', {
+                params: {
+                    lang: 'ar'
+                }
+            }).then((res) => {
+                $vm.notifications = res.body.data;
+            });
+        },
+        components:
+            {
+                navbar: require("./partials/Navbar.vue")
+            }
     }
 
 </script>

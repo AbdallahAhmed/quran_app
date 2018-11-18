@@ -79,6 +79,7 @@
 
     import eventBus from './../events';
 
+    var device_token = "";
     export default {
 
         data: function () {
@@ -86,12 +87,18 @@
                 user: {
                     email: "",
                     password: "",
-                    device_toke: ""
+                    device_token: ""
                 },
                 submitted: false
             }
         },
-
+        created(){
+            if (window.FirebasePlugin) {
+                window.FirebasePlugin.getToken(function (token) {
+                    device_token = token;
+                });
+            }
+        },
         methods: {
 
             login() {
@@ -99,18 +106,14 @@
                 this.submitted = true;
 
                 var self = this;
-                if (window.FirebasePlugin) {
-                    window.FirebasePlugin.getToken(function (token) {
-                        self.user.device_token = token;
-                    });
-                }
+                self.user.device_token = device_token;
 
+                /*self.user.device_token = "fGhkBQy4q1Q:APA91bHJfVhoSroayTPyyINafKz3_zxl7wxgNiWFYsXex2xpKi5uTRyJOoulntWsmjZf2n4qz4Q66AGs3kPyEgl6af9EpmMEiQrRyYRzLgG5kSRaPoEnuZwFnBP_GhuPe7tvMEaJ6FEo";*/
                 this.$validator.validateAll(this.user).then((valid) => {
 
                     if (valid) {
 
                         self.$f7.dialog.preloader(self.$app.trans('login_loading'));
-
                         self.$store.dispatch('login', self.user).then((response) => {
                             setTimeout(()=> self.$f7router.back() , 500);
                             eventBus.$emit('khatema_update')
