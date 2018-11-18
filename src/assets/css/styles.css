@@ -1170,6 +1170,10 @@ a.forget-password {
     float: left;
 }
 
+.calendar.modal-in{
+    position: fixed;
+    bottom: 0px;
+}
 
 .contest-cards-item a.contest-button {
     border: 0;
