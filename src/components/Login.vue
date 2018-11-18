@@ -79,7 +79,7 @@
 
     import eventBus from './../events';
 
-    var device_token = "";
+    var device_token = "sss";
     export default {
 
         data: function () {
