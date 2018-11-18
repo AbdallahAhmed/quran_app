@@ -17,60 +17,61 @@
                 </div>
             </div>
 
-            <div class="page-container">
+            <div class="scroll-area">
+                <div class="page-container">
 
-                <!-- when there is no notifications -->
+                    <!-- when there is no notifications -->
 
 
-                <!--
+                    <!--
 
-                <div class="empty">
-                    <p>{{$app.trans('no_notifications')}}</p>
-                </div>
+                    <div class="empty">
+                        <p>{{$app.trans('no_notifications')}}</p>
+                    </div>
 
-                -->
-                <div class="white-container">
-                    <div class="user-data">
-                        <img src="../assets/img/user-photo.png" alt="">
-                        <div>
-                            <p>دااااليا سلاااااامه</p>
-                            <p>أنضم الى مسابقتك</p>
+                    -->
+                    <div class="white-container">
+                        <div class="user-data">
+                            <img src="../assets/img/user-photo.png" alt="">
+                            <div>
+                                <p>دااااليا سلاااااامه</p>
+                                <p>أنضم الى مسابقتك</p>
+                            </div>
+                        </div>
+                        <div class="time">
+                            <img src="../assets/img/not-clock.png" alt="">
+                            <span>{{$app.trans('from')}} ساعة</span>
                         </div>
                     </div>
-                    <div class="time">
-                        <img src="../assets/img/not-clock.png" alt="">
-                        <span>{{$app.trans('from')}} ساعة</span>
-                    </div>
-                </div>
 
-                <div class="white-container">
-                    <div class="user-data">
-                        <img src="../assets/img/user-photo.png" alt="">
-                        <div>
-                            <p>دااااليا سلاااااامه</p>
-                            <p>أنضم الى مسابقتك</p>
+                    <div class="white-container">
+                        <div class="user-data">
+                            <img src="../assets/img/user-photo.png" alt="">
+                            <div>
+                                <p>دااااليا سلاااااامه</p>
+                                <p>أنضم الى مسابقتك</p>
+                            </div>
+                        </div>
+                        <div class="time">
+                            <img src="../assets/img/not-clock.png" alt="">
+                            <span>{{$app.trans('from')}} ساعة</span>
                         </div>
                     </div>
-                    <div class="time">
-                        <img src="../assets/img/not-clock.png" alt="">
-                        <span>{{$app.trans('from')}} ساعة</span>
-                    </div>
-                </div>
 
-                <div class="white-container">
-                    <div class="user-data">
-                        <img src="../assets/img/user-photo.png" alt="">
-                        <div>
-                            <p>دااااليا سلاااااامه</p>
-                            <p>أنضم الى مسابقتك</p>
+                    <div class="white-container">
+                        <div class="user-data">
+                            <img src="../assets/img/user-photo.png" alt="">
+                            <div>
+                                <p>دااااليا سلاااااامه</p>
+                                <p>أنضم الى مسابقتك</p>
+                            </div>
+                        </div>
+                        <div class="time">
+                            <img src="../assets/img/not-clock.png" alt="">
+                            <span>{{$app.trans('from')}} ساعة</span>
                         </div>
                     </div>
-                    <div class="time">
-                        <img src="../assets/img/not-clock.png" alt="">
-                        <span>{{$app.trans('from')}} ساعة</span>
-                    </div>
                 </div>
-
             </div>
         </div>
     </div>
@@ -90,10 +91,12 @@
 </script>
 
 <style scoped>
-    .page-container{
+    .page-container {
         margin: 0 auto;
         padding: 10px 0;
+        height: auto;
     }
+
     .white-container {
         margin-top: 15px;
         background-color: #ffffff;
@@ -101,31 +104,37 @@
         display: flex;
         align-items: center;
     }
+
     .white-container .user-data img {
         width: 60px;
         border-radius: 100%;
     }
+
     .white-container p {
         font-size: 12px;
         font-weight: bold;
         padding: 0 5px;
         margin: 0;
     }
+
     .white-container .user-data {
         display: flex;
         flex: 1;
         align-items: center;
         border-left: 1px solid rgba(112, 112, 112, 0.1);
     }
+
     .white-container .time span {
         padding: 5px;
         font-size: 10px;
     }
+
     .white-container .time {
         display: flex;
         padding-right: 20px;
         align-items: center;
     }
+
     .ltr .white-container .user-data {
         border-left: none;
         border-right: 1px solid rgba(112, 112, 112, 0.1);
@@ -142,5 +151,5 @@
         align-items: center;
         justify-content: center;
     }
-    
+
 </style>

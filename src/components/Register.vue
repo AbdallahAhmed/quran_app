@@ -10,7 +10,7 @@
             </template>
         </navbar>
 
-        <div class="login-page">
+        <!--<div class="login-page">-->
             <div class="header-islamic row">
                 <div class="header-islamic-content">
                     <img src="../assets/img/Repeat Grid 17@2x.png" @click="addPhotoImage" class="avater"
@@ -20,53 +20,64 @@
                 </div>
             </div>
 
-            <div class="form-container">
+            <div class="scroll-area">
+                <div class="form-container">
 
-                <form @submit.prevent="register">
+                    <form @submit.prevent="register">
 
-                    <div class="input-border">
-                        <input type="text" name="name"
-                               :placeholder="$app.trans('attributes.name') " v-model="user.name"
-                               v-validate="'required|alpha_spaces'" autocomplete="false"/>
-                    </div>
+                        <div class="input-border">
+                            <input type="text" name="name"
+                                   :placeholder="$app.trans('attributes.name') " v-model="user.name"
+                                   v-validate="'required|alpha_spaces'" autocomplete="false"/>
+                        </div>
 
-                    <div class="input-border">
-                        <input type="text" name="email"
-                               :placeholder="$app.trans('attributes.email') " v-model="user.email"
-                               v-validate="'required|email'" autocomplete="false"/>
-                    </div>
+                        <div class="input-border">
+                            <input type="text" name="email"
+                                   :placeholder="$app.trans('attributes.email') " v-model="user.email"
+                                   v-validate="'required|email'" autocomplete="false"/>
+                        </div>
 
-                    <div class="input-border">
-                        <input type="password" name="password"
-                               :placeholder="$app.trans('attributes.password')" v-model="user.password"
-                               v-validate="'required', 'max:255'" autocomplete="false"/>
-                    </div>
+                        <div class="input-border">
+                            <input type="password" name="password"
+                                   :placeholder="$app.trans('attributes.password')" v-model="user.password"
+                                   v-validate="'required', 'max:255'" autocomplete="false"/>
+                        </div>
 
-                    <div class="input-border">
-                        <input type="password" name="confirm_password"
-                               :placeholder="$app.trans('attributes.confirm_password')"
-                               v-model="user.confirm_password"
-                               v-validate="'required', 'max:255'" autocomplete="false"/>
-                    </div>
+                        <div class="input-border">
+                            <input type="password" name="confirm_password"
+                                   :placeholder="$app.trans('attributes.confirm_password')"
+                                   v-model="user.confirm_password"
+                                   v-validate="'required', 'max:255'" autocomplete="false"/>
+                        </div>
 
-                    <button type="submit" class="link" @click.prevent="register">
-                        {{$app.trans('signup')}}
-                    </button>
+                        <button type="submit" class="link" @click.prevent="register">
+                            {{$app.trans('signup')}}
+                        </button>
 
-                </form>
+                    </form>
 
 
+                </div>
+                <div class="empty-gap"></div>
             </div>
-        </div>
+        <!--</div>-->
 
     </f7-page>
 
 </template>
 
-<style >
-.green-title .dialog-title{
-    color: #36734a;
-}
+<style scoped>
+    .green-title .dialog-title {
+        color: #36734a;
+    }
+
+    .scroll-area {
+        height: calc(100vh - 243px);
+    }
+
+    .empty-gap {
+        height: 30px;
+    }
 
 </style>
 
@@ -123,19 +134,19 @@
                         userData.lang = "ar";
 
                         self.$store.dispatch('register', userData).then((response) => {
-                           let dialog = this.$f7.dialog
+                            let dialog = this.$f7.dialog
                                 .create({
                                     title: this.$app.t("welcome_message"),
                                     buttons: [],
-                                    cssClass:"green-title"
+                                    cssClass: "green-title"
                                 })
                                 .open();
 
-                           setTimeout(()=>{
-                               dialog.close(true)
-                               self.$f7router.navigate('/home/quran/1');
-                               /*window.location.reload(true);*/
-                           },2000);
+                            setTimeout(() => {
+                                dialog.close(true)
+                                self.$f7router.navigate('/home/quran/1');
+                                /*window.location.reload(true);*/
+                            }, 2000);
                         }, (res) => {
                             self.$f7.notification.create({
                                 subtitle: res.data.errors[0]
