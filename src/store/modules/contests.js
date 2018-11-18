@@ -41,7 +41,7 @@ const actions = {
         return Vue.http
             .get(`contests`, {
                 params: {
-                    offset: state.contests.offset,
+                    offset: 0,
                     limit: 5,
                     status: "all|expired|current"
                 }
@@ -115,8 +115,8 @@ const mutations = {
         state.currentContest = payload.current[0] ? payload.current[0] : {};
         state.contests.data = payload.all;
         state.contests.expired = payload.expired;
-        state.contests.offset += 5;
-        state.contests.expiredOffset += 5;
+        state.contests.offset = 5;
+        state.contests.expiredOffset = 5;
     },
     ALL_CONTESTS(state, payload) {
         state.contests.data = state.contests.data.concat(payload);
