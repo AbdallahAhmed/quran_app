@@ -405,7 +405,16 @@ Vue.app.initialize();
     });
 
 });*/
+window.FirebasePlugin.onNotificationOpen(function (notification) {
 
+    let route = notification.route || false;
+    let contest_id = notification.contest_id || false;
+    if (route == "contest" && contest_id) {
+       // navigate to contest with id
+        this.$f7router.navigate("/contest/" + 48);
+    }
+
+});
 // Native click
 
 document.body.addEventListener('click', () => {

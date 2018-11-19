@@ -8,6 +8,5 @@
     "CoreLocation.framework": 2,
     "ImageIO.framework": 1,
     "AVFoundation.framework": 1,
-    "WebKit.framework": 1,
-    "libz.tbd": 1
+    "WebKit.framework": 1
 }
