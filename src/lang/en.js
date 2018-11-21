@@ -4,6 +4,7 @@ export default {
     close: "Close",
     choose_app: "Choose Application to share",
     surah: "Surah",
+    juz: "Juz",
 
     number_ayat: "Number of ayat",
 

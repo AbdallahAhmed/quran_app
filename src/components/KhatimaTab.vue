@@ -42,6 +42,7 @@
                         </div>
                     </div>
 
+
                     <h1 class="khatima-title" v-if="pending" @click="openPopup(pending)">
                         {{$app.t("curr_khatma")}}</h1>
 
