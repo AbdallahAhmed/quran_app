@@ -173,7 +173,17 @@
             ).then(() => {
                 this.loading = false;
             }).catch(err => {
-                this.$f7.dialog.alert("errors "+JSON.stringify(err));
+                this.$f7.dialog
+                        .create({
+                          title: this.$app.t("error"),
+                          buttons: [
+                            {
+                              text: this.$app.t("ok"),
+                              onClick: () => this.$f7.dialog.close()
+                            }
+                          ]
+                        })
+                        .open();
             });
         },
 
