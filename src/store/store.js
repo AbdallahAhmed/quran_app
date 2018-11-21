@@ -187,7 +187,8 @@ const mutations = {
             JSON.stringify(state.completed_khatema)
         );
     },
-    READ_PAGE(state, page_id) {
+    READ_PAGE(state, payload) {
+        var page_id = payload.page_id;
         // init new khatma if not exist
         if (!(state.khatema && state.khatema.pages)) {
             // init form user current_khatema
@@ -208,10 +209,10 @@ const mutations = {
         }
         if (
             !state.khatema.pages.find(item => {
-                return item === page_id;
+                return item.page_id === page_id;
             })
         ) {
-            state.khatema.pages.push(page_id);
+            state.khatema.pages.push(payload);
             state.khatema.remaining_pages = 604 - state.khatema.pages.length;
         }
 
@@ -241,8 +242,8 @@ const actions = {
         });
     },
 
-    logout(store){
-        return  Vue.http.post("logout", {}).then(function () {
+    logout(store) {
+        return Vue.http.post("logout", {}).then(function () {
             store.commit("logout");
         })
     },
@@ -268,8 +269,9 @@ const actions = {
         return Vue.http.post("auth/forget-password", email);
     },
 
-    read_page({state, commit}, page_id) {
-        commit("READ_PAGE", page_id);
+    read_page({state, commit}, payload) {
+        var page_id = payload.page_id;
+        commit("READ_PAGE", payload);
 
         var promise = new Promise((resolve, reject) => {
             resolve();
@@ -279,18 +281,14 @@ const actions = {
 
         if (state.khatema.pages.length >= 604) {
             if (state.user.id) {
-                promise = Vue.http.post("khatemas/update", {
-                    page_id: page_id
-                });
+                promise = Vue.http.post("khatemas/update", payload);
             }
             commit("SET_COMPLETED_KHATEMA", state.khatema);
             commit("FILL_CURRENT_KHATEMA");
         } else {
             if (state.user.id) {
                 promise = Vue.http
-                    .post("khatemas/update", {
-                        page_id: page_id
-                    })
+                    .post("khatemas/update", payload)
                     .then(
                         response => {
                             let data = response.data.data;
