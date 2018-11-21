@@ -44,50 +44,62 @@
 </template>
 
 <script>
+export default {
+  mounted() {
+    this.$f7.preloader.show();
 
-    export default {
+    this.$store.dispatch("get_saved_ayat").then(
+      res => {
+        this.$f7.preloader.hide();
+      },
+      () => {
+        this.$f7.preloader.hide();
+      }
+    );
+  },
 
-        mounted() {
-
-            this.$f7.preloader.show();
-
-            this.$store.dispatch('get_saved_ayat').then((res) => {
-                this.$f7.preloader.hide();
-            }, () => {
-                this.$f7.preloader.hide();
-            });
-
-        },
-
-        computed: {
-
-            saved_ayat: {
-                get: function () {
-                    return this.$store.getters.saved_ayat;
-                }
-            },
-
-        },
-
-        methods: {
-            removeAya(id) {
-                this.$f7.dialog.confirm(this.$app.trans('delete_aya'), () => {
-                    this.$store.dispatch('remove_saved_aya', id)
-                });
-            }
-        },
-
-        components: {
-            navbar: require("./partials/Navbar.vue")
-        }
+  computed: {
+    saved_ayat: {
+      get: function() {
+        return this.$store.getters.saved_ayat;
+      }
     }
+  },
 
+  methods: {
+    removeAya(id) {
+      this.$f7.dialog
+        .create({
+          title: this.$app.trans("delete_aya"),
+          buttons: [
+            {
+              text: this.$app.t("ok"),
+              onClick: () => {
+                this.$store.dispatch("remove_saved_aya", id);
+              }
+            },
+            {
+              text: this.$app.t("cancel"),
+              onClick: () => {
+                this.$f7.dialog.close();
+              }
+            }
+          ]
+        })
+        .open();
+    }
+  },
+
+  components: {
+    navbar: require("./partials/Navbar.vue")
+  }
+};
 </script>
 
 <style scoped>
-    .page-container {
-        width: calc(100% - 30px);
-        height: auto;
-        margin: auto;
-    }
+.page-container {
+  width: calc(100% - 30px);
+  height: auto;
+  margin: auto;
+}
 </style>

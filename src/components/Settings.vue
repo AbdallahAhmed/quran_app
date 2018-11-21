@@ -57,8 +57,8 @@
                     <hr>
                     <p>{{$app.trans('lang')}}</p>
                     <p class="row button-lang">
-                        <button class="col link" :class="{'active':locale=='ar'}" @click="locale='ar'">العربية</button>
-                        <button class="col link" :class="{'active':locale=='en'}" @click="locale='en'">English</button>
+                        <button class="col link" :class="{'active':locale=='ar'}" @click="locale='ar';lang()">العربية</button>
+                        <button class="col link" :class="{'active':locale=='en'}" @click="locale='en';lang()">English</button>
                     </p>
                 </div>
             </div>
@@ -136,6 +136,14 @@
             back() {
                 this.$store.commit("home_tab", "login");
                 this.$f7router.back();
+            },
+            lang(){
+                var self = this;
+                this.$http.post('lang', {
+                    params: {
+                        lang: self.locale
+                    }
+                })
             }
         }
 

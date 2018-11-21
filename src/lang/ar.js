@@ -21,7 +21,11 @@ export default {
     no_ayat: "لا يوجد آيات",
     delete_aya: "هل تريد حذف الآية ؟",
     quran_share: "انشر القرأن",
-
+    reminders: {
+        kahf: "لا تنس قراءة سورة الكهف!",
+        remind: "تذكير لقراءة بعض الأيات",
+        open_app: "قال هللا \"فاذكروني أذكركم واشكروا لي وال تكفرون\"، فال تنى أن تقرأ القرآن اليوم"
+    },
     setting: "اﻷعدادات",
     login: "تسجيل الدخول",
     logout: "تسجيل الخروج",
@@ -52,6 +56,7 @@ export default {
     completed_at: "أكتمل فى",
     hour: "ساعة",
     hours: "ساعات",
+    minutes: "دقائق",
     spent: "قضيت",
     hours_left: "ساعة متبقية تقربيأ",
     send_thawaab: " ارسل الثواب إلى صديق",
@@ -91,8 +96,6 @@ export default {
     comfirm_join_quit:
         "هل تريد الأنضمام في هذه المسابقة و الخروج من المسابقة الأخرى ؟",
     login_or_register: "لكي تنضم إلى مسابقة يجب عليك أولا تسجيل الدخول / تسجيل",
-    from_juz: "من الجزء",
-    to_juz: "إلى الجزء",
     num_members: "عدد الأعضاء",
     old_contests: "المسابقات المنتهية",
     creator: "المنشيء",
@@ -118,54 +121,55 @@ export default {
     from: "منذ",
     share_thawab: "لقد ختمت القران و اهدى اليك ثواب هذه الخاتمه",
     khatma: "خاتمه",
-    av_khatma:"متوسط الخاتمة 10 ساعات",
-    H:"س",
-    M:"د",
-    S:"ث",
-    text_align:"right",
+    av_khatma: "متوسط الخاتمة 10 ساعات",
+    H: "س",
+    M: "د",
+    S: "ث",
+    text_align: "right",
+    and: "و",
     messages: {
-        _default: function(n) {
+        _default: function (n) {
             return "قيمة الحقل " + n + " غير صحيحة.";
         },
-        after: function(n, e) {
+        after: function (n, e) {
             var r = e[0];
             return n + " يجب ان يكون بعد " + r + ".";
         },
-        alpha_dash: function(n) {
+        alpha_dash: function (n) {
             return n + " قد يحتوي على حروف او الرموز - و _.";
         },
-        alpha_num: function(n) {
+        alpha_num: function (n) {
             return n + " قد يحتوي فقط على حروف وارقام.";
         },
-        alpha_spaces: function(n) {
+        alpha_spaces: function (n) {
             return n + " قد يحتوي فقط على حروف ومسافات.";
         },
-        alpha: function(n) {
+        alpha: function (n) {
             return n + " يجب ان يحتوي على حروف فقط.";
         },
-        before: function(n, e) {
+        before: function (n, e) {
             var r = e[0];
             return n + " يجب ان يكون قبل " + r + ".";
         },
-        between: function(n, e) {
+        between: function (n, e) {
             var r = e[0],
                 t = e[1];
             return "قيمة " + n + " يجب ان تكون ما بين " + r + " و " + t + ".";
         },
-        confirmed: function(n, e) {
+        confirmed: function (n, e) {
             e[0];
             return n + " لا يماثل التأكيد.";
         },
-        date_between: function(n, e) {
+        date_between: function (n, e) {
             var r = e[0],
                 t = e[1];
             return n + " يجب ان يكون ما بين " + r + " و " + t + ".";
         },
-        date_format: function(n, e) {
+        date_format: function (n, e) {
             var r = e[0];
             return n + " يجب ان يكون على هيئة " + r + ".";
         },
-        decimal: function(n, e) {
+        decimal: function (n, e) {
             void 0 === e && (e = ["*"]);
             var r = e[0];
             return (
@@ -175,7 +179,7 @@ export default {
                 " ارقام عشرية."
             );
         },
-        digits: function(n, e) {
+        digits: function (n, e) {
             var r = e[0];
             return (
                 n +
@@ -184,56 +188,56 @@ export default {
                 " رقم."
             );
         },
-        dimensions: function(n, e) {
+        dimensions: function (n, e) {
             var r = e[0],
                 t = e[1];
             return n + " يجب ان تكون بمقاس " + r + " بكسل في " + t + " بكسل.";
         },
-        email: function(n) {
+        email: function (n) {
             return n + " يجب ان يكون بريدا اليكتروني صحيح.";
         },
-        ext: function(n) {
+        ext: function (n) {
             return "نوع ملف " + n + " غير صحيح.";
         },
-        image: function(n) {
+        image: function (n) {
             return n + " يجب ان تكون صورة.";
         },
-        in: function(n) {
+        in: function (n) {
             return "الحقل " + n + " يجب ان يكون قيمة صحيحة.";
         },
-        ip: function(n) {
+        ip: function (n) {
             return n + " يجب ان يكون ip صحيح.";
         },
-        max: function(n, e) {
+        max: function (n, e) {
             var r = e[0];
             return (
                 "الحقل " + n + " يجب ان يحتوي على " + r + " حروف على الأكثر."
             );
         },
-        mimes: function(n) {
+        mimes: function (n) {
             return "نوع ملف " + n + " غير صحيح.";
         },
-        min: function(n, e) {
+        min: function (n, e) {
             var r = e[0];
             return "الحقل " + n + " يجب ان يحتوي على " + r + " حروف على الأقل.";
         },
-        not_in: function(n) {
+        not_in: function (n) {
             return "الحقل " + n + " غير صحيح.";
         },
-        numeric: function(n) {
+        numeric: function (n) {
             return n + " يمكن ان يحتوي فقط على ارقام.";
         },
-        regex: function(n) {
+        regex: function (n) {
             return "الحقل " + n + " غير صحيح.";
         },
-        required: function(n) {
+        required: function (n) {
             return n + " مطلوب.";
         },
-        size: function(n, e) {
+        size: function (n, e) {
             var r = e[0];
             return n + " يجب ان يكون اقل من " + r + " كيلوبايت.";
         },
-        url: function(n) {
+        url: function (n) {
             return "الحقل " + n + " يجب ان يكون رابطاً صحيحاً.";
         }
     },
@@ -248,7 +252,5 @@ export default {
         last_name: "الإسم الأخير",
         form_subject: "الموضوع",
         form_messages: "الرسالة",
-
-        confirm_password: "كلمة المرور"
     }
 };

@@ -32,7 +32,12 @@ export default {
     edit_profile: "Edit profile",
     eval_app: "Are you want to rate the app?",
     shared_done: "Shared successfully",
-
+    reminders:{
+        kahf: "Don't forget to recite ElKahf!",
+        remind: "Reminder to recite some Ayat!",
+        open_app: "Allah says: “So remember Me; I will remember you. And be grateful to Me\n" +
+            "and do not deny Me”, so don’t forget to recite the Quran today"
+    },
     share_message: "Please download the Quran app from the Google Play store of the link",
 
     save: "Save",
@@ -62,6 +67,7 @@ export default {
     completed_at:"Completed at",
     hour:"Hour",
     hours:"Hours",
+    minutes:"Minutes",
     spent:"spent",
     hours_left:"Hours Left",
     send_thawaab:"Send Thawaab to a friend",
@@ -127,6 +133,7 @@ export default {
     M:"M",
     S:"S",
     text_align:"left",
+    and: "and",
     messages: {
         _default: function (e) {
             return "The " + e + " value is not valid.";
