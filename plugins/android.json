@@ -7,6 +7,12 @@
     "files": {}
   },
   "installed_plugins": {
+    "cordova-clipboard": {
+      "PACKAGE_NAME": "com.dotdev.quran"
+    },
+    "cordova-plugin-app-version": {
+      "PACKAGE_NAME": "com.dotdev.quran"
+    },
     "cordova-plugin-camera": {
       "PACKAGE_NAME": "com.dotdev.quran"
     },
@@ -48,9 +54,6 @@
       "PACKAGE_NAME": "com.dotdev.quran"
     },
     "cordova-plugin-x-socialsharing": {
-      "PACKAGE_NAME": "com.dotdev.quran"
-    },
-    "cordova-clipboard": {
       "PACKAGE_NAME": "com.dotdev.quran"
     }
   },

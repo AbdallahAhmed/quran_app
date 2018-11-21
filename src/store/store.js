@@ -121,6 +121,7 @@ const mutations = {
     },
 
     logout(state) {
+
         state.user = {};
         localStorage.removeItem("user");
 
@@ -241,7 +242,9 @@ const actions = {
     },
 
     logout(store){
-        return store.commit("logout");
+        return  Vue.http.post("logout", {}).then(function () {
+            store.commit("logout");
+        })
     },
     register(store, user) {
         return Vue.http.post("auth/add_user", user).then(function (response) {
@@ -302,7 +305,7 @@ const actions = {
             }
         }
 
-        if (state.auth) {
+        if (state.token && state.user) {
             Vue.http.post("contests/updates", {
                 page_id: page_id
             });

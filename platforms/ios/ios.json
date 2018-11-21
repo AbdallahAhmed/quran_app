@@ -105,22 +105,12 @@
       },
       "*/Entitlements-Debug.plist": {
         "parents": {
-          "aps-environment": [
-            {
-              "xml": "<string>development</string>",
-              "count": 1
-            }
-          ]
+          "aps-environment": []
         }
       },
       "*/Entitlements-Release.plist": {
         "parents": {
-          "aps-environment": [
-            {
-              "xml": "<string>production</string>",
-              "count": 1
-            }
-          ]
+          "aps-environment": []
         }
       },
       "*-Info.plist": {
@@ -136,7 +126,8 @@
               "xml": "<string>This app requires photo library access to function properly.</string>",
               "count": 1
             }
-          ]
+          ],
+          "UIBackgroundModes": []
         }
       }
     }
