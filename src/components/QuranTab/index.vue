@@ -50,7 +50,7 @@
                 <div class="page-content">
                     <div class="block quran-sura">
 
-                        <page v-for="page in pages" :page="page" :key="page[0].page_id" :id="page[0].page_id">
+                        <page v-for="(page,i) in pages" :page="page" :key="`${page[0].page_id}-${i}`" :id="page[0].page_id" :isHalfPage="pages[i+1]&&pages[i+1][0].page_id === page[0].page_id ">
                             <aya v-for="aya in page" :aya_row="aya" :key="aya.id" :surah="get_surah(aya.surat_id)">
                                 <div class="quran-basmla"
                                      v-if="aya.numberinsurat==1||(aya.surat_id==1&&aya.numberinsurat==2)">
