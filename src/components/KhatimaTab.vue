@@ -78,15 +78,14 @@
 
                         <p class="gauge-content">
                             <span> {{$app.t('spent')}}</span>
-                            <span>{{((len(pending.pages)/60).toFixed(1))}}</span>
-                            <span>{{$app.t('hours')}}</span>
+                            <span>{{remianing_time}}</span>
                         </p>
 
                     </div>
 
                     <div class="row footer" v-if="pending">
                         <div class="col-100">
-                            <p>{{$app.t('hours_left')}} {{(10-(len(pending.pages)/60)).toFixed(1)}}</p>
+                            <p>{{hours}} {{$app.t('hours_left')}} {{$app.t('and')}} {{minutes}} {{ $app.t('minutes')}}</p>
                         </div>
                         <span class="khatma-av"> {{$app.t('av_khatma')}} </span>
                     </div>
@@ -99,79 +98,6 @@
             <div class="empty-gap"></div>
         </div>
 
-        <!--<div v-if="khatema_popup" class="popup popup-khatima">
-            <div class="page" :class="'page-khatima'">
-                <navbar>
-                    <template slot="left">
-                        <a href="" class="link  navbar-back" @click="popup.close()">
-                            <i class="f7-icons">arrow_left</i>
-                        </a>
-                    </template>
-                </navbar>
-                <p class="page-title">{{$app.t('progress')}}</p>
-
-                <div class="page-content">
-                    <div class="khatima-list mg-top">
-
-                        <div class="khatima-wrapper">
-                            <h1 class="khatima-title">
-                                {{$app.t("last_khatma")}}</h1>
-                            <div class="row info">
-                                <div class="col-50">
-                                    <div class="row">
-                                        <div class="col-30">
-                                            <img src="./../assets/img/noun_calender_652711.png"/>
-                                        </div>
-                                        <div class="col-70">
-                                            <span>{{$app.t('started_at')}}</span>
-                                            <span>{{moment(khatema_popup.created_at).format('YYYY/MM/DD')}} </span>
-                                        </div>
-                                    </div>
-
-                                </div>
-                                <div class="col-50">
-                                    <div class="row">
-                                        <div class="col-30">
-                                            <img src="./../assets/img/clock.png"/>
-                                        </div>
-                                        <div class="col-70">
-                                            <span>{{$app.t('completed_at')}}</span>
-                                            <span>{{moment(khatema_popup.completed_at).format('YYYY/MM/DD')}}</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="gauge gauge-khatima"
-                                 data-type="circle"
-                                 data-value="1"
-                                 data-value-text=""
-                                 data-size="120"
-                                 data-border-width="4"
-                                 data-border-color="#f5be3a">
-
-                                <p class="gauge-content">
-                                    <span>{{$app.t('spent')}}</span>
-                                    <span>10</span>
-                                    <span>{{$app.t('hours')}}</span>
-                                </p>
-                            </div>
-                            <div class="row footer mg-clear">
-                                <div class="col-100">
-                                    <p></p>
-                                </div>
-                            </div>
-                        </div>
-                        <button class="btn-quran btn-send link">
-                            {{$app.t('send_thawaab')}}
-                        </button>
-                    </div>
-
-                </div>
-
-
-            </div>
-        </div>-->
     </div>
 </template>
 
@@ -204,6 +130,13 @@
         display: block;
         margin: 0 auto;
     }
+
+    .gauge-content {
+        width: 50%;
+        top: 50%;
+        left: 50%;
+        transform: translateX(-50%) translateY(-50%);
+    }
 </style>
 
 <script>
@@ -229,6 +162,21 @@
             },
             pending() {
                 return this.$store.getters.current_khatema;
+            },
+            hours() {
+                return Math.floor(10-(this.len(this.pending.pages)/60))
+            },
+            minutes() {
+                return  ((10-(this.len(this.pending.pages)/60) - this.hours) * 60).toFixed(0)
+            },
+            remaining_hours() {
+                return Math.floor(this.len(this.pending.pages)/60)
+            },
+            remaining_minutes() {
+                return  (((this.len(this.pending.pages)/60) - this.remaining_hours) * 60).toFixed(0)
+            },
+            remianing_time() {
+                return this.remaining_hours + " : " + this.remaining_minutes
             }
         },
         watch: {
@@ -272,53 +220,11 @@
                             .open();
                     });
             }
-            /*openPopup(id) {
-                        this.khatema_popup = this.khatemas.completed.find((item) => {
-                            return item.id == id;
-                        });
-
-
-                        this.popup.open()
-
-                    },
-                    fetchData() {
-                        this.$http.get("khatemas").then((response) => {
-
-                            this.khatemas = response.data.data;
-                            this.loading = false;
-                            this.last_khatema = this.khatemas.completed.pop();
-
-                        }, () => {
-                            this.khatemas.pending = this.$store.getters.current_khatema;
-                            this.khatemas.completed = JSON.parse(localStorage.getItem("completed_khatema")) || [];
-                            this.loading = false;
-
-
-                        }).then(() => {
-                            this.$$('.gauge-khatima').each((index, item) => {
-                                this.$f7.gauge.create(Object.assign({}, item.dataset, {el: item}))
-                            });
-
-                        }, () => {
-
-                            this.$$('.gauge-khatima').each((index, item) => {
-                                this.$f7.gauge.create(Object.assign({}, item.dataset, {el: item}))
-                            });
-
-                        });
-
-                    }*/
         },
         components: {
             navbar: require("./partials/Navbar.vue")
         },
         mounted() {
-            /*
-                                this.popup = this.$f7.popup.create({
-                                    el: '.popup-khatima'
-                                });
-                    */
-
             this.$$(".gauge-khatima").each((index, item) => {
                 this.$f7.gauge.create(Object.assign({}, item.dataset, {el: item}));
             });

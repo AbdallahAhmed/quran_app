@@ -66,6 +66,7 @@ export default {
     completed_at:"Completed at",
     hour:"Hour",
     hours:"Hours",
+    minutes:"Minutes",
     spent:"spent",
     hours_left:"Hours Left",
     send_thawaab:"Send Thawaab to a friend",
@@ -131,6 +132,7 @@ export default {
     M:"M",
     S:"S",
     text_align:"left",
+    and: "and",
     messages: {
         _default: function (e) {
             return "The " + e + " value is not valid.";

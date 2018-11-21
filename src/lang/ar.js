@@ -55,6 +55,7 @@ export default {
     completed_at: "أكتمل فى",
     hour: "ساعة",
     hours: "ساعات",
+    minutes: "دقائق",
     spent: "قضيت",
     hours_left: "ساعة متبقية تقربيأ",
     send_thawaab: " ارسل الثواب إلى صديق",
@@ -94,8 +95,6 @@ export default {
     comfirm_join_quit:
         "هل تريد الأنضمام في هذه المسابقة و الخروج من المسابقة الأخرى ؟",
     login_or_register: "لكي تنضم إلى مسابقة يجب عليك أولا تسجيل الدخول / تسجيل",
-    from_juz: "من الجزء",
-    to_juz: "إلى الجزء",
     num_members: "عدد الأعضاء",
     old_contests: "المسابقات المنتهية",
     creator: "المنشيء",
@@ -126,6 +125,7 @@ export default {
     M: "د",
     S: "ث",
     text_align: "right",
+    and: "و",
     messages: {
         _default: function (n) {
             return "قيمة الحقل " + n + " غير صحيحة.";
@@ -251,7 +251,5 @@ export default {
         last_name: "الإسم الأخير",
         form_subject: "الموضوع",
         form_messages: "الرسالة",
-
-        confirm_password: "كلمة المرور"
     }
 };

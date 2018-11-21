@@ -2,6 +2,7 @@
 
     <span ref="page" class="quran-page" :id="'page-'+id">
         <slot></slot>
+        <div class="page-number">{{id}}</div>
     </span>
 
 </template>
@@ -134,10 +135,11 @@
         opacity: 0.4;
     }
     .quran-page{
-    background-color: #fdfafa;
+    /*background-color: #fdfafa;
     padding: 17px;
     border: 1px #e8e8e8 solid;
-    margin: 17px auto;
+    margin: 17px auto;*/
+        padding: 25px 25px 0;
 }
 .black_mode .quran-page{
     background-color: #0e0d0d;
@@ -145,6 +147,4 @@
     border: 1px #3e3e3e solid;
     margin: 17px auto;
 }
-
-
 </style>

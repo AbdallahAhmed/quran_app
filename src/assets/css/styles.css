@@ -1333,3 +1333,14 @@ a.forget-password {
     border: none;
     box-shadow: none !important;
 }
+
+.page-number {
+    background-image: url("../img/page-number.png");
+    background-size: cover;
+    color: #f5be3a;
+    text-align: center;
+    height: 23px;
+    font-size: 11px;
+    line-height: 2;
+    margin-top: 25px;
+}
