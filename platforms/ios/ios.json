@@ -126,7 +126,8 @@
               "xml": "<string>This app requires photo library access to function properly.</string>",
               "count": 1
             }
-          ]
+          ],
+          "UIBackgroundModes": []
         }
       }
     }

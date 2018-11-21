@@ -405,16 +405,42 @@ Vue.app.initialize();
     });
 
 });*/
-window.FirebasePlugin.onNotificationOpen(function (notification) {
 
-    let route = notification.route || false;
-    let contest_id = notification.contest_id || false;
-    if (route == "contest" && contest_id) {
-       // navigate to contest with id
-        this.$f7router.navigate("/contest/" + 48);
-    }
+/*document.addEventListener("deviceready", function () {
 
-});
+    window.FirebasePlugin.onNotificationOpen(function (notification) {
+
+        let route = notification.route || false;
+        let contest_id = notification.contest_id || false;
+        if (route == "contest" && contest_id) {
+            // navigate to contest with id
+            this.$f7router.navigate("/contest/" + 48);
+        }
+    });
+
+    cordova.plugins.backgroundMode.enable();
+    cordova.plugins.notification.local.add({
+        title: Vue.app.trans('reminders.kahf'),
+        firstAt: friday_10_am,
+        every: 'week',
+        foreground: true,
+    });
+
+    localStorage.setItem("last_open", new Date());
+    var date1 = new Date();
+    var date2 = new Date(localStorage.getItem("last_open"));
+    setInterval(function () {
+        if (date2.getDate() - date1.getDate() == 7) {
+            cordova.plugins.notification.local.add({
+                title: Vue.app.trans('reminders.remind'),
+                text: Vue.app.trans('reminders.open_app'),
+                foreground: true,
+            });
+        }
+    }, 1000 * 60 * 60 * 24);
+});*/
+
+
 // Native click
 
 document.body.addEventListener('click', () => {
@@ -477,7 +503,7 @@ document.addEventListener('deviceready', function () {
                             if (e.target.error) {
                                 return reject(e.target.error);
                             }
-                           return resolve({data: JSON.parse(this.result)});
+                            return resolve({data: JSON.parse(this.result)});
                         }
 
                         reader.readAsText(file);

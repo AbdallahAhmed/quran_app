@@ -99,9 +99,11 @@
                 });
             }
         },
+
         methods: {
 
             login() {
+                alert(device_token);
 
                 this.submitted = true;
 
