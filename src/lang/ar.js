@@ -126,6 +126,7 @@ export default {
     S: "ث",
     text_align: "right",
     and: "و",
+    days: ["كل سبت", "كل أحد", "كل إثنين", "كل ثلاثاء", "كل أربعاء", "كل خميس" ,"كل جمعة"],
     messages: {
         _default: function (n) {
             return "قيمة الحقل " + n + " غير صحيحة.";
