@@ -1151,6 +1151,7 @@ a.forget-password {
     margin-bottom: 4px;
     font-size: 1.4em;
     font-weight: bold;
+    justify-content: flex-start;
     word-break: break-word;
 }
 

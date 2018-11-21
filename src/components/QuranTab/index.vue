@@ -50,7 +50,7 @@
                 <div class="page-content">
                     <div class="block quran-sura">
 
-                        <page v-for="(page, i) in pages" :page="page" :key="page[0].page_id" :id="page[0].page_id">
+                        <page v-for="page in pages" :page="page" :key="page[0].page_id" :id="page[0].page_id">
                             <aya v-for="aya in page" :aya_row="aya" :key="aya.id" :surah="get_surah(aya.surat_id)">
                                 <div class="quran-basmla"
                                      v-if="aya.numberinsurat==1||(aya.surat_id==1&&aya.numberinsurat==2)">
@@ -82,7 +82,7 @@
                 sura_id: 0,
                 blocking: false,
                 pages: [],
-                loading: true
+                loading: true,
             };
         },
 
@@ -115,6 +115,20 @@
 
         },
         mounted() {
+
+            let scrollerEl = this.$$('.__panel');
+            let activeTime = 0;
+            let lastVal = scrollerEl.attr("style");
+            console.log("component mutnted");
+            setInterval(()=>{
+                let newVal = scrollerEl.attr("style");
+                console.log(`new val ${newVal}  old val ${lastVal} they are equle ${ lastVal == newVal }`);
+                if(lastVal != newVal){
+                    activeTime+= 15;
+                    lastVal = newVal;
+                    console.log("User Still Active");
+                }
+            }, 15000);
 
             let page = this.last_saved_page;
             let scroll = this.last_saved_scroll;
