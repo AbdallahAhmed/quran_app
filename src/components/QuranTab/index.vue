@@ -267,7 +267,7 @@
         components: {
             navbar: require("./../partials/Navbar.vue"),
             sura: require("./../partials/Sura.vue"),
-            page: require("../partials/Page.vue"),
+            page: require("./Page.vue"),
             aya: require("../partials/aya.vue")
         }
     };
