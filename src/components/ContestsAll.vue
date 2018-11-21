@@ -65,9 +65,9 @@
 
               </div>
               <div v-else style="display:block; margin:0 auto;">
-                <div  >
+                <div>
                   <div class="loader-wrapper" :hidden="!loading">
-                      <div class="preloader color-green" :hidden="!loading"></div>
+                    <div class="preloader color-green" :hidden="!loading"></div>
                   </div>
                 </div>
 
@@ -106,81 +106,113 @@ export default {
   methods: {
     toTime(time) {
       let s = moment.duration(moment(time).diff(moment(), "seconds"));
-      return `${parseInt(s / 3600)}${this.$app.t('H')}: ${parseInt(s / 60) % 60}${this.$app.t('M')}: ${s % 60} ${this.$app.t('S')}`;
+      return `${parseInt(s / 3600)}${this.$app.t("H")}: ${parseInt(s / 60) %
+        60}${this.$app.t("M")}: ${s % 60} ${this.$app.t("S")}`;
     },
     loadmore(_, __, done) {
-      if(!this.loading){
+      if (!this.loading) {
         this.loading = true;
         return this.loadContests().then(data => {
           this.loading = false;
           if (!data.length) done();
         });
-      }else{
+      } else {
         return Promise.resolve();
-      } 
+      }
     },
     loadContests() {
       return this.$store.dispatch("loadAllContests");
     },
     leave(id) {
-      this.$f7.dialog.confirm(this.$app.t("comfirm_quit"), () => {
-        this.$f7.dialog.preloader(this.$app.t("leaving_contest"));
-        this.$store
-          .dispatch("leaveContest", id)
-          .then(() => {
-            this.$f7.dialog.close();
-            let done = this.$f7.dialog
-              .create({
-                title: this.$app.t("you_quit_the_contest_succsesfuly"),
-                buttons: []
-              })
-              .open();
-            setTimeout(() => {
-              done.close();
-            }, 1700);
-          })
-          .catch(err => {
-            this.$f7.dialog.alert(this.$app.t("error"));
-            setTimeout(() => {
-              this.$f7.dialog.close();
-            }, 2000);
-          });
-      });
+      this.$f7.dialog
+        .create({
+          title: this.$app.t("comfirm_quit"),
+          buttons: [
+            {
+              text: this.$app.t("ok"),
+              onClick: () => {
+                this.$f7.dialog.preloader(this.$app.t("leaving_contest"));
+                this.$store
+                  .dispatch("leaveContest", id)
+                  .then(() => {
+                    this.$f7.dialog.close();
+                    let done = this.$f7.dialog
+                      .create({
+                        title: this.$app.t("you_quit_the_contest_succsesfuly"),
+                        buttons: []
+                      })
+                      .open();
+                    setTimeout(() => {
+                      done.close();
+                    }, 1700);
+                  })
+                  .catch(err => {
+                    this.$f7.dialog.alert(this.$app.t("error"));
+                    setTimeout(() => {
+                      this.$f7.dialog.close();
+                    }, 2000);
+                  });
+              }
+            },
+            {
+              text: this.$app.t("cancel"),
+              onClick: () => {
+                this.$f7.dialog.close();
+              }
+            }
+          ]
+        })
+        .open();
     },
     join(id) {
-      this.$f7.dialog.confirm(
-        this.$store.getters.currentContest.id
-          ? this.$app.t("comfirm_join_quit")
-          : this.$app.t("comfirm_join"),
-        () => {
-          this.$f7.dialog.preloader(this.$app.t("joining_contest"));
-          this.$store
-            .dispatch("joinContest", id)
-            .then(() => {
-              this.$f7.dialog.close();
-              let done = this.$f7.dialog
-                .create({
-                  title: this.$app.t("you_joined_the_contest_succsesfuly"),
-                  buttons: []
-                })
-                .open();
-              setTimeout(() => {
-                done.close();
-              }, 1700);
-            })
-            .catch(err => {
-              if (err.status == 401) {
-                this.$f7router.navigate("/login");
-                this.$f7.dialog.close();
-              } else {
-                this.$f7.dialog.alert(this.$app.t("error"));
-                setTimeout(() => {
-                  this.$f7.dialog.close();
-                }, 2000);
+      this.$f7.dialog
+        .create({
+          title: this.$store.getters.currentContest.id
+            ? this.$app.t("comfirm_join_quit")
+            : this.$app.t("comfirm_join"),
+          buttons: [
+            {
+              text: this.$app.t("ok"),
+              onClick: () => {
+                this.$f7.dialog.preloader(this.$app.t("joining_contest"));
+                this.$store
+                  .dispatch("joinContest", id)
+                  .then(() => {
+                    this.$f7.dialog.close();
+                    let done = this.$f7.dialog
+                      .create({
+                        title: this.$app.t(
+                          "you_joined_the_contest_succsesfuly"
+                        ),
+                        buttons: []
+                      })
+                      .open();
+                    setTimeout(() => {
+                      done.close();
+                    }, 1700);
+                  })
+                  .catch(err => {
+                    if (err.status == 401) {
+                      this.$f7router.navigate("/login");
+                      this.$f7.dialog.close();
+                    } else {
+                      this.$f7.dialog.alert(this.$app.t("error"));
+                      setTimeout(() => {
+                        this.$f7.dialog.close();
+                      }, 2000);
+                    }
+                  });
               }
-            });
-        }
-      );
+            },
+            {
+              text: this.$app.t("cancel"),
+              onClick: () => {
+                this.$f7.dialog.close();
+              }
+            }
+          ]
+        })
+        .open();
     }
   },
   components: {
@@ -230,7 +262,7 @@ export default {
   padding-bottom: 4px;
   padding-top: 4px;
 }
-.time-remaning{
+.time-remaning {
   font-size: 90%;
 }
 </style>

@@ -2,7 +2,7 @@
 
     <span ref="page" class="quran-page" :id="'page-'+id">
         <slot></slot>
-        <div class="page-number">{{id}}</div>
+        <div v-if="!isHalfPage" class="page-number">{{id}}</div>
     </span>
 
 </template>
@@ -15,7 +15,7 @@
 
         name: "Page",
 
-        props: ["id", "page"],
+        props: ["id", "page", "isHalfPage"],
 
 
         data() {
