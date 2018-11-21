@@ -50,7 +50,7 @@
             {{contest.is_joined?$app.t('quit'):$app.t('enroll')}}
           </button>
         </div>
-        
+
         <div class="row  padding10">
           <div class="col-50 row block">
             <div>
@@ -74,7 +74,6 @@
 
           </div>
 
-          
           <div class="col-50 row block">
             <div>
               <img class="img" src="../assets/img/goz2.png" />
@@ -191,7 +190,8 @@ export default {
   methods: {
     toTime(time) {
       let s = moment.duration(moment(time).diff(moment(), "seconds"));
-      return `${parseInt(s / 3600)}${this.$app.t('H')}: ${parseInt(s / 60) % 60}${this.$app.t('M')}: ${s % 60} ${this.$app.t('S')}`;
+      return `${parseInt(s / 3600)}${this.$app.t("H")}: ${parseInt(s / 60) %
+        60}${this.$app.t("M")}: ${s % 60} ${this.$app.t("S")}`;
     },
     moment(...args) {
       return moment(...args).format("YYYY/MM/DD");
@@ -207,99 +207,132 @@ export default {
     },
     leave() {
       let { id } = this.contest;
-      this.$f7.dialog.confirm(this.$app.t("comfirm_quit"), () => {
-        this.$f7.dialog.preloader(this.$app.t("leaving_contest"));
-        this.$store
-          .dispatch("leaveContest", id)
-          .then(() => {
-            this.contest = {};
-            this.loading = true;
-            this.$f7.dialog.close();
-            this.loadContest().then(() => {
-                let done= this.$f7.dialog
-                  .create({
-                    title: this.$app.t("you_quit_the_contest_succsesfuly"),
-                    buttons: []
-                  })
-                  .open();
-                setTimeout(() => {
-                  done.close();
-                }, 1700);
-              });
 
-          })
-          .catch(err => {
-            this.$f7.dialog.alert(this.$app.t("error"));
-            setTimeout(() => {
-              this.$f7.dialog.close();
-            }, 2000);
-          });
-      });
+      this.$f7.dialog
+        .create({
+          title: this.$app.t("comfirm_quit"),
+          buttons: [
+            {
+              text: this.$app.t("ok"),
+              onClick: () => {
+                this.$f7.dialog.preloader(this.$app.t("leaving_contest"));
+                this.$store
+                  .dispatch("leaveContest", id)
+                  .then(() => {
+                    this.contest = {};
+                    this.loading = true;
+                    this.$f7.dialog.close();
+                    this.loadContest().then(() => {
+                      let done = this.$f7.dialog
+                        .create({
+                          title: this.$app.t(
+                            "you_quit_the_contest_succsesfuly"
+                          ),
+                          buttons: []
+                        })
+                        .open();
+                      setTimeout(() => {
+                        done.close();
+                      }, 1700);
+                    });
+                  })
+                  .catch(err => {
+                    this.$f7.dialog.alert(this.$app.t("error"));
+                    setTimeout(() => {
+                      this.$f7.dialog.close();
+                    }, 2000);
+                  });
+              }
+            },
+            {
+              text: this.$app.t("cancel"),
+              onClick: () => {
+                this.$f7.dialog.close();
+              }
+            }
+          ]
+        })
+        .open();
     },
     join() {
       let { id } = this.contest;
-      this.$f7.dialog.confirm(
-        this.$store.getters.currentContest.id
-          ? this.$app.t("comfirm_join_quit")
-          : this.$app.t("comfirm_join"),
-        () => {
-          this.$f7.dialog.preloader(this.$app.t("joining_contest"));
-          this.$store
-            .dispatch("joinContest", id)
-            .then(() => {
-              this.contest = {};
-              this.loading = true;
-              this.$f7.dialog.close();
-              this.loadContest().then(() => {
-                let done= this.$f7.dialog
-                  .create({
-                    title: this.$app.t("you_joined_the_contest_succsesfuly"),
-                    buttons: []
+      this.$f7.dialog
+        .create({
+          title: this.$store.getters.currentContest.id
+            ? this.$app.t("comfirm_join_quit")
+            : this.$app.t("comfirm_join"),
+          buttons: [
+            {
+              text: this.$app.t("ok"),
+              onClick: () => {
+                this.$f7.dialog.preloader(this.$app.t("joining_contest"));
+                this.$store
+                  .dispatch("joinContest", id)
+                  .then(() => {
+                    this.contest = {};
+                    this.loading = true;
+                    this.$f7.dialog.close();
+                    this.loadContest().then(() => {
+                      let done = this.$f7.dialog
+                        .create({
+                          title: this.$app.t(
+                            "you_joined_the_contest_succsesfuly"
+                          ),
+                          buttons: []
+                        })
+                        .open();
+                      setTimeout(() => {
+                        done.close();
+                      }, 1700);
+                    });
                   })
-                  .open();
-                setTimeout(() => {
-                  done.close();
-                }, 1700);
-              });
-            })
-            .catch(err => {
-              if (err.status == 401) {
-                this.$f7.dialog
-                  .create({
-                    title: this.$app.t("login_or_register"),
-                    // text: this.$app.t(''),
-                    buttons: [
-                      {
-                        text: this.$app.t("login"),
-                        onClick: () => {
-                          this.$f7router.navigate("/login");
-                        }
-                      },
-                      {
-                        text: this.$app.t("signup"),
-                        onClick: () => {
-                          this.$f7router.navigate("/register");
-                        }
-                      },
-                      {
-                        text: this.$app.t("cancel"),
-                        onClick: () => {
-                          this.$f7.dialog.close();
-                        }
-                      }
-                    ]
-                  })
-                  .open();
-                this.$f7.dialog.close();
-              } else {
-                this.$f7.dialog.alert(this.$app.t("error"));
-                setTimeout(() => {
-                  this.$f7.dialog.close();
-                }, 2000);
+                  .catch(err => {
+                    if (err.status == 401) {
+                      this.$f7.dialog
+                        .create({
+                          title: this.$app.t("login_or_register"),
+                          // text: this.$app.t(''),
+                          buttons: [
+                            {
+                              text: this.$app.t("login"),
+                              onClick: () => {
+                                this.$f7router.navigate("/login");
+                              }
+                            },
+                            {
+                              text: this.$app.t("signup"),
+                              onClick: () => {
+                                this.$f7router.navigate("/register");
+                              }
+                            },
+                            {
+                              text: this.$app.t("cancel"),
+                              onClick: () => {
+                                this.$f7.dialog.close();
+                              }
+                            }
+                          ]
+                        })
+                        .open();
+                      this.$f7.dialog.close();
+                    } else {
+                      this.$f7.dialog.alert(this.$app.t("error"));
+                      setTimeout(() => {
+                        this.$f7.dialog.close();
+                      }, 2000);
+                    }
+                  });
               }
-            });
-        }
-      );
+            },
+            {
+              text: this.$app.t("cancel"),
+              onClick: () => {
+                this.$f7.dialog.close();
+              }
+            }
+          ]
+        })
+        .open();
     },
     percentage(pages) {
       return this.parse(pages).length / 604;
@@ -351,14 +384,14 @@ export default {
   border-left: 0px;
 }
 
- .block {
+.block {
   flex-direction: column;
   align-items: center;
   text-align: center;
   border-bottom: rgb(226, 226, 226) 1px solid;
 }
 
- .block:nth-child(odd) {
+.block:nth-child(odd) {
   border-left: rgb(226, 226, 226) 1px solid;
 }
 
