@@ -439,7 +439,14 @@ Vue.app.initialize();
         }
     }, 1000 * 60 * 60 * 24);
 });*/
+/*cordova.plugins.notification.local.add({
+    title: Vue.app.trans('reminders.kahf'),
+    //firstAt: friday_10_am,
+    // every: 'week',
+    foreground: true,
+    background: true
 
+});*/
 
 // Native click
 
