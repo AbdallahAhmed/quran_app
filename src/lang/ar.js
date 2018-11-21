@@ -5,6 +5,7 @@ export default {
 
     choose_app: "إختر تطبيق",
     surah: "سورة",
+    juz: "جزء",
     number_ayat: "عدد الايات",
     search_ayat: "بحث عن الأيات",
     no_result: "لا يوجد نتائج بحث",
@@ -55,6 +56,7 @@ export default {
     completed_at: "أكتمل فى",
     hour: "ساعة",
     hours: "ساعات",
+    minutes: "دقائق",
     spent: "قضيت",
     hours_left: "ساعة متبقية تقربيأ",
     send_thawaab: " ارسل الثواب إلى صديق",
@@ -65,17 +67,17 @@ export default {
     saved: "تم الحفظ",
     copied: "تم النسخ",
     err: "خطأ",
-    start_date: "تاريخ البدأ",
-    end_date: "تاريخ الإنتهاء",
+    start_date: "تاريخ البدء",
+    end_date: "تاريخ الانتهاء",
     dir: "direction:rtl;",
     from_juz: "من الجزء",
     to_juz: "إلى الجزء",
     member: "عضو",
     members: "أعضاء",
     goal: "الهدف",
-    contest_goal: "هدف المسابقة",
-    contest_name: "اسم المسابقة",
-    create_contest: "إنشاء مسابقة",
+    contest_goal: "أهداف المسابقة",
+    contest_name: "أسم المسابقة",
+    create_contest: "إنشاء مسابقة جديدة",
     create_contest_and_share: "إنشاء مسابقة و مشاركتها",
     creating_contest: "جاري إنشاء المسابقة..",
     all_contests: "كل المسابقات",
@@ -94,8 +96,6 @@ export default {
     comfirm_join_quit:
         "هل تريد الأنضمام في هذه المسابقة و الخروج من المسابقة الأخرى ؟",
     login_or_register: "لكي تنضم إلى مسابقة يجب عليك أولا تسجيل الدخول / تسجيل",
-    from_juz: "من الجزء",
-    to_juz: "إلى الجزء",
     num_members: "عدد الأعضاء",
     old_contests: "المسابقات المنتهية",
     creator: "المنشيء",
@@ -126,6 +126,8 @@ export default {
     M: "د",
     S: "ث",
     text_align: "right",
+    and: "و",
+    days: ["كل سبت", "كل أحد", "كل إثنين", "كل ثلاثاء", "كل أربعاء", "كل خميس" ,"كل جمعة"],
     messages: {
         _default: function (n) {
             return "قيمة الحقل " + n + " غير صحيحة.";
@@ -251,7 +253,5 @@ export default {
         last_name: "الإسم الأخير",
         form_subject: "الموضوع",
         form_messages: "الرسالة",
-
-        confirm_password: "كلمة المرور"
     }
 };

@@ -2,7 +2,7 @@
 
     <span ref="page" class="quran-page" :id="'page-'+id">
         <slot></slot>
-        <div v-if="!isHalfPage" class="page-number">{{id}}</div>
+        <div class="page-number">{{id}}</div>
     </span>
 
 </template>
@@ -15,12 +15,11 @@
 
         name: "Page",
 
-        props: ["id", "page", "isHalfPage"],
+        props: ["id", "page"],
 
 
         data() {
             return {
-                timer: null,
                 seconds: 0,
             }
         },
@@ -31,13 +30,7 @@
 
             let id = this.id;
 
-
-            // EventBus.$on("vscroll", () => {
-            //     if(inView("#page-" + id).check()){
-            //         this.$store.commit("LAST_SURA", this.sura.id);
-            //     }
-            // });
-
+            var SpendTime = null;
             inView("#page-" + id)
 
                 .on("enter", () => {
@@ -53,30 +46,7 @@
 
                     if (!this.isViewed()) {
 
-                        this.timer = setInterval(() => {
-
-                            if (this.seconds >= this.getPageReadTime()) {
-
-                                clearInterval(this.timer);
-                                this.timer = false;
-
-                                // mark as seen
-
-                                this.$store.dispatch("read_page", id);
-
-                            }
-
-                            if (inView("#page-" + id).check()) {
-
-                                this.seconds++;
-                                //
-                                // console.log(this.page);
-                                //
-                                // console.log(this.id + " - " + this.seconds + " - " + this.getPageReadTime());
-                            }
-
-
-                        }, 1000);
+                        SpendTime = Date.now();
 
                     }
 
@@ -93,7 +63,23 @@
                         // console.log('next');
                         last_page_id++;
                     }
-                    ;
+
+
+                    if (!this.isViewed()) {
+
+                        let read_time = Math.min(Date.now() - SpendTime, 1000 * 60 * 4);
+                        // console.log(`pages  ${id}`, read_time, Date.now() - SpendTime)
+
+                        if (read_time >= 1000 * 60) {
+                            this.$store.dispatch("read_page", {page_id: id, time: read_time});
+                        }
+
+                        if (SpendTime) {
+                            SpendTime = null;
+                        }
+
+                    }
+
 
                     // Saving last viewed page
 
@@ -104,8 +90,6 @@
                     this.$store.commit("LAST_PART", this.$$('#page-' + last_page_id).children()[0].getAttribute('part'));
                     this.$store.commit("LAST_SURA", this.page[0].surat_id);
 
-                    clearInterval(this.timer);
-                    this.timer = false;
                 });
 
         },
@@ -123,7 +107,9 @@
             },
 
             isViewed: function () {
-                return this.$store.getters.current_khatema.pages.indexOf(this.id) > -1
+                return !!this.$store.getters.current_khatema.pages.find((page) => {
+                    return page.page_id == this.id;
+                })
             }
         }
     }
@@ -141,7 +127,7 @@
         padding: 17px;
         border: 1px #e8e8e8 solid;
         margin: 17px auto;*/
-        /*padding: 25px 25px 0;*/
+        padding: 25px 25px 0;
     }
 
     .black_mode .quran-page {

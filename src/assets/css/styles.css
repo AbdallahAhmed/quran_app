@@ -1151,6 +1151,7 @@ a.forget-password {
     margin-bottom: 4px;
     font-size: 1.4em;
     font-weight: bold;
+    justify-content: flex-start;
     word-break: break-word;
 }
 
@@ -1332,4 +1333,16 @@ a.forget-password {
 .ios .page-content .searchbar{
     border: none;
     box-shadow: none !important;
+}
+
+.page-number {
+    background-image: url("../img/page-number.png");
+    background-size: cover;
+    background-position: center;
+    color: #f5be3a;
+    text-align: center;
+    height: 23px;
+    font-size: 11px;
+    line-height: 2;
+    margin-top: 25px;
 }
