@@ -39,7 +39,7 @@
         methods: {
             clicked(index, item) {
                 item.checked = !item.checked;
-                this.$emit('updateItem', index)
+                /*this.$emit('updateItem', index)*/
             }
         }
     }

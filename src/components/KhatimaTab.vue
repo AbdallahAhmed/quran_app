@@ -6,9 +6,11 @@
 
         <p class="page-title">{{$app.t('progress')}}</p>
 
+<!--
         <a class="link popup-open" href="#" data-popup=".popup-about">Open About Popup</a>
 
         <popup v-on:updateItem="update" :items="[{text: 'sunday' , checked: true}, {text: 'monday' , checked:false}]"></popup>
+-->
 
         <div class="scroll-area">
             <div class="loader-wrapper">
@@ -230,7 +232,6 @@
         },
         components: {
             navbar: require("./partials/Navbar.vue"),
-            popup: require("./partials/remind-popup.vue")
         },
         mounted() {
             this.$$(".gauge-khatima").each((index, item) => {

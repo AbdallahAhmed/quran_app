@@ -56,15 +56,16 @@
                         </label>
                     </div>
                     <div class="col-50 surah">
-                        <label class="check-container">
+                        <label class="check-container popup-open link" data-popup=".popup-about">
                             {{$app.t('surah')}}
                             <input type="radio" name="select" value="surah" @change="changeSelected">
                             <span class="checkmark"></span>
                         </label>
+                        <popup v-on:updateItem="update" :items="suras"></popup>
                     </div>
                 </form>
 
-                <div class="row width-100" v-bind:class="{fromToJuz: juz}">
+                <div class="row width-100" v-bind:class="{fromToJuz: !juz}">
                     <div class="col-50">
                         <label>{{$app.t('from_juz')}}</label>
                         <input type="number" min="0" max="30" v-model="contest.juz_from"
@@ -78,6 +79,9 @@
                     </div>
 
                 </div>
+
+
+
 
                 <button class="contest-button green" href="/newcontest">
                     {{$app.t("create_contest")}}
@@ -102,11 +106,17 @@
                 loading: false,
                 contest: {},
                 errors: {},
-                juz: true,
-
+                juz: false,
+                suras: [],
+                selected_suras: [],
+                fetched_suras: ["الفاتحه", "البقرة", "ال عمران"]
             };
         },
         mounted() {
+            this.fetched_suras.map(sura => {
+               this.suras.push({text: sura, checked: false})
+            });
+
             this.$f7.calendar.create({
                 inputEl: "#start-date",
                 dateFormat: "yyyy-mm-dd",
@@ -128,6 +138,8 @@
                 this.contest.start_at = value;
             },
             submit(withSahre) {
+                this.selected_suras = this.suras.filter(item => item.checked);
+                console.log(this.selected_suras);
                 this.loading = true;
                 this.validate().then(valid => {
                     if (valid) {
@@ -189,21 +201,24 @@
                         this.errors.start_date = true;
                         this.errors.end_date = true;
                     }
-                    if (!(this.contest.juz_from && this.contest.juz_from > 0)) {
-                        this.errors.juz_from = true;
-                    }
-                    if (!(this.contest.juz_to && this.contest.juz_to > 0)) {
-                        this.errors.juz_to = true;
-                    }
-                    if (
-                        !(
-                            this.contest.juz_from &&
-                            this.contest.juz_to &&
-                            parseInt(this.contest.juz_from) < parseInt(this.contest.juz_to)
-                        )
-                    ) {
-                        this.errors.juz_from = true;
-                        this.errors.juz_to = true;
+
+                    if (this.juz) {
+                        if (!(this.contest.juz_from && this.contest.juz_from > 0)) {
+                            this.errors.juz_from = true;
+                        }
+                        if (!(this.contest.juz_to && this.contest.juz_to > 0)) {
+                            this.errors.juz_to = true;
+                        }
+                        if (
+                            !(
+                                this.contest.juz_from &&
+                                this.contest.juz_to &&
+                                parseInt(this.contest.juz_from) < parseInt(this.contest.juz_to)
+                            )
+                        ) {
+                            this.errors.juz_from = true;
+                            this.errors.juz_to = true;
+                        }
                     }
 
                     if (Object.keys(this.errors).length > 0) {
@@ -217,17 +232,24 @@
 
             changeSelected(event) {
                 let value = event.target.value;
-                
+
                 if (value === 'juz') {
-                    this.juz = false
-                }
-                else {
                     this.juz = true
                 }
-            }
+                else {
+                    this.juz = false
+                }
+            },
+
+            update(index) {
+                console.log(index)
+                /*this.suras[index].checked = !this.suras[index].checked;*/
+            },
+
         },
         components: {
-            navbar: require("./partials/Navbar.vue")
+            navbar: require("./partials/Navbar.vue"),
+            popup: require("./partials/remind-popup.vue")
         }
     };
 </script>

@@ -85,14 +85,15 @@
                 .on("exit", () => {
                     /*console.log(document.querySelector('#page-' + (id + 1 )));*/
                     let last_page_id = id;
-                    if (inView.is(document.querySelector('#page-' + (id - 1 )))) {
+                    if (inView.is(document.querySelector('#page-' + (id - 1)))) {
                         // console.log('prev');
                         last_page_id--;
 
                     } else {
                         // console.log('next');
                         last_page_id++;
-                    };
+                    }
+                    ;
 
                     // Saving last viewed page
 
@@ -134,17 +135,19 @@
         text-shadow: 1px 1px 1px #248e11;
         opacity: 0.4;
     }
-    .quran-page{
-    /*background-color: #fdfafa;
-    padding: 17px;
-    border: 1px #e8e8e8 solid;
-    margin: 17px auto;*/
-        padding: 25px 25px 0;
-}
-.black_mode .quran-page{
-    background-color: #0e0d0d;
-    padding: 17px;
-    border: 1px #3e3e3e solid;
-    margin: 17px auto;
-}
+
+    .quran-page {
+        /*background-color: #fdfafa;
+        padding: 17px;
+        border: 1px #e8e8e8 solid;
+        margin: 17px auto;*/
+        /*padding: 25px 25px 0;*/
+    }
+
+    .black_mode .quran-page {
+        background-color: #0e0d0d;
+        padding: 17px;
+        border: 1px #3e3e3e solid;
+        margin: 17px auto;
+    }
 </style>
