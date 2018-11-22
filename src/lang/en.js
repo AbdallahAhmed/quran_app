@@ -134,6 +134,8 @@ export default {
     S:"S",
     text_align:"left",
     and: "and",
+    every: "Every",
+    days: ["Sat", "Sun", "Mon", "Tue", "Wed", "Thu" ,"Fri"],
     messages: {
         _default: function (e) {
             return "The " + e + " value is not valid.";
