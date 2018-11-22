@@ -56,7 +56,8 @@
                         </label>
                     </div>
                     <div class="col-50 surah">
-                        <label class="check-container popup-open link" data-popup=".popup-about" :class="{'err-color':errors.surahs_length}">
+                        <label class="check-container popup-open link" data-popup=".popup-about"
+                               :class="{'err-color':errors.surahs_length}">
                             {{$app.t('surah')}}
                             <input type="radio" name="select" value="surah" @change="changeSelected">
                             <span class="checkmark"></span>
@@ -132,7 +133,7 @@
                     })
                 }, () => {
                 })
-            } /*else {
+            } else {
                 this.$http.get('surat', {}).then((res) => {
                     res.body.map(sura => {
                         this.suras.push({
@@ -142,7 +143,7 @@
                         })
                     })
                 });
-            }*/
+            }
 
 
             /*this.$store.dispatch("get_surat").then((response) => {
@@ -467,10 +468,10 @@
         right: 28px;
     }
 
-
     .display-surahs {
         margin-bottom: 20px;
     }
+
     .display-surahs .chip {
         margin: 3px;
     }

@@ -407,7 +407,7 @@ document.addEventListener("deviceready", function () {
     friday_10_am.setDate(friday_10_am.getDate() + (5 + 7 - friday_10_am.getDay()) % 7);
     friday_10_am.setHours("10", "00", "00")
     cordova.plugins.notification.local.schedule({
-        id: 5,
+        id: 100,
         title: Vue.app.trans('reminders.kahf'),
         date: friday_10_am,
         repeat: 'weekly',
@@ -472,24 +472,6 @@ document.addEventListener("deviceready", () => {
         }
 
     });
-    cordova.plugins.notification.local.schedule([{
-        title: "Test 1",
-        id: 'text1',
-        //firstAt: friday_10_am,
-        every: 'minute',
-        foreground: true,
-    }
-    ]);
-
-
-    cordova.plugins.notification.local.schedule([{
-        title: "Test 2",
-        id: 'text2',
-        //firstAt: friday_10_am,
-        every: 'minute',
-        foreground: true,
-    }
-    ]);
 });
 
 document.addEventListener('deviceready', function () {
@@ -550,6 +532,18 @@ document.addEventListener('deviceready', function () {
                 );
             });
         };
+
+        window.addLocalNotification = function (date, repeat, title, id) {
+            cordova.plugins.notification.local.schedule({
+                id: id,
+                title: title,
+                date: date,
+                repeat: repeat,
+                icon: "res://notification_icon.png",
+                smallIcon: "res://notification_icon.png",
+                foreground: true,
+            });
+        }
     },
     false
 );

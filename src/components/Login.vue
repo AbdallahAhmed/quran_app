@@ -103,8 +103,6 @@
         methods: {
 
             login() {
-
-
                 this.submitted = true;
 
                 var self = this;

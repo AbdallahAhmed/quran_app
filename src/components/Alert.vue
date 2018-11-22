@@ -144,6 +144,7 @@
     .link span > span {
         margin-left: 7px;
     }
+
     .link span > span:not(:last-child):after {
         content: ","
     }
@@ -161,7 +162,6 @@
         },
         computed: {
             alert_at: {
-
                 get: function () {
                     return this.$store.getters.alert_at;
                 },
@@ -175,14 +175,31 @@
             popup: require("./partials/remind-popup.vue")
         },
         mounted() {
+            this.$app.trans('days').map(day => this.days.push({
+                text: this.$app.trans('every') + ' ' + day,
+                checked: false
+            }));
 
+            var reminders = localStorage.getItem("reminders");
+            if (reminders) {
+                this.selected = reminders.split(',');
+                this.selected.map((data) => {
+                    this.days[data].checked = true
+                });
+            }
             var today = new Date();
 
             var alert_at = this.alert_at;
-
-            var currentHour = alert_at.hour ? alert_at.hour : (today.getHours() >= 12 ? today.getHours() - 12 : today.getHours());
-            var cuurentMin = alert_at.min ? alert_at.min : (today.getMinutes() < 10 ? "0" + today.getMinutes() : today.getMinutes());
-            var currentTime = alert_at.time ? alert_at.time : (today.getHours() < 12 ? "AM" : "PM");
+            var currentHour, cuurentMin, currentTime;
+            if (reminders) {
+                currentHour = localStorage.getItem("hour")
+                cuurentMin = localStorage.getItem("minute")
+                currentTime = localStorage.getItem("time")
+            } else {
+                currentHour = alert_at.hour ? alert_at.hour : (today.getHours() >= 12 ? today.getHours() - 12 : today.getHours());
+                cuurentMin = alert_at.min ? alert_at.min : (today.getMinutes() < 10 ? "0" + today.getMinutes() : today.getMinutes());
+                currentTime = alert_at.time ? alert_at.time : (today.getHours() < 12 ? "AM" : "PM");
+            }
 
             this.picker = this.$f7.picker.create({
                 containerEl: '#demo-picker-date-container',
@@ -220,10 +237,6 @@
                     }
                 ],
             });
-
-
-            this.$app.trans('days').map(day => this.days.push({text: this.$app.trans('every') + ' ' + day, checked: false}));
-
         },
 
         methods: {
@@ -252,7 +265,7 @@
 
                     // Once
 
-                    var nextDate = (new Date());
+                    /*var nextDate = (new Date());
 
                     nextDate.setHours(this.alert_at.time == "AM" ? this.alert_at.hour : (parseInt(this.alert_at.hour) + 12));
 
@@ -260,10 +273,39 @@
 
                     if (nextDate <= now) {
                         nextDate.setDate(now.getDate() + 1);
+                    }*/
+
+                    localStorage.removeItem("reminders");
+                    localStorage.removeItem("hour");
+                    localStorage.removeItem("time");
+                    localStorage.removeItem("minute");
+                    for (var i = 1; i >= 7; i++)
+                        cordova.plugins.notification.local.cancel((199 + i), function () {
+                        });
+
+                    if (this.selected.length > 0) {
+                        localStorage.setItem("reminders", this.selected);
+                        localStorage.setItem("hour", this.alert_at.hour);
+                        localStorage.setItem("minute", this.alert_at.min);
+                        localStorage.setItem("time", this.alert_at.time);
+                        for (var i = 0; i < this.selected.length; i++) {
+                            console.log(this.selected[i]);
+                            var date = new Date();
+                            date.setDate(date.getDate() + ((parseInt(this.selected[i]) + 6) + 7 - date.getDay()) % 7);
+                            date.setHours(this.alert_at.time == "AM" ? this.alert_at.hour : (parseInt(this.alert_at.hour) + 12),
+                                this.alert_at.min,
+                                "00"
+                            );
+                            if (date <= now) {
+                                date.setDate(date.getDate() + 7);
+                            }
+                            console.log(date)
+                            if (window.addLocalNotification)
+                                window.addLocalNotification(date, "weekly", this.$app.trans('reminder_daily'), (200 + i))
+                        }
                     }
 
-
-                    if (this.occur == 0) {
+                    /*if (this.occur == 0) {
 
                         if (cordova) {
                             cordova.plugins.notification.local.clearAll();
@@ -274,9 +316,9 @@
                             }, undefined, undefined, {skipPermission: true});
                         }
 
-                    }
+                    }*/
 
-                    if (this.occur == 1) {
+                    /*if (this.occur == 1) {
 
                         if (cordova) {
                             cordova.plugins.notification.local.clearAll();
@@ -289,7 +331,8 @@
                         }
 
 
-                    }
+                    }*/
+
 
                 }).then(() => {
 
