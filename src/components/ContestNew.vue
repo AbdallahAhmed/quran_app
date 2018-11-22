@@ -51,12 +51,12 @@
                     <div class="col-50 juz">
                         <label class="check-container">
                             {{$app.t('juz')}}
-                            <input type="radio" name="select" value="juz" @change="changeSelected">
+                            <input type="radio" name="select" value="juz" @change="changeSelected" checked>
                             <span class="checkmark"></span>
                         </label>
                     </div>
                     <div class="col-50 surah">
-                        <label class="check-container popup-open link" data-popup=".popup-about">
+                        <label class="check-container popup-open link" data-popup=".popup-about" :class="{'err-color':errors.surahs_length}">
                             {{$app.t('surah')}}
                             <input type="radio" name="select" value="surah" @change="changeSelected">
                             <span class="checkmark"></span>
@@ -64,6 +64,14 @@
                         <popup v-on:updateItem="update" :items="suras" :popupTitle="$app.trans('surahs')"></popup>
                     </div>
                 </form>
+
+
+                <div class="display-surahs" v-if="surahs_block">
+                    <div class="chip" v-for="(surah, index) in suras.filter(item => item.checked)">
+                        <div class="chip-label">{{surah.text}}</div>
+                    </div>
+                </div>
+
 
                 <div class="row width-100" v-bind:class="{fromToJuz: !juz}">
                     <div class="col-50">
@@ -104,10 +112,11 @@
                 loading: false,
                 contest: {},
                 errors: {},
-                juz: false,
+                juz: true,
                 suras: [],
                 selected_suras: [],
                 fetched_suras: [],
+                surahs_block: false,
             };
         },
 
@@ -147,30 +156,37 @@
                 inputEl: "#start-date",
                 dateFormat: "yyyy-mm-dd",
                 // value: [new Date()],
-                closeOnSelect: true
+                closeOnSelect: true,
+                disabled: {
+                    to: new Date()
+                }
             });
             this.$f7.calendar.create({
                 inputEl: "#end-date",
                 dateFormat: "yyyy-mm-dd",
-                closeOnSelect: true
+                closeOnSelect: true,
+                disabled: {
+                    to: new Date()
+                }
             });
         },
         methods: {
             updateEndDate({target: {value}}) {
                 this.contest.expired_at = value;
-
+                this.end_date = value;
             },
             updateStartDate({target: {value}}) {
                 this.contest.start_at = value;
+                this.start_date = value;
             },
             submit(withSahre) {
+                console.log(this.validate())
                 if (this.contest.type == "surah") {
                     this.selected_suras = this.suras.filter(item => item.checked);
                     this.contest.surat = [];
                     this.selected_suras.map(y => {
                         this.contest.surat.push(y.id);
                     });
-
                 }
                 this.loading = true;
                 this.validate().then(valid => {
@@ -188,6 +204,8 @@
                                 }
                             })
                             .catch(err => {
+                                this.contest.expired_at = this.end_date;
+                                this.contest.start_at = this.start_date;
                                 this.$f7.notification
                                     .create({
                                         subtitle: this.$app.t("error")
@@ -253,6 +271,13 @@
                         }
                     }
 
+
+                    if (this.contest.type === 'surah') {
+                        if (this.selected_suras.length === 0) {
+                            this.errors.surahs_length = true;
+                        }
+                    }
+
                     if (Object.keys(this.errors).length > 0) {
                         resolve(false);
                     } else {
@@ -267,13 +292,16 @@
                 this.contest.type = value;
                 if (value === 'juz') {
                     this.juz = true
+                    this.surahs_block = false;
                 }
                 else {
-                    this.juz = false
+                    this.juz = false;
+                    this.surahs_block = true;
                 }
             },
 
             update(index) {
+                this.suras[index].checked = !this.suras[index].checked;
                 console.log(index)
                 /*this.suras[index].checked = !this.suras[index].checked;*/
             },
@@ -337,6 +365,10 @@
 
     .green {
         background-color: #37734a;
+    }
+
+    .err-color {
+        color: red;
     }
 
     .err {
@@ -433,6 +465,14 @@
 
     .surah .checkmark {
         right: 28px;
+    }
+
+
+    .display-surahs {
+        margin-bottom: 20px;
+    }
+    .display-surahs .chip {
+        margin: 3px;
     }
 
 </style>
