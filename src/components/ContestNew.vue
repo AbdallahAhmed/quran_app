@@ -81,8 +81,6 @@
                 </div>
 
 
-
-
                 <button class="contest-button green" href="/newcontest">
                     {{$app.t("create_contest")}}
                 </button>
@@ -109,13 +107,27 @@
                 juz: false,
                 suras: [],
                 selected_suras: [],
-                fetched_suras: ["الفاتحه", "البقرة", "ال عمران"]
+                fetched_suras: [],
             };
         },
+
         mounted() {
-            this.fetched_suras.map(sura => {
-               this.suras.push({text: sura, checked: false})
+            this.$http.get('surat', {}).then((res) => {
+                res.body.map(sura => {
+                    this.suras.push({
+                        text: this.$store.getters.locale == "ar" ? sura.name : sura.englishname,
+                        checked: false,
+                        id: sura.id
+                    })
+                })
             });
+
+            /*this.$store.dispatch("get_surat").then((response) => {
+                this.surat = [response.data.data];
+            });*/
+            /*this.fetched_suras.map(sura => {
+                this.suras.push({text: sura, checked: false})
+            });*/
 
             this.$f7.calendar.create({
                 inputEl: "#start-date",
@@ -138,8 +150,14 @@
                 this.contest.start_at = value;
             },
             submit(withSahre) {
-                this.selected_suras = this.suras.filter(item => item.checked);
-                console.log(this.selected_suras);
+                if (this.contest.type == "surah") {
+                    this.selected_suras = this.suras.filter(item => item.checked);
+                    this.contest.surat = [];
+                    this.selected_suras.map(y => {
+                        this.contest.surat.push(y.id);
+                    });
+
+                }
                 this.loading = true;
                 this.validate().then(valid => {
                     if (valid) {
@@ -232,7 +250,7 @@
 
             changeSelected(event) {
                 let value = event.target.value;
-
+                this.contest.type = value;
                 if (value === 'juz') {
                     this.juz = true
                 }
@@ -359,6 +377,7 @@
     .select-guz-sura div:first-of-type {
         border-left: 1px solid rgba(112, 112, 112, 0.2);
     }
+
     .ltr .select-guz-sura div:first-of-type {
         border-right: 1px solid rgba(112, 112, 112, 0.2);
         border-left: none;
@@ -397,6 +416,7 @@
     .juz .checkmark {
         right: 48px;
     }
+
     .surah .checkmark {
         right: 28px;
     }

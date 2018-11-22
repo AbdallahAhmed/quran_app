@@ -69,4 +69,7 @@
         background-repeat: no-repeat;
         background-position: left 15px center;
     }
+    .ltr ul li.checked {
+        background-position: right 15px center;
+    }
 </style>
