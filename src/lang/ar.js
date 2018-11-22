@@ -6,6 +6,7 @@ export default {
     choose_app: "إختر تطبيق",
     surah: "سورة",
     juz: "جزء",
+    surahs: "السور القرآنيه",
     number_ayat: "عدد الايات",
     search_ayat: "بحث عن الأيات",
     no_result: "لا يوجد نتائج بحث",

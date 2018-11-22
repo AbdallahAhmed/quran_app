@@ -10,7 +10,7 @@
 
         <div class="page-content page-khatima">
 
-            <p class="row page-title">{{$app.trans('alarms')}}</p>
+            <p class="row page-title">{{popupTitle}}</p>
 
             <div class="scroll-area">
                 <ul class="days">
@@ -27,7 +27,7 @@
         components: {
             navbar: require("./Navbar.vue")
         },
-        props: ['items'],
+        props: ['items', 'popupTitle'],
         data() {
             return {
                 items_list: this.items

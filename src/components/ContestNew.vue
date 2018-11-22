@@ -61,7 +61,7 @@
                             <input type="radio" name="select" value="surah" @change="changeSelected">
                             <span class="checkmark"></span>
                         </label>
-                        <popup v-on:updateItem="update" :items="suras"></popup>
+                        <popup v-on:updateItem="update" :items="suras" :popupTitle="$app.trans('surahs')"></popup>
                     </div>
                 </form>
 
