@@ -144,10 +144,10 @@
         /*padding: 25px 25px 0;*/
     }
 
-    .black_mode .quran-page {
-        background-color: #0e0d0d;
-        padding: 17px;
-        border: 1px #3e3e3e solid;
-        margin: 17px auto;
-    }
+    /*.black_mode .quran-page {*/
+        /*background-color: #0e0d0d;*/
+        /*padding: 17px;*/
+        /*border: 1px #3e3e3e solid;*/
+        /*margin: 17px auto;*/
+    /*}*/
 </style>
