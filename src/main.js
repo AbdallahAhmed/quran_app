@@ -10,10 +10,10 @@ import VueResource from "vue-resource";
 import VueCordova from "vue-cordova";
 import VueScroller from "vue-scroller";
 import Routes from "./routes";
-import { store } from "./store/store";
-import { i18n } from "./i18n";
+import {store} from "./store/store";
+import {i18n} from "./i18n";
 import debounce from "./helpers/debounce";
-import { isElementInView } from "./helpers/helpers";
+import {isElementInView} from "./helpers/helpers";
 
 import vuescroll from "vuescroll";
 import "vuescroll/dist/vuescroll.css";
@@ -95,7 +95,7 @@ Vue.conf = require("./config").items;
 Vue.prototype.$config = Vue.conf;
 
 //English to Arabic digits.
-String.prototype.toAr = function() {
+String.prototype.toAr = function () {
     return this.replace(/\d/g, d => "٠١٢٣٤٥٦٧٨٩"[d]);
 };
 
@@ -117,7 +117,7 @@ Vue.app = {
 
     store: store,
 
-    initialize: function() {
+    initialize: function () {
         const self = this;
 
         /**
@@ -129,7 +129,7 @@ Vue.app = {
         /**
          * append access token to every request
          */
-        Vue.http.interceptors.push(function(request, next) {
+        Vue.http.interceptors.push(function (request, next) {
             if (Vue.app.auth.check()) {
                 request.headers.set(
                     "Authorization",
@@ -158,8 +158,8 @@ Vue.app = {
         });
     },
 
-    on: function(service, callback) {
-        return document.addEventListener(service, function() {
+    on: function (service, callback) {
+        return document.addEventListener(service, function () {
             callback(Vue.app);
         });
     },
@@ -173,7 +173,7 @@ Vue.app = {
          * @param item
          * @returns {boolean}
          */
-        get: function(item) {
+        get: function (item) {
             return Vue.conf[item] !== undefined ? Vue.conf[item] : false;
         },
 
@@ -182,7 +182,7 @@ Vue.app = {
          * @param name
          * @param value
          */
-        set: function(name, value) {
+        set: function (name, value) {
             Vue.conf[name] = value;
         }
     },
@@ -196,7 +196,7 @@ Vue.app = {
          * get logged user
          * @returns {boolean}
          */
-        user: function(field) {
+        user: function (field) {
             if (field) {
                 // if(field == "photo_url"){
                 //     if(store.getters.user && store.getters.user.image !== undefined){
@@ -224,7 +224,7 @@ Vue.app = {
          * get user token
          * @returns {Vue.app.auth.token|*|getters.token|null|token}
          */
-        token: function() {
+        token: function () {
             return store.getters.token;
         },
 
@@ -232,7 +232,7 @@ Vue.app = {
          * get user token expiration
          * @returns {*|getters.expiration|number|expiration}
          */
-        expiration: function() {
+        expiration: function () {
             return store.getters.expiration;
         },
 
@@ -240,7 +240,7 @@ Vue.app = {
          * check user
          * @returns {boolean}
          */
-        check: function() {
+        check: function () {
             if (store.getters.auth) {
                 return true;
             }
@@ -248,7 +248,7 @@ Vue.app = {
             return false;
         },
 
-        logout: function() {
+        logout: function () {
             Vue.app.store.commit("logout");
             Vue.app.reload();
         }
@@ -258,7 +258,7 @@ Vue.app = {
      * get current locale
      * @returns {string}
      */
-    theme: function() {
+    theme: function () {
         return theme;
     },
 
@@ -266,7 +266,7 @@ Vue.app = {
      * check current theme if IOS
      * @returns {boolean}
      */
-    isIOS: function() {
+    isIOS: function () {
         return this.theme() === "ios";
     },
 
@@ -274,14 +274,14 @@ Vue.app = {
      * check current theme if android/material
      * @returns {boolean}
      */
-    isMaterial: function() {
+    isMaterial: function () {
         return this.theme() === "material";
     },
 
     /**
      * get current application locale
      */
-    locale: function() {
+    locale: function () {
         return this.store.getters.locale;
     },
 
@@ -289,7 +289,7 @@ Vue.app = {
      * get current application direction
      * @returns {string}
      */
-    direction: function() {
+    direction: function () {
         return this.store.getters.locale === "ar" ? "rtl" : "ltr";
     },
 
@@ -297,7 +297,7 @@ Vue.app = {
      * check current application direction if rtl
      * @returns {boolean}
      */
-    isRTL: function() {
+    isRTL: function () {
         return this.direction() === "rtl";
     },
 
@@ -305,7 +305,7 @@ Vue.app = {
      * check current application direction if ltr
      * @returns {boolean}
      */
-    isLTR: function() {
+    isLTR: function () {
         return this.direction() === "ltr";
     },
 
@@ -314,10 +314,10 @@ Vue.app = {
      * @param key
      * @returns {TranslateResult|VueI18n.TranslateResult|*}
      */
-    trans: function(key) {
+    trans: function (key) {
         return this.i18n.t(key, this.store.getters.locale);
     },
-    t: function(key) {
+    t: function (key) {
         return this.i18n.t(key, this.store.getters.locale);
     },
     /**
@@ -329,7 +329,7 @@ Vue.app = {
          * @param url
          * @returns {*}
          */
-        load: function(url) {
+        load: function (url) {
             return Vue.app.vue.$f7Router.mainView.router.loadPage(url);
         },
 
@@ -337,7 +337,7 @@ Vue.app = {
          * redirect to previous url
          * @returns {*}
          */
-        back: function() {
+        back: function () {
             return Vue.app.vue.$f7Router.framework7.mainView.router.back();
         }
     },
@@ -432,7 +432,6 @@ Vue.app.initialize();
     background: true
 
 });*/
-
 // Native click
 
 document.body.addEventListener("click", () => {
@@ -448,7 +447,7 @@ document.addEventListener("deviceready", () => {
 
     // Bind to the back button for Android
 
-    document.addEventListener("backbutton", function() {
+    document.addEventListener("backbutton", function () {
         // NOTE: The back button will behave differently depending on circumstance
         // If the side panel is open, close it
         if (document.querySelector(".panel-left.active")) {
@@ -486,50 +485,69 @@ document.addEventListener("deviceready", () => {
                 })
                 .open();
         }
+
     });
+    cordova.plugins.notification.local.schedule([{
+        title: "Test 1",
+        id: 'text1',
+        //firstAt: friday_10_am,
+        every: 'minute',
+        foreground: true,
+    }
+    ]);
+
+
+    cordova.plugins.notification.local.schedule([{
+        title: "Test 2",
+        id: 'text2',
+        //firstAt: friday_10_am,
+        every: 'minute',
+        foreground: true,
+    }
+    ]);
 });
 
 document.addEventListener('deviceready', function () {
 
-    cordova.plugins.notification.local.hasPermission(function (granted) {
-        if (!granted) {
-            cordova.plugins.notification.local.requestPermission();
-        }
-    });
+        cordova.plugins.notification.local.hasPermission(function (granted) {
+            if (!granted) {
+                cordova.plugins.notification.local.requestPermission();
+            }
+        });
 
-    window.getFileAsJson = function (path) {
-        return new Promise((resolve, reject) => {
-            window.resolveLocalFileSystemURL(cordova.file.applicationDirectory + "www/" + path,
-                function (fileEntry) {
-                    fileEntry.file(function (file) {
-                        var reader = new FileReader();
-                        reader.onloadend = function (e) {
-                            if (e.target.error) {
-                                return reject(e.target.error);
+        window.getFileAsJson = function (path) {
+            return new Promise((resolve, reject) => {
+                window.resolveLocalFileSystemURL(cordova.file.applicationDirectory + "www/" + path,
+                    function (fileEntry) {
+                        fileEntry.file(function (file) {
+                            var reader = new FileReader();
+                            reader.onloadend = function (e) {
+                                if (e.target.error) {
+                                    return reject(e.target.error);
+                                }
+                                return resolve({data: JSON.parse(this.result)});
                             }
-                            return resolve({data: JSON.parse(this.result)});
-                        }
 
-                        reader.readAsText(file);
-                    });
-                }, function (err) {
-                    reject(err);
-                }
-            );
+                            reader.readAsText(file);
+                        });
+                    }, function (err) {
+                        reject(err);
+                    }
+                );
 
-        })
+            })
 
-    }
+        }
 
 
-        window.getFileAsJson = function(path) {
+        window.getFileAsJson = function (path) {
             return new Promise((resolve, reject) => {
                 window.resolveLocalFileSystemURL(
                     cordova.file.applicationDirectory + "www/" + path,
-                    function(fileEntry) {
-                        fileEntry.file(function(file) {
+                    function (fileEntry) {
+                        fileEntry.file(function (file) {
                             var reader = new FileReader();
-                            reader.onloadend = function(e) {
+                            reader.onloadend = function (e) {
                                 if (e.target.error) {
                                     return reject(e.target.error);
                                 }
@@ -541,7 +559,7 @@ document.addEventListener('deviceready', function () {
                             reader.readAsText(file);
                         });
                     },
-                    function(err) {
+                    function (err) {
                         reject(err);
                     }
                 );
@@ -554,7 +572,7 @@ document.addEventListener('deviceready', function () {
 // On offline event
 document.addEventListener(
     "offline",
-    function() {
+    function () {
         //Vue.app.router.load("/offline");
         // Vue.app.f7.addNotification({
         //     message: Vue.app.trans("offline_message"),
@@ -568,7 +586,7 @@ Object.defineProperty(Array.prototype, "unique", {
     enumerable: false,
     configurable: false,
     writable: false,
-    value: function() {
+    value: function () {
         var a = this.concat();
         for (var i = 0; i < a.length; ++i) {
             for (var j = i + 1; j < a.length; ++j) {
