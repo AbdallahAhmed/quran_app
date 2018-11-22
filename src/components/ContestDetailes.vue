@@ -237,7 +237,17 @@ export default {
                     });
                   })
                   .catch(err => {
-                    this.$f7.dialog.alert(this.$app.t("error"));
+                    this.$f7.dialog
+                        .create({
+                          title: this.$app.t("error"),
+                          buttons: [
+                            {
+                              text: this.$app.t("ok"),
+                              onClick: () => this.$f7.dialog.close()
+                            }
+                          ]
+                        })
+                        .open();
                     setTimeout(() => {
                       this.$f7.dialog.close();
                     }, 2000);
@@ -316,7 +326,17 @@ export default {
                         .open();
                       this.$f7.dialog.close();
                     } else {
-                      this.$f7.dialog.alert(this.$app.t("error"));
+                      this.$f7.dialog
+                        .create({
+                          title: this.$app.t("error"),
+                          buttons: [
+                            {
+                              text: this.$app.t("ok"),
+                              onClick: () => this.$f7.dialog.close()
+                            }
+                          ]
+                        })
+                        .open();
                       setTimeout(() => {
                         this.$f7.dialog.close();
                       }, 2000);
