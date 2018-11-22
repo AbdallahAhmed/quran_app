@@ -4,6 +4,7 @@ export default {
     close: "Close",
     choose_app: "Choose Application to share",
     surah: "Surah",
+    surahs: "Surahs",
     juz: "Juz",
 
     number_ayat: "Number of ayat",
@@ -133,6 +134,8 @@ export default {
     S:"S",
     text_align:"left",
     and: "and",
+    every: "Every",
+    days: ["Sat", "Sun", "Mon", "Tue", "Wed", "Thu" ,"Fri"],
     messages: {
         _default: function (e) {
             return "The " + e + " value is not valid.";

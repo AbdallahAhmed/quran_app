@@ -61,7 +61,7 @@
                             <input type="radio" name="select" value="surah" @change="changeSelected">
                             <span class="checkmark"></span>
                         </label>
-                        <popup v-on:updateItem="update" :items="suras"></popup>
+                        <popup v-on:updateItem="update" :items="suras" :popupTitle="$app.trans('surahs')"></popup>
                     </div>
                 </form>
 
@@ -112,15 +112,29 @@
         },
 
         mounted() {
-            this.$http.get('surat', {}).then((res) => {
-                res.body.map(sura => {
-                    this.suras.push({
-                        text: this.$store.getters.locale == "ar" ? sura.name : sura.englishname,
-                        checked: false,
-                        id: sura.id
+            if (window.getFileAsJson) {
+                window.getFileAsJson('surat.json').then((data) => {
+                    data.data.map(sura => {
+                        this.suras.push({
+                            text: this.$store.getters.locale == "ar" ? sura.name : sura.englishname,
+                            checked: false,
+                            id: sura.id
+                        })
                     })
+                }, () => {
                 })
-            });
+            } else {
+                this.$http.get('surat', {}).then((res) => {
+                    res.body.map(sura => {
+                        this.suras.push({
+                            text: this.$store.getters.locale == "ar" ? sura.name : sura.englishname,
+                            checked: false,
+                            id: sura.id
+                        })
+                    })
+                });
+            }
+
 
             /*this.$store.dispatch("get_surat").then((response) => {
                 this.surat = [response.data.data];

@@ -6,6 +6,7 @@ export default {
     choose_app: "إختر تطبيق",
     surah: "سورة",
     juz: "جزء",
+    surahs: "السور القرآنيه",
     number_ayat: "عدد الايات",
     search_ayat: "بحث عن الأيات",
     no_result: "لا يوجد نتائج بحث",
@@ -127,7 +128,8 @@ export default {
     S: "ث",
     text_align: "right",
     and: "و",
-    days: ["كل سبت", "كل أحد", "كل إثنين", "كل ثلاثاء", "كل أربعاء", "كل خميس" ,"كل جمعة"],
+    every: "كل",
+    days: ["سبت", "أحد", "إثنين", "ثلاثاء", "أربعاء", "خميس" ,"جمعة"],
     messages: {
         _default: function (n) {
             return "قيمة الحقل " + n + " غير صحيحة.";

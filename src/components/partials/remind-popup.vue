@@ -10,11 +10,13 @@
 
         <div class="page-content page-khatima">
 
-            <p class="row page-title">{{$app.trans('alarms')}}</p>
+            <p class="row page-title">{{popupTitle}}</p>
 
             <div class="scroll-area">
                 <ul class="days">
-                    <li v-for="(item, index) in items_list" :key="index"  :class="{checked : item.checked}" @click="clicked(index, item)">{{item.text}}</li>
+                    <li v-for="(item, index) in items" :key="index" :class="{checked : item.checked}"
+                        @click="clicked(index, item)">{{item.text}}
+                    </li>
                 </ul>
             </div>
         </div>
@@ -27,19 +29,15 @@
         components: {
             navbar: require("./Navbar.vue")
         },
-        props: ['items'],
-        data() {
-            return {
-                items_list: this.items
-            }
-        },
+        props: ['items', 'popupTitle'],
         mounted() {
             console.log(this.items)
         },
         methods: {
             clicked(index, item) {
-                item.checked = !item.checked;
-                /*this.$emit('updateItem', index)*/
+                /*item.checked = !item.checked;
+                Vue.set(this.items, index, item);*/
+                this.$emit('updateItem', index)
             }
         }
     }
@@ -49,6 +47,7 @@
     .popup {
         background: #F5F5F5;
     }
+
     ul {
         list-style: none;
         text-align: right;
@@ -64,11 +63,13 @@
         padding: 15px;
         margin: 0 25px 15px;
     }
+
     ul li.checked {
         background-image: url("../../assets/img/check.png");
         background-repeat: no-repeat;
         background-position: left 15px center;
     }
+
     .ltr ul li.checked {
         background-position: right 15px center;
     }

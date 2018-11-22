@@ -27,21 +27,30 @@
 
 
                 <div class="page-container">
-
-                    <a class="item-link smart-select smart-select-init closeOnSelect" data-open-in="sheet">
-
-                        <select :value="occur" v-model="occur">
-                            <option value="0">{{$app.trans('never')}}</option>
-                            <option value="1">{{$app.trans('daily')}}</option>
-                        </select>
-
-                        <div class="item-content">
-                            <div class="item-inner">
-                                <div class="item-title">{{$app.trans('repetition')}}</div>
-                            </div>
-                        </div>
-
+                    <p class="item-title">{{$app.trans('repetition')}}</p>
+                    <a href="#" class="popup-open link" data-popup=".popup-about">
+                        <span v-if="selected.length == 0">{{$app.trans('never')}}</span>
+                        <span v-else-if="selected.length == 7">{{$app.trans('daily')}}</span>
+                        <span v-else><span v-for="item in selected">{{$app.trans('days')[item]}}</span></span>
                     </a>
+                    <popup v-on:updateItem="update" :items="days" :popupTitle="$app.trans('repetition')"></popup>
+                    <!--
+                                        <a class="item-link smart-select smart-select-init closeOnSelect">
+
+                                            <select :value="occur" v-model="occur" @change="" multiple>
+                                                <option v-for="i in 6" value="i">{{$app.trans('days')[i - 1]}}</option>
+                                                &lt;!&ndash;<option value="1">{{$app.trans('daily')}}</option>
+                                                <option value="2">{{$app.trans('custom')}}</option>&ndash;&gt;
+                                            </select>
+
+                                            <div class="item-content">
+                                                <div class="item-inner">
+                                                    <div class="item-title">{{$app.trans('repetition')}}</div>
+                                                </div>
+                                            </div>
+
+                                        </a>
+                    -->
 
                 </div>
             </div>
@@ -115,6 +124,29 @@
     .page-container {
         height: auto;
     }
+
+    .popup-open {
+        display: block;
+        padding: 10px;
+        margin: 10px auto;
+        background: #faf8f8;
+        border: #d3d2d2 solid 1px;
+        color: #000000;
+        background-image: url("../assets/img/arrow-down.png");
+        background-position: left 15px center;
+        background-repeat: no-repeat;
+    }
+
+    .ltr .popup-open {
+        background-position: right 15px center;
+    }
+
+    .link span > span {
+        margin-left: 7px;
+    }
+    .link span > span:not(:last-child):after {
+        content: ","
+    }
 </style>
 <script>
 
@@ -122,12 +154,12 @@
         data() {
             return {
                 picker: null,
-                occur: this.$store.getters.alert_at.occur
+                occur: this.$store.getters.alert_at.occur,
+                days: [],
+                selected: [],
             }
         },
-
         computed: {
-
             alert_at: {
 
                 get: function () {
@@ -139,7 +171,8 @@
         },
 
         components: {
-            navbar: require("./partials/Navbar.vue")
+            navbar: require("./partials/Navbar.vue"),
+            popup: require("./partials/remind-popup.vue")
         },
         mounted() {
 
@@ -188,15 +221,25 @@
                 ],
             });
 
+
+            this.$app.trans('days').map(day => this.days.push({text: this.$app.trans('every') + ' ' + day, checked: false}));
+
         },
 
         methods: {
-
+            update(index) {
+                this.days[index].checked = !this.days[index].checked;
+                if (this.days[index].checked) {
+                    this.selected.push(index)
+                } else {
+                    this.selected = this.selected.filter(item => item != index);
+                }
+            },
             back() {
 
                 new Promise((resolve, reject) => {
 
-                    this.$f7router.back()
+                    this.$f7router.back();
 
                     var now = new Date();
 
