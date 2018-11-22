@@ -156,21 +156,28 @@
                 inputEl: "#start-date",
                 dateFormat: "yyyy-mm-dd",
                 // value: [new Date()],
-                closeOnSelect: true
+                closeOnSelect: true,
+                disabled: {
+                    to: new Date()
+                }
             });
             this.$f7.calendar.create({
                 inputEl: "#end-date",
                 dateFormat: "yyyy-mm-dd",
-                closeOnSelect: true
+                closeOnSelect: true,
+                disabled: {
+                    to: new Date()
+                }
             });
         },
         methods: {
             updateEndDate({target: {value}}) {
                 this.contest.expired_at = value;
-
+                this.end_date = value;
             },
             updateStartDate({target: {value}}) {
                 this.contest.start_at = value;
+                this.start_date = value;
             },
             submit(withSahre) {
                 console.log(this.validate())
@@ -197,6 +204,8 @@
                                 }
                             })
                             .catch(err => {
+                                this.contest.expired_at = this.end_date;
+                                this.contest.start_at = this.start_date;
                                 this.$f7.notification
                                     .create({
                                         subtitle: this.$app.t("error")
@@ -292,6 +301,7 @@
             },
 
             update(index) {
+                this.suras[index].checked = !this.suras[index].checked;
                 console.log(index)
                 /*this.suras[index].checked = !this.suras[index].checked;*/
             },
