@@ -391,7 +391,7 @@ Vue.app.initialize();
 
 });*/
 
-/*document.addEventListener("deviceready", function () {
+document.addEventListener("deviceready", function () {
 
     window.FirebasePlugin.onNotificationOpen(function (notification) {
 
@@ -399,41 +399,40 @@ Vue.app.initialize();
         let contest_id = notification.contest_id || false;
         if (route == "contest" && contest_id) {
             // navigate to contest with id
-            this.$f7router.navigate("/contest/" + 48);
+            this.$f7router.navigate("/contest/" + contest_id);
         }
     });
 
-    cordova.plugins.backgroundMode.enable();
-    cordova.plugins.notification.local.add({
+    var friday_10_am = new Date();
+    friday_10_am.setDate(friday_10_am.getDate() + (5 + 7 - friday_10_am.getDay()) % 7);
+    friday_10_am.setHours("10","00","00")
+    cordova.plugins.notification.local.schedule({
+        id: 5,
         title: Vue.app.trans('reminders.kahf'),
         firstAt: friday_10_am,
         every: 'week',
+        icon: "res://notification_icon.png",
+        smallIcon: "res://notification_icon.png",
         foreground: true,
     });
 
-    localStorage.setItem("last_open", new Date());
+    /*localStorage.setItem("last_open", new Date());
     var date1 = new Date();
     var date2 = new Date(localStorage.getItem("last_open"));
     setInterval(function () {
         if (date2.getDate() - date1.getDate() == 7) {
             cordova.plugins.notification.local.add({
+                id: 4,
                 title: Vue.app.trans('reminders.remind'),
                 text: Vue.app.trans('reminders.open_app'),
                 foreground: true,
             });
         }
-    }, 1000 * 60 * 60 * 24);
-});*/
-/*cordova.plugins.notification.local.add({
-    title: Vue.app.trans('reminders.kahf'),
-    //firstAt: friday_10_am,
-    // every: 'week',
-    foreground: true,
-    background: true
-
-});*/
+    }, 1000 * 60);*/
+});
 
 // Native click
+
 
 document.body.addEventListener("click", () => {
     if (nativeclick !== undefined) {
