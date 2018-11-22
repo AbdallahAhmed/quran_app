@@ -154,6 +154,11 @@ export default {
             return Vue.http.get("surah", {params: options})
         },
 
+        get_surat(store){
+            if (window.getFileAsJson)
+                return getFileAsJson(`surat.json`);
+        },
+
         get_page(store, page_id) {
             return Vue.http.get("page", {
                 params: {

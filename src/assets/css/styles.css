@@ -1338,6 +1338,7 @@ a.forget-password {
 .page-number {
     background-image: url("../img/page-number.png");
     background-size: cover;
+    background-position: center;
     color: #f5be3a;
     text-align: center;
     height: 23px;

@@ -3,7 +3,14 @@
 
         <navbar></navbar>
 
+
         <p class="page-title">{{$app.t('progress')}}</p>
+
+<!--
+        <a class="link popup-open" href="#" data-popup=".popup-about">Open About Popup</a>
+
+        <popup v-on:updateItem="update" :items="[{text: 'sunday' , checked: true}, {text: 'monday' , checked:false}]"></popup>
+-->
 
         <div class="scroll-area">
             <div class="loader-wrapper">
@@ -41,6 +48,7 @@
                             </div>
                         </div>
                     </div>
+
 
                     <h1 class="khatima-title" v-if="pending" @click="openPopup(pending)">
                         {{$app.t("curr_khatma")}}</h1>
@@ -187,6 +195,7 @@
             }
         },
         methods: {
+            update(index) {console.log(index)},
             percentage(pages) {
                 return this.parse(pages).length / 604;
             },
@@ -222,7 +231,7 @@
             }
         },
         components: {
-            navbar: require("./partials/Navbar.vue")
+            navbar: require("./partials/Navbar.vue"),
         },
         mounted() {
             this.$$(".gauge-khatima").each((index, item) => {

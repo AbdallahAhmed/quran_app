@@ -4,6 +4,8 @@ export default {
     close: "Close",
     choose_app: "Choose Application to share",
     surah: "Surah",
+    surahs: "Surahs",
+    juz: "Juz",
 
     number_ayat: "Number of ayat",
 
@@ -32,10 +34,9 @@ export default {
     eval_app: "Are you want to rate the app?",
     shared_done: "Shared successfully",
     reminders:{
-        kahf: "Don't forget to recite ElKahf!",
         remind: "Reminder to recite some Ayat!",
-        open_app: "Allah says: “So remember Me; I will remember you. And be grateful to Me\n" +
-            "and do not deny Me”, so don’t forget to recite the Quran today"
+        kahf: "Don't forget to recite ElKahf!",
+        open_app: "Allah says: “So remember Me; I will remember you. And be grateful to Me and do not deny Me”, so don’t forget to recite the Quran today"
     },
     share_message: "Please download the Quran app from the Google Play store of the link",
 
@@ -133,6 +134,8 @@ export default {
     S:"S",
     text_align:"left",
     and: "and",
+    every: "Every",
+    days: ["Sat", "Sun", "Mon", "Tue", "Wed", "Thu" ,"Fri"],
     messages: {
         _default: function (e) {
             return "The " + e + " value is not valid.";

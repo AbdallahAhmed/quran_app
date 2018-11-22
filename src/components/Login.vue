@@ -79,7 +79,7 @@
 
     import eventBus from './../events';
 
-    var device_token = "sss";
+    var device_token = "";
     export default {
 
         data: function () {
@@ -103,7 +103,7 @@
         methods: {
 
             login() {
-                alert(device_token);
+
 
                 this.submitted = true;
 
