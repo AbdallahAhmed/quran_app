@@ -111,6 +111,11 @@
     }
 
 </style>
+<style scoped>
+    .page-container {
+        height: auto;
+    }
+</style>
 <script>
 
     export default {
