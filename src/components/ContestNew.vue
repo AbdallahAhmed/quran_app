@@ -123,7 +123,7 @@
                     })
                 }, () => {
                 })
-            } else {
+            } /*else {
                 this.$http.get('surat', {}).then((res) => {
                     res.body.map(sura => {
                         this.suras.push({
@@ -133,7 +133,7 @@
                         })
                     })
                 });
-            }
+            }*/
 
 
             /*this.$store.dispatch("get_surat").then((response) => {

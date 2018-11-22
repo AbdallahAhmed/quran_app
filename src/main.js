@@ -409,8 +409,8 @@ document.addEventListener("deviceready", function () {
     cordova.plugins.notification.local.schedule({
         id: 5,
         title: Vue.app.trans('reminders.kahf'),
-        firstAt: friday_10_am,
-        every: 'week',
+        date: friday_10_am,
+        repeat: 'weekly',
         icon: "res://notification_icon.png",
         smallIcon: "res://notification_icon.png",
         foreground: true,
@@ -418,7 +418,6 @@ document.addEventListener("deviceready", function () {
 });
 
 // Native click
-
 
 document.body.addEventListener("click", () => {
     if (nativeclick !== undefined) {
