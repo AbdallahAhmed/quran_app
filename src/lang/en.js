@@ -37,7 +37,7 @@ export default {
         remind: "Reminder to recite some Ayat!",
         kahf: "Don't forget to recite ElKahf!",
         open_app: "Allah says: “So remember Me; I will remember you. And be grateful to Me and do not deny Me”, so don’t forget to recite the Quran today",
-        khatema: "You have read :read pages from the current khatema and the :remaining is remaining pages."
+        khatema: "You have read :read pages from the current khatema and :remaining is the remaining pages."
 
     },
     share_message: "Please download the Quran app from the Google Play store of the link",
