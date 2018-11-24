@@ -21,7 +21,7 @@ const state = {
     // khatema: undefined,
     current_khatema: {pages: []},
     completed_khatema:
-    JSON.parse(localStorage.getItem("completed_khatema")) || null,
+        JSON.parse(localStorage.getItem("completed_khatema")) || null,
     alert_at: {
         hour: null,
         min: null,
@@ -213,7 +213,6 @@ const mutations = {
             })
         ) {
             state.khatema.pages.push(payload);
-            state.khatema.remaining_pages = 604 - state.khatema.pages.length;
         }
 
         if (state.user.id) {
@@ -225,6 +224,33 @@ const mutations = {
         }
 
         localStorage.setItem("local_khatema", JSON.stringify(state.khatema));
+
+        state.khatema.remaining_pages = 604 - state.khatema.pages.length;
+        var remaining = state.khatema.remaining_pages;
+        var percentage = Math.floor((remaining / 604) * 100);
+        var read = state.khatema.pages.length;
+        if (percentage == 75 || percentage == 50 || percentage == 15) {
+            var title = Vue.app.trans('reminders.khatema');
+            title = title.replace(":read", read);
+            title = title.replace(":remaining", remaining);
+            var nextWeek = new Date();
+            nextWeek.setDate(nextWeek.getDate() + 7);
+            cordova.plugins.notification.local.cancel((102), function () {
+            });
+            cordova.plugins.notification.local.schedule({
+                id: 102,
+                title: Vue.app.trans('reminders.remind'),
+                text: title,
+                date: nextWeek,
+                repeat: 'weekly',
+                icon: "res://notification_icon.png",
+                smallIcon: "res://notification_icon.png",
+                foreground: true,
+            });
+        } else
+            cordova.plugins.notification.local.cancel((102), function () {
+            });
+
     }
 };
 

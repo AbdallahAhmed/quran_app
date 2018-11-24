@@ -656,6 +656,9 @@
 					"\"Quran/Plugins/cordova-plugin-firebase\"",
 					"\"Quran/Plugins/cordova-plugin-firebase\"",
 					"\"Quran/Plugins/cordova-plugin-firebase\"",
+					"\"Quran/Plugins/cordova-plugin-background-fetch\"",
+					"\"Quran/Plugins/cordova-plugin-background-fetch\"",
+					"\"Quran/Plugins/cordova-plugin-background-fetch\"",
 				);
 			};
 			name = Debug;
@@ -693,6 +696,9 @@
 					"\"Quran/Plugins/cordova-plugin-firebase\"",
 					"\"Quran/Plugins/cordova-plugin-firebase\"",
 					"\"Quran/Plugins/cordova-plugin-firebase\"",
+					"\"Quran/Plugins/cordova-plugin-background-fetch\"",
+					"\"Quran/Plugins/cordova-plugin-background-fetch\"",
+					"\"Quran/Plugins/cordova-plugin-background-fetch\"",
 				);
 			};
 			name = Release;

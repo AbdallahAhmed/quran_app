@@ -415,6 +415,20 @@ document.addEventListener("deviceready", function () {
         smallIcon: "res://notification_icon.png",
         foreground: true,
     });
+
+    var nextWeek = new Date();
+    nextWeek.setDate(nextWeek.getDate() + 7);
+    cordova.plugins.notification.local.cancel((101),function(){});
+    cordova.plugins.notification.local.schedule({
+        id: 101,
+        title: Vue.app.trans('reminders.remind'),
+        text: Vue.app.trans('reminders.open_app'),
+        date: nextWeek,
+        icon: "res://notification_icon.png",
+        smallIcon: "res://notification_icon.png",
+        foreground: true,
+    });
+
 });
 
 // Native click
