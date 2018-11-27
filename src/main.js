@@ -403,6 +403,8 @@ document.addEventListener("deviceready", function () {
         }
     });
 
+
+    // friday notification to recite ElKahf
     var friday_10_am = new Date();
     friday_10_am.setDate(friday_10_am.getDate() + (5 + 7 - friday_10_am.getDay()) % 7);
     friday_10_am.setHours("10", "00", "00")
@@ -416,9 +418,12 @@ document.addEventListener("deviceready", function () {
         foreground: true,
     });
 
+
+    // notification to open app if user didn't open for a week
     var nextWeek = new Date();
     nextWeek.setDate(nextWeek.getDate() + 7);
-    cordova.plugins.notification.local.cancel((101),function(){});
+    cordova.plugins.notification.local.cancel((101), function () {
+    });
     cordova.plugins.notification.local.schedule({
         id: 101,
         title: Vue.app.trans('reminders.remind'),
@@ -428,6 +433,47 @@ document.addEventListener("deviceready", function () {
         smallIcon: "res://notification_icon.png",
         foreground: true,
     });
+
+    /*cordova.plugins.notification.local.schedule({
+        id: 104,
+        title: Vue.app.trans(('reminders.remind')),
+        text: Vue.app.trans('reminders.open_app'),
+        icon: "res://notification_icon.png",
+        trigger: { every: 2, unit: 'minute' },
+        smallIcon: "res://notification_icon.png",
+        foreground: true,
+    }, function () {
+        cordova.plugins.notification.local.clear(104);
+        cordova.plugins.diagnostic.isGpsLocationEnabled(function (enabled) {
+            if (enabled) {
+                navigator.geolocation.getCurrentPosition(function (position) {
+                    var last_open = localStorage.getItem("last_open");
+                    var now = new Date();
+                    var valid = true;
+                    /!*if (last_open != null) {
+                        var diff =(last_open.getTime() - now.getTime()) / 1000;
+                        diff /= 60;
+                        var diffMinutes =  Math.abs(Math.round(diff));
+                        valid = diffMinutes > 60;
+                    }*!/
+                    //if (position.coords.speed > 0 && valid) {
+                    now = new Date();
+                    now.setMinutes(now.getMinutes() + 2);
+                    cordova.plugins.notification.local.schedule({
+                        id: 105,
+                        title: Vue.app.trans(('reminders.remind'))+"Trans",
+                        text: Vue.app.trans('reminders.open_app'),
+                        date: now,
+                        icon: "res://notification_icon.png",
+                        smallIcon: "res://notification_icon.png",
+                        foreground: true,
+                    });
+                    localStorage.setItem("last_open", new Date());
+                    //}
+                })
+            }
+        })
+    });*/
 
 });
 

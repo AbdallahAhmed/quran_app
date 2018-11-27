@@ -1,0 +1,91 @@
+{
+  "_args": [
+    [
+      "cordova-plugin-scheduler",
+      "/var/www/quran_app"
+    ]
+  ],
+  "_from": "cordova-plugin-scheduler@latest",
+  "_id": "cordova-plugin-scheduler@1.1.0",
+  "_inCache": true,
+  "_installable": true,
+  "_location": "/cordova-plugin-scheduler",
+  "_nodeVersion": "6.2.1",
+  "_npmOperationalInternal": {
+    "host": "s3://npm-registry-packages",
+    "tmp": "tmp/cordova-plugin-scheduler_1.1.0_1524556152954_0.176514933308358"
+  },
+  "_npmUser": {
+    "email": "raphael.merx@gmail.com",
+    "name": "raphaelmerx"
+  },
+  "_npmVersion": "3.9.3",
+  "_phantomChildren": {},
+  "_requested": {
+    "name": "cordova-plugin-scheduler",
+    "raw": "cordova-plugin-scheduler",
+    "rawSpec": "",
+    "scope": null,
+    "spec": "latest",
+    "type": "tag"
+  },
+  "_requiredBy": [
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/cordova-plugin-scheduler/-/cordova-plugin-scheduler-1.1.0.tgz",
+  "_shasum": "df03139a112c39c03eb0a437f477f2470ab067fb",
+  "_shrinkwrap": null,
+  "_spec": "cordova-plugin-scheduler",
+  "_where": "/var/www/quran_app",
+  "author": {
+    "name": "Raphael Merx"
+  },
+  "bugs": {
+    "url": "https://github.com/raphaelmerx/cordova-plugin-scheduler/issues"
+  },
+  "dependencies": {},
+  "description": "A Cordova plugin that schedules Android background tasks using the Android JobScheduler.",
+  "devDependencies": {},
+  "directories": {},
+  "dist": {
+    "fileCount": 10,
+    "npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJa3uF5CRA9TVsSAnZWagAAbVYP/36bRGzDXYUdm2rUln+u\nW+bjjPGbKT0CEflc9BdgJ+ZhWwdLQg1uyG6iAQ8lhYkDyZ7zLbPQXJUHs/P3\nsbyZPIrPQHgVK58yci6/k0wtV6nTe1s0EhRXZySrfZkFReL3jlAYLsYzL1ug\ngr+/IMhkWdoiFFLOi3pRwZKYjskYRZaSxPi0eXG6P50J7Vd3L9UP73FeWDrZ\nLgr+8vDlT3oAqhO4khH5j0cuaSOTOm5jKjwjeutoW2uu7v3dWHvyEwCf5XoT\n4FwTLP6ujv27nNb91Ptpt8NU5qjtBiFH9haBuwzLc8i2RRVwJNqRJFsQDeGR\nJOhWEfx0+w4UOMciHmkHIJ2iE4O1L2pXGrMz4hEgx5Fkc1QvlFsnCpMEm2ce\nv1FZAi+lsv1gmzF0M+IP5FDpRQ52eshYQF9RJytsAes6lcuMVCKkx3ly0ykE\nB2FKah5jYrOD9Y6fU+yBQ7MoKIJ3SjSshNyIJf0hO/oseetZ4Y5qmMm/FK5b\nVOf1QEU6KGIl5rRKimNMUOJmr+mUI8scjF9YwxDIKJfr6ykQHGV7D7CFxyE5\nmEJmVEMpxUCyrW41r4Ec8wSRAqCF+D0+cW3ct+0fVMP9oHjZIZ3ujhWsuWkd\nn6LqcIWwBx0DPVxORgRt3E0LsSozp7GLtW/UHq8yDvQxyvueqw2tP3xagn+S\ntQNV\r\n=wpky\r\n-----END PGP SIGNATURE-----\r\n",
+    "shasum": "df03139a112c39c03eb0a437f477f2470ab067fb",
+    "tarball": "https://registry.npmjs.org/cordova-plugin-scheduler/-/cordova-plugin-scheduler-1.1.0.tgz",
+    "unpackedSize": 19613
+  },
+  "engines": [
+    {
+      "name": "cordova",
+      "version": ">=6.0.0"
+    }
+  ],
+  "gitHead": "8d525433e762c1ff249200985a1add151463f94e",
+  "homepage": "https://github.com/raphaelmerx/cordova-plugin-scheduler#readme",
+  "keywords": [
+    "android",
+    "background",
+    "cordova",
+    "ecosystem:cordova",
+    "fetch",
+    "job",
+    "network",
+    "scheduler"
+  ],
+  "license": "ISC",
+  "maintainers": [
+    {
+      "name": "raphaelmerx",
+      "email": "raphael.merx@gmail.com"
+    }
+  ],
+  "name": "cordova-plugin-scheduler",
+  "optionalDependencies": {},
+  "readme": "ERROR: No README data found!",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/raphaelmerx/cordova-plugin-scheduler.git"
+  },
+  "scripts": {},
+  "version": "1.1.0"
+}

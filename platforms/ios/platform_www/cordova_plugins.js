@@ -366,6 +366,159 @@ module.exports = [
     "clobbers": [
       "cordova.plugins.clipboard"
     ]
+  },
+  {
+    "id": "cordova-plugin-geolocation.Coordinates",
+    "file": "plugins/cordova-plugin-geolocation/www/Coordinates.js",
+    "pluginId": "cordova-plugin-geolocation",
+    "clobbers": [
+      "Coordinates"
+    ]
+  },
+  {
+    "id": "cordova-plugin-geolocation.PositionError",
+    "file": "plugins/cordova-plugin-geolocation/www/PositionError.js",
+    "pluginId": "cordova-plugin-geolocation",
+    "clobbers": [
+      "PositionError"
+    ]
+  },
+  {
+    "id": "cordova-plugin-geolocation.Position",
+    "file": "plugins/cordova-plugin-geolocation/www/Position.js",
+    "pluginId": "cordova-plugin-geolocation",
+    "clobbers": [
+      "Position"
+    ]
+  },
+  {
+    "id": "cordova-plugin-geolocation.geolocation",
+    "file": "plugins/cordova-plugin-geolocation/www/geolocation.js",
+    "pluginId": "cordova-plugin-geolocation",
+    "clobbers": [
+      "navigator.geolocation"
+    ]
+  },
+  {
+    "id": "cordova.plugins.diagnostic.Diagnostic",
+    "file": "plugins/cordova.plugins.diagnostic/www/ios/diagnostic.js",
+    "pluginId": "cordova.plugins.diagnostic",
+    "merges": [
+      "cordova.plugins.diagnostic"
+    ]
+  },
+  {
+    "id": "cordova.plugins.diagnostic.Diagnostic_Location",
+    "file": "plugins/cordova.plugins.diagnostic/www/ios/diagnostic.location.js",
+    "pluginId": "cordova.plugins.diagnostic",
+    "merges": [
+      "cordova.plugins.diagnostic.location"
+    ]
+  },
+  {
+    "id": "cordova.plugins.diagnostic.Diagnostic_Bluetooth",
+    "file": "plugins/cordova.plugins.diagnostic/www/ios/diagnostic.bluetooth.js",
+    "pluginId": "cordova.plugins.diagnostic",
+    "merges": [
+      "cordova.plugins.diagnostic.bluetooth"
+    ]
+  },
+  {
+    "id": "cordova.plugins.diagnostic.Diagnostic_Wifi",
+    "file": "plugins/cordova.plugins.diagnostic/www/ios/diagnostic.wifi.js",
+    "pluginId": "cordova.plugins.diagnostic",
+    "merges": [
+      "cordova.plugins.diagnostic.wifi"
+    ]
+  },
+  {
+    "id": "cordova.plugins.diagnostic.Diagnostic_Camera",
+    "file": "plugins/cordova.plugins.diagnostic/www/ios/diagnostic.camera.js",
+    "pluginId": "cordova.plugins.diagnostic",
+    "merges": [
+      "cordova.plugins.diagnostic.camera"
+    ]
+  },
+  {
+    "id": "cordova.plugins.diagnostic.Diagnostic_Notifications",
+    "file": "plugins/cordova.plugins.diagnostic/www/ios/diagnostic.notifications.js",
+    "pluginId": "cordova.plugins.diagnostic",
+    "merges": [
+      "cordova.plugins.diagnostic.notifications"
+    ]
+  },
+  {
+    "id": "cordova.plugins.diagnostic.Diagnostic_Microphone",
+    "file": "plugins/cordova.plugins.diagnostic/www/ios/diagnostic.microphone.js",
+    "pluginId": "cordova.plugins.diagnostic",
+    "merges": [
+      "cordova.plugins.diagnostic.microphone"
+    ]
+  },
+  {
+    "id": "cordova.plugins.diagnostic.Diagnostic_Contacts",
+    "file": "plugins/cordova.plugins.diagnostic/www/ios/diagnostic.contacts.js",
+    "pluginId": "cordova.plugins.diagnostic",
+    "merges": [
+      "cordova.plugins.diagnostic.contacts"
+    ]
+  },
+  {
+    "id": "cordova.plugins.diagnostic.Diagnostic_Calendar",
+    "file": "plugins/cordova.plugins.diagnostic/www/ios/diagnostic.calendar.js",
+    "pluginId": "cordova.plugins.diagnostic",
+    "merges": [
+      "cordova.plugins.diagnostic.calendar"
+    ]
+  },
+  {
+    "id": "cordova.plugins.diagnostic.Diagnostic_Reminders",
+    "file": "plugins/cordova.plugins.diagnostic/www/ios/diagnostic.reminders.js",
+    "pluginId": "cordova.plugins.diagnostic",
+    "merges": [
+      "cordova.plugins.diagnostic.reminders"
+    ]
+  },
+  {
+    "id": "cordova.plugins.diagnostic.Diagnostic_Motion",
+    "file": "plugins/cordova.plugins.diagnostic/www/ios/diagnostic.motion.js",
+    "pluginId": "cordova.plugins.diagnostic",
+    "merges": [
+      "cordova.plugins.diagnostic.motion"
+    ]
+  },
+  {
+    "id": "cordova-plugin-scheduler.SchedulerPlugin",
+    "file": "plugins/cordova-plugin-scheduler/www/SchedulerPlugin.js",
+    "pluginId": "cordova-plugin-scheduler",
+    "clobbers": [
+      "window.SchedulerPlugin"
+    ]
+  },
+  {
+    "id": "cordova-plugin-background-mode.BackgroundMode",
+    "file": "plugins/cordova-plugin-background-mode/www/background-mode.js",
+    "pluginId": "cordova-plugin-background-mode",
+    "clobbers": [
+      "cordova.plugins.backgroundMode",
+      "plugin.backgroundMode"
+    ]
+  },
+  {
+    "id": "cordova-plugin-background-fetch.BackgroundFetch",
+    "file": "plugins/cordova-plugin-background-fetch/www/BackgroundFetch.js",
+    "pluginId": "cordova-plugin-background-fetch",
+    "clobbers": [
+      "window.BackgroundFetch"
+    ]
+  },
+  {
+    "id": "cordova-plugin-background-service.BackgroundService",
+    "file": "plugins/cordova-plugin-background-service/www/BackgroundService.js",
+    "pluginId": "cordova-plugin-background-service",
+    "clobbers": [
+      "BackgroundService"
+    ]
   }
 ];
 module.exports.metadata = 
@@ -388,7 +541,13 @@ module.exports.metadata =
   "cordova-plugin-inappbrowser": "3.0.0",
   "cordova-plugin-file": "6.0.1",
   "cordova-plugin-media": "5.0.2",
-  "cordova-clipboard": "1.2.1"
+  "cordova-clipboard": "1.2.1",
+  "cordova-plugin-geolocation": "4.0.1",
+  "cordova.plugins.diagnostic": "4.0.10",
+  "cordova-plugin-scheduler": "1.1.0",
+  "cordova-plugin-background-mode": "0.7.2",
+  "cordova-plugin-background-fetch": "5.4.1",
+  "cordova-plugin-background-service": "1.3.5"
 };
 // BOTTOM OF METADATA
 });

@@ -406,6 +406,37 @@ module.exports = [
         "clobbers": [
             "cordova.plugins.clipboard"
         ]
+    },
+    {
+        "file": "plugins/cordova-plugin-scheduler/www/SchedulerPlugin.js",
+        "id": "cordova-plugin-scheduler.SchedulerPlugin",
+        "pluginId": "cordova-plugin-scheduler",
+        "clobbers": [
+            "window.SchedulerPlugin"
+        ]
+    },
+    {
+        "file": "plugins/cordova-plugin-background-mode/www/background-mode.js",
+        "id": "cordova-plugin-background-mode.BackgroundMode",
+        "pluginId": "cordova-plugin-background-mode",
+        "clobbers": [
+            "cordova.plugins.backgroundMode",
+            "plugin.backgroundMode"
+        ]
+    },
+    {
+        "file": "plugins/cordova-plugin-background-mode/src/browser/BackgroundModeProxy.js",
+        "id": "cordova-plugin-background-mode.BackgroundMode.Proxy",
+        "pluginId": "cordova-plugin-background-mode",
+        "runs": true
+    },
+    {
+        "file": "plugins/cordova-plugin-background-fetch/www/BackgroundFetch.js",
+        "id": "cordova-plugin-background-fetch.BackgroundFetch",
+        "pluginId": "cordova-plugin-background-fetch",
+        "clobbers": [
+            "window.BackgroundFetch"
+        ]
     }
 ];
 module.exports.metadata = 
@@ -428,7 +459,13 @@ module.exports.metadata =
     "cordova-plugin-inappbrowser": "3.0.0",
     "cordova-plugin-file": "6.0.1",
     "cordova-plugin-media": "5.0.2",
-    "cordova-clipboard": "1.2.1"
+    "cordova-clipboard": "1.2.1",
+    "cordova-plugin-geolocation": "4.0.1",
+    "cordova.plugins.diagnostic": "4.0.10",
+    "cordova-plugin-scheduler": "1.1.0",
+    "cordova-plugin-background-mode": "0.7.2",
+    "cordova-plugin-background-fetch": "5.4.1",
+    "cordova-plugin-background-service": "1.3.5"
 }
 // BOTTOM OF METADATA
 });

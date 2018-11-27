@@ -52,6 +52,21 @@
     },
     "cordova-clipboard": {
       "PACKAGE_NAME": "com.dotdev.quran"
+    },
+    "cordova-plugin-geolocation": {
+      "PACKAGE_NAME": "com.dotdev.quran"
+    },
+    "cordova.plugins.diagnostic": {
+      "PACKAGE_NAME": "com.dotdev.quran"
+    },
+    "cordova-plugin-scheduler": {
+      "PACKAGE_NAME": "com.dotdev.quran"
+    },
+    "cordova-plugin-background-mode": {
+      "PACKAGE_NAME": "com.dotdev.quran"
+    },
+    "cordova-plugin-background-service": {
+      "PACKAGE_NAME": "com.dotdev.quran"
     }
   },
   "dependent_plugins": {
@@ -62,6 +77,9 @@
       "PACKAGE_NAME": "com.dotdev.quran"
     },
     "cordova-plugin-file": {
+      "PACKAGE_NAME": "com.dotdev.quran"
+    },
+    "cordova-plugin-background-fetch": {
       "PACKAGE_NAME": "com.dotdev.quran"
     }
   }

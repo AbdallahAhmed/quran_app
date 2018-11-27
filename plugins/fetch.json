@@ -158,5 +158,45 @@
     },
     "is_top_level": false,
     "variables": {}
+  },
+  "cordova-plugin-geolocation": {
+    "source": {
+      "type": "registry",
+      "id": "cordova-plugin-geolocation@^4.0.1"
+    },
+    "is_top_level": true,
+    "variables": {}
+  },
+  "cordova.plugins.diagnostic": {
+    "source": {
+      "type": "registry",
+      "id": "cordova.plugins.diagnostic@4.0.10"
+    },
+    "is_top_level": true,
+    "variables": {}
+  },
+  "cordova-plugin-scheduler": {
+    "source": {
+      "type": "registry",
+      "id": "cordova-plugin-scheduler@^1.1.0"
+    },
+    "is_top_level": true,
+    "variables": {}
+  },
+  "cordova-plugin-background-mode": {
+    "source": {
+      "type": "registry",
+      "id": "cordova-plugin-background-mode"
+    },
+    "is_top_level": true,
+    "variables": {}
+  },
+  "cordova-plugin-background-service": {
+    "source": {
+      "type": "registry",
+      "id": "cordova-plugin-background-service"
+    },
+    "is_top_level": true,
+    "variables": {}
   }
 }

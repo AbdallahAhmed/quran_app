@@ -55,6 +55,21 @@
     },
     "cordova-plugin-x-socialsharing": {
       "PACKAGE_NAME": "com.dotdev.quran"
+    },
+    "cordova-plugin-geolocation": {
+      "PACKAGE_NAME": "com.dotdev.quran"
+    },
+    "cordova.plugins.diagnostic": {
+      "PACKAGE_NAME": "com.dotdev.quran"
+    },
+    "cordova-plugin-scheduler": {
+      "PACKAGE_NAME": "com.dotdev.quran"
+    },
+    "cordova-plugin-background-mode": {
+      "PACKAGE_NAME": "com.dotdev.quran"
+    },
+    "cordova-plugin-background-service": {
+      "PACKAGE_NAME": "com.dotdev.quran"
     }
   },
   "dependent_plugins": {
