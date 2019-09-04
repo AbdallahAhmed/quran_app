@@ -1,0 +1,104 @@
+{
+  "_args": [
+    [
+      "cordova-plugin-facebook4",
+      "/var/www/quran_app"
+    ]
+  ],
+  "_from": "cordova-plugin-facebook4@latest",
+  "_hasShrinkwrap": false,
+  "_id": "cordova-plugin-facebook4@3.2.0",
+  "_inCache": true,
+  "_installable": true,
+  "_location": "/cordova-plugin-facebook4",
+  "_nodeVersion": "10.13.0",
+  "_npmOperationalInternal": {
+    "host": "s3://npm-registry-packages",
+    "tmp": "tmp/cordova-plugin-facebook4_3.2.0_1542802441134_0.7315755945132227"
+  },
+  "_npmUser": {
+    "email": "david.dalbusco@outlook.com",
+    "name": "peterpeterparker"
+  },
+  "_npmVersion": "6.4.1",
+  "_phantomChildren": {},
+  "_requested": {
+    "name": "cordova-plugin-facebook4",
+    "raw": "cordova-plugin-facebook4",
+    "rawSpec": "",
+    "scope": null,
+    "spec": "latest",
+    "type": "tag"
+  },
+  "_requiredBy": [
+    "#USER"
+  ],
+  "_resolved": "https://registry.npmjs.org/cordova-plugin-facebook4/-/cordova-plugin-facebook4-3.2.0.tgz",
+  "_shasum": "0638823588a4b27fa7db296b714e73e2c9b598b6",
+  "_shrinkwrap": null,
+  "_spec": "cordova-plugin-facebook4",
+  "_where": "/var/www/quran_app",
+  "bugs": {
+    "url": "https://github.com/jeduan/cordova-plugin-facebook4/issues"
+  },
+  "cordova": {
+    "id": "cordova-plugin-facebook4",
+    "platforms": [
+      "android",
+      "browser",
+      "ios"
+    ]
+  },
+  "dependencies": {},
+  "description": "Cordova Facebook SDK 4 Plugin",
+  "devDependencies": {},
+  "directories": {},
+  "dist": {
+    "fileCount": 134,
+    "integrity": "sha512-GxuHNlqIr1Q4UXBV/7L3/txOn9D2OIO8FfGa4W++qiZueU3QCY6QIbLps/FjGnCDChu4oRksfL5xZJgUYfKIAw==",
+    "npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJb9UwLCRA9TVsSAnZWagAAoeAQAJw7dEBMwIlKTQ3/ptzb\nJn7Zt8Szwap4nP5fn3cYjKnI4sn43SrVtLDK6fanfMp6EBNqqog49xsc4f//\npx98QpdOOF+NH7uMzoeJDP8rBa6xIGuRG2wAT3lDjhi/gH/gB/FHDFwQt9OV\nwHN1lJo71ewdMA3gT2Y4nYcLz3sHumhsa9q+S+m1GQsZrwroLqIYZFAS3l6d\nuz2ydvPbfc8En3OgGn+xCVi7Nofo/Js01rBicLOz0+btU9Ftseu0pCh80uJS\ntAMR00B3wL+eaLLOMFGBtBMud4HA+g/bJc+mKROBWNssjO3SYACPnWeTGKTt\nKBWBilsVPYp2h7/Xi9ALvW3Dul6Y94jjqv1uANr370LQCfTEb7Q0QjX0wgz9\n6SkOcgmTFX7NLMqiVM91qJvO/iSUCao+FA7nVSEQggnuXotJ2JdMkHpFFkp1\nuPfnZrrkzK+XhX+1UxqV6nZTWuSrXdkdg5ATdw3Xox4h5sHjSo/Dxi9u9JKa\nBoSOSTTfItq78NstNVYnG3TWbB8aaWo5JHStCFc7sG5pg/x7Rn3grPzbxuMz\nBZW18E2ABVvk46pvHOQ3wAWuw9XpmZL7Bsa8NK7k9l4d+3UJhGWYGXL17d+a\nFYb0PGy9+qReTv3g06xQAeMlwdAR/MXUjGxBJHcHd4JNR6peXvYAUY02X3Ww\nHczk\r\n=PDnj\r\n-----END PGP SIGNATURE-----\r\n",
+    "shasum": "0638823588a4b27fa7db296b714e73e2c9b598b6",
+    "tarball": "https://registry.npmjs.org/cordova-plugin-facebook4/-/cordova-plugin-facebook4-3.2.0.tgz",
+    "unpackedSize": 75753386
+  },
+  "gitHead": "6dadb88dc3344b4d37fd72591effab8ef9eacdba",
+  "homepage": "https://github.com/jeduan/cordova-plugin-facebook4#readme",
+  "keywords": [
+    "cordova",
+    "cordova-android",
+    "cordova-browser",
+    "cordova-ios",
+    "ecosystem:cordova",
+    "facebook",
+    "facebook-sdk",
+    "sharing",
+    "social"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    {
+      "name": "arnesson",
+      "email": "hello@arnesson.io"
+    },
+    {
+      "name": "jeduan",
+      "email": "jeduan@gmail.com"
+    },
+    {
+      "name": "nightstomp",
+      "email": "info@nightstomp.com"
+    },
+    {
+      "name": "peterpeterparker",
+      "email": "david.dalbusco@outlook.com"
+    }
+  ],
+  "name": "cordova-plugin-facebook4",
+  "optionalDependencies": {},
+  "readme": "ERROR: No README data found!",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jeduan/cordova-plugin-facebook4.git"
+  },
+  "version": "3.2.0"
+}
